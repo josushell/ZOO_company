@@ -6,18 +6,17 @@
 //
 
 import Foundation
+import UIKit
 import SpriteKit
 
 // MARK: home scene
 class HomeScene: SKScene {
-    let width = UIScreen.main.bounds.width - (42 * 2)
-    let height = UIScreen.main.bounds.height - (46 * 2)
+    let vs = viewSize()
     
     let chartexture = SKTextureAtlas(named: "Char")
     let backtexture = SKTextureAtlas(named: "Back")
     let choicetexture = SKTextureAtlas(named: "Choices")
     let profileAtlas = SKTextureAtlas(named: "Profile")
-    
     var backgroundImg = SKSpriteNode()
     
     let char = SKSpriteNode()
@@ -29,8 +28,8 @@ class HomeScene: SKScene {
     let talks = ["드디어 기다리고 기다리던 첫 출근이야!", "당장 준비하고 출발해볼까?", "잠깐! 1시간이나 일찍 일어났잖아?", "흠… 첫 출근에 일찍 일어났으니까 일찍 가서 뭐라도 좀 해볼까?"]
     var talkIndex = 0
     let choices = ["1. 일찍 간다", "2. 그냥 더 잔다", "3. 아침밥을 먹는다"]
-    let choice_text = "Q. 일찍 일어났을 때는 어떻게 할까?"
-    let choice_talks = ["일찍 일어난 새가 벌레를 잡는다고 하지! 이왕 일찍 일어난 김에 1시간 먼저 나가서 청소도 하고 업무도 미리미리 해야지! 열정! 열정! 열정!", "내가 그렇게 까지 열심히 살아야 해? 일찍 일어나는 새는 일찍 피곤하다. 더 자야지", "요새 너무 힘이 없네.. 첫 출근인데 이럴 순 없지. 아침밥 먹고 힘내서 출근하자"]
+    let choice_text = "Q.  출근 전 일찍 일어났을 때는 어떻게 할까?"
+    let choice_talks = ["일찍 일어난 새가 벌레를 잡는다고 하지! 이왕 일찍 일어난 김에 1시간 먼저 나가서 청소도 하고 업무도 미리미리 해야지!", "내가 그렇게 까지 열심히 살아야 해? 일찍 일어나는 새가 일찍 피곤하다.. 더 자야지", "첫 출근이니까 완벽하게 준비를 해야지. 아침밥 먹고 힘내서 출근하자! "]
     var flag: Bool = false
     
     let choice = SKSpriteNode()
@@ -54,7 +53,7 @@ class HomeScene: SKScene {
     func setBackground() {
         // 배경 이미지 설정
         backgroundImg.texture = backtexture.textureNamed("home")
-        backgroundImg.size = CGSize(width: width, height: height)
+        backgroundImg.size = CGSize(width: vs.width, height: vs.height)
         self.addChild(backgroundImg)
         
         // player 설정
@@ -69,7 +68,7 @@ class HomeScene: SKScene {
     func setDialog() {
         // text box 설정
         box.texture = backtexture.textureNamed("textback")
-        box.size = CGSize(width: width, height: 74)
+        box.size = CGSize(width: vs.width, height: 74)
         box.position.x = 0.5
         let framesize = backgroundImg.frame.size.height / 2
         box.position.y = 0.5 - framesize + (74 / 2)
@@ -78,7 +77,7 @@ class HomeScene: SKScene {
         box.isHidden = true
         
         // profile image 설정
-        profile.texture = profileAtlas.textureNamed("player")
+        profile.texture = profileAtlas.textureNamed("suit-1")
         profile.size = CGSize(width: 130, height: 131.81)
         
         // MARK: - 위치 조정 다시 필요
@@ -102,9 +101,8 @@ class HomeScene: SKScene {
     func setChoose() {
         // 선택지 배경
         choice.texture = choicetexture.textureNamed("choiceframe3")
-        choice.size = CGSize(width: self.frame.size.width, height: self.frame.size.height)
         choice.position = CGPoint(x: 0.5, y: 0.5)
-        choice.size = CGSize(width: width, height: height)
+        choice.size = CGSize(width: vs.width, height: vs.height)
         choice.zPosition = 998
         self.addChild(choice)
         choice.isHidden = true
@@ -167,7 +165,7 @@ class HomeScene: SKScene {
         //(touchNode as? SKSpriteNode)?.texture = backtexture.textureNamed("choicetouched")
         else {
             if (flag == true) {
-                self.view?.presentScene(OfficeScene(size: self.size), transition: .fade(withDuration: 2))
+                self.view?.presentScene(SubwayScene(size: self.size), transition: .fade(withDuration: 2))
             }
             
             else {

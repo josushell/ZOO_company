@@ -19,6 +19,8 @@ class Dialog: SKScene {
     let backtexture = SKTextureAtlas(named: "Back")
     let profileAtlas = SKTextureAtlas(named: "Profile")
     
+    var callbackMethod: ((_ touches: Set<UITouch>, _ event: UIEvent?) -> Void)?
+    
     func setDialog(backgroundImg: SKSpriteNode, width: CGFloat, height: CGFloat) {
         // text box 설정
         box.texture = backtexture.textureNamed("textback")
@@ -31,7 +33,7 @@ class Dialog: SKScene {
         box.isHidden = true
         
         // profile image 설정
-        profile.texture = profileAtlas.textureNamed("player")
+        profile.texture = profileAtlas.textureNamed("suit-1")
         profile.size = CGSize(width: 130, height: 131.81)
         
         // MARK: - 위치 조정 다시 필요
@@ -51,7 +53,13 @@ class Dialog: SKScene {
         box.addChild(dialog)
     }
     
+    func setCallback(callback: @escaping ((_ touches: Set<UITouch>, _ event: UIEvent?) -> Void)) {
+        self.callbackMethod = callback
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("yes dialog")
+        callbackMethod?(touches, event)
     }
     
 }

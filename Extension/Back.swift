@@ -9,7 +9,17 @@ import Foundation
 import SpriteKit
 
 // MARK: - SKView extension
-class Back: SKScene {
+class Back: SKScene, callback {
+    var callbackMethod: ((Set<UITouch>, UIEvent?) -> Void)?
+    
+    func setCallback(callback: @escaping ((_ touches: Set<UITouch>, _ event: UIEvent?) -> Void)) {
+        self.callbackMethod = callback
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("yes back")
+        callbackMethod?(touches, event)
+    }
     
     let chartexture = SKTextureAtlas(named: "Char")
     let backtexture = SKTextureAtlas(named: "Back")
@@ -22,8 +32,6 @@ class Back: SKScene {
     let box = SKSpriteNode()
     let profile = SKSpriteNode()
     let dialog = SKLabelNode(fontNamed: "NeoDunggeunmo-Regular")
-
-    var callbackMethod: ((_ touches: Set<UITouch>, _ event: UIEvent?) -> Void)?
     
     // MARK: - background 설정
     func setBackground(backImgName: String, charImgName: String, width: CGFloat, height: CGFloat) {
@@ -40,11 +48,4 @@ class Back: SKScene {
         self.addChild(char)
     }
     
-    func setCallback(callback: @escaping ((_ touches: Set<UITouch>, _ event: UIEvent?) -> Void)) {
-        self.callbackMethod = callback
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        callbackMethod?(touches, event)
-    }
 }

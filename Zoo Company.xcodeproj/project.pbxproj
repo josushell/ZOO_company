@@ -28,10 +28,15 @@
 		8693E11628799EBE00D7D306 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11528799EBE00D7D306 /* Choice.swift */; };
 		8693E1182879A08400D7D306 /* OfficeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E1172879A08400D7D306 /* OfficeScene.swift */; };
 		8693E11B287AA71F00D7D306 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11A287AA71F00D7D306 /* Dialog.swift */; };
+		8693E11D287AB79F00D7D306 /* CallbackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11C287AB79F00D7D306 /* CallbackProtocol.swift */; };
+		8693E11F288D216C00D7D306 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11E288D216C00D7D306 /* View.swift */; };
 		86F65B2C283F3CE200DCBAA8 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* utils.swift */; };
+		F9B55AF9C2DF3E9184DF009E /* Pods_Zoo_Company.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66654D1C2F29E900C8F835AD /* Pods_Zoo_Company.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		450996C602CF2DC40FB27933 /* Pods-Zoo Company.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.debug.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.debug.xcconfig"; sourceTree = "<group>"; };
+		66654D1C2F29E900C8F835AD /* Pods_Zoo_Company.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zoo_Company.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86173E86284780070097B421 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		861D19F828328BA700D6E6B1 /* Zoo Company.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zoo Company.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		861D19FB28328BA700D6E6B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +60,10 @@
 		8693E11528799EBE00D7D306 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
 		8693E1172879A08400D7D306 /* OfficeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeScene.swift; sourceTree = "<group>"; };
 		8693E11A287AA71F00D7D306 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		8693E11C287AB79F00D7D306 /* CallbackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackProtocol.swift; sourceTree = "<group>"; };
+		8693E11E288D216C00D7D306 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		86F65B2B283F3CE200DCBAA8 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.release.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +71,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B55AF9C2DF3E9184DF009E /* Pods_Zoo_Company.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F0CEAD233DE5E8DC134A755 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66654D1C2F29E900C8F835AD /* Pods_Zoo_Company.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61C06F780A52C720C9CBF7B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				450996C602CF2DC40FB27933 /* Pods-Zoo Company.debug.xcconfig */,
+				E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		861D19EF28328BA700D6E6B1 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +105,8 @@
 				8693E11428799D2200D7D306 /* Extension */,
 				861D19FA28328BA700D6E6B1 /* Common */,
 				861D19F928328BA700D6E6B1 /* Products */,
+				61C06F780A52C720C9CBF7B9 /* Pods */,
+				5F0CEAD233DE5E8DC134A755 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +149,8 @@
 				8693E11228799D1000D7D306 /* Back.swift */,
 				8693E11528799EBE00D7D306 /* Choice.swift */,
 				8693E11A287AA71F00D7D306 /* Dialog.swift */,
+				8693E11C287AB79F00D7D306 /* CallbackProtocol.swift */,
+				8693E11E288D216C00D7D306 /* View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -154,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 861D1A0F28328BA800D6E6B1 /* Build configuration list for PBXNativeTarget "Zoo Company" */;
 			buildPhases = (
+				7D5E54ABDFD55518292FE74D /* [CP] Check Pods Manifest.lock */,
 				861D19F428328BA700D6E6B1 /* Sources */,
 				861D19F528328BA700D6E6B1 /* Frameworks */,
 				861D19F628328BA700D6E6B1 /* Resources */,
+				36FF465BB8EEBA189EE3F76B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,6 +248,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36FF465BB8EEBA189EE3F76B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zoo Company/Pods-Zoo Company-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zoo Company/Pods-Zoo Company-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zoo Company/Pods-Zoo Company-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D5E54ABDFD55518292FE74D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Zoo Company-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		861D19F428328BA700D6E6B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -226,6 +300,7 @@
 				8693E11628799EBE00D7D306 /* Choice.swift in Sources */,
 				861D1A0228328BA700D6E6B1 /* GameScene.swift in Sources */,
 				861D1A0428328BA700D6E6B1 /* GameViewController.swift in Sources */,
+				8693E11F288D216C00D7D306 /* View.swift in Sources */,
 				861D1A152832917700D6E6B1 /* GameSprite.swift in Sources */,
 				8693E0D52864310D00D7D306 /* Background.swift in Sources */,
 				8693E11B287AA71F00D7D306 /* Dialog.swift in Sources */,
@@ -236,6 +311,7 @@
 				8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */,
 				8693E1182879A08400D7D306 /* OfficeScene.swift in Sources */,
 				861D19FC28328BA700D6E6B1 /* AppDelegate.swift in Sources */,
+				8693E11D287AB79F00D7D306 /* CallbackProtocol.swift in Sources */,
 				861D1A172832926000D6E6B1 /* Apple.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +454,7 @@
 		};
 		861D1A1028328BA800D6E6B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 450996C602CF2DC40FB27933 /* Pods-Zoo Company.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -407,6 +484,7 @@
 		};
 		861D1A1128328BA800D6E6B1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

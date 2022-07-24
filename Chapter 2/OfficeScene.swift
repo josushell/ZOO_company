@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import UIKit
 
 // MARK: Office Scene
 class OfficeScene: SKScene {
@@ -18,10 +19,11 @@ class OfficeScene: SKScene {
     var flag: Bool = false
     
     let back = Back()
-    let width = UIScreen.main.bounds.width - (42 * 2)
-    let height = UIScreen.main.bounds.height - (46 * 2)
+    let vs = viewSize()
     
     let dialog = Dialog()
+    
+    let choice = ChoiceFrame()
     
     
     // MARK: - entry point
@@ -31,20 +33,31 @@ class OfficeScene: SKScene {
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0)
         
         //back.size = self.size
-        back.setBackground(backImgName: "office", charImgName: "char1", width: self.width, height: self.height)
+        back.setBackground(backImgName: "office", charImgName: "char1", width: vs.width, height: vs.height)
+        //back.setCallback(callback: touchesBegan(_:with:))
         back.setCallback(callback: touchesBegan(_:with:))
         self.addChild(back)
         
-        dialog.setDialog(backgroundImg: self.back.backgroundImg, width: self.width, height: self.height)
+        dialog.setDialog(backgroundImg: self.back.backgroundImg, width: vs.width, height: vs.height)
+        dialog.setCallback(callback: touchesBegan(_:with:))
         self.addChild(dialog)
+        
+        choice.setChoose(width: vs.width, height: vs.height)
+        choice.choices = self.choices
+        choice.choice_text = self.choice_text
+        choice.setCallback(callback: touchesBegan(_:with:))
+        self.addChild(choice)
     }
     
     // MARK: - touch delegate method
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dialog.box.isHidden = false
-        print("yes")
-        if (true/*choice.isHidden == true*/) {
+        
+        if (choice.choice.isHidden == true) {
             if (talkIndex < 4) {
+                back.resignFirstResponder()
+                dialog.becomeFirstResponder()
+                
                 self.dialog.dialog.text = talks[talkIndex]
                 self.dialog.dialog.position.x = self.dialog.box.position.x - self.dialog.box.frame.width / 2 + self.dialog.dialog.frame.width / 2 + 32
                 
@@ -55,25 +68,28 @@ class OfficeScene: SKScene {
                 talkIndex += 1
             }
             else {
-                talkIndex = 0
-                //choice.isHidden = false
+                //talkIndex = 0
+                self.dialog.resignFirstResponder()
+                choice.choice.isHidden = false
+                choice.becomeFirstResponder()
             }
         }
         
         //(touchNode as? SKSpriteNode)?.texture = backtexture.textureNamed("choicetouched")
-        /*
+        
         else {
             if (flag == true) {
-                self.view?.presentScene(OfficeScene(size: self.size), transition: .fade(withDuration: 2))
+                self.view?.presentScene(HomeScene(size: self.size), transition: .fade(withDuration: 2))
             }
             
             else {
                 for touch in touches {
                     let touchNode = atPoint(touch.location(in: self))
-                    
                     if (touchNode.name == Choice.btn1.rawValue
                         || touchNode.name == Choice.btn2.rawValue
                         || touchNode.name == Choice.btn3.rawValue) {
+                        
+                        print("\(touchNode.position.x)")
                         
                         let appdel = UIApplication.shared.delegate as? AppDelegate
                         var index: Int = 10
@@ -91,14 +107,18 @@ class OfficeScene: SKScene {
                         appdel?.resultData[index] += 1
                         choice.removeFromParent()
                         
-                        dialog.text = choice_talks[index]
-                        dialog.position.x = self.box.position.x - self.box.frame.width / 2 + self.dialog.frame.width / 2 + 32
+                        self.dialog.dialog.text = talks[talkIndex]
+                        self.dialog.dialog.position.x = self.dialog.box.position.x - self.dialog.box.frame.width / 2 + self.dialog.dialog.frame.width / 2 + 32
                         flag = true
                     }
                 }
             }
         }
-         */
+         
+    }
+    
+    func choiceSelected() {
+        
     }
     
 }

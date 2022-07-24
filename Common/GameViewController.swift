@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
         if let view = self.view as! SKView? {
             
             var scene: SKScene?
-            scene = OfficeScene()
+            scene = SubwayScene()//StartScene()//OfficeScene()
             
             view.ignoresSiblingOrder = true
             scene?.scaleMode = .aspectFill
