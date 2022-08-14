@@ -33,7 +33,7 @@ class OfficeScene: SKScene {
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0)
         
         //back.size = self.size
-        back.setBackground(backImgName: "office", charImgName: "char1", width: vs.width, height: vs.height)
+        back.setBackground(backImgName: "office_off", charImgName: "player_char1", width: vs.width, height: vs.height)
         //back.setCallback(callback: touchesBegan(_:with:))
         back.setCallback(callback: touchesBegan(_:with:))
         self.addChild(back)

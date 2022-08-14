@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 
 // MARK: - View Size
@@ -31,7 +32,7 @@ extension UIViewController {
     func add(_ viewController: UIViewController, view: UIView? = nil, topView: UIView? = nil) {
         addChild(viewController)
         (view ?? self.view).addSubview(viewController.view)
-        /*
+        
         viewController.view.snp.makeConstraints { make in
             if let topView = topView {
                 make.top.equalTo(topView.snp.bottom)
@@ -40,7 +41,7 @@ extension UIViewController {
             }
             make.leading.trailing.bottom.equalToSuperview()
         }
-         */
+         
         viewController.didMove(toParent: self)
     }
     
@@ -59,5 +60,12 @@ extension UIViewController {
     func presentFull(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
         viewControllerToPresent.modalPresentationStyle = .fullScreen
         present(viewControllerToPresent, animated: animated, completion: completion)
+    }
+    
+    func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+          let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController?.presentFull(viewControllerToPresent, animated: animated, completion: completion)
+        })
     }
 }

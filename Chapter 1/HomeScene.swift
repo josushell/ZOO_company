@@ -13,7 +13,7 @@ import SpriteKit
 class HomeScene: SKScene {
     let vs = viewSize()
     
-    let chartexture = SKTextureAtlas(named: "Char")
+    let chartexture = SKTextureAtlas(named: "Minimi")
     let backtexture = SKTextureAtlas(named: "Back")
     let choicetexture = SKTextureAtlas(named: "Choices")
     let profileAtlas = SKTextureAtlas(named: "Profile")
@@ -27,7 +27,7 @@ class HomeScene: SKScene {
     
     let talks = ["드디어 기다리고 기다리던 첫 출근이야!", "당장 준비하고 출발해볼까?", "잠깐! 1시간이나 일찍 일어났잖아?", "흠… 첫 출근에 일찍 일어났으니까 일찍 가서 뭐라도 좀 해볼까?"]
     var talkIndex = 0
-    let choices = ["1. 일찍 간다", "2. 그냥 더 잔다", "3. 아침밥을 먹는다"]
+    let choices = ["1. 1시간 일찍 간다", "2. 그냥 더 잔다", "3. 아침밥을 먹는다"]
     let choice_text = "Q.  출근 전 일찍 일어났을 때는 어떻게 할까?"
     let choice_talks = ["일찍 일어난 새가 벌레를 잡는다고 하지! 이왕 일찍 일어난 김에 1시간 먼저 나가서 청소도 하고 업무도 미리미리 해야지!", "내가 그렇게 까지 열심히 살아야 해? 일찍 일어나는 새가 일찍 피곤하다.. 더 자야지", "첫 출근이니까 완벽하게 준비를 해야지. 아침밥 먹고 힘내서 출근하자! "]
     var flag: Bool = false
@@ -57,7 +57,7 @@ class HomeScene: SKScene {
         self.addChild(backgroundImg)
         
         // player 설정
-        char.texture = chartexture.textureNamed("char1")
+        char.texture = chartexture.textureNamed("player_char1")
         char.size = CGSize(width: 60.23, height: 68)
         char.position = CGPoint(x: 130, y: -50)
         char.zPosition = 995
@@ -77,7 +77,7 @@ class HomeScene: SKScene {
         box.isHidden = true
         
         // profile image 설정
-        profile.texture = profileAtlas.textureNamed("suit-1")
+        profile.texture = profileAtlas.textureNamed("sleep_normal")
         profile.size = CGSize(width: 130, height: 131.81)
         
         // MARK: - 위치 조정 다시 필요
@@ -166,6 +166,7 @@ class HomeScene: SKScene {
         else {
             if (flag == true) {
                 self.view?.presentScene(SubwayScene(size: self.size), transition: .fade(withDuration: 2))
+                //self.inputViewController?.present(<#T##UIViewController#>, animated: true)
             }
             
             else {

@@ -33,7 +33,7 @@ class Dialog: SKScene {
         box.isHidden = true
         
         // profile image 설정
-        profile.texture = profileAtlas.textureNamed("suit-1")
+        profile.texture = profileAtlas.textureNamed("suit_normal")
         profile.size = CGSize(width: 130, height: 131.81)
         
         // MARK: - 위치 조정 다시 필요

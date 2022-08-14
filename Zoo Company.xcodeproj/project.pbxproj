@@ -18,6 +18,8 @@
 		861D1A0C28328BA800D6E6B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861D1A0A28328BA800D6E6B1 /* LaunchScreen.storyboard */; };
 		861D1A152832917700D6E6B1 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D1A142832917700D6E6B1 /* GameSprite.swift */; };
 		861D1A172832926000D6E6B1 /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D1A162832926000D6E6B1 /* Apple.swift */; };
+		8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */; };
+		8647B199289FAB77005F54BC /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B198289FAB77005F54BC /* StartViewController.swift */; };
 		866A9CFB2835EE2500F49593 /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A9CFA2835EE2500F49593 /* player.swift */; };
 		8693E0D52864310D00D7D306 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E0D42864310D00D7D306 /* Background.swift */; };
 		8693E0D7286434D900D7D306 /* UsernameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E0D6286434D900D7D306 /* UsernameScene.swift */; };
@@ -49,6 +51,8 @@
 		861D1A0B28328BA800D6E6B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		861D1A142832917700D6E6B1 /* GameSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
 		861D1A162832926000D6E6B1 /* Apple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Apple.swift; path = AppleGame/Apple.swift; sourceTree = SOURCE_ROOT; };
+		8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2Part1ViewController.swift; sourceTree = "<group>"; };
+		8647B198289FAB77005F54BC /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		866A9CFA2835EE2500F49593 /* player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
 		8693E0D42864310D00D7D306 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		8693E0D6286434D900D7D306 /* UsernameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameScene.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				86173E86284780070097B421 /* StartScene.swift */,
 				8693E0D6286434D900D7D306 /* UsernameScene.swift */,
 				8693E0DA2864458200D7D306 /* neodgm.ttf */,
+				8647B198289FAB77005F54BC /* StartViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				8693E1172879A08400D7D306 /* OfficeScene.swift */,
+				8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */,
 			);
 			path = "Chapter 2";
 			sourceTree = "<group>";
@@ -300,12 +306,14 @@
 				8693E11628799EBE00D7D306 /* Choice.swift in Sources */,
 				861D1A0228328BA700D6E6B1 /* GameScene.swift in Sources */,
 				861D1A0428328BA700D6E6B1 /* GameViewController.swift in Sources */,
+				8647B199289FAB77005F54BC /* StartViewController.swift in Sources */,
 				8693E11F288D216C00D7D306 /* View.swift in Sources */,
 				861D1A152832917700D6E6B1 /* GameSprite.swift in Sources */,
 				8693E0D52864310D00D7D306 /* Background.swift in Sources */,
 				8693E11B287AA71F00D7D306 /* Dialog.swift in Sources */,
 				8693E0D7286434D900D7D306 /* UsernameScene.swift in Sources */,
 				866A9CFB2835EE2500F49593 /* player.swift in Sources */,
+				8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */,
 				8693E0D928643EA800D7D306 /* HomeScene.swift in Sources */,
 				8693E11328799D1000D7D306 /* Back.swift in Sources */,
 				8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */,
@@ -465,6 +473,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -495,6 +504,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

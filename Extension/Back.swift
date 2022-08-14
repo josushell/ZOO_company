@@ -21,7 +21,7 @@ class Back: SKScene, callback {
         callbackMethod?(touches, event)
     }
     
-    let chartexture = SKTextureAtlas(named: "Char")
+    let chartexture = SKTextureAtlas(named: "Minimi")
     let backtexture = SKTextureAtlas(named: "Back")
     let choicetexture = SKTextureAtlas(named: "Choices")
     let profileAtlas = SKTextureAtlas(named: "Profile")
