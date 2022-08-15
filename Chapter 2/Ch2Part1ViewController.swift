@@ -13,6 +13,8 @@ class Ch2Part1ViewController: UIViewController {
     
     let layout = layout_Office()
     var selected: Bool = false
+    var minimi_lion: Bool = false
+    var minimi_mouse: Bool = false
     var select_index: Int = 0
     var tapGesture: UITapGestureRecognizer?
     
@@ -20,6 +22,19 @@ class Ch2Part1ViewController: UIViewController {
         super.viewDidLoad()
         
         layout.initView(self.view)
+        
+        // 3초 뒤 실행
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear ,animations: {
+                self.layout.minimi_player.transform = CGAffineTransform(translationX: 0, y: 66)
+            }, completion: { finished in
+                self.registerGesture()
+            })
+        }
+
+    }
+    
+    func registerGesture() {
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched(_:)))
         layout.backView.addGestureRecognizer(tapGesture!)
         
@@ -34,9 +49,19 @@ class Ch2Part1ViewController: UIViewController {
         selected = true
         layout.layout_choice.isHidden = true
         
-        self.layout.text_nametag.text = layout.response.label_nametag[self.select_index]
-        self.layout.text.text = layout.response.char_response[self.select_index]
-        self.layout.profile_char.image = UIImage(named: layout.response.char_image[self.select_index])
+        self.layout.backView.isUserInteractionEnabled = false
+        self.layout.minimi_response.isHidden = false
+        self.layout.minimi_response.image = UIImage(named: self.layout.response.minimi_image[self.select_index])
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
+            self.layout.minimi_response.transform = CGAffineTransform(translationX: 0, y: 70)
+        }, completion: { _ in
+            self.layout.backView.isUserInteractionEnabled = true
+            
+            self.layout.text_nametag.text = self.layout.response.label_nametag[self.select_index]
+            self.layout.text.text = self.layout.response.char_response[self.select_index]
+            self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[self.select_index])
+        })
+        
     }
     
     @objc func backTouched(_ sender: UITapGestureRecognizer) {
@@ -53,25 +78,58 @@ class Ch2Part1ViewController: UIViewController {
                     layout.talkIndex[0] += 1
                 }
                 else if (layout.talkIndex[1] < layout.talks.lion.count) {
-                    self.layout.profile_char.isHidden = false
-                    self.layout.img_nametag.isHidden = false
                     
-                    self.layout.profile_player.image = UIImage(named: "suit_normal")
-                    self.layout.text_nametag.text = "사자 부장"
-                    self.layout.text.text = layout.talks.lion[layout.talkIndex[1]]
-                    self.layout.profile_char.image = UIImage(named: layout.profileOrder.lion[layout.talkIndex[1]])
-                    layout.talkIndex[1] += 1
+                    if (!minimi_lion) {
+                        self.layout.backView.isUserInteractionEnabled = false
+                        self.layout.minimi_lion.isHidden = false
+                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear  ,animations: {
+                            self.layout.minimi_lion.transform = CGAffineTransform(translationX: 0, y: 130)
+                        }, completion: { _ in
+                            self.layout.minimi_lion.image = UIImage(named: "minimi_lion_left")
+                            self.minimi_lion = true
+                            self.layout.backView.isUserInteractionEnabled = true
+                        })
+                    }
+                    else {
+                        self.layout.profile_char.isHidden = false
+                        self.layout.img_nametag.isHidden = false
+                        self.layout.profile_player.image = UIImage(named: "suit_normal")
+                        self.layout.text_nametag.text = "사자 부장"
+                        self.layout.text.text = layout.talks.lion[layout.talkIndex[1]]
+                        self.layout.profile_char.image = UIImage(named: layout.profileOrder.lion[layout.talkIndex[1]])
+                        layout.talkIndex[1] += 1
+                    }
+
                 }
                 else if (layout.talkIndex[2] < layout.talks.mouse.count) {
-                    self.layout.text_nametag.text = "땃쥐 사원"
-                    self.layout.text.text = layout.talks.mouse[layout.talkIndex[2]]
-                    self.layout.profile_char.image = UIImage(named: layout.profileOrder.mouse[layout.talkIndex[2]])
-                    layout.talkIndex[2] += 1
+                    if (!minimi_mouse) {
+                        self.layout.backView.isUserInteractionEnabled = false
+                        self.layout.minimi_mouse.isHidden = false
+                        UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear  ,animations: {
+                            self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 0, y: 60)
+                        }, completion: { _ in
+                            self.layout.minimi_mouse.image = UIImage(named: "minimi_mouse_left")
+                            UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear, animations: {
+                                self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 50, y: 60)
+                            }, completion: { _ in
+                                self.minimi_mouse = true
+                                self.layout.backView.isUserInteractionEnabled = true
+                            })
+                        })
+                    }
+                    else {
+                        self.layout.text_nametag.text = "땃쥐 사원"
+                        self.layout.text.text = layout.talks.mouse[layout.talkIndex[2]]
+                        self.layout.profile_char.image = UIImage(named: layout.profileOrder.mouse[layout.talkIndex[2]])
+                        layout.talkIndex[2] += 1
+                    }
+
                 }
                 // 선택지 등장
                 else {
-                    print("yes")
                     layout.layout_choice.isHidden = false
+                    let blackView = UIView()
+                    let
                 }
             }
         }
@@ -83,6 +141,10 @@ class Ch2Part1ViewController: UIViewController {
             self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
             
             //MARK: - fade in fade out
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                //self.view?.window?.rootViewController?.dissmissAndPresent(SubwayViewController(), animated: true, completion: nil)
+                self.presentFull(Ch2Part2ViewController(), animated: true, completion: nil)
+            }
         }
     }
     
@@ -96,13 +158,18 @@ class layout_Office {
     let profile_player = UIImageView()
     let profile_char = UIImageView()
     
+    let minimi_player = UIImageView()
+    let minimi_lion = UIImageView()
+    let minimi_mouse = UIImageView()
+    let minimi_response = UIImageView()
+    
     let textbox = UIImageView()
     let text = UILabel()
     let img_nametag = UIImageView()
     let text_nametag = UILabel()
     
-    let talks = TalkData_ch2_part1()
-    let profileOrder = ImgOrderData()
+    let talks = TalkData_Ch2_part1()
+    let profileOrder = ImgOrderData_Ch2_part1()
     var talkIndex: [Int] = [0, 0, 0]
     
     let layout_choice = UIView()
@@ -111,8 +178,8 @@ class layout_Office {
     let btn_choice1 = UIButton()
     let btn_choice2 = UIButton()
     let btn_choice3 = UIButton()
-    let choices = ChoiceData()
-    let response = Response()
+    let choices = ChoiceData_Ch2_part1()
+    let response = Response_Ch2_part1()
     
     func initView(_ view: UIView) {
         print("init views")
@@ -188,8 +255,6 @@ class layout_Office {
         view.addSubviews(profile_player, profile_char)
         profile_player.snp.makeConstraints() { make in
             make.bottom.equalTo(self.textbox.snp.top)
-//            make.width.equalTo(90)
-//            make.height.equalTo(133)
             make.left.equalToSuperview().offset(111)
         }
         profile_player.image = UIImage(named: "suit_normal")
@@ -200,7 +265,34 @@ class layout_Office {
             make.right.equalToSuperview().offset(-111)
         }
         profile_char.isHidden = true
-        //profile_char.layer.zPosition = 997
+        
+        // minimi 설정
+        view.addSubviews(minimi_player, minimi_lion, minimi_mouse, minimi_response)
+        minimi_player.snp.makeConstraints() { make in
+            make.top.equalTo(backgroundImg.snp.top).offset(81)
+            make.centerX.equalTo(backgroundImg.snp.centerX)
+        }
+        minimi_player.image = UIImage(named: "minimi_player_suit")
+        
+        minimi_lion.snp.makeConstraints() { make in
+            make.top.equalTo(backgroundImg.snp.top).offset(26)
+            make.leading.equalTo(backgroundImg.snp.leading).offset(240)
+        }
+        minimi_lion.image = UIImage(named: "minimi_lion_front")
+        minimi_lion.isHidden = true
+        
+        minimi_mouse.snp.makeConstraints() { make in
+            make.top.equalTo(backgroundImg.snp.top).offset(26)
+            make.leading.equalTo(backgroundImg.snp.leading).offset(240)
+        }
+        minimi_mouse.image = UIImage(named: "minimi_mouse_front")
+        minimi_mouse.isHidden = true
+        
+        minimi_response.snp.makeConstraints() { make in
+            make.top.equalTo(backgroundImg.snp.top).offset(68)
+            make.leading.equalTo(backgroundImg.snp.leading).offset(440)
+        }
+        minimi_response.isHidden = true
         
         // 선택지
         view.addSubview(layout_choice)
@@ -217,8 +309,6 @@ class layout_Office {
             make.edges.equalToSuperview()
         }
         choiceView.image = UIImage(named: "choiceframe")
-        //hoiceView.isHidden = true
-        //choiceView.layer.zPosition = 999
         
         label_choicetitle.snp.makeConstraints() { make in
             make.top.equalToSuperview().offset(36)
@@ -293,7 +383,7 @@ class layout_Office {
 }
 
 // MARK: - dialog 데이터
-class TalkData_ch2_part1 {
+class TalkData_Ch2_part1 {
     var name: String {
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
             return appdel.name
@@ -324,30 +414,27 @@ class TalkData_ch2_part1 {
 }
 
 // MARK: - profile 순서
-struct ImgOrderData {
+struct ImgOrderData_Ch2_part1 {
     var lion: [String] = ["lion_laugh", "lion_normal", "lion_laugh", "lion_normal", "lion_laugh"]
     var mouse: [String] = ["mouse_normal", "mouse_normal", "mouse_normal"]
     var player: [String] = ["suit_shy", "suit_stare"]
 }
 
 // MARK: - 선택지 데이터
-struct ChoiceData {
+struct ChoiceData_Ch2_part1 {
     let title = "Q. 첫 출근을 하게 된 주인공 같이 입사한 동기 사원은 누구일까?"
     let choice1 = "속도는 느리지만 일 처리 확실한 나무늘보"
     let choice2 = "인사성 밝고 친화력 좋은 인싸 원숭이"
     let choice3 = "딱 봐도 초 엘리트! 스펙왕 개미"
     
-    let palyer_response = ["느리지만 좋은 사람같아~",
-                    "약간 부담스럽지만 좋은 사람같아..ENFP일까?",
-                    "앗.. 좀 차갑지만 좋은 사람같아~"
-                    ]
 }
 
 // MARK: - 선택지 반응
-struct Response {
+struct Response_Ch2_part1 {
     let player_response = ["뭔가 느리지만 좋은 사람같아~", "약간 부담스럽지만 좋은 사람같아..ENFP일까?", "앗.. 내 인사를 무시했네..좀 차갑지만 그래도 좋은 사람같아~"]
     let char_response = ["친....하게....지내보..아요..", "만나서 반가워요! 저희 잘 지내봐요~ 파이팅 파이팅!", "(꾸벅)"]
     let label_nametag = ["늘보 사원", "원숭 사원", "개미 사원"]
     let char_image = ["sloth_normal", "monkey_normal", "ant_normal"]
     let player_image = ["suit_laugh", "suit_laugh", "suit_laugh"]
+    let minimi_image = ["minimi_sloth", "minimi_monkey", "minimi_ant"]
 }

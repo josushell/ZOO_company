@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
     }
     func setupScene() {
         if let view = self.view as! SKView?, scene == nil {
-            let scene = SubwayScene(size: view.bounds.size) // StartScene()//OfficeScene()
+            let scene = SubwayScene(size: view.bounds.size)
             view.presentScene(scene)
             self.scene = scene
         }
@@ -31,26 +31,7 @@ class GameViewController: UIViewController {
             print("failed")
         }
     }
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//
-//        if let view = self.presentingViewController?.view as! SKView? {
-//
-//            var scene: SKScene?
-//            scene = SubwayScene()//StartScene()//OfficeScene()
-//
-//            view.ignoresSiblingOrder = true
-//            scene?.scaleMode = .aspectFill
-//            scene?.size = view.bounds.size
-//
-//            view.presentScene(scene)
-//        }
-//        else {
-//            print("failed")
-//        }
-//
-//    }
-    
+
     deinit{
         print("GameViewController deinit")
     }

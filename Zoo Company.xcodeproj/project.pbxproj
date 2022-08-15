@@ -20,17 +20,15 @@
 		861D1A172832926000D6E6B1 /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D1A162832926000D6E6B1 /* Apple.swift */; };
 		8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */; };
 		8647B199289FAB77005F54BC /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B198289FAB77005F54BC /* StartViewController.swift */; };
+		8647B19B28A9137D005F54BC /* Ch1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B19A28A9137D005F54BC /* Ch1ViewController.swift */; };
+		8647B19E28A922AB005F54BC /* SubwayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B19D28A922AB005F54BC /* SubwayViewController.swift */; };
+		8647B1A028A9345A005F54BC /* Ch2Part2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B19F28A9345A005F54BC /* Ch2Part2ViewController.swift */; };
 		866A9CFB2835EE2500F49593 /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A9CFA2835EE2500F49593 /* player.swift */; };
 		8693E0D52864310D00D7D306 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E0D42864310D00D7D306 /* Background.swift */; };
 		8693E0D7286434D900D7D306 /* UsernameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E0D6286434D900D7D306 /* UsernameScene.swift */; };
 		8693E0D928643EA800D7D306 /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E0D828643EA800D7D306 /* HomeScene.swift */; };
 		8693E0DB2864459800D7D306 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8693E0DA2864458200D7D306 /* neodgm.ttf */; };
 		8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11028799C3000D7D306 /* SubwayScene.swift */; };
-		8693E11328799D1000D7D306 /* Back.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11228799D1000D7D306 /* Back.swift */; };
-		8693E11628799EBE00D7D306 /* Choice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11528799EBE00D7D306 /* Choice.swift */; };
-		8693E1182879A08400D7D306 /* OfficeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E1172879A08400D7D306 /* OfficeScene.swift */; };
-		8693E11B287AA71F00D7D306 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11A287AA71F00D7D306 /* Dialog.swift */; };
-		8693E11D287AB79F00D7D306 /* CallbackProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11C287AB79F00D7D306 /* CallbackProtocol.swift */; };
 		8693E11F288D216C00D7D306 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11E288D216C00D7D306 /* View.swift */; };
 		86F65B2C283F3CE200DCBAA8 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* utils.swift */; };
 		F9B55AF9C2DF3E9184DF009E /* Pods_Zoo_Company.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66654D1C2F29E900C8F835AD /* Pods_Zoo_Company.framework */; };
@@ -53,6 +51,9 @@
 		861D1A162832926000D6E6B1 /* Apple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Apple.swift; path = AppleGame/Apple.swift; sourceTree = SOURCE_ROOT; };
 		8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2Part1ViewController.swift; sourceTree = "<group>"; };
 		8647B198289FAB77005F54BC /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		8647B19A28A9137D005F54BC /* Ch1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ViewController.swift; sourceTree = "<group>"; };
+		8647B19D28A922AB005F54BC /* SubwayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayViewController.swift; sourceTree = "<group>"; };
+		8647B19F28A9345A005F54BC /* Ch2Part2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2Part2ViewController.swift; sourceTree = "<group>"; };
 		866A9CFA2835EE2500F49593 /* player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
 		8693E0D42864310D00D7D306 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		8693E0D6286434D900D7D306 /* UsernameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameScene.swift; sourceTree = "<group>"; };
@@ -60,11 +61,6 @@
 		8693E0DA2864458200D7D306 /* neodgm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = neodgm.ttf; sourceTree = "<group>"; };
 		8693E0DC2864482B00D7D306 /* Zoo-Company-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Zoo-Company-Info.plist"; sourceTree = "<group>"; };
 		8693E11028799C3000D7D306 /* SubwayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayScene.swift; sourceTree = "<group>"; };
-		8693E11228799D1000D7D306 /* Back.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Back.swift; sourceTree = "<group>"; };
-		8693E11528799EBE00D7D306 /* Choice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Choice.swift; sourceTree = "<group>"; };
-		8693E1172879A08400D7D306 /* OfficeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeScene.swift; sourceTree = "<group>"; };
-		8693E11A287AA71F00D7D306 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
-		8693E11C287AB79F00D7D306 /* CallbackProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackProtocol.swift; sourceTree = "<group>"; };
 		8693E11E288D216C00D7D306 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		86F65B2B283F3CE200DCBAA8 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.release.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +100,7 @@
 			children = (
 				8693E0DC2864482B00D7D306 /* Zoo-Company-Info.plist */,
 				86F65AF6283D00F900DCBAA8 /* AppleGame */,
+				8647B19C28A9145C005F54BC /* Start */,
 				8693E10F28799B4E00D7D306 /* Chapter 1 */,
 				8693E1192879A1C700D7D306 /* Chapter 2 */,
 				8693E11428799D2200D7D306 /* Extension */,
@@ -129,21 +126,30 @@
 				861D1A0528328BA700D6E6B1 /* Main.storyboard */,
 				861D1A0828328BA800D6E6B1 /* Assets.xcassets */,
 				861D1A0A28328BA800D6E6B1 /* LaunchScreen.storyboard */,
-				861D1A0328328BA700D6E6B1 /* GameViewController.swift */,
 				86F65B2B283F3CE200DCBAA8 /* utils.swift */,
-				86173E86284780070097B421 /* StartScene.swift */,
-				8693E0D6286434D900D7D306 /* UsernameScene.swift */,
 				8693E0DA2864458200D7D306 /* neodgm.ttf */,
-				8647B198289FAB77005F54BC /* StartViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8647B19C28A9145C005F54BC /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				8647B198289FAB77005F54BC /* StartViewController.swift */,
+				86173E86284780070097B421 /* StartScene.swift */,
+				8693E0D6286434D900D7D306 /* UsernameScene.swift */,
+			);
+			path = Start;
 			sourceTree = "<group>";
 		};
 		8693E10F28799B4E00D7D306 /* Chapter 1 */ = {
 			isa = PBXGroup;
 			children = (
 				8693E11028799C3000D7D306 /* SubwayScene.swift */,
+				861D1A0328328BA700D6E6B1 /* GameViewController.swift */,
 				8693E0D828643EA800D7D306 /* HomeScene.swift */,
+				8647B19A28A9137D005F54BC /* Ch1ViewController.swift */,
+				8647B19D28A922AB005F54BC /* SubwayViewController.swift */,
 			);
 			path = "Chapter 1";
 			sourceTree = "<group>";
@@ -151,10 +157,6 @@
 		8693E11428799D2200D7D306 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				8693E11228799D1000D7D306 /* Back.swift */,
-				8693E11528799EBE00D7D306 /* Choice.swift */,
-				8693E11A287AA71F00D7D306 /* Dialog.swift */,
-				8693E11C287AB79F00D7D306 /* CallbackProtocol.swift */,
 				8693E11E288D216C00D7D306 /* View.swift */,
 			);
 			path = Extension;
@@ -163,8 +165,8 @@
 		8693E1192879A1C700D7D306 /* Chapter 2 */ = {
 			isa = PBXGroup;
 			children = (
-				8693E1172879A08400D7D306 /* OfficeScene.swift */,
 				8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */,
+				8647B19F28A9345A005F54BC /* Ch2Part2ViewController.swift */,
 			);
 			path = "Chapter 2";
 			sourceTree = "<group>";
@@ -303,23 +305,21 @@
 			files = (
 				86173E87284780070097B421 /* StartScene.swift in Sources */,
 				86F65B2C283F3CE200DCBAA8 /* utils.swift in Sources */,
-				8693E11628799EBE00D7D306 /* Choice.swift in Sources */,
 				861D1A0228328BA700D6E6B1 /* GameScene.swift in Sources */,
 				861D1A0428328BA700D6E6B1 /* GameViewController.swift in Sources */,
+				8647B1A028A9345A005F54BC /* Ch2Part2ViewController.swift in Sources */,
+				8647B19E28A922AB005F54BC /* SubwayViewController.swift in Sources */,
 				8647B199289FAB77005F54BC /* StartViewController.swift in Sources */,
 				8693E11F288D216C00D7D306 /* View.swift in Sources */,
 				861D1A152832917700D6E6B1 /* GameSprite.swift in Sources */,
 				8693E0D52864310D00D7D306 /* Background.swift in Sources */,
-				8693E11B287AA71F00D7D306 /* Dialog.swift in Sources */,
 				8693E0D7286434D900D7D306 /* UsernameScene.swift in Sources */,
 				866A9CFB2835EE2500F49593 /* player.swift in Sources */,
+				8647B19B28A9137D005F54BC /* Ch1ViewController.swift in Sources */,
 				8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */,
 				8693E0D928643EA800D7D306 /* HomeScene.swift in Sources */,
-				8693E11328799D1000D7D306 /* Back.swift in Sources */,
 				8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */,
-				8693E1182879A08400D7D306 /* OfficeScene.swift in Sources */,
 				861D19FC28328BA700D6E6B1 /* AppDelegate.swift in Sources */,
-				8693E11D287AB79F00D7D306 /* CallbackProtocol.swift in Sources */,
 				861D1A172832926000D6E6B1 /* Apple.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
