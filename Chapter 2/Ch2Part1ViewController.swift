@@ -11,7 +11,7 @@ import SnapKit
 
 class Ch2Part1ViewController: UIViewController {
     
-    let layout = layout_Office()
+    let layout = layout_Office_part1()
     var selected: Bool = false
     var minimi_lion: Bool = false
     var minimi_mouse: Bool = false
@@ -44,7 +44,7 @@ class Ch2Part1ViewController: UIViewController {
     }
     
     @objc func onBtnClicked(_ sender: UIButton) {
-        print("\(sender.tag)")
+        layout.layout_blackView.isHidden = true
         select_index = sender.tag
         selected = true
         layout.layout_choice.isHidden = true
@@ -127,9 +127,9 @@ class Ch2Part1ViewController: UIViewController {
                 }
                 // 선택지 등장
                 else {
+                    self.view.bringSubviewToFront(layout.layout_choice)
                     layout.layout_choice.isHidden = false
-                    let blackView = UIView()
-                    let
+                    layout.layout_blackView.isHidden = false
                 }
             }
         }
@@ -149,8 +149,8 @@ class Ch2Part1ViewController: UIViewController {
     }
     
 }
-// MARK: - 사무실 layout
-class layout_Office {
+// MARK: - 사무실 layout 1
+class layout_Office_part1 {
     let vs = viewSize()
     
     let backView = UIView()
@@ -174,6 +174,7 @@ class layout_Office {
     
     let layout_choice = UIView()
     let choiceView = UIImageView()
+    let layout_blackView = UIView()
     let label_choicetitle = UILabel()
     let btn_choice1 = UIButton()
     let btn_choice2 = UIButton()
@@ -295,7 +296,7 @@ class layout_Office {
         minimi_response.isHidden = true
         
         // 선택지
-        view.addSubview(layout_choice)
+        view.addSubviews(layout_choice, layout_blackView)
         layout_choice.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top)
             make.width.equalTo(445)
@@ -303,6 +304,13 @@ class layout_Office {
             make.centerX.equalToSuperview()
         }
         layout_choice.isHidden = true
+        
+        layout_blackView.snp.makeConstraints() { make in
+            make.edges.equalTo(backgroundImg)
+        }
+        layout_blackView.backgroundColor = .black
+        layout_blackView.alpha = 0.5
+        layout_blackView.isHidden = true
 
         layout_choice.addSubviews(choiceView, label_choicetitle, btn_choice1, btn_choice2, btn_choice3)
         choiceView.snp.makeConstraints() { make in

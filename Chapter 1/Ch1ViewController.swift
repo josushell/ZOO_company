@@ -42,6 +42,7 @@ class Ch1ViewController: UIViewController {
         select_index = sender.tag
         selected = true
         layout.layout_choice.isHidden = true
+        layout.layout_blackView.isHidden = true
         
         self.layout.text.text = layout.response.player_response[self.select_index]
         self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
@@ -61,6 +62,7 @@ class Ch1ViewController: UIViewController {
                 }
                 // 선택지 등장
                 else {
+                    layout.layout_blackView.isHidden = false
                     layout.layout_choice.isHidden = false
                 }
             }
@@ -102,6 +104,7 @@ class layout_home {
     
     let layout_choice = UIView()
     let choiceView = UIImageView()
+    let layout_blackView = UIView()
     let label_choicetitle = UILabel()
     let btn_choice1 = UIButton()
     let btn_choice2 = UIButton()
@@ -177,7 +180,7 @@ class layout_home {
         minimi_player.image = UIImage(named: "minimi_player_sleep")
         
         // 선택지
-        view.addSubview(layout_choice)
+        view.addSubviews(layout_choice,layout_blackView)
         layout_choice.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top)
             make.width.equalTo(445)
@@ -186,6 +189,13 @@ class layout_home {
         }
         layout_choice.isHidden = true
 
+        layout_blackView.snp.makeConstraints() { make in
+            make.edges.equalTo(backgroundImg)
+        }
+        layout_blackView.backgroundColor = .black
+        layout_blackView.alpha = 0.5
+        layout_blackView.isHidden = true
+        
         layout_choice.addSubviews(choiceView, label_choicetitle, btn_choice1, btn_choice2, btn_choice3)
         choiceView.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
