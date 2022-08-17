@@ -48,15 +48,18 @@ class Ch2Part2ViewController: UIViewController {
         
         // 1번
         if (selected_count == 0) {
-            self.layout.text.text = self.layout.response.player_response[self.selected_count][self.select_index]
+            //self.layout.text.text = self.layout.response.player_response[self.selected_count][self.select_index]
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
+            self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
+            
         }
         
         // 2번
         else {
-            self.layout.text.text = self.layout.response.player_response[self.selected_count][self.select_index]
             self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[self.selected_count][self.select_index])
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
+            //self.layout.text.text = self.layout.response.player_response[self.selected_count][self.select_index]
+            self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
             
             if (select_index == 0) {
                 self.layout.text_nametag.text = "펭귄 대리"
@@ -82,16 +85,18 @@ class Ch2Part2ViewController: UIViewController {
                 self.layout.profile_char.isHidden = false
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "알파카 대리"
-                self.layout.text.text = layout.talks.alpaca[layout.talkIndex[0]]
                 self.layout.profile_char.image = UIImage(named: layout.profileOrder.alpaca[layout.talkIndex[0]])
+                //self.layout.text.text = layout.talks.alpaca[layout.talkIndex[0]]
+                self.layout.text.setText(layout.talks.alpaca[layout.talkIndex[0]])
                 layout.talkIndex[0] += 1
             }
             // 주인공
             else if (layout.talkIndex[1] < 2) {
                 self.layout.profile_player.isHidden = false
                 self.layout.img_nametag.isHidden = true
-                self.layout.text.text = layout.talks.player[layout.talkIndex[1]]
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[1]])
+                //self.layout.text.text = layout.talks.player[layout.talkIndex[1]]
+                self.layout.text.setText(layout.talks.player[layout.talkIndex[1]])
                 layout.talkIndex[1] += 1
             }
             else {
@@ -107,7 +112,8 @@ class Ch2Part2ViewController: UIViewController {
             self.layout.img_nametag.isHidden = false
             self.layout.text_nametag.text = "알파카 대리"
             self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[0][self.select_index])
-            self.layout.text.text = self.layout.response.alpaca_response[0][self.select_index]
+            //self.layout.text.text = self.layout.response.alpaca_response[0][self.select_index]
+            self.layout.text.setText(self.layout.response.alpaca_response[0][self.select_index])
             
             selected_count += 1
         }
@@ -117,8 +123,9 @@ class Ch2Part2ViewController: UIViewController {
             // 주인공
             if (layout.talkIndex[1] < 3) {
                 self.layout.img_nametag.isHidden = true
-                self.layout.text.text = layout.talks.player[layout.talkIndex[1]]
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[1]])
+                //self.layout.text.text = layout.talks.player[layout.talkIndex[1]]
+                self.layout.text.setText(layout.talks.player[layout.talkIndex[1]])
                 layout.talkIndex[1] += 1
             }
             // 사자 부장
@@ -127,15 +134,17 @@ class Ch2Part2ViewController: UIViewController {
                 
                 self.layout.text_nametag.text = "사자 부장"
                 self.layout.profile_char.image = UIImage(named: layout.profileOrder.lion[layout.talkIndex[2]])
-                self.layout.text.text = layout.talks.lion[layout.talkIndex[2]]
+                //self.layout.text.text = layout.talks.lion[layout.talkIndex[2]]
+                self.layout.text.setText(layout.talks.lion[layout.talkIndex[2]])
                 layout.talkIndex[2] += 1
             }
             
             // 주인공
             else if (layout.talkIndex[1] < layout.talks.player.count) {
                 self.layout.img_nametag.isHidden = true
-                self.layout.text.text = layout.talks.player[layout.talkIndex[1]]
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[1]])
+                //self.layout.text.text = layout.talks.player[layout.talkIndex[1]]
+                self.layout.text.setText(layout.talks.player[layout.talkIndex[1]])
                 layout.talkIndex[1] += 1
             }
             
@@ -145,7 +154,8 @@ class Ch2Part2ViewController: UIViewController {
                 self.layout.text_nametag.text = "???"
                 self.layout.profile_player.image = UIImage(named: "suit_normal")
                 self.layout.profile_char.image = UIImage(named: layout.profileOrder.anonymous[layout.talkIndex[3]])
-                self.layout.text.text = layout.talks.anonymous[layout.talkIndex[3]]
+                //self.layout.text.text = layout.talks.anonymous[layout.talkIndex[3]]
+                self.layout.text.setText(layout.talks.anonymous[layout.talkIndex[3]])
                 layout.talkIndex[3] += 1
             }
             else {
@@ -162,7 +172,8 @@ class Ch2Part2ViewController: UIViewController {
         
         // 2번 선택지 이후
         else {
-            self.layout.text.text = layout.talks.final[self.select_index]
+            //self.layout.text.text = layout.talks.final[self.select_index]
+            self.layout.text.setText(layout.talks.final[self.select_index])
         }
         
     }
@@ -237,20 +248,8 @@ class layout_Office_part2 {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(32)
         }
-        text.sizeToFit()
-        text.text = "test"
-        text.numberOfLines = 0
-        text.textColor = UIColor.white
-        text.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        text.setTextAttribute()
         text.preferredMaxLayoutWidth = self.textbox.frame.width
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 8
-        let attrStr = NSMutableAttributedString(string: text.text ?? "")
-        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, text.text?.count ?? 0))
-        
-        text.attributedText = attrStr
-        text.layer.zPosition = 999
         
         img_nametag.snp.makeConstraints() {make in
             make.width.equalTo(74)
@@ -266,10 +265,7 @@ class layout_Office_part2 {
         text_nametag.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
-        text_nametag.textColor = .white
-        text_nametag.textAlignment = .center
-        text_nametag.font = UIFont(name: "NeoDunggeunmo-Regular", size: 11)
-        text_nametag.layer.zPosition = 999
+        text_nametag.setNameTagText()
         
         // profile 설정
         view.addSubviews(profile_player, profile_char)
@@ -313,15 +309,7 @@ class layout_Office_part2 {
             make.top.equalToSuperview().offset(36)
             make.centerX.equalToSuperview()
         }
-        label_choicetitle.numberOfLines = 0
-        let choicetitlePara = NSMutableParagraphStyle()
-        choicetitlePara.lineSpacing = 4
-        let choicetitleAttr = NSMutableAttributedString(string: choices.title[0])
-        choicetitleAttr.addAttribute(.paragraphStyle, value: choicetitlePara, range: NSMakeRange(0, choices.title[0].count))
-        
-        label_choicetitle.attributedText = choicetitleAttr
-        label_choicetitle.textAlignment = .center
-        label_choicetitle.font = UIFont(name: "NeoDunggeunmo-Regular", size: 14)
+        label_choicetitle.setChoiceText(choices.title[0], 14, 4, isTitle: true)
         
         btn_choice1.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -333,13 +321,11 @@ class layout_Office_part2 {
         btn_choice1.setImage(UIImage(named: "choicebox_touched"), for: .focused)
         btn_choice1.tag = 0
         
-        label_btn1.text = choices.choice1[0]
-        label_btn1.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn1.textAlignment = .center
         btn_choice1.addSubview(label_btn1)
         label_btn1.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn1.setChoiceText(choices.choice1[0], 12)
         
         btn_choice2.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -349,18 +335,13 @@ class layout_Office_part2 {
         }
         btn_choice2.setImage(UIImage(named: "choicebox_normal"), for: .normal)
         btn_choice2.setImage(UIImage(named: "choicebox_touched"), for: .focused)
-        btn_choice2.setTitle(choices.choice2[0], for: .normal)
-        btn_choice2.titleLabel?.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
-        btn_choice2.titleLabel?.textColor = .black
         btn_choice2.tag = 1
         
-        label_btn2.text = choices.choice2[0]
-        label_btn2.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn2.textAlignment = .center
         btn_choice2.addSubview(label_btn2)
         label_btn2.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn2.setChoiceText(choices.choice2[0], 12)
         
         btn_choice3.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -369,18 +350,14 @@ class layout_Office_part2 {
             make.top.equalTo(btn_choice2.snp.bottom).offset(10)
         }
         btn_choice3.setImage(UIImage(named: "choicebox_normal"), for: .normal)
-        btn_choice3.setImage(UIImage(named: "choicebox_touched"), for: .selected)
-        btn_choice3.setTitle(choices.choice3[0], for: .normal)
-        btn_choice3.titleLabel?.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        btn_choice3.setImage(UIImage(named: "choicebox_touched"), for: .focused)
         btn_choice3.tag = 2
         
-        label_btn3.text = choices.choice3[0]
-        label_btn3.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn3.textAlignment = .center
         btn_choice3.addSubview(label_btn3)
         label_btn3.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn3.setChoiceText(choices.choice3[0], 12)
         
     }
 }

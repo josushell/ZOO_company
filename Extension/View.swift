@@ -69,3 +69,55 @@ extension UIViewController {
         })
     }
 }
+
+// MARK: - UILabel extension
+extension UILabel {
+    func setText(_ strs: String) {
+        self.text = ""
+        for str in strs {
+            self.text?.append(str)
+            RunLoop.current.run(until: Date() + 0.02)
+        }
+    }
+    
+    func setNameTagText(_ fontSize: CGFloat = 11.0) {
+        self.text = "temp"
+        self.textColor = UIColor.white
+        self.font = UIFont(name: "NeoDunggeunmo-Regular", size: fontSize)
+        self.sizeToFit()
+        self.textAlignment = .center
+        self.layer.zPosition = 999
+    }
+    
+    func setTextAttribute(_ fontSize: CGFloat = 15.0, _ space: CGFloat = 8) {
+        self.text = "temp"
+        self.numberOfLines = 0
+        self.textColor = UIColor.white
+        self.font = UIFont(name: "NeoDunggeunmo-Regular", size: fontSize)
+        self.sizeToFit()
+        self.layer.zPosition = 999
+        
+        setLineSpaceAttrText(value: space)
+    }
+    
+    func setChoiceText(_ str: String, _ fontSize: CGFloat = 12.0, _ space: CGFloat = 4, isTitle: Bool = false) {
+        self.text = str
+        self.textColor = UIColor.black
+        self.font = UIFont(name: "NeoDunggeunmo-Regular", size: fontSize)
+        self.sizeToFit()
+        if (isTitle) {
+            self.numberOfLines = 0
+            setLineSpaceAttrText(value: space)
+        }
+        self.textAlignment = .center
+    }
+    
+    private func setLineSpaceAttrText(value: CGFloat) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = value
+        let attrStr = NSMutableAttributedString(string: self.text ?? "")
+        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, self.text?.count ?? 0))
+        
+        self.attributedText = attrStr
+    }
+}
