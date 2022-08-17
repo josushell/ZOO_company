@@ -80,15 +80,6 @@ extension UILabel {
         }
     }
     
-    func setNameTagText(_ fontSize: CGFloat = 11.0) {
-        self.text = "temp"
-        self.textColor = UIColor.white
-        self.font = UIFont(name: "NeoDunggeunmo-Regular", size: fontSize)
-        self.sizeToFit()
-        self.textAlignment = .center
-        self.layer.zPosition = 999
-    }
-    
     func setTextAttribute(_ fontSize: CGFloat = 15.0, _ space: CGFloat = 8) {
         self.text = "temp"
         self.numberOfLines = 0
@@ -98,6 +89,15 @@ extension UILabel {
         self.layer.zPosition = 999
         
         setLineSpaceAttrText(value: space)
+    }
+    
+    func setNameTagText(_ fontSize: CGFloat = 11.0) {
+        self.text = "temp"
+        self.textColor = UIColor.white
+        self.font = UIFont(name: "NeoDunggeunmo-Regular", size: fontSize)
+        self.sizeToFit()
+        self.textAlignment = .center
+        self.layer.zPosition = 999
     }
     
     func setChoiceText(_ str: String, _ fontSize: CGFloat = 12.0, _ space: CGFloat = 4, isTitle: Bool = false) {
