@@ -17,7 +17,6 @@
 		861D1A0928328BA800D6E6B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 861D1A0828328BA800D6E6B1 /* Assets.xcassets */; };
 		861D1A0C28328BA800D6E6B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 861D1A0A28328BA800D6E6B1 /* LaunchScreen.storyboard */; };
 		861D1A152832917700D6E6B1 /* GameSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D1A142832917700D6E6B1 /* GameSprite.swift */; };
-		861D1A172832926000D6E6B1 /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861D1A162832926000D6E6B1 /* Apple.swift */; };
 		8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */; };
 		8647B199289FAB77005F54BC /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B198289FAB77005F54BC /* StartViewController.swift */; };
 		8647B19B28A9137D005F54BC /* Ch1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B19A28A9137D005F54BC /* Ch1ViewController.swift */; };
@@ -31,6 +30,7 @@
 		8693E0DB2864459800D7D306 /* neodgm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8693E0DA2864458200D7D306 /* neodgm.ttf */; };
 		8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11028799C3000D7D306 /* SubwayScene.swift */; };
 		8693E11F288D216C00D7D306 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E11E288D216C00D7D306 /* View.swift */; };
+		86A7ADA028ACC90C006668AA /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7AD9F28ACC90C006668AA /* Apple.swift */; };
 		86F65B2C283F3CE200DCBAA8 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* utils.swift */; };
 		F9B55AF9C2DF3E9184DF009E /* Pods_Zoo_Company.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66654D1C2F29E900C8F835AD /* Pods_Zoo_Company.framework */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,6 @@
 		861D1A0828328BA800D6E6B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		861D1A0B28328BA800D6E6B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		861D1A142832917700D6E6B1 /* GameSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSprite.swift; sourceTree = "<group>"; };
-		861D1A162832926000D6E6B1 /* Apple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Apple.swift; path = AppleGame/Apple.swift; sourceTree = SOURCE_ROOT; };
 		8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2Part1ViewController.swift; sourceTree = "<group>"; };
 		8647B198289FAB77005F54BC /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		8647B19A28A9137D005F54BC /* Ch1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		8693E0DC2864482B00D7D306 /* Zoo-Company-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Zoo-Company-Info.plist"; sourceTree = "<group>"; };
 		8693E11028799C3000D7D306 /* SubwayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayScene.swift; sourceTree = "<group>"; };
 		8693E11E288D216C00D7D306 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		86A7AD9F28ACC90C006668AA /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 		86F65B2B283F3CE200DCBAA8 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.release.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,10 +101,11 @@
 			isa = PBXGroup;
 			children = (
 				8693E0DC2864482B00D7D306 /* Zoo-Company-Info.plist */,
-				86F65AF6283D00F900DCBAA8 /* AppleGame */,
 				8647B19C28A9145C005F54BC /* Start */,
 				8693E10F28799B4E00D7D306 /* Chapter 1 */,
 				8693E1192879A1C700D7D306 /* Chapter 2 */,
+				86A7AD9E28ACC5DF006668AA /* Chapter 3 */,
+				86F65AF6283D00F900DCBAA8 /* Chapter 5 */,
 				8693E11428799D2200D7D306 /* Extension */,
 				861D19FA28328BA700D6E6B1 /* Common */,
 				861D19F928328BA700D6E6B1 /* Products */,
@@ -126,9 +127,8 @@
 			children = (
 				861D19FB28328BA700D6E6B1 /* AppDelegate.swift */,
 				861D1A0528328BA700D6E6B1 /* Main.storyboard */,
-				861D1A0828328BA800D6E6B1 /* Assets.xcassets */,
 				861D1A0A28328BA800D6E6B1 /* LaunchScreen.storyboard */,
-				86F65B2B283F3CE200DCBAA8 /* utils.swift */,
+				861D1A0828328BA800D6E6B1 /* Assets.xcassets */,
 				8693E0DA2864458200D7D306 /* neodgm.ttf */,
 			);
 			path = Common;
@@ -161,6 +161,7 @@
 			children = (
 				8693E11E288D216C00D7D306 /* View.swift */,
 				8647B1A128AA2642005F54BC /* Choice.swift */,
+				86F65B2B283F3CE200DCBAA8 /* utils.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -174,18 +175,25 @@
 			path = "Chapter 2";
 			sourceTree = "<group>";
 		};
-		86F65AF6283D00F900DCBAA8 /* AppleGame */ = {
+		86A7AD9E28ACC5DF006668AA /* Chapter 3 */ = {
 			isa = PBXGroup;
 			children = (
-				861D1A162832926000D6E6B1 /* Apple.swift */,
+			);
+			path = "Chapter 3";
+			sourceTree = "<group>";
+		};
+		86F65AF6283D00F900DCBAA8 /* Chapter 5 */ = {
+			isa = PBXGroup;
+			children = (
 				861D1A0128328BA700D6E6B1 /* GameScene.swift */,
 				861D19FF28328BA700D6E6B1 /* Actions.sks */,
 				861D19FD28328BA700D6E6B1 /* GameScene.sks */,
 				861D1A142832917700D6E6B1 /* GameSprite.swift */,
 				8693E0D42864310D00D7D306 /* Background.swift */,
 				866A9CFA2835EE2500F49593 /* player.swift */,
+				86A7AD9F28ACC90C006668AA /* Apple.swift */,
 			);
-			path = AppleGame;
+			path = "Chapter 5";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +318,7 @@
 				86F65B2C283F3CE200DCBAA8 /* utils.swift in Sources */,
 				861D1A0228328BA700D6E6B1 /* GameScene.swift in Sources */,
 				861D1A0428328BA700D6E6B1 /* GameViewController.swift in Sources */,
+				86A7ADA028ACC90C006668AA /* Apple.swift in Sources */,
 				8647B1A028A9345A005F54BC /* Ch2Part2ViewController.swift in Sources */,
 				8647B19E28A922AB005F54BC /* SubwayViewController.swift in Sources */,
 				8647B199289FAB77005F54BC /* StartViewController.swift in Sources */,
@@ -324,7 +333,6 @@
 				8693E0D928643EA800D7D306 /* HomeScene.swift in Sources */,
 				8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */,
 				861D19FC28328BA700D6E6B1 /* AppDelegate.swift in Sources */,
-				861D1A172832926000D6E6B1 /* Apple.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

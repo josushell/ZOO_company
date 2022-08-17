@@ -100,6 +100,8 @@ class Ch2Part2ViewController: UIViewController {
                 layout.layout_choice.isHidden = false
                 layout.layout_blackView.isHidden = false
             }
+            
+            layout.backView.isUserInteractionEnabled = true
         }
         
         // 1번 선택지 이후
@@ -111,6 +113,8 @@ class Ch2Part2ViewController: UIViewController {
             self.layout.text.setText(self.layout.response.alpaca_response[0][self.select_index])
             
             selected_count += 1
+            
+            layout.backView.isUserInteractionEnabled = true
         }
         
         // 2번
@@ -159,13 +163,13 @@ class Ch2Part2ViewController: UIViewController {
                 layout.layout_choice.isHidden = false
                 layout.layout_blackView.isHidden = false
             }
+            layout.backView.isUserInteractionEnabled = true
         }
         
         // 2번 선택지 이후
         else {
             self.layout.text.setText(layout.talks.final[self.select_index])
         }
-        layout.backView.isUserInteractionEnabled = true
     }
 
 }

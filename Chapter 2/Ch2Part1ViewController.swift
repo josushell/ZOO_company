@@ -55,39 +55,39 @@ class Ch2Part1ViewController: UIViewController {
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
             self.layout.minimi_response.transform = CGAffineTransform(translationX: 0, y: 70)
         }, completion: { _ in
-            self.layout.backView.isUserInteractionEnabled = true
             
             self.layout.text_nametag.text = self.layout.response.label_nametag[self.select_index]
-            self.layout.text.text = self.layout.response.char_response[self.select_index]
             self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[self.select_index])
+            self.layout.text.setText(self.layout.response.char_response[self.select_index])
+            self.layout.backView.isUserInteractionEnabled = true
         })
         
     }
     
     @objc func backTouched(_ sender: UITapGestureRecognizer) {
-        print("tap")
         layout.textbox.isHidden = false
         layout.profile_player.isHidden = false
+        layout.backView.isUserInteractionEnabled = false
         
         // 선택지 전
         if (!selected){
             if (layout.layout_choice.isHidden == true) {
                 if (layout.talkIndex[0] < layout.talks.player.count) {
-                    self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
                     self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
+                    self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
                     layout.talkIndex[0] += 1
                 }
                 else if (layout.talkIndex[1] < layout.talks.lion.count) {
                     
                     if (!minimi_lion) {
-                        self.layout.backView.isUserInteractionEnabled = false
+                        //self.layout.backView.isUserInteractionEnabled = false
                         self.layout.minimi_lion.isHidden = false
                         UIView.animate(withDuration: 1, delay: 0, options: .curveLinear  ,animations: {
                             self.layout.minimi_lion.transform = CGAffineTransform(translationX: 0, y: 130)
                         }, completion: { _ in
                             self.layout.minimi_lion.image = UIImage(named: "minimi_lion_left")
                             self.minimi_lion = true
-                            self.layout.backView.isUserInteractionEnabled = true
+                            //self.layout.backView.isUserInteractionEnabled = true
                         })
                     }
                     else {
@@ -95,15 +95,15 @@ class Ch2Part1ViewController: UIViewController {
                         self.layout.img_nametag.isHidden = false
                         self.layout.profile_player.image = UIImage(named: "suit_normal")
                         self.layout.text_nametag.text = "사자 부장"
-                        self.layout.text.text = layout.talks.lion[layout.talkIndex[1]]
                         self.layout.profile_char.image = UIImage(named: layout.profileOrder.lion[layout.talkIndex[1]])
+                        self.layout.text.setText(layout.talks.lion[layout.talkIndex[1]])
                         layout.talkIndex[1] += 1
                     }
 
                 }
                 else if (layout.talkIndex[2] < layout.talks.mouse.count) {
                     if (!minimi_mouse) {
-                        self.layout.backView.isUserInteractionEnabled = false
+                        //self.layout.backView.isUserInteractionEnabled = false
                         self.layout.minimi_mouse.isHidden = false
                         UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear  ,animations: {
                             self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 0, y: 60)
@@ -113,14 +113,14 @@ class Ch2Part1ViewController: UIViewController {
                                 self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 50, y: 60)
                             }, completion: { _ in
                                 self.minimi_mouse = true
-                                self.layout.backView.isUserInteractionEnabled = true
+                                //self.layout.backView.isUserInteractionEnabled = true
                             })
                         })
                     }
                     else {
                         self.layout.text_nametag.text = "땃쥐 사원"
-                        self.layout.text.text = layout.talks.mouse[layout.talkIndex[2]]
                         self.layout.profile_char.image = UIImage(named: layout.profileOrder.mouse[layout.talkIndex[2]])
+                        self.layout.text.setText(layout.talks.mouse[layout.talkIndex[2]])
                         layout.talkIndex[2] += 1
                     }
 
@@ -132,18 +132,19 @@ class Ch2Part1ViewController: UIViewController {
                     layout.layout_blackView.isHidden = false
                 }
             }
+            layout.backView.isUserInteractionEnabled = true
         }
         
         // 선택지 후
         else {
             self.layout.img_nametag.isHidden = true
-            self.layout.text.text = layout.response.player_response[self.select_index]
             self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
+            
+            self.layout.text.setText(layout.response.player_response[self.select_index])
             
             //MARK: - fade in fade out
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                //self.view?.window?.rootViewController?.dissmissAndPresent(SubwayViewController(), animated: true, completion: nil)
-                self.presentFull(Ch2Part2ViewController(), animated: true, completion: nil)
+                self.presentFull(Ch2Part2ViewController(), animated: false, completion: nil)
             }
         }
     }
@@ -218,20 +219,8 @@ class layout_Office_part1 {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(32)
         }
-        text.sizeToFit()
-        text.text = "test"
-        text.numberOfLines = 0
-        text.textColor = UIColor.white
-        text.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        text.setTextAttribute()
         text.preferredMaxLayoutWidth = self.textbox.frame.width
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 8
-        let attrStr = NSMutableAttributedString(string: text.text ?? "")
-        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, text.text?.count ?? 0))
-        
-        text.attributedText = attrStr
-        text.layer.zPosition = 999
         
         img_nametag.snp.makeConstraints() {make in
             make.width.equalTo(74)
@@ -247,10 +236,7 @@ class layout_Office_part1 {
         text_nametag.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
-        text_nametag.textColor = .white
-        text_nametag.textAlignment = .center
-        text_nametag.font = UIFont(name: "NeoDunggeunmo-Regular", size: 11)
-        text_nametag.layer.zPosition = 999
+        text_nametag.setNameTagText()
         
         // profile 설정
         view.addSubviews(profile_player, profile_char)
@@ -322,8 +308,7 @@ class layout_Office_part1 {
             make.top.equalToSuperview().offset(36)
             make.centerX.equalToSuperview()
         }
-        label_choicetitle.text = choices.title
-        label_choicetitle.font = UIFont(name: "NeoDunggeunmo-Regular", size: 14)
+        label_choicetitle.setChoiceText(choices.title, 14, 4, isTitle: true)
         
         btn_choice1.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -336,13 +321,11 @@ class layout_Office_part1 {
         btn_choice1.tag = 0
         
         let label_btn1 = UILabel()
-        label_btn1.text = choices.choice1
-        label_btn1.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn1.textAlignment = .center
         btn_choice1.addSubview(label_btn1)
         label_btn1.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn1.setChoiceText(choices.choice1, 12)
         
         btn_choice2.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -352,19 +335,14 @@ class layout_Office_part1 {
         }
         btn_choice2.setImage(UIImage(named: "choicebox_normal"), for: .normal)
         btn_choice2.setImage(UIImage(named: "choicebox_touched"), for: .focused)
-        btn_choice2.setTitle(choices.choice2, for: .normal)
-        btn_choice2.titleLabel?.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
-        btn_choice2.titleLabel?.textColor = .black
         btn_choice2.tag = 1
         
         let label_btn2 = UILabel()
-        label_btn2.text = choices.choice2
-        label_btn2.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn2.textAlignment = .center
         btn_choice2.addSubview(label_btn2)
         label_btn2.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn2.setChoiceText(choices.choice2, 12)
         
         btn_choice3.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -374,18 +352,14 @@ class layout_Office_part1 {
         }
         btn_choice3.setImage(UIImage(named: "choicebox_normal"), for: .normal)
         btn_choice3.setImage(UIImage(named: "choicebox_touched"), for: .selected)
-        btn_choice3.setTitle(choices.choice3, for: .normal)
-        btn_choice3.titleLabel?.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
         btn_choice3.tag = 2
         
         let label_btn3 = UILabel()
-        label_btn3.text = choices.choice3
-        label_btn3.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn3.textAlignment = .center
         btn_choice3.addSubview(label_btn3)
         label_btn3.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn3.setChoiceText(choices.choice3, 12)
         
     }
 }
