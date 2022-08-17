@@ -351,7 +351,7 @@ class layout_Office_part1 {
             make.top.equalTo(btn_choice2.snp.bottom).offset(10)
         }
         btn_choice3.setImage(UIImage(named: "choicebox_normal"), for: .normal)
-        btn_choice3.setImage(UIImage(named: "choicebox_touched"), for: .selected)
+        btn_choice3.setImage(UIImage(named: "choicebox_touched"), for: .focused)
         btn_choice3.tag = 2
         
         let label_btn3 = UILabel()

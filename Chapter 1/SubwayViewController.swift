@@ -23,13 +23,16 @@ class SubwayViewController: UIViewController {
     }
     
     @objc func backTouched(_ sender: UITapGestureRecognizer) {
+        layout.backView.isUserInteractionEnabled = false
         layout.textbox.isHidden = false
         layout.profile_player.isHidden = false
         
         if (layout.talkIndex[0] < layout.talks.player.count) {
-            self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
             self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
+            //self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
+            self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
             layout.talkIndex[0] += 1
+            layout.backView.isUserInteractionEnabled = true
         }
         
         // subway game 시작
@@ -96,20 +99,8 @@ class layout_subway {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(32)
         }
-        text.sizeToFit()
-        text.text = "test"
-        text.numberOfLines = 0
-        text.textColor = UIColor.white
-        text.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        text.setTextAttribute()
         text.preferredMaxLayoutWidth = self.textbox.frame.width
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 8
-        let attrStr = NSMutableAttributedString(string: text.text ?? "")
-        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, text.text?.count ?? 0))
-        
-        text.attributedText = attrStr
-        text.layer.zPosition = 999
         
         // profile 설정
         view.addSubviews(profile_player)

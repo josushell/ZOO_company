@@ -39,25 +39,30 @@ class Ch1ViewController: UIViewController {
     }
     
     @objc func onBtnClicked(_ sender: UIButton) {
+        layout.backView.isUserInteractionEnabled = false
         select_index = sender.tag
         selected = true
         layout.layout_choice.isHidden = true
         layout.layout_blackView.isHidden = true
         
-        self.layout.text.text = layout.response.player_response[self.select_index]
         self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
+        //self.layout.text.text = layout.response.player_response[self.select_index]
+        self.layout.text.setText(layout.response.player_response[self.select_index])
+        layout.backView.isUserInteractionEnabled = true
     }
     
     @objc func backTouched(_ sender: UITapGestureRecognizer) {
         layout.textbox.isHidden = false
         layout.profile_player.isHidden = false
+        layout.backView.isUserInteractionEnabled = false
         
         // 선택지 전
         if (!selected){
             if (layout.layout_choice.isHidden == true) {
                 if (layout.talkIndex[0] < layout.talks.player.count) {
-                    self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
                     self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
+                    //self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
+                    self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
                     layout.talkIndex[0] += 1
                 }
                 // 선택지 등장
@@ -66,12 +71,14 @@ class Ch1ViewController: UIViewController {
                     layout.layout_choice.isHidden = false
                 }
             }
+            layout.backView.isUserInteractionEnabled = true
         }
         
         // 선택지 후
         else {
-            self.layout.text.text = layout.response.player_response[self.select_index]
             self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
+            //self.layout.text.text = layout.response.player_response[self.select_index]
+            self.layout.text.setText(layout.response.player_response[self.select_index])
             
             //MARK: - fade in fade out
             //let vc = GameViewController()
@@ -147,27 +154,15 @@ class layout_home {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(32)
         }
-        text.sizeToFit()
-        text.text = "test"
-        text.numberOfLines = 0
-        text.textColor = UIColor.white
-        text.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        text.setTextAttribute()
         text.preferredMaxLayoutWidth = self.textbox.frame.width
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 8
-        let attrStr = NSMutableAttributedString(string: text.text ?? "")
-        attrStr.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, text.text?.count ?? 0))
-        
-        text.attributedText = attrStr
-        text.layer.zPosition = 999
         
         // profile 설정
         view.addSubviews(profile_player, minimi_player)
         profile_player.snp.makeConstraints() { make in
             make.bottom.equalTo(self.textbox.snp.top)
-//            make.width.equalTo(90)
-//            make.height.equalTo(133)
+            make.width.equalTo(90)
+            make.height.equalTo(133)
             make.left.equalToSuperview().offset(111)
         }
         profile_player.image = UIImage(named: "sleep_normal")
@@ -206,8 +201,7 @@ class layout_home {
             make.top.equalToSuperview().offset(36)
             make.centerX.equalToSuperview()
         }
-        label_choicetitle.text = choices.title
-        label_choicetitle.font = UIFont(name: "NeoDunggeunmo-Regular", size: 14)
+        label_choicetitle.setChoiceText(choices.title, 14, 4, isTitle: true)
         
         btn_choice1.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -220,13 +214,11 @@ class layout_home {
         btn_choice1.tag = 0
         
         let label_btn1 = UILabel()
-        label_btn1.text = choices.choice1
-        label_btn1.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn1.textAlignment = .center
         btn_choice1.addSubview(label_btn1)
         label_btn1.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn1.setChoiceText(choices.choice1, 12)
         
         btn_choice2.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -236,19 +228,14 @@ class layout_home {
         }
         btn_choice2.setImage(UIImage(named: "choicebox_normal"), for: .normal)
         btn_choice2.setImage(UIImage(named: "choicebox_touched"), for: .focused)
-        btn_choice2.setTitle(choices.choice2, for: .normal)
-        btn_choice2.titleLabel?.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
-        btn_choice2.titleLabel?.textColor = .black
         btn_choice2.tag = 1
         
         let label_btn2 = UILabel()
-        label_btn2.text = choices.choice2
-        label_btn2.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn2.textAlignment = .center
         btn_choice2.addSubview(label_btn2)
         label_btn2.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        label_btn2.setChoiceText(choices.choice2, 12)
         
         btn_choice3.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -257,20 +244,15 @@ class layout_home {
             make.top.equalTo(btn_choice2.snp.bottom).offset(10)
         }
         btn_choice3.setImage(UIImage(named: "choicebox_normal"), for: .normal)
-        btn_choice3.setImage(UIImage(named: "choicebox_touched"), for: .selected)
-        btn_choice3.setTitle(choices.choice3, for: .normal)
-        btn_choice3.titleLabel?.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        btn_choice3.setImage(UIImage(named: "choicebox_touched"), for: .focused)
         btn_choice3.tag = 2
         
         let label_btn3 = UILabel()
-        label_btn3.text = choices.choice3
-        label_btn3.font = UIFont(name: "NeoDunggeunmo-Regular", size: 12)
-        label_btn3.textAlignment = .center
         btn_choice3.addSubview(label_btn3)
         label_btn3.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
-        
+        label_btn3.setChoiceText(choices.choice3, 12)
     }
 }
 

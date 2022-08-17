@@ -27,7 +27,7 @@ class Ch2Part2ViewController: UIViewController {
         
         self.layout.backgroundImg.startAnimating()
         // 0.5초 뒤 실행
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.registerGesture()
         }
     }
@@ -42,6 +42,7 @@ class Ch2Part2ViewController: UIViewController {
     }
     
     @objc func onBtnClicked(_ sender: UIButton) {
+        layout.backView.isUserInteractionEnabled = false
         layout.layout_blackView.isHidden = true
         select_index = sender.tag
         layout.layout_choice.isHidden = true
@@ -69,11 +70,13 @@ class Ch2Part2ViewController: UIViewController {
             }
         }
         selected[selected_count] = true
+        layout.backView.isUserInteractionEnabled = true
     }
     
     @objc func backTouched(_ sender: UITapGestureRecognizer) {
         layout.textbox.isHidden = false
         layout.backView.isUserInteractionEnabled = false
+        
         // 1번
         if (!selected[0] && selected_count == 0) {
             self.layout.backgroundImg.stopAnimating()
@@ -224,7 +227,6 @@ class layout_Office_part2 {
         }
         backgroundImg.frame.size = CGSize(width: vs.width, height: vs.height)
         backgroundImg.image = UIImage(named: "office_on_1")
-        
         
         // text box
         view.addSubview(textbox)

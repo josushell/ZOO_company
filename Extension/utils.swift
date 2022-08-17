@@ -32,3 +32,15 @@ enum Choice: String {
     case btn2 = "1"
     case btn3 = "2"
 }
+
+// MARK: - view controller fade effect
+extension CATransition {
+    func fadeTransition() -> CATransition {
+        let transition = CATransition()
+        transition.duration = 3
+        transition.type = CATransitionType.fade
+        transition.subtype = CATransitionSubtype.fromRight
+
+        return transition
+    }
+}

@@ -58,11 +58,17 @@ extension UIViewController {
     }
     
     func presentFull(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        let transition = CATransition().fadeTransition()
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        
         viewControllerToPresent.modalPresentationStyle = .fullScreen
         present(viewControllerToPresent, animated: animated, completion: completion)
     }
     
     func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        let transition = CATransition().fadeTransition()
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+        
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
           let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController?.presentFull(viewControllerToPresent, animated: animated, completion: completion)
@@ -72,6 +78,7 @@ extension UIViewController {
 
 // MARK: - UILabel extension
 extension UILabel {
+    // typo animation
     func setText(_ strs: String) {
         self.text = ""
         for str in strs {
@@ -80,6 +87,7 @@ extension UILabel {
         }
     }
     
+    // 대화창 text
     func setTextAttribute(_ fontSize: CGFloat = 15.0, _ space: CGFloat = 8) {
         self.text = "temp"
         self.numberOfLines = 0
@@ -91,6 +99,7 @@ extension UILabel {
         setLineSpaceAttrText(value: space)
     }
     
+    // name tag text
     func setNameTagText(_ fontSize: CGFloat = 11.0) {
         self.text = "temp"
         self.textColor = UIColor.white
@@ -100,6 +109,7 @@ extension UILabel {
         self.layer.zPosition = 999
     }
     
+    // 선택지 text
     func setChoiceText(_ str: String, _ fontSize: CGFloat = 12.0, _ space: CGFloat = 4, isTitle: Bool = false) {
         self.text = str
         self.textColor = UIColor.black
@@ -112,6 +122,7 @@ extension UILabel {
         self.textAlignment = .center
     }
     
+    // line spacing attribute 추가
     private func setLineSpaceAttrText(value: CGFloat) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = value
@@ -121,3 +132,4 @@ extension UILabel {
         self.attributedText = attrStr
     }
 }
+
