@@ -9,11 +9,10 @@ import UIKit
 
 class Ch2Part2ViewController: UIViewController {
 
-    let layout = layout_Office_part2()
+    let layout = layout_Office_ch2_part2()
     var selected: [Bool] = [false, false]
     var selected_count = 0
     var select_index: Int = 0
-    var count: Int = 0
     var tapGesture: UITapGestureRecognizer?
     
     var imgArray: [UIImage] = [UIImage(named: "office_on_1")!, UIImage(named: "office_on_2")!]
@@ -109,7 +108,6 @@ class Ch2Part2ViewController: UIViewController {
         
         // 1번 선택지 이후
         else if (selected[0] == true  && selected_count == 0) {
-            print("yes 1")
             self.layout.img_nametag.isHidden = false
             self.layout.text_nametag.text = "알파카 대리"
             self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[0][self.select_index])
@@ -178,7 +176,7 @@ class Ch2Part2ViewController: UIViewController {
 }
 
 // MARK: - 사무실 layout 2
-class layout_Office_part2 {
+class layout_Office_ch2_part2 {
     let vs = viewSize()
     
     let backView = UIView()
@@ -394,8 +392,8 @@ struct ImgOrderData_Ch2_part2 {
 // MARK: - 선택지 데이터
 struct ChoiceData_Ch2_part2 {
     let title = ["Q. 침을 너무 많이 뱉는 옆사원 알파카에 대한 내 반응은?", "Q. 입사 후 회사에서 처음 갖는 점심 시간!\n처음으로 함께 점심을 먹을 사원은?"]
-    let choice1 = ["불편한 티를 낸다", "너무 활기차서 가끔 기빨리는 귀염둥이 펭귄"]
-    let choice2 = ["웃어넘긴다", "현실적인 조언을 주는 젊은 꼰대 뱁새"]
+    let choice1 = ["불편한 티를 낸다", "너무 활기차서 가끔 기빨리는 펭귄"]
+    let choice2 = ["웃어넘긴다", "현실적인 조언을 주는 뱁새"]
     let choice3 = ["말 없이 알파카 옆에 마스크를 놔준다", "밥을 꼭 같이 먹어야 하나? 난 내 갈 길을 간다"]
     
 }
@@ -405,7 +403,7 @@ struct Response_Ch2_part2 {
     let player_response = [["알파카 대리님 장난하세요? 침으로 샤워하겠어요.", "알파카 대리님 완전 미스트가 따로없네요! 하하!", "(슬쩍)"],
                            ["좋아요 펭귄님 같이 먹어요~ ", "좋아요 뱁새님 같이 먹어요~", "전 혼자 먹을게요~\n이 근처에 혼밥 가능한 맛집이.. 어디보자"]]
     
-    let alpaca_response = [["뭐?! 요즘 애들은 너무 자기 할말을 어쩌고 저쩌고 나때는 어쩌고 저쩌고", "뭐?! 신입이 참 긍정적이야 못하는 말이 없어~!;;", "신입 지금 이걸 나한테 쓰라고 주는건가?!"]]
+    let alpaca_response = [["뭐?! 요즘 애들은 너무 자기 할말을 막 한다니까?! 나때는 어쩌고 저쩌고 %$!@#!$$", "뭐?! 신입이 참 긍정적이야 못하는 말이 없어~!;;", "신입 지금 이걸 나한테 쓰라고 주는건가?!"]]
     
     let char_image = [["alpaca_little_fire", "alpaca_little_fire", "alpaca_little_fire"],
                       ["penguin_normal", "bird_normal", ""]]

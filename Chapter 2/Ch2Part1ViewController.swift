@@ -11,7 +11,7 @@ import SnapKit
 
 class Ch2Part1ViewController: UIViewController {
     
-    let layout = layout_Office_part1()
+    let layout = layout_Office_ch2_part1()
     var selected: Bool = false
     var minimi_lion: Bool = false
     var minimi_mouse: Bool = false
@@ -80,14 +80,14 @@ class Ch2Part1ViewController: UIViewController {
                 else if (layout.talkIndex[1] < layout.talks.lion.count) {
                     
                     if (!minimi_lion) {
-                        //self.layout.backView.isUserInteractionEnabled = false
+                        self.layout.backView.isUserInteractionEnabled = false
                         self.layout.minimi_lion.isHidden = false
                         UIView.animate(withDuration: 1, delay: 0, options: .curveLinear  ,animations: {
                             self.layout.minimi_lion.transform = CGAffineTransform(translationX: 0, y: 130)
                         }, completion: { _ in
                             self.layout.minimi_lion.image = UIImage(named: "minimi_lion_left")
                             self.minimi_lion = true
-                            //self.layout.backView.isUserInteractionEnabled = true
+                            self.layout.backView.isUserInteractionEnabled = true
                         })
                     }
                     else {
@@ -103,7 +103,7 @@ class Ch2Part1ViewController: UIViewController {
                 }
                 else if (layout.talkIndex[2] < layout.talks.mouse.count) {
                     if (!minimi_mouse) {
-                        //self.layout.backView.isUserInteractionEnabled = false
+                        self.layout.backView.isUserInteractionEnabled = false
                         self.layout.minimi_mouse.isHidden = false
                         UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear  ,animations: {
                             self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 0, y: 60)
@@ -113,7 +113,7 @@ class Ch2Part1ViewController: UIViewController {
                                 self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 50, y: 60)
                             }, completion: { _ in
                                 self.minimi_mouse = true
-                                //self.layout.backView.isUserInteractionEnabled = true
+                                self.layout.backView.isUserInteractionEnabled = true
                             })
                         })
                     }
@@ -151,7 +151,7 @@ class Ch2Part1ViewController: UIViewController {
     
 }
 // MARK: - 사무실 layout 1
-class layout_Office_part1 {
+class layout_Office_ch2_part1 {
     let vs = viewSize()
     
     let backView = UIView()
@@ -285,7 +285,7 @@ class layout_Office_part1 {
         view.addSubviews(layout_choice, layout_blackView)
         layout_choice.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top)
-            make.width.equalTo(445)
+            make.width.equalTo(480)
             make.bottom.equalTo(self.textbox.snp.top)
             make.centerX.equalToSuperview()
         }
@@ -389,7 +389,7 @@ class TalkData_Ch2_part1 {
                 ]
         
         mouse = ["안녕하세요! 함께 하게 된 땃쥐입니다~! OO씨 자리는 여기에요!",
-                 "왼쪽 자리는 알파카 대리님이에요!\n평소에는 좋은 분인데 본인 기분이 안 좋으면 침을 자주 뱉으니 조심하세요",
+                 "왼쪽 자리는 알파카 대리님이에요!\n평소에는 좋은 분이지만 본인 기분이 안 좋으면 침을 자주 뱉으니 조심하세요",
                  "앗? 저기에 \(name)씨와 함께 입사한 동기분이 계시네요!"
                  ] 
     }

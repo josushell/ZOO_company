@@ -67,6 +67,7 @@ class Ch1ViewController: UIViewController {
                 }
                 // 선택지 등장
                 else {
+                    self.view.bringSubviewToFront(layout.layout_choice)
                     layout.layout_blackView.isHidden = false
                     layout.layout_choice.isHidden = false
                 }
