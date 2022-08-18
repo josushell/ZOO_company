@@ -9,18 +9,13 @@ import Foundation
 import UIKit
 
 // MARK: - dialog 데이터
-class TalkData_Ch2_part1 {
-    var name: String {
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            return appdel.name
-        }
-        return "anonymous"
-    }
+class TalkData_Ch2_part1: TalkData {
     var lion: [String] = []
     var mouse: [String] = []
-    var player: [String] = []
     
-    func initTalks() {
+    override init() {
+        super.init()
+        
         player = [ "여기가 사무실인가..!",
                    "내 자리는 어디지?"
         ]
@@ -40,46 +35,62 @@ class TalkData_Ch2_part1 {
 }
 
 // MARK: - profile 순서
-struct ImgOrderData_Ch2_part1 {
-    var lion: [String] = ["lion_laugh", "lion_normal", "lion_laugh", "lion_normal", "lion_laugh"]
-    var mouse: [String] = ["mouse_normal", "mouse_normal", "mouse_normal"]
-    var player: [String] = ["suit_shy", "suit_stare"]
+class ImgOrderData_Ch2_part1: ImgOrderData {
+    var lion: [String] = []
+    var mouse: [String] = []
+    
+    override init() {
+        super.init()
+        
+        lion = ["lion_laugh", "lion_normal", "lion_laugh", "lion_normal", "lion_laugh"]
+        mouse = ["mouse_normal", "mouse_normal", "mouse_normal"]
+        player = ["suit_shy", "suit_stare"]
+    }
 }
 
 // MARK: - 선택지 데이터
-struct ChoiceData_Ch2_part1 {
-    let title = "Q. 첫 출근을 하게 된 주인공 같이 입사한 동기 사원은 누구일까?"
-    let choice1 = "속도는 느리지만 일 처리 확실한 나무늘보"
-    let choice2 = "인사성 밝고 친화력 좋은 인싸 원숭이"
-    let choice3 = "딱 봐도 초 엘리트! 스펙왕 개미"
-    
+class ChoiceData_Ch2_part1: ChoiceData {
+    override init() {
+        super.init()
+        
+        title = ["Q. 첫 출근을 하게 된 주인공 같이 입사한 동기 사원은 누구일까?"]
+        choice1 = ["속도는 느리지만 일 처리 확실한 나무늘보"]
+        choice2 = ["인사성 밝고 친화력 좋은 인싸 원숭이"]
+        choice3 = ["딱 봐도 초 엘리트! 스펙왕 개미"]
+        
+    }
 }
 
 // MARK: - 선택지 반응
-struct Response_Ch2_part1 {
-    let player_response = ["뭔가 느리지만 좋은 사람같아~", "약간 부담스럽지만 좋은 사람같아..ENFP일까?", "앗.. 내 인사를 무시했네..좀 차갑지만 그래도 좋은 사람같아~"]
-    let char_response = ["친....하게....지내보..아요..", "만나서 반가워요! 저희 잘 지내봐요~ 파이팅 파이팅!", "(꾸벅)"]
-    let label_nametag = ["늘보 사원", "원숭 사원", "개미 사원"]
-    let char_image = ["sloth_normal", "monkey_normal", "ant_normal"]
-    let player_image = ["suit_laugh", "suit_laugh", "suit_laugh"]
-    let minimi_image = ["minimi_sloth", "minimi_monkey", "minimi_ant"]
+class Response_Ch2_part1: Response {
+    var char_response: [String] = []
+    var label_nametag: [String] = []
+    var char_image: [String] = []
+    var minimi_image: [String] = []
+    
+    override init() {
+        super.init()
+        
+        player_response = [["뭔가 느리지만 좋은 사람같아~", "약간 부담스럽지만 좋은 사람같아..ENFP일까?", "앗.. 내 인사를 무시했네..좀 차갑지만 그래도 좋은 사람같아~"]]
+        char_response = ["친....하게....지내보..아요..", "만나서 반가워요! 저희 잘 지내봐요~ 파이팅 파이팅!", "(꾸벅)"]
+        label_nametag = ["늘보 사원", "원숭 사원", "개미 사원"]
+        char_image = ["sloth_normal", "monkey_normal", "ant_normal"]
+        minimi_image = ["minimi_sloth", "minimi_monkey", "minimi_ant"]
+        player_image = [["suit_laugh", "suit_laugh", "suit_laugh"]]
+        
+    }
 }
 
 // MARK: - dialog 데이터
-class TalkData_Ch2_part2 {
-    var name: String {
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            return appdel.name
-        }
-        return "anonymous"
-    }
+class TalkData_Ch2_part2: TalkData {
     var lion: [String] = []
     var alpaca: [String] = []
-    var player: [String] = []
     var anonymous: [String] = []
     var final: [String] = []
     
-    func initTalks() {
+    override init() {
+        super.init()
+        
         player = ["알파카 대리님 기분이 많이 안좋으신가 침을 너무 뱉네;;", "열심히 일을 하던 도중 옆에서 튀는 물방울로 젖고 있는 우리의 신입사원 \(name)씨...",
                   "앗;; 실수했다..! 어떡하지...","휴.. 다행히 벌써 점심시간이네", "시간이 왜 이렇게 빨리 가지?"]
         lion = ["자~ 슬슬 밥이나 먹으러 갑시다~"]
@@ -90,31 +101,49 @@ class TalkData_Ch2_part2 {
 }
 
 // MARK: - profile 순서
-struct ImgOrderData_Ch2_part2 {
-    var lion: [String] = ["lion_laugh"]
-    var alpaca: [String] = ["alpaca_fire"]
-    var player: [String] = ["suit_awkward", "suit_awkward", "suit_awkward", "suit_lauNawk", "suit_stare"]
-    var anonymous: [String] = ["anonymous"]
+class ImgOrderData_Ch2_part2: ImgOrderData {
+    var lion: [String] = []
+    var alpaca: [String] = []
+    var anonymous: [String] = []
+    
+    override init() {
+        super.init()
+        
+        player = ["suit_awkward", "suit_awkward", "suit_awkward", "suit_lauNawk", "suit_stare"]
+        lion = ["lion_laugh"]
+        alpaca = ["alpaca_fire"]
+        anonymous = ["anonymous"]
+        
+    }
 }
 
 // MARK: - 선택지 데이터
-struct ChoiceData_Ch2_part2 {
-    let title = ["Q. 침을 너무 많이 뱉는 옆사원 알파카에 대한 내 반응은?", "Q. 입사 후 회사에서 처음 갖는 점심 시간!\n처음으로 함께 점심을 먹을 사원은?"]
-    let choice1 = ["불편한 티를 낸다", "너무 활기차서 가끔 기빨리는 펭귄"]
-    let choice2 = ["웃어넘긴다", "현실적인 조언을 주는 뱁새"]
-    let choice3 = ["말 없이 알파카 옆에 마스크를 놔준다", "밥을 꼭 같이 먹어야 하나? 난 내 갈 길을 간다"]
-    
+class ChoiceData_Ch2_part2 : ChoiceData {
+    override init() {
+        super.init()
+        
+        title = ["Q. 침을 너무 많이 뱉는 옆사원 알파카에 대한 내 반응은?", "Q. 입사 후 회사에서 처음 갖는 점심 시간!\n처음으로 함께 점심을 먹을 사원은?"]
+        choice1 = ["불편한 티를 낸다", "너무 활기차서 가끔 기빨리는 펭귄"]
+        choice2 = ["웃어넘긴다", "현실적인 조언을 주는 뱁새"]
+        choice3 = ["말 없이 알파카 옆에 마스크를 놔준다", "밥을 꼭 같이 먹어야 하나? 난 내 갈 길을 간다"]
+    }
 }
 
 // MARK: - 선택지 반응
-struct Response_Ch2_part2 {
-    let player_response = [["알파카 대리님 장난하세요? 침으로 샤워하겠어요.", "알파카 대리님 완전 미스트가 따로없네요! 하하!", "(슬쩍)"],
-                           ["좋아요 펭귄님 같이 먹어요~ ", "좋아요 뱁새님 같이 먹어요~", "전 혼자 먹을게요~\n이 근처에 혼밥 가능한 맛집이.. 어디보자"]]
+class Response_Ch2_part2: Response {
+    var alpaca_response: [[String]] = [[]]
+    var char_image: [[String]] = [[]]
     
-    let alpaca_response = [["뭐?! 요즘 애들은 너무 자기 할말을 막 한다니까?! 나때는 어쩌고 저쩌고 %$!@#!$$", "뭐?! 신입이 참 긍정적이야 못하는 말이 없어~!;;", "신입 지금 이걸 나한테 쓰라고 주는건가?!"]]
-    
-    let char_image = [["alpaca_little_fire", "alpaca_little_fire", "alpaca_little_fire"],
-                      ["penguin_normal", "bird_normal", ""]]
-    let player_image = [["suit_angry", "suit_lauNawk", "suit_normal"],
-                        ["suit_laugh", "suit_laugh", "suit_normal"]]
+    override init() {
+        super.init()
+        
+        player_response = [["알파카 대리님 장난하세요? 침으로 샤워하겠어요.", "알파카 대리님 완전 미스트가 따로없네요! 하하!", "(슬쩍)"],
+                               ["좋아요 펭귄님 같이 먹어요~ ", "좋아요 뱁새님 같이 먹어요~", "전 혼자 먹을게요~\n이 근처에 혼밥 가능한 맛집이.. 어디보자"]]
+        alpaca_response = [["뭐?! 요즘 애들은 너무 자기 할말을 막 한다니까?! 나때는 어쩌고 저쩌고 %$!@#!$$", "뭐?! 신입이 참 긍정적이야 못하는 말이 없어~!;;", "신입 지금 이걸 나한테 쓰라고 주는건가?!"]]
+        
+        char_image = [["alpaca_little_fire", "alpaca_little_fire", "alpaca_little_fire"],
+                          ["penguin_normal", "bird_normal", ""]]
+        player_image = [["suit_angry", "suit_lauNawk", "suit_normal"],
+                            ["suit_laugh", "suit_laugh", "suit_normal"]]
+    }
 }

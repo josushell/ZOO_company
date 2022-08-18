@@ -20,6 +20,10 @@ class Ch2Part2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        layout.choices = ChoiceData_Ch2_part2()
+        layout.profileOrder = ImgOrderData_Ch2_part2()
+        layout.talks = TalkData_Ch2_part2()
+        layout.response = Response_Ch2_part2()
         layout.initView(self.view)
         layout.backgroundImg.animationImages = imgArray
         layout.backgroundImg.animationDuration = 0.3
@@ -54,7 +58,7 @@ class Ch2Part2ViewController: UIViewController {
         
         // 2번
         else {
-            self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[self.selected_count][self.select_index])
+            self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part2).char_image[self.selected_count][self.select_index])
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
             self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
             
@@ -81,12 +85,12 @@ class Ch2Part2ViewController: UIViewController {
             self.layout.backgroundImg.stopAnimating()
             self.layout.backgroundImg.image = UIImage(named: "office_alpaca_fire")
             // 알파카
-            if (layout.talkIndex[0] < layout.talks.alpaca.count) {
+            if (layout.talkIndex[0] < (layout.talks as! TalkData_Ch2_part2).alpaca.count) {
                 self.layout.profile_char.isHidden = false
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "알파카 대리"
-                self.layout.profile_char.image = UIImage(named: layout.profileOrder.alpaca[layout.talkIndex[0]])
-                self.layout.text.setText(layout.talks.alpaca[layout.talkIndex[0]])
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).alpaca[layout.talkIndex[0]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).alpaca[layout.talkIndex[0]])
                 layout.talkIndex[0] += 1
             }
             // 주인공
@@ -110,8 +114,8 @@ class Ch2Part2ViewController: UIViewController {
         else if (selected[0] == true  && selected_count == 0) {
             self.layout.img_nametag.isHidden = false
             self.layout.text_nametag.text = "알파카 대리"
-            self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[0][self.select_index])
-            self.layout.text.setText(self.layout.response.alpaca_response[0][self.select_index])
+            self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part2).char_image[0][self.select_index])
+            self.layout.text.setText((self.layout.response as! Response_Ch2_part2).alpaca_response[0][self.select_index])
             
             selected_count += 1
             
@@ -132,8 +136,8 @@ class Ch2Part2ViewController: UIViewController {
                 self.layout.img_nametag.isHidden = false
                 
                 self.layout.text_nametag.text = "사자 부장"
-                self.layout.profile_char.image = UIImage(named: layout.profileOrder.lion[layout.talkIndex[2]])
-                self.layout.text.setText(layout.talks.lion[layout.talkIndex[2]])
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).lion[layout.talkIndex[2]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).lion[layout.talkIndex[2]])
                 layout.talkIndex[2] += 1
             }
             
@@ -146,12 +150,12 @@ class Ch2Part2ViewController: UIViewController {
             }
             
             // 신원불명
-            else if (layout.talkIndex[3] < layout.talks.anonymous.count) {
+            else if (layout.talkIndex[3] < (layout.talks as! TalkData_Ch2_part2).anonymous.count) {
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "???"
                 self.layout.profile_player.image = UIImage(named: "suit_normal")
-                self.layout.profile_char.image = UIImage(named: layout.profileOrder.anonymous[layout.talkIndex[3]])
-                self.layout.text.setText(layout.talks.anonymous[layout.talkIndex[3]])
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).anonymous[layout.talkIndex[3]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).anonymous[layout.talkIndex[3]])
                 layout.talkIndex[3] += 1
             }
             else {
@@ -169,7 +173,7 @@ class Ch2Part2ViewController: UIViewController {
         
         // 2번 선택지 이후
         else {
-            self.layout.text.setText(layout.talks.final[self.select_index])
+            self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).final[self.select_index])
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self.presentFull(Ch3Part1ViewController(), animated: true, completion: nil)

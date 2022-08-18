@@ -17,6 +17,10 @@ class Ch1Part1ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        layout.talks = TalkData_Ch1_part1()
+        layout.profileOrder = ImgOrderData_Ch1_part1()
+        layout.choices = ChoiceData_Ch1_part1()
+        layout.response = Response_Ch1_part1()
         layout.initView(self.view)
         
         // 3초 뒤 실행
@@ -45,9 +49,8 @@ class Ch1Part1ViewController: UIViewController {
         layout.layout_choice.isHidden = true
         layout.layout_blackView.isHidden = true
         
-        self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
-        //self.layout.text.text = layout.response.player_response[self.select_index]
-        self.layout.text.setText(layout.response.player_response[self.select_index])
+        self.layout.profile_player.image = UIImage(named: layout.response.player_image[0][self.select_index])
+        self.layout.text.setText(layout.response.player_response[0][self.select_index])
         layout.backView.isUserInteractionEnabled = true
     }
     
@@ -61,7 +64,6 @@ class Ch1Part1ViewController: UIViewController {
             if (layout.layout_choice.isHidden == true) {
                 if (layout.talkIndex[0] < layout.talks.player.count) {
                     self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
-                    //self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
                     self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
                     layout.talkIndex[0] += 1
                 }
@@ -77,18 +79,12 @@ class Ch1Part1ViewController: UIViewController {
         
         // 선택지 후
         else {
-            self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
-            //self.layout.text.text = layout.response.player_response[self.select_index]
-            self.layout.text.setText(layout.response.player_response[self.select_index])
-            
+            layout.backView.isUserInteractionEnabled = false
             //MARK: - fade in fade out
             //let vc = GameViewController()
             //self.presentFull(vc, animated: false, completion: nil)
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                //self.view?.window?.rootViewController?.dissmissAndPresent(SubwayViewController(), animated: true, completion: nil)
-                self.presentFull(Ch1Part2ViewController(), animated: true, completion: nil)
-            }
+            self.presentFull(Ch1Part2ViewController(), animated: true, completion: nil)
         }
     }
     

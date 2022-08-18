@@ -13,9 +13,11 @@ class Ch1Part2ViewController: UIViewController {
     var tapGesture: UITapGestureRecognizer?
     
     override func viewDidLoad() {
-        print("subway")
         super.viewDidLoad()
         
+        layout.talks = TalkData_Ch1_part2()
+        layout.profileOrder = ImgOrderData_Ch1_part2()
+        layout.choices = ChoiceData_Ch1_part2()
         layout.initView(self.view)
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched(_:)))
@@ -29,7 +31,6 @@ class Ch1Part2ViewController: UIViewController {
         
         if (layout.talkIndex[0] < layout.talks.player.count) {
             self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
-            //self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
             self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
             layout.talkIndex[0] += 1
             layout.backView.isUserInteractionEnabled = true

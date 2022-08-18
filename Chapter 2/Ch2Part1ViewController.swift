@@ -10,7 +10,6 @@ import SnapKit
 
 
 class Ch2Part1ViewController: UIViewController {
-    
     let layout = layout_Office_ch2_part1()
     var selected: Bool = false
     var minimi_lion: Bool = false
@@ -20,7 +19,11 @@ class Ch2Part1ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        layout.talks = TalkData_Ch2_part1()
+        layout.profileOrder = ImgOrderData_Ch2_part1()
+        layout.choices = ChoiceData_Ch2_part1()
+        layout.response = Response_Ch2_part1()
         layout.initView(self.view)
         
         // 3초 뒤 실행
@@ -51,14 +54,14 @@ class Ch2Part1ViewController: UIViewController {
         
         self.layout.backView.isUserInteractionEnabled = false
         self.layout.minimi_response.isHidden = false
-        self.layout.minimi_response.image = UIImage(named: self.layout.response.minimi_image[self.select_index])
+        self.layout.minimi_response.image = UIImage(named: (self.layout.response as! Response_Ch2_part1).minimi_image[self.select_index])
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
             self.layout.minimi_response.transform = CGAffineTransform(translationX: 0, y: 70)
         }, completion: { _ in
             
-            self.layout.text_nametag.text = self.layout.response.label_nametag[self.select_index]
-            self.layout.profile_char.image = UIImage(named: self.layout.response.char_image[self.select_index])
-            self.layout.text.setText(self.layout.response.char_response[self.select_index])
+            self.layout.text_nametag.text = (self.layout.response as! Response_Ch2_part1).label_nametag[self.select_index]
+            self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part1).char_image[self.select_index])
+            self.layout.text.setText((self.layout.response as! Response_Ch2_part1).char_response[self.select_index])
             self.layout.backView.isUserInteractionEnabled = true
         })
         
@@ -77,7 +80,7 @@ class Ch2Part1ViewController: UIViewController {
                     self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
                     layout.talkIndex[0] += 1
                 }
-                else if (layout.talkIndex[1] < layout.talks.lion.count) {
+                else if (layout.talkIndex[1] < (layout.talks as! TalkData_Ch2_part1).lion.count) {
                     
                     if (!minimi_lion) {
                         self.layout.backView.isUserInteractionEnabled = false
@@ -95,13 +98,13 @@ class Ch2Part1ViewController: UIViewController {
                         self.layout.img_nametag.isHidden = false
                         self.layout.profile_player.image = UIImage(named: "suit_normal")
                         self.layout.text_nametag.text = "사자 부장"
-                        self.layout.profile_char.image = UIImage(named: layout.profileOrder.lion[layout.talkIndex[1]])
-                        self.layout.text.setText(layout.talks.lion[layout.talkIndex[1]])
+                        self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).lion[layout.talkIndex[1]])
+                        self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).lion[layout.talkIndex[1]])
                         layout.talkIndex[1] += 1
                     }
 
                 }
-                else if (layout.talkIndex[2] < layout.talks.mouse.count) {
+                else if (layout.talkIndex[2] < (layout.talks as! TalkData_Ch2_part1).mouse.count) {
                     if (!minimi_mouse) {
                         self.layout.backView.isUserInteractionEnabled = false
                         self.layout.minimi_mouse.isHidden = false
@@ -119,8 +122,8 @@ class Ch2Part1ViewController: UIViewController {
                     }
                     else {
                         self.layout.text_nametag.text = "땃쥐 사원"
-                        self.layout.profile_char.image = UIImage(named: layout.profileOrder.mouse[layout.talkIndex[2]])
-                        self.layout.text.setText(layout.talks.mouse[layout.talkIndex[2]])
+                        self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).mouse[layout.talkIndex[2]])
+                        self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).mouse[layout.talkIndex[2]])
                         layout.talkIndex[2] += 1
                     }
 
@@ -138,9 +141,9 @@ class Ch2Part1ViewController: UIViewController {
         // 선택지 후
         else {
             self.layout.img_nametag.isHidden = true
-            self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
+            self.layout.profile_player.image = UIImage(named: (layout.response as! Response_Ch2_part1).player_image[0][self.select_index])
             
-            self.layout.text.setText(layout.response.player_response[self.select_index])
+            self.layout.text.setText((layout.response as! Response_Ch2_part1).player_response[0][self.select_index])
             
             //MARK: - fade in fade out
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
