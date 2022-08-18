@@ -63,10 +63,18 @@ class Ch3Part2ViewController: UIViewController {
             if (layout.talkIndex[0] < layout.talks.player.count) {
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
                 self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
+                
+                // 자판기 이미지
+                if (layout.talkIndex[0] == 3) {
+                    self.layout.profile_char.isHidden = false
+                    self.layout.profile_char.image = UIImage(named: "suit_normal")
+                }
+                
                 layout.talkIndex[0] += 1
                 
                 layout.backView.isUserInteractionEnabled = true
             }
+            
             // 선택지 등장
             else {
                 self.view.bringSubviewToFront(layout.layout_choice)

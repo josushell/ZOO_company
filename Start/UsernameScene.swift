@@ -57,7 +57,7 @@ class UsernameScene: SKScene {
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
             appdel.name = self.alert.textFields?[0].text ?? "anonymous"
         }
-        self.view?.window?.rootViewController?.dissmissAndPresent(Ch1ViewController(), animated: true, completion: nil)
+        self.view?.window?.rootViewController?.dissmissAndPresent(Ch1Part1ViewController(), animated: true, completion: nil)
         //self.view?.presentScene(HomeScene(size: self.size), transition: .fade(withDuration: 2))
     }
 }

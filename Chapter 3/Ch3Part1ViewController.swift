@@ -41,7 +41,7 @@ class Ch3Part1ViewController: UIViewController {
         select_index = sender.tag
         layout.layout_choice.isHidden = true
         
-        self.layout.text_nametag.isHidden = true
+        self.layout.img_nametag.isHidden = true
         self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
         self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
 

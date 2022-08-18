@@ -1,98 +1,13 @@
 //
-//  Ch1ViewController.swift
+//  Ch1HomeLayout.swift
 //  Zoo Company
 //
-//  Created by JOSUEYEON on 2022/08/14.
+//  Created by josueyeon on 2022/08/18.
 //
 
+import Foundation
 import UIKit
-
-class Ch1ViewController: UIViewController {
-
-    let layout = layout_home()
-    var selected: Bool = false
-    var select_index: Int = 0
-    var tapGesture: UITapGestureRecognizer?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        layout.initView(self.view)
-        
-        // 3초 뒤 실행
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-            UIView.animate(withDuration: 2.0, delay: 0, options: .curveLinear ,animations: {
-                self.layout.minimi_player.transform = CGAffineTransform(translationX: 0, y: 80)
-            }, completion: { finished in
-                self.registerGesture()
-            })
-        }
-    }
-    
-    func registerGesture() {
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched(_:)))
-        layout.backView.addGestureRecognizer(tapGesture!)
-        
-        layout.btn_choice1.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice2.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice3.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-    }
-    
-    @objc func onBtnClicked(_ sender: UIButton) {
-        layout.backView.isUserInteractionEnabled = false
-        select_index = sender.tag
-        selected = true
-        layout.layout_choice.isHidden = true
-        layout.layout_blackView.isHidden = true
-        
-        self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
-        //self.layout.text.text = layout.response.player_response[self.select_index]
-        self.layout.text.setText(layout.response.player_response[self.select_index])
-        layout.backView.isUserInteractionEnabled = true
-    }
-    
-    @objc func backTouched(_ sender: UITapGestureRecognizer) {
-        layout.textbox.isHidden = false
-        layout.profile_player.isHidden = false
-        layout.backView.isUserInteractionEnabled = false
-        
-        // 선택지 전
-        if (!selected){
-            if (layout.layout_choice.isHidden == true) {
-                if (layout.talkIndex[0] < layout.talks.player.count) {
-                    self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
-                    //self.layout.text.text = layout.talks.player[layout.talkIndex[0]]
-                    self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
-                    layout.talkIndex[0] += 1
-                }
-                // 선택지 등장
-                else {
-                    self.view.bringSubviewToFront(layout.layout_choice)
-                    layout.layout_blackView.isHidden = false
-                    layout.layout_choice.isHidden = false
-                }
-            }
-            layout.backView.isUserInteractionEnabled = true
-        }
-        
-        // 선택지 후
-        else {
-            self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.select_index])
-            //self.layout.text.text = layout.response.player_response[self.select_index]
-            self.layout.text.setText(layout.response.player_response[self.select_index])
-            
-            //MARK: - fade in fade out
-            //let vc = GameViewController()
-            //self.presentFull(vc, animated: false, completion: nil)
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                //self.view?.window?.rootViewController?.dissmissAndPresent(SubwayViewController(), animated: true, completion: nil)
-                self.presentFull(SubwayViewController(), animated: true, completion: nil)
-            }
-        }
-    }
-    
-}
+import SnapKit
 
 // MARK: - home layout
 class layout_home {
@@ -256,32 +171,3 @@ class layout_home {
         label_btn3.setChoiceText(choices.choice3, 12)
     }
 }
-
-// MARK: - dialog 데이터
-class TalkData_Ch1 {
-    var player: [String] = []
-    
-    func initTalks() {
-        player = ["드디어 기다리고 기다리던 첫 출근이야!", "당장 준비하고 출발해볼까?!", "잠깐! 1시간이나 일찍 일어났잖아?", "흠… 첫 출근에 일찍 일어났네 이제 어떻게 하지?"]
-    }
-}
-
-// MARK: - profile 순서
-struct ImgOrderData_Ch1 {
-    var player: [String] = ["sleep_normal", "sleep_stare", "sleep_surprise", "sleep_stare"]
-}
-
-// MARK: - 선택지 데이터
-struct ChoiceData_Ch1 {
-    let title = "Q.  출근 전 일찍 일어났을 때는 어떻게 할까?"
-    let choice1 = "1시간 일찍 간다"
-    let choice2 = "그냥 더 잔다"
-    let choice3 = "아침밥을 먹는다"
-}
-
-// MARK: - 선택지 반응
-struct Response_Ch1 {
-    let player_response = ["일찍 일어난 새가 벌레를 잡는다고 하지!\n이왕 일찍 일어난 김에 1시간 먼저 나가서 청소도 하고 업무도 미리미리 해야지!", "내가 그렇게 까지 열심히 살아야 해? 일찍 일어나는 새는 일찍 피곤하다.. 더 자야지", "첫 출근이니까 완벽하게 준비를 해야지. 아침밥 먹고 힘내서 출근하자! "]
-    let player_image = ["sleep_fire", "sleep_tired", "sleep_normal"]
-}
-
