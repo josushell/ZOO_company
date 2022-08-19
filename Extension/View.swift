@@ -153,5 +153,20 @@ extension UIButton {
         self.setImage(UIImage(named: "choicebox_normal"), for: .normal)
         self.setImage(UIImage(named: "choicebox_touched"), for: .highlighted)
         self.adjustsImageWhenHighlighted = false
+        
+        self.addTarget(self, action: #selector(onHighlight), for: .touchDown)
+        self.addTarget(self, action: #selector(onCancel), for: .touchDragOutside)
+    }
+    
+    @objc func onHighlight(_ sender: UIButton) {
+        if let label = sender.subviews.last as? UILabel {
+            label.textColor = .white
+        }
+    }
+    
+    @objc func onCancel(_ sender: UIButton) {
+        if let label = sender.subviews.last as? UILabel {
+            label.textColor = .black
+        }
     }
 }

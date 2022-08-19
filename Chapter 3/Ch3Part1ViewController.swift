@@ -176,7 +176,7 @@ class Ch3Part1ViewController: UIViewController {
         self.layout.profile_char.isHidden = true
         self.layout.backView.isUserInteractionEnabled = false
         
-        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
             self.layout.minimi_lion.transform = CGAffineTransform(translationX: 0, y: 130)
         }, completion: { _ in
             self.layout.backView.isUserInteractionEnabled = true
@@ -186,7 +186,7 @@ class Ch3Part1ViewController: UIViewController {
     
     // 사자 minimi out
     func lionMinimiAnimation_OUT() {
-        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
             self.layout.minimi_lion.transform = CGAffineTransform(translationX: 0, y: -20)
         }, completion: { _ in
             self.layout.minimi_lion.removeFromSuperview()

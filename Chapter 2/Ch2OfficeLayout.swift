@@ -48,8 +48,6 @@ class layout_Office_ch2_part1: layout_base {
             make.leading.equalTo(backgroundImg.snp.leading).offset(440)
         }
         minimi_response.isHidden = true
-        
-        
     }
 }
 

@@ -55,10 +55,10 @@ class Ch2Part1ViewController: UIViewController {
         self.layout.backView.isUserInteractionEnabled = false
         self.layout.minimi_response.isHidden = false
         self.layout.minimi_response.image = UIImage(named: (self.layout.response as! Response_Ch2_part1).minimi_image[self.select_index])
-        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
+        
+        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear  ,animations: {
             self.layout.minimi_response.transform = CGAffineTransform(translationX: 0, y: 70)
         }, completion: { _ in
-            
             self.layout.text_nametag.text = (self.layout.response as! Response_Ch2_part1).label_nametag[self.select_index]
             self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part1).char_image[self.select_index])
             self.layout.text.setText((self.layout.response as! Response_Ch2_part1).char_response[self.select_index])
@@ -84,15 +84,7 @@ class Ch2Part1ViewController: UIViewController {
                 else if (layout.talkIndex[1] < (layout.talks as! TalkData_Ch2_part1).lion.count) {
                     
                     if (!minimi_lion) {
-                        self.layout.backView.isUserInteractionEnabled = false
-                        self.layout.minimi_lion.isHidden = false
-                        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear  ,animations: {
-                            self.layout.minimi_lion.transform = CGAffineTransform(translationX: 0, y: 130)
-                        }, completion: { _ in
-                            self.layout.minimi_lion.image = UIImage(named: "minimi_lion_left")
-                            self.minimi_lion = true
-                            self.layout.backView.isUserInteractionEnabled = true
-                        })
+                        lionMinimiAnimation_IN()
                     }
                     else {
                         self.layout.profile_char.isHidden = false
@@ -108,19 +100,7 @@ class Ch2Part1ViewController: UIViewController {
                 }
                 else if (layout.talkIndex[2] < (layout.talks as! TalkData_Ch2_part1).mouse.count) {
                     if (!minimi_mouse) {
-                        self.layout.backView.isUserInteractionEnabled = false
-                        self.layout.minimi_mouse.isHidden = false
-                        UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear  ,animations: {
-                            self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 0, y: 60)
-                        }, completion: { _ in
-                            self.layout.minimi_mouse.image = UIImage(named: "minimi_mouse_left")
-                            UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear, animations: {
-                                self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 50, y: 60)
-                            }, completion: { _ in
-                                self.minimi_mouse = true
-                                self.layout.backView.isUserInteractionEnabled = true
-                            })
-                        })
+                        mouseMinimiAnimation()
                     }
                     else {
                         self.layout.text_nametag.text = "땃쥐 사원"
@@ -152,6 +132,34 @@ class Ch2Part1ViewController: UIViewController {
                 self.presentFull(Ch2Part2ViewController(), animated: false, completion: nil)
             }
         }
+    }
+    
+    func lionMinimiAnimation_IN() {
+        self.layout.backView.isUserInteractionEnabled = false
+        self.layout.minimi_lion.isHidden = false
+        UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear  ,animations: {
+            self.layout.minimi_lion.transform = CGAffineTransform(translationX: 0, y: 130)
+        }, completion: { _ in
+            self.layout.minimi_lion.image = UIImage(named: "minimi_lion_left")
+            self.minimi_lion = true
+            self.layout.backView.isUserInteractionEnabled = true
+        })
+    }
+    
+    func mouseMinimiAnimation() {
+        self.layout.backView.isUserInteractionEnabled = false
+        self.layout.minimi_mouse.isHidden = false
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
+            self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 0, y: 60)
+        }, completion: { _ in
+            self.layout.minimi_mouse.image = UIImage(named: "minimi_mouse_left")
+            UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
+                self.layout.minimi_mouse.transform = CGAffineTransform(translationX: 50, y: 60)
+            }, completion: { _ in
+                self.minimi_mouse = true
+                self.layout.backView.isUserInteractionEnabled = true
+            })
+        })
     }
     
 }

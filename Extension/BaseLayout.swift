@@ -71,6 +71,7 @@ class layout_base {
         text.snp.makeConstraints() { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(32)
+            make.right.equalToSuperview().offset(-32)
         }
         text.setTextAttribute()
         text.preferredMaxLayoutWidth = self.textbox.frame.width
@@ -141,13 +142,13 @@ class layout_base {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(72)
         }
-        btn_choice1.setChoiceButton(tagValue: 0)
         
         btn_choice1.addSubview(label_btn1)
         label_btn1.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
         label_btn1.setChoiceText(choices.choice1[0], 12)
+        btn_choice1.setChoiceButton(tagValue: 0)
         
         btn_choice2.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -155,13 +156,13 @@ class layout_base {
             make.centerX.equalToSuperview()
             make.top.equalTo(btn_choice1.snp.bottom).offset(10)
         }
-        btn_choice2.setChoiceButton(tagValue: 1)
         
         btn_choice2.addSubview(label_btn2)
         label_btn2.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
         label_btn2.setChoiceText(choices.choice2[0], 12)
+        btn_choice2.setChoiceButton(tagValue: 1)
         
         btn_choice3.snp.makeConstraints() { make in
             make.width.equalTo(329)
@@ -169,13 +170,11 @@ class layout_base {
             make.centerX.equalToSuperview()
             make.top.equalTo(btn_choice2.snp.bottom).offset(10)
         }
-        btn_choice3.setChoiceButton(tagValue: 2)
-        
         btn_choice3.addSubview(label_btn3)
         label_btn3.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
         label_btn3.setChoiceText(choices.choice3[0], 12)
-        
+        btn_choice3.setChoiceButton(tagValue: 2)
     }
 }
