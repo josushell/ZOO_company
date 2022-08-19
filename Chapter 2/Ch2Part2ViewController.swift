@@ -45,6 +45,10 @@ class Ch2Part2ViewController: UIViewController {
     }
     
     @objc func onBtnClicked(_ sender: UIButton) {
+        if let label = sender.subviews.last as? UILabel {
+            label.textColor = .black
+        }
+        
         layout.backView.isUserInteractionEnabled = false
         layout.layout_blackView.isHidden = true
         select_index = sender.tag
@@ -58,19 +62,20 @@ class Ch2Part2ViewController: UIViewController {
         
         // 2번
         else {
-            self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part2).char_image[self.selected_count][self.select_index])
-            self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
-            self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
-            
             if (select_index == 0) {
+                self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part2).char_image[self.selected_count][self.select_index])
                 self.layout.text_nametag.text = "펭귄 대리"
             }
             else if (select_index == 1) {
+                self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part2).char_image[self.selected_count][self.select_index])
                 self.layout.text_nametag.text = "뱁새 과장"
             }
             else {
+                self.layout.profile_char.isHidden = true
                 self.layout.img_nametag.isHidden = true
             }
+            self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
+            self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
         }
         selected[selected_count] = true
         layout.backView.isUserInteractionEnabled = true
@@ -163,6 +168,7 @@ class Ch2Part2ViewController: UIViewController {
                 self.layout.label_btn1.text = layout.choices.choice1[selected_count]
                 self.layout.label_btn2.text = layout.choices.choice2[selected_count]
                 self.layout.label_btn3.text = layout.choices.choice3[selected_count]
+                self.layout.updateLayout()
                 
                 self.view.bringSubviewToFront(layout.layout_choice)
                 layout.layout_choice.isHidden = false

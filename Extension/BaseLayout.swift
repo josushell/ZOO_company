@@ -39,8 +39,6 @@ class layout_base {
     var response = Response()
     
     func initView(_ view: UIView, backImg: String, profileImg: String, choiceWidth: Int = 445) {
-        print("init views")
-        
         view.addSubview(backView)
         backView.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
@@ -136,11 +134,14 @@ class layout_base {
         }
         label_choicetitle.setChoiceText(choices.title[0], 14, 4, isTitle: true)
         
+        let availableHeight = vs.height - 74 - label_choicetitle.frame.size.height - 36
+        let btnOneHeight = availableHeight / 3 - 5
+        
         btn_choice1.snp.makeConstraints() { make in
             make.width.equalTo(329)
             make.height.equalTo(39)
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(72)
+            make.top.equalTo(label_choicetitle.snp.bottom).offset(12)
         }
         
         btn_choice1.addSubview(label_btn1)
@@ -154,7 +155,7 @@ class layout_base {
             make.width.equalTo(329)
             make.height.equalTo(39)
             make.centerX.equalToSuperview()
-            make.top.equalTo(btn_choice1.snp.bottom).offset(10)
+            make.top.equalTo(btn_choice1.snp.top).offset(btnOneHeight)
         }
         
         btn_choice2.addSubview(label_btn2)
@@ -168,7 +169,7 @@ class layout_base {
             make.width.equalTo(329)
             make.height.equalTo(39)
             make.centerX.equalToSuperview()
-            make.top.equalTo(btn_choice2.snp.bottom).offset(10)
+            make.top.equalTo(btn_choice1.snp.top).offset(btnOneHeight * 2)
         }
         btn_choice3.addSubview(label_btn3)
         label_btn3.snp.makeConstraints() { make in

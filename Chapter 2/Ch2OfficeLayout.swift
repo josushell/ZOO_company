@@ -60,4 +60,28 @@ class layout_Office_ch2_part2: layout_base {
     func initView(_ view: UIView) {
         super.initView(view, backImg: "office_on_1", profileImg: "suit_normal")
     }
+    
+    func updateLayout() {
+        let availableHeight = vs.height - 74 - label_choicetitle.frame.size.height * 2 - 30
+        let btnOneHeight = availableHeight / 3 - 5
+        
+        print(label_choicetitle.frame.size.height)
+        
+        label_choicetitle.snp.updateConstraints() { make in
+            make.top.equalToSuperview().offset(30)
+        }
+        
+        btn_choice1.snp.updateConstraints() { make in
+            make.top.equalTo(label_choicetitle.snp.bottom).offset(10)
+        }
+        
+        btn_choice2.snp.updateConstraints() { make in
+            make.top.equalTo(btn_choice1.snp.top).offset(btnOneHeight)
+        }
+
+        btn_choice3.snp.updateConstraints() { make in
+            make.top.equalTo(btn_choice1.snp.top).offset(btnOneHeight * 2)
+        }
+
+    }
 }

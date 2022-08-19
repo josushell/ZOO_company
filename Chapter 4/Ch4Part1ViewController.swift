@@ -40,6 +40,10 @@ class Ch4Part1ViewController: UIViewController {
     }
     
     @objc func onBtnClicked(_ sender: UIButton) {
+        if let label = sender.subviews.last as? UILabel {
+            label.textColor = .black
+        }
+        
         layout.backView.isUserInteractionEnabled = false
         layout.layout_blackView.isHidden = true
         select_index = sender.tag
