@@ -176,7 +176,7 @@ class Ch2Part2ViewController: UIViewController {
             self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).final[self.select_index])
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self.presentFull(Ch3Part1ViewController(), animated: true, completion: nil)
+                self.presentFull(Ch3Part1ViewController(), animated: false, completion: nil)
             })
         }
     }

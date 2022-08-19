@@ -85,7 +85,7 @@ class Ch3Part2ViewController: UIViewController {
         // 선택지 후
         else {
             // ch4
-            self.presentFull(Ch4Part1ViewController(), animated: true, completion: nil)
+            self.presentFull(Ch4Part1ViewController(), animated: false, completion: nil)
         }
     }
 }

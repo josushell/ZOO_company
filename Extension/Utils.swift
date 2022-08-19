@@ -37,7 +37,7 @@ enum Choice: String {
 extension CATransition {
     func fadeTransition() -> CATransition {
         let transition = CATransition()
-        transition.duration = 3
+        transition.duration = 1.5
         transition.type = CATransitionType.fade
         transition.subtype = CATransitionSubtype.fromRight
 

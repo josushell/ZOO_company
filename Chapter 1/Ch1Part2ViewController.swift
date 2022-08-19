@@ -42,7 +42,7 @@ class Ch1Part2ViewController: UIViewController {
             //self.presentFull(vc, animated: false, completion: nil)
             
             //self.view?.window?.rootViewController?.dissmissAndPresent(Ch2Part1ViewController(), animated: true, completion: nil)
-            self.presentFull(Ch2Part1ViewController(), animated: true, completion: nil)
+            self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil)
         }
     }
     

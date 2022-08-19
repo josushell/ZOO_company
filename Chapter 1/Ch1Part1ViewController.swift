@@ -84,7 +84,7 @@ class Ch1Part1ViewController: UIViewController {
             //let vc = GameViewController()
             //self.presentFull(vc, animated: false, completion: nil)
             
-            self.presentFull(Ch1Part2ViewController(), animated: true, completion: nil)
+            self.presentFull(Ch1Part2ViewController(), animated: false, completion: nil)
         }
     }
     

@@ -27,7 +27,7 @@ class Ch2Part1ViewController: UIViewController {
         layout.initView(self.view)
         
         // 3초 뒤 실행
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear ,animations: {
                 self.layout.minimi_player.transform = CGAffineTransform(translationX: 0, y: 66)
             }, completion: { finished in
@@ -79,6 +79,7 @@ class Ch2Part1ViewController: UIViewController {
                     self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
                     self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
                     layout.talkIndex[0] += 1
+                    layout.backView.isUserInteractionEnabled = true
                 }
                 else if (layout.talkIndex[1] < (layout.talks as! TalkData_Ch2_part1).lion.count) {
                     
@@ -101,6 +102,7 @@ class Ch2Part1ViewController: UIViewController {
                         self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).lion[layout.talkIndex[1]])
                         self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).lion[layout.talkIndex[1]])
                         layout.talkIndex[1] += 1
+                        layout.backView.isUserInteractionEnabled = true
                     }
 
                 }
@@ -125,6 +127,7 @@ class Ch2Part1ViewController: UIViewController {
                         self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).mouse[layout.talkIndex[2]])
                         self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).mouse[layout.talkIndex[2]])
                         layout.talkIndex[2] += 1
+                        layout.backView.isUserInteractionEnabled = true
                     }
 
                 }
@@ -135,7 +138,6 @@ class Ch2Part1ViewController: UIViewController {
                     layout.layout_blackView.isHidden = false
                 }
             }
-            layout.backView.isUserInteractionEnabled = true
         }
         
         // 선택지 후

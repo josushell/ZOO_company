@@ -8,7 +8,7 @@
 import UIKit
 
 class Ch4Part1ViewController: UIViewController {
-
+    
     let layout = layout_Office_ch4()
     var selected: [Bool] = [false, false]
     var selected_count = 0
@@ -17,7 +17,7 @@ class Ch4Part1ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         layout.talks = TalkData_Ch4_part1()
         layout.choices = ChoiceData_Ch4_part1()
         layout.profileOrder = ImgOrderData_Ch4_part1()
@@ -105,11 +105,15 @@ class Ch4Part1ViewController: UIViewController {
         else if (selected[0] == true  && selected_count == 0) {
             
             // 주인공
-            if (layout.talkIndex[0] < 3) {
+            if (layout.talkIndex[0] < 4) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
-                self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
                 
+                if (layout.talkIndex[0] == 3) {
+                    self.layout.profile_char.isHidden = true
+                }
+                
+                self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
                 layout.talkIndex[0] += 1
             }
 

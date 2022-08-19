@@ -10,9 +10,23 @@ import SnapKit
 
 
 // MARK: - View Size
-struct viewSize {
-    let width = UIScreen.main.bounds.width - (42 * 2)
-    let height = UIScreen.main.bounds.height - (46 * 2)
+class viewSize {
+    var width: CGFloat {
+        if (UIInterfaceOrientation.landscapeLeft.isLandscape) {
+            if (UIScreen.main.bounds.width < UIScreen.main.bounds.height) {
+                return UIScreen.main.bounds.height - (42 * 2)
+            }
+        }
+        return UIScreen.main.bounds.width - (42 * 2)
+    }
+    var height: CGFloat {
+        if (UIInterfaceOrientation.landscapeLeft.isLandscape) {
+            if (UIScreen.main.bounds.width < UIScreen.main.bounds.height) {
+                return UIScreen.main.bounds.width - (46 * 2)
+            }
+        }
+        return UIScreen.main.bounds.height - (46 * 2)
+    }
 }
 
 // MARK: - UIView extension
@@ -24,7 +38,6 @@ extension UIView {
 
 // MARK: - UIViewController extension
 extension UIViewController {
-    
     func has(_ viewController: UIViewController) -> Bool {
         return children.contains(viewController)
     }
@@ -83,13 +96,13 @@ extension UILabel {
         self.text = ""
         for str in strs {
             self.text?.append(str)
-            RunLoop.current.run(until: Date() + 0.02)
+            RunLoop.current.run(until: Date() + 0.04)
         }
     }
     
     // 대화창 text
-    func setTextAttribute(_ fontSize: CGFloat = 15.0, _ space: CGFloat = 8) {
-        self.text = "temp"
+    func setTextAttribute(_ str: String = "temp", _ fontSize: CGFloat = 15.0, _ space: CGFloat = 8) {
+        self.text = str
         self.numberOfLines = 0
         self.textColor = UIColor.white
         self.font = UIFont(name: "NeoDunggeunmo-Regular", size: fontSize)
@@ -133,3 +146,12 @@ extension UILabel {
     }
 }
 
+// MARK: - UIButton
+extension UIButton {
+    func setChoiceButton(tagValue: Int) {
+        self.tag = tagValue
+        self.setImage(UIImage(named: "choicebox_normal"), for: .normal)
+        self.setImage(UIImage(named: "choicebox_touched"), for: .highlighted)
+        self.adjustsImageWhenHighlighted = false
+    }
+}

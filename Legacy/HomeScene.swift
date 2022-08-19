@@ -55,7 +55,7 @@ class HomeScene: SKScene {
     func setBackground() {
         // 배경 이미지 설정
         backgroundImg.texture = backtexture.textureNamed("home")
-        backgroundImg.size = CGSize(width: vs.width, height: vs.height)
+        //backgroundImg.size = CGSize(width: vs.width, height: vs.height)
         self.addChild(backgroundImg)
         
         // player 설정
@@ -70,7 +70,7 @@ class HomeScene: SKScene {
     func setDialog() {
         // text box 설정
         box.texture = backtexture.textureNamed("textback")
-        box.size = CGSize(width: vs.width, height: 74)
+        //box.size = CGSize(width: vs.width, height: 74)
         box.position.x = 0.5
         let framesize = backgroundImg.frame.size.height / 2
         box.position.y = 0.5 - framesize + (74 / 2)
@@ -104,7 +104,7 @@ class HomeScene: SKScene {
         // 선택지 배경
         choice.texture = choicetexture.textureNamed("choiceframe3")
         choice.position = CGPoint(x: 0.5, y: 0.5)
-        choice.size = CGSize(width: vs.width, height: vs.height)
+        //choice.size = CGSize(width: vs.width, height: vs.height)
         choice.zPosition = 998
         self.addChild(choice)
         choice.isHidden = true
