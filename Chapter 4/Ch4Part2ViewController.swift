@@ -7,41 +7,30 @@
 
 import UIKit
 
-class Ch4Part2ViewController: UIViewController {
-    let layout = layout_Office_ch4()
-    var select_index: Int = 0
+class Ch4Part2ViewController: BaseViewController {
     var selected: Bool = false
-    var tapGesture: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        layout = layout_Office_ch4()
+        
         layout.talks = TalkData_Ch4_part2()
         layout.choices = ChoiceData_Ch4_part2()
         layout.profileOrder = ImgOrderData_Ch4_part2()
         layout.response = Response_Ch4_part2()
-        layout.initView(self.view)
+        (layout as! layout_Office_ch4).initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.registerGesture()
         })
         
     }
-    
-    func registerGesture() {
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
-        layout.backView.addGestureRecognizer(tapGesture!)
-        
-        layout.btn_choice1.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice2.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice3.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-    }
 
-    @objc func onBtnClicked(_ sender: UIButton) {
+    @objc override func onBtnClicked(_ sender: UIButton) {
+        super.onBtnClicked(sender)
+        
         layout.backView.isUserInteractionEnabled = false
-        layout.layout_blackView.isHidden = true
-        select_index = sender.tag
-        layout.layout_choice.isHidden = true
         
         self.layout.img_nametag.isHidden = true
         self.layout.profile_player.image = UIImage(named: layout.response.player_image[0][self.select_index])
@@ -51,28 +40,28 @@ class Ch4Part2ViewController: UIViewController {
         layout.backView.isUserInteractionEnabled = true
     }
     
-    @objc func backTouched(_ sender: UITapGestureRecognizer) {
+    @objc override func backTouched(_ sender: UITapGestureRecognizer) {
         layout.backView.isUserInteractionEnabled = false
         layout.textbox.isHidden = false
         
         // 선택지 전
         if (!selected) {
-            if (layout.talkIndex[0] < layout.talks.player.count) {
+            if ((layout as! layout_Office_ch4).talkIndex[0] < layout.talks.player.count) {
                 self.layout.profile_player.isHidden = false
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
-                self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch4).talkIndex[0]])
+                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch4).talkIndex[0]])
                 
-                layout.talkIndex[0] += 1
+                (layout as! layout_Office_ch4).talkIndex[0] += 1
             }
-            else if (layout.talkIndex[1] < (layout.talks as! TalkData_Ch4_part2).pigeon.count) {
+            else if ((layout as! layout_Office_ch4).talkIndex[1] < (layout.talks as! TalkData_Ch4_part2).pigeon.count) {
                 self.layout.profile_player.image = UIImage(named: "suit_normal")
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "비둘기 사장"
                 self.layout.profile_char.isHidden = false
-                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch4_part2).pigeon[layout.talkIndex[1]])
-                self.layout.text.setText((layout.talks as! TalkData_Ch4_part2).pigeon[layout.talkIndex[1]])
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch4_part2).pigeon[(layout as! layout_Office_ch4).talkIndex[1]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch4_part2).pigeon[(layout as! layout_Office_ch4).talkIndex[1]])
                 
-                layout.talkIndex[1] += 1
+                (layout as! layout_Office_ch4).talkIndex[1] += 1
             }
             else {
                 self.view.bringSubviewToFront(layout.layout_choice)
@@ -85,7 +74,7 @@ class Ch4Part2ViewController: UIViewController {
         else {
             // fade in / fade out
         }
-        
+
         layout.backView.isUserInteractionEnabled = true
     }
 

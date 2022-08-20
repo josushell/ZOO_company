@@ -10,7 +10,7 @@ import UIKit
 
 
 class BaseViewController: UIViewController {
-    let layout = layout_base()
+    var layout = layout_base()
     var select_index: Int = 0
     var tapGesture: UITapGestureRecognizer?
     let sound = Sound()
@@ -26,10 +26,14 @@ class BaseViewController: UIViewController {
     
     @objc func onBtnClicked(_ sender: UIButton) {
         sound.playSelectSound()
+        
         if let label = sender.subviews.last as? UILabel {
             label.textColor = .black
         }
-        
+
+        layout.layout_blackView.isHidden = true
+        layout.layout_choice.isHidden = true
+        select_index = sender.tag
     }
     
     @objc func backTouched(_ sender: UITapGestureRecognizer) {

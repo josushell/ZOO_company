@@ -7,23 +7,19 @@
 
 import UIKit
 
-class Ch3Part2ViewController: UIViewController {
-    
-    let layout = layout_Office_ch3()
+class Ch3Part2ViewController: BaseViewController {
     var selected: Bool = false
-    var select_index: Int = 0
-    var tapGesture: UITapGestureRecognizer?
-    let sound = Sound()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        layout = layout_Office_ch3()
         
         layout.talks = TalkData_Ch3_part2()
         layout.response = Response_Ch3_part2()
         layout.choices = ChoiceData_Ch3_part2()
         layout.profileOrder = ImgOrderData_Ch3_part2()
         
-        layout.initView(self.view)
+        (layout as! layout_Office_ch3).initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             self.registerGesture()
@@ -31,22 +27,9 @@ class Ch3Part2ViewController: UIViewController {
         
     }
     
-    func registerGesture() {
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
-        layout.backView.addGestureRecognizer(tapGesture!)
-        
-        layout.btn_choice1.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice2.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice3.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-    }
-    
-    
-    @objc func onBtnClicked(_ sender: UIButton) {
-        sound.playSelectSound()
-        select_index = sender.tag
+    @objc override func onBtnClicked(_ sender: UIButton) {
+        super.onBtnClicked(sender)
         selected = true
-        layout.layout_choice.isHidden = true
-        layout.layout_blackView.isHidden = true
         
         self.layout.profile_player.image = UIImage(named: layout.response.player_image[0][self.select_index])
         self.layout.text.setText(layout.response.player_response[0][self.select_index])
@@ -54,23 +37,23 @@ class Ch3Part2ViewController: UIViewController {
         layout.backView.isUserInteractionEnabled = true
     }
     
-    @objc func backTouched(_ sender: UITapGestureRecognizer) {
+    @objc override func backTouched(_ sender: UITapGestureRecognizer) {
         layout.backView.isUserInteractionEnabled = false
         layout.textbox.isHidden = false
         layout.profile_player.isHidden = false
         
         // 선택지 전
         if (!selected){
-            if (layout.talkIndex[0] < layout.talks.player.count) {
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[0]])
+            if ((layout as! layout_Office_ch3).talkIndex[0] < layout.talks.player.count) {
+                (self.layout as! layout_Office_ch3).profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch3).talkIndex[0]])
                 // 자판기 이미지
-                if (layout.talkIndex[0] == 3) {
+                if ((layout as! layout_Office_ch3).talkIndex[0] == 3) {
                     self.layout.profile_char.isHidden = false
                     self.layout.profile_char.image = UIImage(named: "suit_normal")
                 }
                 
-                self.layout.text.setText(layout.talks.player[layout.talkIndex[0]])
-                layout.talkIndex[0] += 1
+                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch3).talkIndex[0]])
+                (layout as! layout_Office_ch3).talkIndex[0] += 1
                 
                 layout.backView.isUserInteractionEnabled = true
             }

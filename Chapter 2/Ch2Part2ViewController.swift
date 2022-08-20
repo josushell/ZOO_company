@@ -7,25 +7,22 @@
 
 import UIKit
 
-class Ch2Part2ViewController: UIViewController {
-
-    let layout = layout_Office_ch2_part2()
+class Ch2Part2ViewController: BaseViewController {
     var selected: [Bool] = [false, false]
     var selected_count = 0
-    var select_index: Int = 0
-    var tapGesture: UITapGestureRecognizer?
-    
     var imgArray: [UIImage] = [UIImage(named: "office_on_1")!, UIImage(named: "office_on_2")!]
-    let sound = Sound()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        layout = layout_Office_ch2_part2()
         
         layout.choices = ChoiceData_Ch2_part2()
         layout.profileOrder = ImgOrderData_Ch2_part2()
         layout.talks = TalkData_Ch2_part2()
         layout.response = Response_Ch2_part2()
-        layout.initView(self.view)
+        (layout as! layout_Office_ch2_part2).initView(self.view)
+        
         layout.backgroundImg.animationImages = imgArray
         layout.backgroundImg.animationDuration = 0.3
         
@@ -36,25 +33,10 @@ class Ch2Part2ViewController: UIViewController {
         }
     }
     
-    func registerGesture() {
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched(_:)))
-        layout.backView.addGestureRecognizer(tapGesture!)
-        
-        layout.btn_choice1.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice2.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-        layout.btn_choice3.addTarget(self, action: #selector(onBtnClicked), for: .touchUpInside)
-    }
-    
-    @objc func onBtnClicked(_ sender: UIButton) {
-        sound.playSelectSound()
-        if let label = sender.subviews.last as? UILabel {
-            label.textColor = .black
-        }
+    @objc override func onBtnClicked(_ sender: UIButton) {
+        super.onBtnClicked(sender)
         
         layout.backView.isUserInteractionEnabled = false
-        layout.layout_blackView.isHidden = true
-        select_index = sender.tag
-        layout.layout_choice.isHidden = true
         
         // 1번
         if (selected_count == 0) {
@@ -83,7 +65,7 @@ class Ch2Part2ViewController: UIViewController {
         layout.backView.isUserInteractionEnabled = true
     }
     
-    @objc func backTouched(_ sender: UITapGestureRecognizer) {
+    @objc override func backTouched(_ sender: UITapGestureRecognizer) {
         layout.textbox.isHidden = false
         layout.backView.isUserInteractionEnabled = false
         
@@ -92,21 +74,21 @@ class Ch2Part2ViewController: UIViewController {
             self.layout.backgroundImg.stopAnimating()
             self.layout.backgroundImg.image = UIImage(named: "office_alpaca_fire")
             // 알파카
-            if (layout.talkIndex[0] < (layout.talks as! TalkData_Ch2_part2).alpaca.count) {
+            if ((layout as! layout_Office_ch2_part2).talkIndex[0] < (layout.talks as! TalkData_Ch2_part2).alpaca.count) {
                 self.layout.profile_char.isHidden = false
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "알파카 대리"
-                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).alpaca[layout.talkIndex[0]])
-                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).alpaca[layout.talkIndex[0]])
-                layout.talkIndex[0] += 1
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).alpaca[(layout as! layout_Office_ch2_part2).talkIndex[0]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).alpaca[(layout as! layout_Office_ch2_part2).talkIndex[0]])
+                (layout as! layout_Office_ch2_part2).talkIndex[0] += 1
             }
             // 주인공
-            else if (layout.talkIndex[1] < 2) {
+            else if ((layout as! layout_Office_ch2_part2).talkIndex[1] < 2) {
                 self.layout.profile_player.isHidden = false
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[1]])
-                self.layout.text.setText(layout.talks.player[layout.talkIndex[1]])
-                layout.talkIndex[1] += 1
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch2_part2).talkIndex[1]])
+                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch2_part2).talkIndex[1]])
+                (layout as! layout_Office_ch2_part2).talkIndex[1] += 1
             }
             else {
                 self.view.bringSubviewToFront(layout.layout_choice)
@@ -132,45 +114,45 @@ class Ch2Part2ViewController: UIViewController {
         // 2번
         else if (!selected[1] && selected_count == 1) {
             // 주인공
-            if (layout.talkIndex[1] < 3) {
+            if ((layout as! layout_Office_ch2_part2).talkIndex[1] < 3) {
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[1]])
-                self.layout.text.setText(layout.talks.player[layout.talkIndex[1]])
-                layout.talkIndex[1] += 1
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch2_part2).talkIndex[1]])
+                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch2_part2).talkIndex[1]])
+                (layout as! layout_Office_ch2_part2).talkIndex[1] += 1
             }
             // 사자 부장
-            else if (layout.talkIndex[2] < 1) {
+            else if ((layout as! layout_Office_ch2_part2).talkIndex[2] < 1) {
                 self.layout.img_nametag.isHidden = false
                 
                 self.layout.text_nametag.text = "사자 부장"
-                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).lion[layout.talkIndex[2]])
-                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).lion[layout.talkIndex[2]])
-                layout.talkIndex[2] += 1
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).lion[(layout as! layout_Office_ch2_part2).talkIndex[2]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).lion[(layout as! layout_Office_ch2_part2).talkIndex[2]])
+                (layout as! layout_Office_ch2_part2).talkIndex[2] += 1
             }
             
             // 주인공
-            else if (layout.talkIndex[1] < layout.talks.player.count) {
+            else if ((layout as! layout_Office_ch2_part2).talkIndex[1] < layout.talks.player.count) {
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[layout.talkIndex[1]])
-                self.layout.text.setText(layout.talks.player[layout.talkIndex[1]])
-                layout.talkIndex[1] += 1
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch2_part2).talkIndex[1]])
+                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch2_part2).talkIndex[1]])
+                (layout as! layout_Office_ch2_part2).talkIndex[1] += 1
             }
             
             // 신원불명
-            else if (layout.talkIndex[3] < (layout.talks as! TalkData_Ch2_part2).anonymous.count) {
+            else if ((layout as! layout_Office_ch2_part2).talkIndex[3] < (layout.talks as! TalkData_Ch2_part2).anonymous.count) {
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "???"
                 self.layout.profile_player.image = UIImage(named: "suit_normal")
-                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).anonymous[layout.talkIndex[3]])
-                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).anonymous[layout.talkIndex[3]])
-                layout.talkIndex[3] += 1
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part2).anonymous[(layout as! layout_Office_ch2_part2).talkIndex[3]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).anonymous[(layout as! layout_Office_ch2_part2).talkIndex[3]])
+                (layout as! layout_Office_ch2_part2).talkIndex[3] += 1
             }
             else {
                 self.layout.label_choicetitle.text = layout.choices.title[selected_count]
                 self.layout.label_btn1.text = layout.choices.choice1[selected_count]
                 self.layout.label_btn2.text = layout.choices.choice2[selected_count]
                 self.layout.label_btn3.text = layout.choices.choice3[selected_count]
-                self.layout.updateLayout()
+                (self.layout as! layout_Office_ch2_part2).updateLayout()
                 
                 self.view.bringSubviewToFront(layout.layout_choice)
                 layout.layout_choice.isHidden = false
