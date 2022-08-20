@@ -9,9 +9,11 @@ import UIKit
 
 class Ch1ElevatorViewController: UIViewController {
     let layout = layout_elevator()
+    let sound = ElevatorSound()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sound.playElevatorMusic()
         
         layout.initView(self.view)
         
@@ -25,7 +27,9 @@ class Ch1ElevatorViewController: UIViewController {
             self.layout.label.transform = CGAffineTransform(translationX: (self.layout.vs
                 .width + self.layout.label.frame.width + 100) * -1, y: 0)
         }, completion: { _ in
-            self.presentFull(Ch2Part1ViewController(), animated: false, completion: nil)
+            self.sound.setVolumeFadeOut(self.sound.elevator_bgm) {
+                self.presentFull(Ch2Part1ViewController(), animated: false, completion: nil)
+            }
         })
     }
 

@@ -46,7 +46,7 @@ class Ch2Part1ViewController: BaseViewController {
         (self.layout as! layout_Office_ch2_part1).minimi_response.image = UIImage(named: (self.layout.response as! Response_Ch2_part1).minimi_image[self.select_index])
         
         self.layout.hideBeforeAnim()
-        UIView.animate(withDuration: 1, delay: 0, options: .curveLinear  ,animations: {
+        UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear  ,animations: {
             (self.layout as! layout_Office_ch2_part1).minimi_response.transform = CGAffineTransform(translationX: 0, y: 70)
         }, completion: { _ in
             self.layout.revealAfterAnim()

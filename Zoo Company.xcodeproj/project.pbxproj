@@ -29,6 +29,9 @@
 		8647B1AF28B0C798005F54BC /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B1AE28B0C798005F54BC /* Sound.swift */; };
 		8647B1B128B0CA03005F54BC /* button_highlight.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8647B1B028B0CA03005F54BC /* button_highlight.wav */; };
 		8647B1B328B0CFDE005F54BC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B1B228B0CFDE005F54BC /* BaseViewController.swift */; };
+		8647B1B528B1035D005F54BC /* home_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8647B1B428B1035D005F54BC /* home_music.mp3 */; };
+		8647B1BA28B10CF2005F54BC /* elevator_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8647B1B828B10CF2005F54BC /* elevator_sound.mp3 */; };
+		8647B1BB28B10CF2005F54BC /* elevator_ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8647B1B928B10CF2005F54BC /* elevator_ding.mp3 */; };
 		866A9CFB2835EE2500F49593 /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866A9CFA2835EE2500F49593 /* player.swift */; };
 		8693E0D52864310D00D7D306 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E0D42864310D00D7D306 /* Background.swift */; };
 		8693E0D7286434D900D7D306 /* UsernameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693E0D6286434D900D7D306 /* UsernameScene.swift */; };
@@ -83,6 +86,9 @@
 		8647B1AE28B0C798005F54BC /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		8647B1B028B0CA03005F54BC /* button_highlight.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_highlight.wav; sourceTree = "<group>"; };
 		8647B1B228B0CFDE005F54BC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8647B1B428B1035D005F54BC /* home_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = home_music.mp3; sourceTree = "<group>"; };
+		8647B1B828B10CF2005F54BC /* elevator_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elevator_sound.mp3; sourceTree = "<group>"; };
+		8647B1B928B10CF2005F54BC /* elevator_ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = elevator_ding.mp3; sourceTree = "<group>"; };
 		866A9CFA2835EE2500F49593 /* player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
 		8693E0D42864310D00D7D306 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		8693E0D6286434D900D7D306 /* UsernameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameScene.swift; sourceTree = "<group>"; };
@@ -194,6 +200,9 @@
 		8647B1A928B0B67E005F54BC /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				8647B1B928B10CF2005F54BC /* elevator_ding.mp3 */,
+				8647B1B828B10CF2005F54BC /* elevator_sound.mp3 */,
+				8647B1B428B1035D005F54BC /* home_music.mp3 */,
 				8647B1B028B0CA03005F54BC /* button_highlight.wav */,
 				8647B1AC28B0BFF6005F54BC /* button_clicked.wav */,
 				8647B1AA28B0B68B005F54BC /* start_music.mp3 */,
@@ -348,11 +357,14 @@
 			files = (
 				8647B1A828AFDB05005F54BC /* launch.png in Resources */,
 				861D1A0728328BA700D6E6B1 /* Main.storyboard in Resources */,
+				8647B1BA28B10CF2005F54BC /* elevator_sound.mp3 in Resources */,
 				8647B1AD28B0BFF6005F54BC /* button_clicked.wav in Resources */,
 				8647B1B128B0CA03005F54BC /* button_highlight.wav in Resources */,
 				861D19FE28328BA700D6E6B1 /* GameScene.sks in Resources */,
+				8647B1B528B1035D005F54BC /* home_music.mp3 in Resources */,
 				8647B1AB28B0B68B005F54BC /* start_music.mp3 in Resources */,
 				861D1A0928328BA800D6E6B1 /* Assets.xcassets in Resources */,
+				8647B1BB28B10CF2005F54BC /* elevator_ding.mp3 in Resources */,
 				861D1A0C28328BA800D6E6B1 /* LaunchScreen.storyboard in Resources */,
 				8693E0DB2864459800D7D306 /* neodgm.ttf in Resources */,
 				861D1A0028328BA700D6E6B1 /* Actions.sks in Resources */,

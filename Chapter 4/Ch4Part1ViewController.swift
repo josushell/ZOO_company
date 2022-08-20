@@ -22,8 +22,14 @@ class Ch4Part1ViewController: BaseViewController {
         layout.response = Response_Ch4_part1()
         (layout as! layout_Office_ch4).initView(self.view)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            self.registerGesture()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            // 박쥐 animation
+            (self.layout as! layout_Office_ch4).minimi_char1.isHidden = false
+            UIView.animate(withDuration: 1.5, delay: 0, options: .curveLinear ,animations: {
+                (self.layout as! layout_Office_ch4).minimi_char1.transform = CGAffineTransform(translationX: 0, y: 70)
+            }, completion: { finished in
+                self.registerGesture()
+            })
         })
     }
     @objc override func onBtnClicked(_ sender: UIButton) {
@@ -100,13 +106,15 @@ class Ch4Part1ViewController: BaseViewController {
                 
                 self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch4).talkIndex[0]])
                 (layout as! layout_Office_ch4).talkIndex[0] += 1
+                
+                layout.backView.isUserInteractionEnabled = true
             }
 
             else {
                 // 미니미 애니메이션
+                mouseMinimiAnimation_IN()
                 selected_count += 1
             }
-            layout.backView.isUserInteractionEnabled = true
         }
         
         // 2번 선택지 이전
@@ -151,5 +159,26 @@ class Ch4Part1ViewController: BaseViewController {
             self.presentFull(Ch4Part2ViewController(), animated: false, completion: nil)
         }
         
+    }
+    
+    func batMinimiAnimation_IN() {
+        
+    }
+    
+    func mouseMinimiAnimation_IN() {
+        self.layout.backView.isUserInteractionEnabled = false
+        (self.layout as! layout_Office_ch4).minimi_char2.isHidden = false
+        (self.layout as! layout_Office_ch4).hideBeforeAnim()
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
+            (self.layout as! layout_Office_ch4).minimi_char2.transform = CGAffineTransform(translationX: 0, y: 60)
+        }, completion: { _ in
+            (self.layout as! layout_Office_ch4).minimi_char2.image = UIImage(named: "minimi_mouse_left")
+            UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
+                (self.layout as! layout_Office_ch4).minimi_char2.transform = CGAffineTransform(translationX: 55, y: 60)
+            }, completion: { _ in
+                (self.layout as! layout_Office_ch4).minimi_char2.image = UIImage(named: "minimi_mouse_front")
+                self.layout.backView.isUserInteractionEnabled = true
+            })
+        })
     }
 }

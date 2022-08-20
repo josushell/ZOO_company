@@ -10,8 +10,7 @@ import UIKit
 import SnapKit
 
 // MARK: - home layout
-class layout_home: layout_base{
-    
+class layout_home: layout_base {
     var talkIndex: [Int] = [0, 0, 0]
     let minimi_player = UIImageView()
     

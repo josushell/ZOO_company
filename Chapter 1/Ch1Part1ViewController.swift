@@ -14,6 +14,9 @@ class Ch1Part1ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sound = HomeSound()
+        (sound as! HomeSound).playHomeMusic()
+        
         layout = layout_home()
         
         layout.talks = TalkData_Ch1_part1()
@@ -73,7 +76,9 @@ class Ch1Part1ViewController: BaseViewController {
             //let vc = GameViewController()
             //self.presentFull(vc, animated: false, completion: nil)
             
-            self.presentFull(Ch1Part2ViewController(), animated: false, completion: nil)
+            (sound as! HomeSound).setVolumeFadeOut((sound as! HomeSound).home_bgm, completion: {
+                self.presentFull(Ch1Part2ViewController(), animated: false, completion: nil)
+            })
         }
     }
     

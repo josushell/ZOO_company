@@ -13,7 +13,7 @@ class BaseViewController: UIViewController {
     var layout = layout_base()
     var select_index: Int = 0
     var tapGesture: UITapGestureRecognizer?
-    let sound = Sound()
+    var sound = Sound()
     
     func registerGesture() {
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
