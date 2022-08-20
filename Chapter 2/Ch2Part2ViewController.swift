@@ -16,6 +16,7 @@ class Ch2Part2ViewController: UIViewController {
     var tapGesture: UITapGestureRecognizer?
     
     var imgArray: [UIImage] = [UIImage(named: "office_on_1")!, UIImage(named: "office_on_2")!]
+    let sound = Sound()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class Ch2Part2ViewController: UIViewController {
     }
     
     @objc func onBtnClicked(_ sender: UIButton) {
+        sound.playSelectSound()
         if let label = sender.subviews.last as? UILabel {
             label.textColor = .black
         }

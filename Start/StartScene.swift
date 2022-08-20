@@ -11,16 +11,20 @@ import SpriteKit
 // MARK: 시작 scene
 class StartScene: SKScene {
     let textureAtlas = SKTextureAtlas(named: "start")
-    // MARK: 시작 버튼
     let startBtn = SKSpriteNode()
+    var alert: UIAlertController!
+    
+    let back_bgm = SKAudioNode(fileNamed: "start_music")
+    let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
     
     // MARK: - entry point
     override func didMove(to view: SKView) {
-
+        // MARK: set user name input
+        setUserNameInput()
+        
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.backgroundColor = UIColor(red: 255, green: 255, blue: 255)
         
-        // MARK: 배경 이미지 애니메이션
         let backFrame: [SKTexture] = [textureAtlas.textureNamed("1"), textureAtlas.textureNamed("2"),
                                      textureAtlas.textureNamed("3"), textureAtlas.textureNamed("4")]
         let backAction = SKAction.animate(with: backFrame, timePerFrame: 0.5)
@@ -32,14 +36,63 @@ class StartScene: SKScene {
         backgroundImg.run(mainAnim)
         self.addChild(backgroundImg)
         
+        // MARK: background music
+        self.addChild(back_bgm)
+        back_bgm.run(SKAction.play())
+        
         // MARK: Start button settings
         startBtn.texture = textureAtlas.textureNamed("startbtn")
         startBtn.size = CGSize(width: 200, height: 100)
         startBtn.position = CGPoint(x: 0.5, y: -140)
         startBtn.name = "StartBtn"
-        self.addChild(startBtn)
         
-        // MARK: Start button animation
+        let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0)])
+        run(SKAction.sequence([SKAction.repeat(counterDecrement, count: 5), SKAction.run(registerButton)]))
+    }
+    
+    func registerButton() {
+        self.addChild(startBtn)
+    }
+    
+    func setUserNameInput() {
+        // MARK: text field 설정
+        self.alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        let titlefont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 18.0)!]
+        let msgfont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 14.0)!]
+
+        let titleStr = NSMutableAttributedString(string: "당신의 이름은 무엇인가요?", attributes: titlefont)
+        let msgStr = NSMutableAttributedString(string: "(2~8자 까지 가능합니다)", attributes: msgfont)
+        
+        self.alert.setValue(titleStr, forKey: "attributedTitle")
+        self.alert.setValue(msgStr, forKey: "attributedMessage")
+        
+        let action = UIAlertAction(title: "START", style: .default, handler: btnHandler)
+        action.setValue(UIColor.black, forKey: "titleTextColor")
+        
+        self.alert.addAction(action)
+        self.alert.addTextField(configurationHandler: {(myTextField) in
+            // textfield custom
+            myTextField.font = UIFont(name: "NeoDunggeunmo-Regular", size: 18)
+            myTextField.placeholder = "닉네임을 설정해주세요"
+            myTextField.addConstraint(myTextField.heightAnchor.constraint(equalToConstant: 20))
+        })
+        self.alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .lightGray
+    }
+    
+    // MARK: - button completion handler
+    func btnHandler(alert: UIAlertAction)
+    {
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.name = self.alert.textFields?[0].text ?? "anonymous"
+        }
+        
+        back_bgm.run(SKAction.stop())
+        
+        self.run(button_bgm, completion: {
+            self.view?.window?.rootViewController?.dissmissAndPresent(Ch1Part1ViewController(), animated: true, completion: nil)
+            //self.view?.presentScene(HomeScene(size: self.size), transition: .fade(withDuration: 2))
+        })
     }
     
     // MARK: - start button touch event delegate
@@ -50,7 +103,7 @@ class StartScene: SKScene {
             
             // 화면 전환
             if nodeTouched.name == "StartBtn" {
-                self.view?.presentScene(UsernameScene(size: self.size))
+                self.view?.window?.rootViewController?.present(self.alert, animated: true, completion: nil)
             }
         }
     }

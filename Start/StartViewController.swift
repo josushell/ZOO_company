@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class StartViewController: UIViewController {
-    var scene: StartScene? //SubwayScene?
+    var scene: StartScene?
     
     override func loadView() {
         super.loadView()

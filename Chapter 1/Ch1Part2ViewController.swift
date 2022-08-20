@@ -20,6 +20,13 @@ class Ch1Part2ViewController: UIViewController {
         layout.choices = ChoiceData_Ch1_part2()
         layout.initView(self.view)
         
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.registerGesture()
+        })
+    }
+    
+    func registerGesture() {
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(backTouched(_:)))
         layout.backView.addGestureRecognizer(tapGesture!)
     }

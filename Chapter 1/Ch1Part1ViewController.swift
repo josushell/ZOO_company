@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class Ch1Part1ViewController: UIViewController {
 
@@ -13,6 +14,7 @@ class Ch1Part1ViewController: UIViewController {
     var selected: Bool = false
     var select_index: Int = 0
     var tapGesture: UITapGestureRecognizer?
+    let sound = Sound()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,7 @@ class Ch1Part1ViewController: UIViewController {
         layout.initView(self.view)
         
         // 3초 뒤 실행
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             UIView.animate(withDuration: 2.0, delay: 0, options: .curveLinear ,animations: {
                 self.layout.minimi_player.transform = CGAffineTransform(translationX: 0, y: 80)
             }, completion: { finished in
@@ -43,6 +45,8 @@ class Ch1Part1ViewController: UIViewController {
     }
     
     @objc func onBtnClicked(_ sender: UIButton) {
+        sound.playSelectSound()
+
         layout.backView.isUserInteractionEnabled = false
         select_index = sender.tag
         selected = true

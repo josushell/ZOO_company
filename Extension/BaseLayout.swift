@@ -178,4 +178,16 @@ class layout_base {
         label_btn3.setChoiceText(choices.choice3[0], 12)
         btn_choice3.setChoiceButton(tagValue: 2)
     }
+    
+    func hideBeforeAnim() {
+        self.textbox.isHidden = true
+        self.profile_char.isHidden = true
+        self.profile_player.isHidden = true
+    }
+    
+    func revealAfterAnim() {
+        self.textbox.isHidden = false
+        self.profile_char.isHidden = false
+        self.profile_player.isHidden = false
+    }
 }

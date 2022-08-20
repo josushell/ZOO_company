@@ -13,7 +13,7 @@ class Ch3Part2ViewController: UIViewController {
     var selected: Bool = false
     var select_index: Int = 0
     var tapGesture: UITapGestureRecognizer?
-    
+    let sound = Sound()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,7 @@ class Ch3Part2ViewController: UIViewController {
     
     
     @objc func onBtnClicked(_ sender: UIButton) {
+        sound.playSelectSound()
         select_index = sender.tag
         selected = true
         layout.layout_choice.isHidden = true

@@ -15,6 +15,7 @@ class Ch3Part1ViewController: UIViewController {
     var select_index: Int = 0
     var minimi_lion: Bool = false
     var tapGesture: UITapGestureRecognizer?
+    let sound = Sound()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,13 +83,10 @@ class Ch3Part1ViewController: UIViewController {
                     lionMinimiAnimation_IN()
                 }
                 else {
-                    self.layout.textbox.isHidden = false
-                    self.layout.profile_player.isHidden = false
-                    
+                    self.layout.revealAfterAnim()
                     self.layout.profile_player.image = UIImage(named: "suit_normal")
                     self.layout.img_nametag.isHidden = false
                     self.layout.text_nametag.text = "사자 부장"
-                    self.layout.profile_char.isHidden = false
                     self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch3_part1).lion[layout.talkIndex[1]])
                     self.layout.text.setText((layout.talks as! TalkData_Ch3_part1).lion[layout.talkIndex[1]])
                     
@@ -175,9 +173,7 @@ class Ch3Part1ViewController: UIViewController {
     // 사자 minimi in
     func lionMinimiAnimation_IN() {
         self.layout.minimi_lion.isHidden = false
-        self.layout.textbox.isHidden = true
-        self.layout.profile_player.isHidden = true
-        self.layout.profile_char.isHidden = true
+        self.layout.hideBeforeAnim()
         self.layout.backView.isUserInteractionEnabled = false
         
         UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
