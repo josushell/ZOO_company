@@ -71,7 +71,7 @@ class Response_Ch2_part1: Response {
     override init() {
         super.init()
         
-        player_response = [["뭔가 느리지만 좋은 사람같아~", "약간 부담스럽지만 좋은 사람같아..ENFP일까?", "앗.. 내 인사를 무시했네..좀 차갑지만 그래도 좋은 사람같아~"]]
+        player_response = [["뭔가 느리지만 그래도 좋은 사람같아~", "약간 부담스럽지만 그래도 좋은 사람같아..ENFP일까?", "앗.. 내 인사를 무시했네.. 좀 차갑지만 그래도 좋은 사람같아~"]]
         char_response = ["친....하게....지내보..아요..", "만나서 반가워요! 저희 잘 지내봐요~ 파이팅 파이팅!", "(꾸벅)"]
         label_nametag = ["늘보 사원", "원숭 사원", "개미 사원"]
         char_image = ["sloth_normal", "monkey_normal", "ant_normal"]

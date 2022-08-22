@@ -67,7 +67,7 @@ class ImgOrderData_Ch1_part2: ImgOrderData {
 }
 
 // MARK: - temp 선택지 데이터
-class ChoiceData_Ch1_part2: ChoiceData {
+class ChoiceData_Ch1_empty: ChoiceData {
     override init() {
         super.init()
         
@@ -75,5 +75,14 @@ class ChoiceData_Ch1_part2: ChoiceData {
         choice1 = [""]
         choice2 = [""]
         choice3 = [""]
+    }
+}
+
+class Response_Ch1_part3: Response {
+    override init() {
+        super.init()
+
+        player_response = [["후 간신히 내렸네.. 역시 출근길 9호선 급행은 지옥이야", "헐 5분 밖에 안 남았잖아 이럴 시간이 없어 빨리 가자!"], ["결국 늦어버렸어... 하지만 첫날이니까 짤리지는 않겠지...?", "어쨌든 빨리 뛰어 가자!"]]
+        player_image = [["suit_normal", "suit_surprise"], ["suit_sad", "suit_fire"]]
     }
 }

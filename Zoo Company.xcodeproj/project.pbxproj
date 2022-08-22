@@ -54,6 +54,7 @@
 		86A3190128AE01A0002D5C25 /* Ch4OfficeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A3190028AE01A0002D5C25 /* Ch4OfficeLayout.swift */; };
 		86A3190328AE1186002D5C25 /* Ch4Part2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A3190228AE1186002D5C25 /* Ch4Part2ViewController.swift */; };
 		86A7ADA028ACC90C006668AA /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7AD9F28ACC90C006668AA /* Apple.swift */; };
+		86AA6FF728B35DAA0099BDB3 /* Ch1Part3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AA6FF628B35DAA0099BDB3 /* Ch1Part3ViewController.swift */; };
 		86CE910E28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */; };
 		86CE911028AF547F00F58BAA /* Ch1ElevatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */; };
 		86F65B2C283F3CE200DCBAA8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* Utils.swift */; };
@@ -112,6 +113,7 @@
 		86A3190028AE01A0002D5C25 /* Ch4OfficeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4OfficeLayout.swift; sourceTree = "<group>"; };
 		86A3190228AE1186002D5C25 /* Ch4Part2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4Part2ViewController.swift; sourceTree = "<group>"; };
 		86A7AD9F28ACC90C006668AA /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
+		86AA6FF628B35DAA0099BDB3 /* Ch1Part3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1Part3ViewController.swift; sourceTree = "<group>"; };
 		86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ElevatorViewController.swift; sourceTree = "<group>"; };
 		86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ElevatorLayout.swift; sourceTree = "<group>"; };
 		86F65B2B283F3CE200DCBAA8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -214,12 +216,13 @@
 			isa = PBXGroup;
 			children = (
 				86AA6FF428B3213B0099BDB3 /*  Subway Game */,
-				86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */,
 				8647B19A28A9137D005F54BC /* Ch1Part1ViewController.swift */,
 				8647B19D28A922AB005F54BC /* Ch1Part2ViewController.swift */,
-				86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */,
+				86AA6FF628B35DAA0099BDB3 /* Ch1Part3ViewController.swift */,
+				86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */,
 				86A318F528ADDDAE002D5C25 /* Ch1HomeLayout.swift */,
 				86A318F728ADDE38002D5C25 /* Ch1SubwayLayout.swift */,
+				86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */,
 				86A318ED28ADDAB8002D5C25 /* Ch1Data.swift */,
 			);
 			path = "Chapter 1";
@@ -432,6 +435,7 @@
 				86A318FD28ADF2E2002D5C25 /* Ch4Data.swift in Sources */,
 				86173E87284780070097B421 /* StartScene.swift in Sources */,
 				86CE911028AF547F00F58BAA /* Ch1ElevatorLayout.swift in Sources */,
+				86AA6FF728B35DAA0099BDB3 /* Ch1Part3ViewController.swift in Sources */,
 				86F65B2C283F3CE200DCBAA8 /* Utils.swift in Sources */,
 				861D1A0228328BA700D6E6B1 /* GameScene.swift in Sources */,
 				861D1A0428328BA700D6E6B1 /* GameViewController.swift in Sources */,

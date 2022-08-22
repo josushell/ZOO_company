@@ -34,5 +34,4 @@ class layout_elevator {
         }
         label.setTextAttribute("엘리베이터에서는 쉬세요...", 16)
     }
-        
 }

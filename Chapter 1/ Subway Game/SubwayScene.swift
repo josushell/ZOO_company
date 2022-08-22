@@ -8,6 +8,7 @@
 import Foundation
 import GameplayKit
 import SpriteKit
+import UIKit
 
 // game scene
 class SubwayScene: SKScene, SKPhysicsContactDelegate {
@@ -33,17 +34,22 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let groundCategory = 1 << 0 as UInt32
     let playerCategory = 1 << 1 as UInt32
     let obstacleCategory = 1 << 2 as UInt32
+    let playerNoDamageCategory = 1 << 4 as UInt32
     
     let foreground: CGFloat = 1
     let background: CGFloat = 0
     
     let playerJumpForce = 700 as Int
     
-    var count: Int = 3
+    var lifeCount: Int = 3
+    var countDown: Int = 3
     var score: Int = 3
     
-    var spawnRate = 1.5 as Double
+    var spawnRate = 2.0 as Double
     var timeSinceLastSpawn = 0.0 as Double
+    
+    var damaged: Bool = false
+    var damageAnimation: SKAction!
     
     override func didMove(to view: SKView) {
         self.backgroundColor = .white
@@ -51,7 +57,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
         self.isUserInteractionEnabled = false
-        countdown(count: count)
+        countdown(count: countDown)
     }
     
     func setBackground() {
@@ -124,7 +130,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setObstacle() {
-        let obstacles = ["two_1", "two_2", "two_3", "two_4", "three_1", "three_2", "three3"]
+        let obstacles = ["two_1", "two_2", "two_3", "two_4", "three_1", "three_2", "three_3"]
         let Scale = 1.0//3.0 as CGFloat
         
         //texture
@@ -153,7 +159,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     
     func animateTwoObstacle(sprite: SKSpriteNode, texture: SKTexture) {
         let screenWidth = vs.width
-        let distanceOffscreen = 50.0 as CGFloat
+        let distanceOffscreen = 0 as CGFloat
         let distanceToMove = screenWidth + distanceOffscreen + texture.size().width
         
         //actions
@@ -184,31 +190,138 @@ extension SubwayScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        guard let _ = gameNode else {
+            return
+        }
+        
         if(gameNode.speed > 0){
             
             if(currentTime - timeSinceLastSpawn > spawnRate){
                 timeSinceLastSpawn = currentTime
-                spawnRate = Double.random(in: 1.0 ..< 3.5)
-                
-                if(Int.random(in: 0...10) < 8){
-                    setObstacle()
-                } else {
-                    setObstacle()
-                }
+                spawnRate = Double.random(in: 1.5 ..< 4.5)
+                setObstacle()
             }
         }
+    }
+    func didBegin(_ contact: SKPhysicsContact) {
+        if(hitObstacle(contact)){
+            // run(dieSound)
+            score -= 1
+            
+            setDamage()
+            setHealthStatus()
+            
+            if (score == 0) {
+                gameFail()
+            }
+        }
+    }
+    
+    func setDamageAnimation() {
+        // --- Create the taking damage animation ---
+               let damageStart = SKAction.run {
+                   // Allow the penguin to pass through enemies:
+                   self.physicsBody?.categoryBitMask = self.playerNoDamageCategory
+               }
+               // Create an opacity pulse, slow at first and fast at the end:
+               let slowFade = SKAction.sequence([
+                   SKAction.fadeAlpha(to: 0.3, duration: 0.35),
+                   SKAction.fadeAlpha(to: 0.7, duration: 0.35)
+                   ])
+               let fastFade = SKAction.sequence([
+                   SKAction.fadeAlpha(to: 0.3, duration: 0.2),
+                   SKAction.fadeAlpha(to: 0.7, duration: 0.2)
+                   ])
+               let fadeOutAndIn = SKAction.sequence([
+                   SKAction.repeat(slowFade, count: 2),
+                   SKAction.repeat(fastFade, count: 5),
+                   SKAction.fadeAlpha(to: 1, duration: 0.15)
+                   ])
+               // Return the penguin to normal:
+               let damageEnd = SKAction.run {
+                   self.physicsBody?.categoryBitMask = self.playerCategory
+                   // Turn off the newly damaged flag:
+                   self.damaged = false
+               }
+               // Store the whole sequence in the damageAnimation property:
+               self.damageAnimation = SKAction.sequence([
+                   damageStart,
+                   fadeOutAndIn,
+                   damageEnd
+            ])
+    }
+    
+    func setDamage() {
+        // If invulnerable or damaged, return:
+        //if self.invulnerable || self.damaged { return }
+        // Set the damaged state to true after being hit:
+        self.damaged = true
+        
+        // Remove one from our health pool
+        self.lifeCount -= 1
+        if self.lifeCount == 0 {
+            // If we are out of health, run the die function:
+            gameFail()
+        }
+        else {
+            // Run the take damage animation:
+            self.run(self.damageAnimation)
+        }
+    }
+    func setHealthStatus() {
+        // Create a fade SKAction to fade out any lost hearts:
+        let fadeAction = SKAction.fadeAlpha(to: 0.2,
+                                            duration: 0.3)
+        // Loop through each heart and update its status:
+//        for index in 0 ..< lifeCount {
+//            if index < newHealth {
+//                // This heart should be full red:
+//                heartNodes[index].alpha = 1
+//            }
+//            else {
+//                // This heart should be faded:
+//                heartNodes[index].run(fadeAction)
+//            }
+//        }
+    }
+    
+    func hitObstacle(_ contact: SKPhysicsContact) -> Bool {
+        return contact.bodyA.categoryBitMask & obstacleCategory == obstacleCategory ||
+            contact.bodyB.categoryBitMask & obstacleCategory == obstacleCategory
+    }
+    
+    func gameFail() {
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.subwayFail = true
+        }
+        gameOver()
+    }
+    
+    func gameSucess() {
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.subwayFail = false
+        }
+        gameOver()
+    }
+    
+    func gameOver() {
+        gameNode.speed = 0.0
+        
+        playerSprite.removeAllActions()
+        self.view?.window?.rootViewController?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
     }
 }
 
 // MARK: - Extension: count down
 extension SubwayScene {
     private func countdownAction() {
-        count -= 1
-        print("\(count)")
-        let texture = SKTexture(imageNamed: "count_\(count)")
+        countDown -= 1
+
+        let texture = SKTexture(imageNamed: "count_\(countDown)")
+        texture.filteringMode = .nearest
         countDownNode.texture = texture
         countDownNode.size = texture.size()
-        if (count == 0) {
+        if (countDown == 0) {
             countDownNode.position.x = vs.width / 2 - (texture.size().width / 2) + 30
             countDownNode.position.y = vs.height / 2
         }
@@ -223,6 +336,8 @@ extension SubwayScene {
     
     private func startGame()
     {
+        setDamageAnimation()
+        
         gameNode = SKNode()
         
         backgroundNode = SKNode()
