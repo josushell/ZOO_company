@@ -10,7 +10,7 @@ import GameplayKit
 import SpriteKit
 import UIKit
 
-// game scene
+
 class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let vs = viewSize()
     
@@ -39,7 +39,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let foreground: CGFloat = 1
     let background: CGFloat = 0
     
-    let playerJumpForce = 700 as Int
+    let playerJumpForce = 800 as Int
     
     var lifeCount: Int = 3
     var countDown: Int = 3
@@ -62,17 +62,16 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     
     func setBackground() {
         let screenWidth = vs.width
-        //ground texture
+
         let groundTexture = SKTexture(imageNamed: "subway_game")
         groundTexture.filteringMode = .nearest
         
-        //ground actions
         let moveGroundLeft = SKAction.moveBy(x: -groundTexture.size().width,
                                              y: 0.0, duration: TimeInterval(screenWidth / groundSpeed))
         let resetGround = SKAction.moveBy(x: groundTexture.size().width, y: 0.0, duration: 0.0)
         let groundLoop = SKAction.sequence([moveGroundLeft, resetGround])
         
-        //ground nodes
+
         let numberOfGroundNodes = 1 + Int(ceil(screenWidth / groundTexture.size().width))
         
         for i in 0 ..< numberOfGroundNodes {
@@ -131,17 +130,13 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     
     func setObstacle() {
         let obstacles = ["two_1", "two_2", "two_3", "two_4", "three_1", "three_2", "three_3"]
-        let Scale = 1.0//3.0 as CGFloat
+        let Scale = 1.0
         
-        //texture
         let obstacleTexture = SKTexture(imageNamed: obstacles.randomElement()!)
         obstacleTexture.filteringMode = .nearest
-        
-        //sprite
         let obstacleSprite = SKSpriteNode(texture: obstacleTexture)
         obstacleSprite.setScale(Scale)
         
-        //physics
         let contactBox = CGSize(width: obstacleTexture.size().width * Scale,
                                 height: obstacleTexture.size().height * Scale)
         obstacleSprite.physicsBody = SKPhysicsBody(rectangleOf: contactBox)
@@ -150,24 +145,21 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         obstacleSprite.physicsBody?.categoryBitMask = obstacleCategory
         obstacleSprite.physicsBody?.contactTestBitMask = playerCategory
         obstacleSprite.physicsBody?.collisionBitMask = groundCategory
-        
-        //add to scene
+
         obstacleNode.addChild(obstacleSprite)
-        //animate
-        animateTwoObstacle(sprite: obstacleSprite, texture: obstacleTexture)
+        animateObstacle(sprite: obstacleSprite, texture: obstacleTexture)
     }
     
-    func animateTwoObstacle(sprite: SKSpriteNode, texture: SKTexture) {
+    func animateObstacle(sprite: SKSpriteNode, texture: SKTexture) {
         let screenWidth = vs.width
         let distanceOffscreen = 0 as CGFloat
         let distanceToMove = screenWidth + distanceOffscreen + texture.size().width
         
-        //actions
-        let moveCactus = SKAction.moveBy(x: -distanceToMove, y: 0.0, duration: TimeInterval(screenWidth / groundSpeed))
-        let removeCactus = SKAction.removeFromParent()
-        let moveAndRemove = SKAction.sequence([moveCactus, removeCactus])
+        let moveObstacle = SKAction.moveBy(x: -distanceToMove, y: 0.0, duration: TimeInterval(screenWidth / groundSpeed))
+        let removeObstacle = SKAction.removeFromParent()
+        let moveAndRemove = SKAction.sequence([moveObstacle, removeObstacle])
         
-        sprite.position = CGPoint(x: distanceToMove, y: groundHeight + texture.size().height)
+        sprite.position = CGPoint(x: distanceToMove, y: groundHeight)
         sprite.run(moveAndRemove)
     }
 }
@@ -175,11 +167,6 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
 // MARK: - event handling
 extension SubwayScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if(gameNode.speed < 1.0){
-//            resetGame()
-//            return
-//        }
-//
         for _ in touches {
             if playerSprite.position.y <= playerYposition && gameNode.speed > 0 {
                 playerSprite.physicsBody?.applyImpulse(CGVector(dx: 0, dy: playerJumpForce))
@@ -189,7 +176,6 @@ extension SubwayScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
         guard let _ = gameNode else {
             return
         }
@@ -205,25 +191,17 @@ extension SubwayScene {
     }
     func didBegin(_ contact: SKPhysicsContact) {
         if(hitObstacle(contact)){
-            // run(dieSound)
-            score -= 1
-            
             setDamage()
             setHealthStatus()
-            
-            if (score == 0) {
-                gameFail()
-            }
         }
     }
     
     func setDamageAnimation() {
-        // --- Create the taking damage animation ---
                let damageStart = SKAction.run {
-                   // Allow the penguin to pass through enemies:
+
                    self.physicsBody?.categoryBitMask = self.playerNoDamageCategory
                }
-               // Create an opacity pulse, slow at first and fast at the end:
+
                let slowFade = SKAction.sequence([
                    SKAction.fadeAlpha(to: 0.3, duration: 0.35),
                    SKAction.fadeAlpha(to: 0.7, duration: 0.35)
@@ -237,13 +215,12 @@ extension SubwayScene {
                    SKAction.repeat(fastFade, count: 5),
                    SKAction.fadeAlpha(to: 1, duration: 0.15)
                    ])
-               // Return the penguin to normal:
+               
                let damageEnd = SKAction.run {
                    self.physicsBody?.categoryBitMask = self.playerCategory
-                   // Turn off the newly damaged flag:
                    self.damaged = false
                }
-               // Store the whole sequence in the damageAnimation property:
+              
                self.damageAnimation = SKAction.sequence([
                    damageStart,
                    fadeOutAndIn,
@@ -252,20 +229,15 @@ extension SubwayScene {
     }
     
     func setDamage() {
-        // If invulnerable or damaged, return:
-        //if self.invulnerable || self.damaged { return }
-        // Set the damaged state to true after being hit:
+        if self.damaged { return }
         self.damaged = true
         
-        // Remove one from our health pool
         self.lifeCount -= 1
         if self.lifeCount == 0 {
-            // If we are out of health, run the die function:
             gameFail()
         }
         else {
-            // Run the take damage animation:
-            self.run(self.damageAnimation)
+            playerSprite.run(self.damageAnimation)
         }
     }
     func setHealthStatus() {
@@ -354,7 +326,6 @@ extension SubwayScene {
         
         obstacleNode = SKNode()
         obstacleNode.zPosition = foreground
-        setObstacle()
         gameNode.addChild(obstacleNode)
         
         self.addChild(gameNode)
