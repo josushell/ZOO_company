@@ -33,6 +33,7 @@ class layout_base {
     let label_btn2 = UILabel()
     let label_btn3 = UILabel()
 
+    var talkIndex: [Int] = []
     var talks = TalkData()
     var profileOrder = ImgOrderData()
     var choices = ChoiceData()
@@ -178,7 +179,10 @@ class layout_base {
         label_btn3.setChoiceText(choices.choice3[0], 12)
         btn_choice3.setChoiceButton(tagValue: 2)
     }
-    
+}
+
+// MARK: - Extension: functions
+extension layout_base {
     func hideBeforeAnim() {
         self.textbox.isHidden = true
         self.profile_char.isHidden = true
@@ -189,5 +193,12 @@ class layout_base {
         self.textbox.isHidden = false
         self.profile_char.isHidden = false
         self.profile_player.isHidden = false
+    }
+    
+    func setNametag(nametagHidden: Bool, _ text: String = "") {
+        self.img_nametag.isHidden = nametagHidden
+        if (!nametagHidden) {
+            self.text_nametag.text = text
+        }
     }
 }

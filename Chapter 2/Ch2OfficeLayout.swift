@@ -11,8 +11,6 @@ import SnapKit
 
 // MARK: - 사무실 layout 1
 class layout_Office_ch2_part1: layout_base {
-    
-    var talkIndex: [Int] = [0, 0, 0]
     let minimi_player = UIImageView()
     let minimi_lion = UIImageView()
     let minimi_mouse = UIImageView()
@@ -20,6 +18,8 @@ class layout_Office_ch2_part1: layout_base {
     
     func initView(_ view: UIView) {
         super.initView(view, backImg: "office_off", profileImg: "suit_shy", choiceWidth: 480)
+        
+        talkIndex = [0, 0, 0]
         
         //minimi 설정
         view.addSubviews(minimi_player, minimi_lion, minimi_mouse, minimi_response)
@@ -54,18 +54,16 @@ class layout_Office_ch2_part1: layout_base {
 
 // MARK: - 사무실 layout 2
 class layout_Office_ch2_part2: layout_base {
-    // [알파카, 주인공, 사자, 신원불명]
-    var talkIndex: [Int] = [0, 0, 0, 0]
-    
     func initView(_ view: UIView) {
         super.initView(view, backImg: "office_on_1", profileImg: "suit_normal")
+        
+        // [알파카, 주인공, 사자, 신원불명]
+        talkIndex = [0, 0, 0, 0]
     }
     
     func updateLayout() {
         let availableHeight = vs.height - 74 - label_choicetitle.frame.size.height * 2 - 30
         let btnOneHeight = availableHeight / 3 - 5
-        
-        print(label_choicetitle.frame.size.height)
         
         label_choicetitle.snp.updateConstraints() { make in
             make.top.equalToSuperview().offset(30)

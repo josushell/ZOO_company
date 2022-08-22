@@ -11,12 +11,13 @@ import UIKit
 
 // MARK: - 사무실 layout ch3 part1
 class layout_Office_ch3: layout_base {
-    // [주인공, 사자]
-    var talkIndex: [Int] = [0, 0]
     var minimi_lion = UIImageView()
     
     func initView(_ view: UIView) {
         super.initView(view, backImg: "office_on_1", profileImg: "suit_normal")
+        
+        // [주인공, 사자]
+        talkIndex = [0, 0]
         
         view.addSubviews(minimi_lion)
         minimi_lion.snp.makeConstraints() { make in

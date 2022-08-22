@@ -15,9 +15,7 @@ class layout_elevator {
     let backgroundImg = UIImageView()
     let label = UILabel()
     
-    func initView(_ view: UIView) {
-        print("init views")
-        
+    func initView(_ view: UIView) {   
         view.addSubview(backView)
         backView.snp.makeConstraints() { make in
             make.edges.equalToSuperview()

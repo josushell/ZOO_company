@@ -11,8 +11,8 @@ import UIKit
 
 // MARK: - subway layout
 class layout_subway: layout_base {
-    var talkIndex: [Int] = [0]
     func initView(_ view: UIView) {
         super.initView(view, backImg: "subway", profileImg: "suit_normal")
+        talkIndex = [0]
     }
 }

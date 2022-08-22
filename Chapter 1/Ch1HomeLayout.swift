@@ -11,12 +11,12 @@ import SnapKit
 
 // MARK: - home layout
 class layout_home: layout_base {
-    var talkIndex: [Int] = [0, 0, 0]
     let minimi_player = UIImageView()
     
     func initView(_ view: UIView) {
         super.initView(view, backImg: "home", profileImg: "sleep_normal")
         
+        talkIndex = [0, 0, 0]
         // profile 설정
         view.addSubviews(minimi_player)
         minimi_player.snp.makeConstraints() { make in

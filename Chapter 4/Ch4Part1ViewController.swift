@@ -24,12 +24,13 @@ class Ch4Part1ViewController: BaseViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             // 박쥐 animation
-            (self.layout as! layout_Office_ch4).minimi_char1.isHidden = false
-            UIView.animate(withDuration: 1.5, delay: 0, options: .curveLinear ,animations: {
-                (self.layout as! layout_Office_ch4).minimi_char1.transform = CGAffineTransform(translationX: 0, y: 70)
-            }, completion: { finished in
-                self.registerGesture()
-            })
+//            (self.layout as! layout_Office_ch4).minimi_char1.isHidden = false
+//            UIView.animate(withDuration: 1.5, delay: 0, options: .curveLinear ,animations: {
+//                (self.layout as! layout_Office_ch4).minimi_char1.transform = CGAffineTransform(translationX: 0, y: 70)
+//            }, completion: { finished in
+//                self.registerGesture()
+//            })
+            self.registerGesture()
         })
     }
     @objc override func onBtnClicked(_ sender: UIButton) {
@@ -62,24 +63,26 @@ class Ch4Part1ViewController: BaseViewController {
         // 1번 선택지 이전
         if (!selected[0] && selected_count == 0) {
             // 박쥐
-            if ((layout as! layout_Office_ch4).talkIndex[1] < 1) {
-                self.layout.img_nametag.isHidden = false
-                self.layout.text_nametag.text = "박쥐 이사"
-                self.layout.profile_char.isHidden = false
-                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch4_part1).bat[(layout as! layout_Office_ch4).talkIndex[1]])
-                self.layout.text.setText((layout.talks as! TalkData_Ch4_part1).bat[(layout as! layout_Office_ch4).talkIndex[1]])
-                
-                (layout as! layout_Office_ch4).talkIndex[1] += 1
+            if (self.layout.talkIndex[1] < 1) {
+                batMinimiAnimation_IN(callback: {
+                    self.layout.revealAfterAnim()
+                    self.layout.setNametag(nametagHidden: false, "박쥐 이사")
+                    self.layout.profile_char.image = UIImage(named: (self.layout.profileOrder as! ImgOrderData_Ch4_part1).bat[self.layout.talkIndex[1]])
+                    self.layout.text.setText((self.layout.talks as! TalkData_Ch4_part1).bat[self.layout.talkIndex[1]])
+                    
+                    self.layout.talkIndex[1] += 1
+                })
             }
             
             // 주인공
-            else if ((layout as! layout_Office_ch4).talkIndex[0] < 2) {
+            else if (self.layout.talkIndex[0] < 2) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.isHidden = false
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch4).talkIndex[0]])
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch4).talkIndex[0]])
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
                 
-                (layout as! layout_Office_ch4).talkIndex[0] += 1
+                self.layout.talkIndex[0] += 1
+                layout.backView.isUserInteractionEnabled = true
             }
 
             // 선택지
@@ -88,24 +91,22 @@ class Ch4Part1ViewController: BaseViewController {
                 layout.layout_choice.isHidden = false
                 layout.layout_blackView.isHidden = false
             }
-            
-            layout.backView.isUserInteractionEnabled = true
         }
         
         // 1번 선택지 이후
         else if (selected[0] == true  && selected_count == 0) {
             
             // 주인공
-            if ((layout as! layout_Office_ch4).talkIndex[0] < 4) {
+            if (self.layout.talkIndex[0] < 4) {
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch4).talkIndex[0]])
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 
-                if ((layout as! layout_Office_ch4).talkIndex[0] == 3) {
+                if (self.layout.talkIndex[0] == 3) {
                     self.layout.profile_char.isHidden = true
                 }
                 
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch4).talkIndex[0]])
-                (layout as! layout_Office_ch4).talkIndex[0] += 1
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
+                self.layout.talkIndex[0] += 1
                 
                 layout.backView.isUserInteractionEnabled = true
             }
@@ -120,24 +121,24 @@ class Ch4Part1ViewController: BaseViewController {
         // 2번 선택지 이전
         else if (!selected[1] && selected_count == 1) {
             // 땃쥐
-            if ((layout as! layout_Office_ch4).talkIndex[2] < (layout.talks as! TalkData_Ch4_part1).mouse.count) {
+            if (self.layout.talkIndex[2] < (layout.talks as! TalkData_Ch4_part1).mouse.count) {
+                self.layout.revealAfterAnim()
                 self.layout.profile_player.image = UIImage(named: "suit_normal")
-                self.layout.img_nametag.isHidden = false
-                self.layout.text_nametag.text = "땃쥐 사원"
-                self.layout.profile_char.isHidden = false
-                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch4_part1).mouse[(layout as! layout_Office_ch4).talkIndex[2]])
-                self.layout.text.setText((layout.talks as! TalkData_Ch4_part1).mouse[(layout as! layout_Office_ch4).talkIndex[2]])
+                self.layout.setNametag(nametagHidden: false, "땃쥐 사원")
+                self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch4_part1).mouse[self.layout.talkIndex[2]])
+                self.layout.text.setText((layout.talks as! TalkData_Ch4_part1).mouse[self.layout.talkIndex[2]])
                 
-                (layout as! layout_Office_ch4).talkIndex[2] += 1
+                self.layout.talkIndex[2] += 1
+                layout.backView.isUserInteractionEnabled = true
             }
             // 주인공
-            else if ((layout as! layout_Office_ch4).talkIndex[0] < layout.talks.player.count) {
+            else if (self.layout.talkIndex[0] < layout.talks.player.count) {
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.isHidden = false
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch4).talkIndex[0]])
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch4).talkIndex[0]])
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
                 
-                (layout as! layout_Office_ch4).talkIndex[0] += 1
+                self.layout.talkIndex[0] += 1
+                layout.backView.isUserInteractionEnabled = true
             }
             // 선택지
             else {
@@ -150,7 +151,6 @@ class Ch4Part1ViewController: BaseViewController {
                 layout.layout_choice.isHidden = false
                 layout.layout_blackView.isHidden = false
             }
-            layout.backView.isUserInteractionEnabled = true
         }
         
         // 2번 선택지 이후
@@ -161,15 +161,23 @@ class Ch4Part1ViewController: BaseViewController {
         
     }
     
-    func batMinimiAnimation_IN() {
-        
+    func batMinimiAnimation_IN(callback: @escaping (() -> Void)) {
+        self.layout.backView.isUserInteractionEnabled = false
+        (self.layout as! layout_Office_ch4).minimi_char1.isHidden = false
+        self.layout.hideBeforeAnim()
+        UIView.animate(withDuration: 1.2, delay: 0, options: .curveLinear, animations: {
+            (self.layout as! layout_Office_ch4).minimi_char1.transform = CGAffineTransform(translationX: 0, y: 70)
+        }, completion: { _ in
+            callback()
+            self.layout.backView.isUserInteractionEnabled = true
+        })
     }
     
     func mouseMinimiAnimation_IN() {
         self.layout.backView.isUserInteractionEnabled = false
         (self.layout as! layout_Office_ch4).minimi_char2.isHidden = false
-        (self.layout as! layout_Office_ch4).hideBeforeAnim()
-        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
+        self.layout.hideBeforeAnim()
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
             (self.layout as! layout_Office_ch4).minimi_char2.transform = CGAffineTransform(translationX: 0, y: 60)
         }, completion: { _ in
             (self.layout as! layout_Office_ch4).minimi_char2.image = UIImage(named: "minimi_mouse_left")

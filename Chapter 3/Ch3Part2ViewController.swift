@@ -44,16 +44,16 @@ class Ch3Part2ViewController: BaseViewController {
         
         // 선택지 전
         if (!selected){
-            if ((layout as! layout_Office_ch3).talkIndex[0] < layout.talks.player.count) {
-                (self.layout as! layout_Office_ch3).profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch3).talkIndex[0]])
+            if (self.layout.talkIndex[0] < layout.talks.player.count) {
+                (self.layout as! layout_Office_ch3).profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 // 자판기 이미지
-                if ((layout as! layout_Office_ch3).talkIndex[0] == 3) {
+                if (self.layout.talkIndex[0] == 3) {
                     self.layout.profile_char.isHidden = false
                     self.layout.profile_char.image = UIImage(named: "suit_normal")
                 }
                 
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch3).talkIndex[0]])
-                (layout as! layout_Office_ch3).talkIndex[0] += 1
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
+                self.layout.talkIndex[0] += 1
                 
                 layout.backView.isUserInteractionEnabled = true
             }

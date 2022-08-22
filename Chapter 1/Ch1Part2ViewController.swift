@@ -34,10 +34,10 @@ class Ch1Part2ViewController: BaseViewController {
         layout.textbox.isHidden = false
         layout.profile_player.isHidden = false
         
-        if ((layout as! layout_subway).talkIndex[0] < layout.talks.player.count) {
-            self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_subway).talkIndex[0]])
-            self.layout.text.setText(layout.talks.player[(layout as! layout_subway).talkIndex[0]])
-            (layout as! layout_subway).talkIndex[0] += 1
+        if (self.layout.talkIndex[0] < layout.talks.player.count) {
+            self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+            self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
+            self.layout.talkIndex[0] += 1
             layout.backView.isUserInteractionEnabled = true
         }
         

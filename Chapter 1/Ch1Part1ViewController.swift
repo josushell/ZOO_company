@@ -10,6 +10,7 @@ import SpriteKit
 
 class Ch1Part1ViewController: BaseViewController {
     var selected: Bool = false
+    var minimi: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +55,14 @@ class Ch1Part1ViewController: BaseViewController {
         // 선택지 전
         if (!selected){
             if (layout.layout_choice.isHidden == true) {
-                if ((layout as! layout_home).talkIndex[0] < layout.talks.player.count) {
-                    self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_home).talkIndex[0]])
-                    self.layout.text.setText(layout.talks.player[(layout as! layout_home).talkIndex[0]])
-                    (layout as! layout_home).talkIndex[0] += 1
+                if (self.layout.talkIndex[0] < layout.talks.player.count) {
+                    if (self.layout.talkIndex[0] == 2 && !minimi) {
+                        minimi = true
+                        minimiPlayerAnimation_JUMP()
+                    }
+                    self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+                    self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
+                    self.layout.talkIndex[0] += 1
                 }
                 // 선택지 등장
                 else {
@@ -80,6 +85,14 @@ class Ch1Part1ViewController: BaseViewController {
                 self.presentFull(Ch1Part2ViewController(), animated: false, completion: nil)
             })
         }
+    }
+    
+    func minimiPlayerAnimation_JUMP() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .autoreverse, animations: {
+            (self.layout as! layout_home).minimi_player.transform = CGAffineTransform(translationX: 0, y: 4)
+        }, completion: { _ in
+            (self.layout as! layout_home).minimi_player.transform = CGAffineTransform(translationX: 0, y: 80)
+        })
     }
     
 }

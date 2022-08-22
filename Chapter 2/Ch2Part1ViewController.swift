@@ -66,13 +66,13 @@ class Ch2Part1ViewController: BaseViewController {
         // 선택지 전
         if (!selected){
             if (layout.layout_choice.isHidden == true) {
-                if ((layout as! layout_Office_ch2_part1).talkIndex[0] < layout.talks.player.count) {
-                    self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(self.layout as! layout_Office_ch2_part1).talkIndex[0]])
-                    self.layout.text.setText(layout.talks.player[(self.layout as! layout_Office_ch2_part1).talkIndex[0]])
-                    (layout as! layout_Office_ch2_part1).talkIndex[0] += 1
+                if (self.layout.talkIndex[0] < layout.talks.player.count) {
+                    self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+                    self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
+                    self.layout.talkIndex[0] += 1
                     layout.backView.isUserInteractionEnabled = true
                 }
-                else if ((layout as! layout_Office_ch2_part1).talkIndex[1] < (layout.talks as! TalkData_Ch2_part1).lion.count) {
+                else if (self.layout.talkIndex[1] < (layout.talks as! TalkData_Ch2_part1).lion.count) {
                     
                     if (!minimi_lion) {
                         lionMinimiAnimation_IN()
@@ -82,23 +82,23 @@ class Ch2Part1ViewController: BaseViewController {
                         self.layout.img_nametag.isHidden = false
                         self.layout.profile_player.image = UIImage(named: "suit_normal")
                         self.layout.text_nametag.text = "사자 부장"
-                        self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).lion[(layout as! layout_Office_ch2_part1).talkIndex[1]])
-                        self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).lion[(layout as! layout_Office_ch2_part1).talkIndex[1]])
-                        (layout as! layout_Office_ch2_part1).talkIndex[1] += 1
+                        self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).lion[self.layout.talkIndex[1]])
+                        self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).lion[self.layout.talkIndex[1]])
+                        self.layout.talkIndex[1] += 1
                         layout.backView.isUserInteractionEnabled = true
                     }
 
                 }
-                else if ((self.layout as! layout_Office_ch2_part1).talkIndex[2] < (layout.talks as! TalkData_Ch2_part1).mouse.count) {
+                else if (self.layout.talkIndex[2] < (layout.talks as! TalkData_Ch2_part1).mouse.count) {
                     if (!minimi_mouse) {
                         mouseMinimiAnimation()
                     }
                     else {
                         self.layout.revealAfterAnim()
                         self.layout.text_nametag.text = "땃쥐 사원"
-                        self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).mouse[(layout as! layout_Office_ch2_part1).talkIndex[2]])
-                        self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).mouse[(layout as! layout_Office_ch2_part1).talkIndex[2]])
-                        (layout as! layout_Office_ch2_part1).talkIndex[2] += 1
+                        self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch2_part1).mouse[self.layout.talkIndex[2]])
+                        self.layout.text.setText((layout.talks as! TalkData_Ch2_part1).mouse[self.layout.talkIndex[2]])
+                        self.layout.talkIndex[2] += 1
                         layout.backView.isUserInteractionEnabled = true
                     }
 

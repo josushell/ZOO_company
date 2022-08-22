@@ -50,17 +50,17 @@ class Ch3Part1ViewController: BaseViewController {
         // 1번 선택지 이전
         if (!selected[0] && selected_count == 0) {
             // 주인공
-            if ((layout as! layout_Office_ch3).talkIndex[0] < 1) {
+            if (self.layout.talkIndex[0] < 1) {
                 self.layout.profile_player.isHidden = false
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch3).talkIndex[0]])
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch3).talkIndex[0]])
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
                 
-                (layout as! layout_Office_ch3).talkIndex[0] += 1
+                self.layout.talkIndex[0] += 1
                 layout.backView.isUserInteractionEnabled = true
             }
             
             // 사자
-            else if ((layout as! layout_Office_ch3).talkIndex[1] < (layout.talks as! TalkData_Ch3_part1).lion.count) {
+            else if (self.layout.talkIndex[1] < (layout.talks as! TalkData_Ch3_part1).lion.count) {
                 
                 if (!minimi_lion) {
                     lionMinimiAnimation_IN()
@@ -70,21 +70,21 @@ class Ch3Part1ViewController: BaseViewController {
                     self.layout.profile_player.image = UIImage(named: "suit_normal")
                     self.layout.img_nametag.isHidden = false
                     self.layout.text_nametag.text = "사자 부장"
-                    self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch3_part1).lion[(layout as! layout_Office_ch3).talkIndex[1]])
-                    self.layout.text.setText((layout.talks as! TalkData_Ch3_part1).lion[(layout as! layout_Office_ch3).talkIndex[1]])
+                    self.layout.profile_char.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch3_part1).lion[self.layout.talkIndex[1]])
+                    self.layout.text.setText((layout.talks as! TalkData_Ch3_part1).lion[self.layout.talkIndex[1]])
                     
-                    (layout as! layout_Office_ch3).talkIndex[1] += 1
+                    self.layout.talkIndex[1] += 1
                     layout.backView.isUserInteractionEnabled = true
                 }
             }
             
             // 주인공
-            else if ((layout as! layout_Office_ch3).talkIndex[0] < 2) {
+            else if (self.layout.talkIndex[0] < 2) {
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch3).talkIndex[0]])
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch3).talkIndex[0]])
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
                 
-                (layout as! layout_Office_ch3).talkIndex[0] += 1
+                self.layout.talkIndex[0] += 1
                 layout.backView.isUserInteractionEnabled = true
             }
             
@@ -99,13 +99,13 @@ class Ch3Part1ViewController: BaseViewController {
         // 1번 선택지 이후
         else if (selected[0] == true  && selected_count == 0) {
             // 사자
-            if ((layout as! layout_Office_ch3).talkIndex[0] < 3) {
+            if (self.layout.talkIndex[0] < 3) {
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "사자 부장"
                 self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch3_part1).char_image[0][self.select_index])
                 self.layout.text.setText((layout.response as! Response_Ch3_part1).lion_response[self.select_index])
                 
-                (layout as! layout_Office_ch3).talkIndex[0] += 1
+                self.layout.talkIndex[0] += 1
                 layout.backView.isUserInteractionEnabled = true
             }
             
@@ -115,8 +115,8 @@ class Ch3Part1ViewController: BaseViewController {
                 
                 self.layout.profile_char.isHidden = true
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch3).talkIndex[0] - 1])
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch3).talkIndex[0] - 1])
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0] - 1])
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0] - 1])
                 
                 selected_count += 1
                 layout.backView.isUserInteractionEnabled = true
@@ -126,11 +126,11 @@ class Ch3Part1ViewController: BaseViewController {
         // 2번 선택지 이전
         else if (!selected[1] && selected_count == 1) {
             // 주인공
-            if ((layout as! layout_Office_ch3).talkIndex[0] < layout.talks.player.count) {
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[(layout as! layout_Office_ch3).talkIndex[0]])
-                self.layout.text.setText(layout.talks.player[(layout as! layout_Office_ch3).talkIndex[0]])
+            if (self.layout.talkIndex[0] < layout.talks.player.count) {
+                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
                 
-                (layout as! layout_Office_ch3).talkIndex[0] += 1
+                self.layout.talkIndex[0] += 1
                 layout.backView.isUserInteractionEnabled = true
             }
             // 선택지
