@@ -23,13 +23,6 @@ class Ch4Part1ViewController: BaseViewController {
         (layout as! layout_Office_ch4).initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            // 박쥐 animation
-//            (self.layout as! layout_Office_ch4).minimi_char1.isHidden = false
-//            UIView.animate(withDuration: 1.5, delay: 0, options: .curveLinear ,animations: {
-//                (self.layout as! layout_Office_ch4).minimi_char1.transform = CGAffineTransform(translationX: 0, y: 70)
-//            }, completion: { finished in
-//                self.registerGesture()
-//            })
             self.registerGesture()
         })
     }

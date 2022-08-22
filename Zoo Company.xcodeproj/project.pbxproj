@@ -159,8 +159,8 @@
 				86F65AF6283D00F900DCBAA8 /* Chapter 5 */,
 				8693E11428799D2200D7D306 /* Extension */,
 				861D19FA28328BA700D6E6B1 /* Common */,
-				8647B1A928B0B67E005F54BC /* Music */,
 				86A318F228ADDD61002D5C25 /* Legacy */,
+				8647B1A928B0B67E005F54BC /* Music */,
 				861D19F928328BA700D6E6B1 /* Products */,
 				61C06F780A52C720C9CBF7B9 /* Pods */,
 				5F0CEAD233DE5E8DC134A755 /* Frameworks */,
@@ -213,8 +213,7 @@
 		8693E10F28799B4E00D7D306 /* Chapter 1 */ = {
 			isa = PBXGroup;
 			children = (
-				8693E11028799C3000D7D306 /* SubwayScene.swift */,
-				861D1A0328328BA700D6E6B1 /* GameViewController.swift */,
+				86AA6FF428B3213B0099BDB3 /*  Subway Game */,
 				86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */,
 				8647B19A28A9137D005F54BC /* Ch1Part1ViewController.swift */,
 				8647B19D28A922AB005F54BC /* Ch1Part2ViewController.swift */,
@@ -279,6 +278,15 @@
 				86A318E928ADD6E3002D5C25 /* Ch3Data.swift */,
 			);
 			path = "Chapter 3";
+			sourceTree = "<group>";
+		};
+		86AA6FF428B3213B0099BDB3 /*  Subway Game */ = {
+			isa = PBXGroup;
+			children = (
+				8693E11028799C3000D7D306 /* SubwayScene.swift */,
+				861D1A0328328BA700D6E6B1 /* GameViewController.swift */,
+			);
+			path = " Subway Game";
 			sourceTree = "<group>";
 		};
 		86F65AF6283D00F900DCBAA8 /* Chapter 5 */ = {
