@@ -275,7 +275,7 @@ extension SubwayScene {
         countDownNode.size = texture.size()
         if (countDown == 0) {
             countDownNode.position.x = self.frame.width / 2 - (texture.size().width / 2)
-            countDownNode.position.y = self.frame.height / 2
+            countDownNode.position.y = self.frame.height / 2 - (texture.size().height / 2)
         }
     }
     
@@ -354,5 +354,4 @@ extension SubwayScene {
             self.gameEND(isGameSuccess: true)
         }]))
     }
-    
 }

@@ -21,10 +21,7 @@ class GameViewController: UIViewController {
         super.viewWillAppear(animated)
         setupScene()
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        setupScene()
-//    }
+
     func setupScene() {
         if let view = self.view as! SKView?, scene == nil {
             let scene = SubwayScene(size: view.bounds.size)

@@ -80,7 +80,7 @@ extension UIViewController {
         self.present(viewControllerToPresent, animated: animated, completion: completion)
     }
     
-    func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
+    func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, transition: Bool = true) {
         let transition = CATransition().fadeTransition()
         self.view.window?.layer.add(transition, forKey: kCATransition)
         

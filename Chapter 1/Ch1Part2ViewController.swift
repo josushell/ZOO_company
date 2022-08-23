@@ -18,7 +18,6 @@ class Ch1Part2ViewController: BaseViewController {
         layout.choices = ChoiceData_Ch1_empty()
         (layout as! layout_subway).initView(self.view)
         
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.registerGesture()
         })
