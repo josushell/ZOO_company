@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     func setupScene() {
         if let view = self.view as! SKView?, scene == nil {
             let scene = SubwayScene(size: view.bounds.size)
+            scene.controller = self
             view.presentScene(scene)
             self.scene = scene
         }

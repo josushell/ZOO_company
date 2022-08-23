@@ -43,11 +43,7 @@ class Ch1Part2ViewController: BaseViewController {
         
         // subway game 시작
         else {
-            //let vc = GameViewController()
-            //self.presentFull(vc, animated: false, completion: nil)
-            
-            self.view?.window?.rootViewController?.dissmissAndPresent(GameViewController(), animated: false, completion: nil)
-            //self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil)
+            self.dissmissAndPresent(GameViewController(), animated: false, completion: nil)
         }
     }
     

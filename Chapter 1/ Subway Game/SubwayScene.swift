@@ -12,10 +12,13 @@ import UIKit
 
 
 class SubwayScene: SKScene, SKPhysicsContactDelegate {
+    var controller: UIViewController?
+    
     let vs = viewSize()
     
     var gameNode: SKNode!
-    var backgroundNode: SKNode!
+    var backgroundNode_back: SKNode!
+    var backgroundNode_front: SKNode!
     
     var playerNode: SKNode!
     var playerSprite: SKSpriteNode!
@@ -26,7 +29,8 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var preview_back: SKSpriteNode!
     var preview_player: SKSpriteNode!
     
-    let groundSpeed: CGFloat = 200
+    let backgroundBackSpeed: CGFloat = 100
+    let backgroundFrontSpeed: CGFloat = 200
     let groundHeight: CGFloat = 44
     var playerYposition: CGFloat = 44
     
@@ -36,8 +40,9 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let obstacleCategory = 1 << 2 as UInt32
     let playerNoDamageCategory = 1 << 4 as UInt32
     
-    let foreground: CGFloat = 1
-    let background: CGFloat = 0
+    let foreground: CGFloat = 2
+    let background: CGFloat = 1
+    let bottomground: CGFloat = 0
     
     let playerJumpForce = 800 as Int
     
@@ -60,25 +65,25 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         countdown(count: countDown)
     }
     
-    func setBackground() {
+    func setBackground(_ fileName: String, _ speed: CGFloat, _ parentNode: SKNode) {
         let screenWidth = vs.width
-
-        let groundTexture = SKTexture(imageNamed: "subway_game")
+        
+        let groundTexture = SKTexture(imageNamed: fileName)
         groundTexture.filteringMode = .nearest
         
         let moveGroundLeft = SKAction.moveBy(x: -groundTexture.size().width,
-                                             y: 0.0, duration: TimeInterval(screenWidth / groundSpeed))
+                                             y: 0.0, duration: TimeInterval(screenWidth / speed))
         let resetGround = SKAction.moveBy(x: groundTexture.size().width, y: 0.0, duration: 0.0)
         let groundLoop = SKAction.sequence([moveGroundLeft, resetGround])
         
-
+        
         let numberOfGroundNodes = 1 + Int(ceil(screenWidth / groundTexture.size().width))
         
         for i in 0 ..< numberOfGroundNodes {
             let node = SKSpriteNode(texture: groundTexture)
             node.anchorPoint = CGPoint(x: 0.0, y: 0.0)
             node.position = CGPoint(x: CGFloat(i) * groundTexture.size().width, y: 0.5)
-            backgroundNode.addChild(node)
+            parentNode.addChild(node)
             node.run(SKAction.repeatForever(groundLoop))
         }
     }
@@ -91,13 +96,13 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         for idx in [1, 3, 6, 4] {
             runArray.append(SKTexture(imageNamed: "run\(idx)"))
         }
-
+        
         for item in runArray {
             item.filteringMode = .nearest
         }
         
         playerSprite = SKSpriteNode()
-        playerSprite.size = SKTexture(imageNamed: "run1").size()
+        playerSprite.size = CGSize(width: 64.4, height: 92)
         playerNode.addChild(playerSprite)
         playerSprite.position = CGPoint(x: screenWidth * 0.2, y: playerYposition)
         
@@ -125,12 +130,12 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         groundContactNode.physicsBody?.isDynamic = false
         groundContactNode.physicsBody?.categoryBitMask = groundCategory
         
-        backgroundNode.addChild(groundContactNode)
+        backgroundNode_front.addChild(groundContactNode)
     }
     
     func setObstacle() {
         let obstacles = ["two_1", "two_2", "two_3", "two_4", "three_1", "three_2", "three_3"]
-        let Scale = 1.0
+        let Scale = 0.85
         
         let obstacleTexture = SKTexture(imageNamed: obstacles.randomElement()!)
         obstacleTexture.filteringMode = .nearest
@@ -145,7 +150,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         obstacleSprite.physicsBody?.categoryBitMask = obstacleCategory
         obstacleSprite.physicsBody?.contactTestBitMask = playerCategory
         obstacleSprite.physicsBody?.collisionBitMask = groundCategory
-
+        
         obstacleNode.addChild(obstacleSprite)
         animateObstacle(sprite: obstacleSprite, texture: obstacleTexture)
     }
@@ -155,7 +160,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         let distanceOffscreen = 0 as CGFloat
         let distanceToMove = screenWidth + distanceOffscreen + texture.size().width
         
-        let moveObstacle = SKAction.moveBy(x: -distanceToMove, y: 0.0, duration: TimeInterval(screenWidth / groundSpeed))
+        let moveObstacle = SKAction.moveBy(x: -distanceToMove, y: 0.0, duration: TimeInterval(screenWidth / backgroundFrontSpeed))
         let removeObstacle = SKAction.removeFromParent()
         let moveAndRemove = SKAction.sequence([moveObstacle, removeObstacle])
         
@@ -197,35 +202,35 @@ extension SubwayScene {
     }
     
     func setDamageAnimation() {
-               let damageStart = SKAction.run {
-
-                   self.physicsBody?.categoryBitMask = self.playerNoDamageCategory
-               }
-
-               let slowFade = SKAction.sequence([
-                   SKAction.fadeAlpha(to: 0.3, duration: 0.35),
-                   SKAction.fadeAlpha(to: 0.7, duration: 0.35)
-                   ])
-               let fastFade = SKAction.sequence([
-                   SKAction.fadeAlpha(to: 0.3, duration: 0.2),
-                   SKAction.fadeAlpha(to: 0.7, duration: 0.2)
-                   ])
-               let fadeOutAndIn = SKAction.sequence([
-                   SKAction.repeat(slowFade, count: 2),
-                   SKAction.repeat(fastFade, count: 5),
-                   SKAction.fadeAlpha(to: 1, duration: 0.15)
-                   ])
-               
-               let damageEnd = SKAction.run {
-                   self.physicsBody?.categoryBitMask = self.playerCategory
-                   self.damaged = false
-               }
-              
-               self.damageAnimation = SKAction.sequence([
-                   damageStart,
-                   fadeOutAndIn,
-                   damageEnd
-            ])
+        let damageStart = SKAction.run {
+            
+            self.physicsBody?.categoryBitMask = self.playerNoDamageCategory
+        }
+        
+        let slowFade = SKAction.sequence([
+            SKAction.fadeAlpha(to: 0.3, duration: 0.35),
+            SKAction.fadeAlpha(to: 0.7, duration: 0.35)
+        ])
+        let fastFade = SKAction.sequence([
+            SKAction.fadeAlpha(to: 0.3, duration: 0.2),
+            SKAction.fadeAlpha(to: 0.7, duration: 0.2)
+        ])
+        let fadeOutAndIn = SKAction.sequence([
+            SKAction.repeat(slowFade, count: 2),
+            SKAction.repeat(fastFade, count: 5),
+            SKAction.fadeAlpha(to: 1, duration: 0.15)
+        ])
+        
+        let damageEnd = SKAction.run {
+            self.physicsBody?.categoryBitMask = self.playerCategory
+            self.damaged = false
+        }
+        
+        self.damageAnimation = SKAction.sequence([
+            damageStart,
+            fadeOutAndIn,
+            damageEnd
+        ])
     }
     
     func setDamage() {
@@ -245,21 +250,21 @@ extension SubwayScene {
         let fadeAction = SKAction.fadeAlpha(to: 0.2,
                                             duration: 0.3)
         // Loop through each heart and update its status:
-//        for index in 0 ..< lifeCount {
-//            if index < newHealth {
-//                // This heart should be full red:
-//                heartNodes[index].alpha = 1
-//            }
-//            else {
-//                // This heart should be faded:
-//                heartNodes[index].run(fadeAction)
-//            }
-//        }
+        //        for index in 0 ..< lifeCount {
+        //            if index < newHealth {
+        //                // This heart should be full red:
+        //                heartNodes[index].alpha = 1
+        //            }
+        //            else {
+        //                // This heart should be faded:
+        //                heartNodes[index].run(fadeAction)
+        //            }
+        //        }
     }
     
     func hitObstacle(_ contact: SKPhysicsContact) -> Bool {
         return contact.bodyA.categoryBitMask & obstacleCategory == obstacleCategory ||
-            contact.bodyB.categoryBitMask & obstacleCategory == obstacleCategory
+        contact.bodyB.categoryBitMask & obstacleCategory == obstacleCategory
     }
     
     func gameFail() {
@@ -280,7 +285,7 @@ extension SubwayScene {
         gameNode.speed = 0.0
         
         playerSprite.removeAllActions()
-        self.view?.window?.rootViewController?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
+        self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
     }
 }
 
@@ -288,7 +293,7 @@ extension SubwayScene {
 extension SubwayScene {
     private func countdownAction() {
         countDown -= 1
-
+        
         let texture = SKTexture(imageNamed: "count_\(countDown)")
         texture.filteringMode = .nearest
         countDownNode.texture = texture
@@ -298,7 +303,7 @@ extension SubwayScene {
             countDownNode.position.y = vs.height / 2
         }
     }
-
+    
     private func endCountdown() {
         countDownNode.removeFromParent()
         preview_player.removeFromParent()
@@ -312,12 +317,17 @@ extension SubwayScene {
         
         gameNode = SKNode()
         
-        backgroundNode = SKNode()
-        backgroundNode.zPosition = background
-        setBackground()
+        backgroundNode_back = SKNode()
+        backgroundNode_back.zPosition = bottomground
+        
+        backgroundNode_front = SKNode()
+        backgroundNode_front.zPosition = background
+        setBackground("subway_back", backgroundBackSpeed, backgroundNode_back)
+        setBackground("subway_front", backgroundFrontSpeed, backgroundNode_front)
         addCollisionToGround()
         
-        gameNode.addChild(backgroundNode)
+        gameNode.addChild(backgroundNode_front)
+        gameNode.addChild(backgroundNode_back)
         
         playerNode = SKNode()
         playerNode.zPosition = foreground
@@ -349,9 +359,9 @@ extension SubwayScene {
         countDownNode.size = texture.size()
         countDownNode.position = CGPoint(x: vs.width / 2, y: vs.height / 2)
         self.addChild(countDownNode)
-
+        
         let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.run(countdownAction)])
-
+        
         run(SKAction.sequence([SKAction.repeat(counterDecrement, count: count + 1), SKAction.run(endCountdown)]))
     }
 }

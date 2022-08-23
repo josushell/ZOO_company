@@ -149,7 +149,7 @@ class Ch3Part1ViewController: BaseViewController {
         // 2번 선택지 이후
         else {
             //MARK: - fade in fade out
-            self.presentFull(Ch3Part2ViewController(), animated: false, completion: nil)
+            self.dissmissAndPresent(Ch3Part2ViewController(), animated: false, completion: nil)
         }
     }
     

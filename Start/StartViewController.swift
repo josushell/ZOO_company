@@ -24,6 +24,7 @@ class StartViewController: UIViewController {
     func setupScene() {
         if let view = self.view as! SKView?, scene == nil {
             let scene = StartScene(size: view.bounds.size)//SubwayScene(size: view.bounds.size) //OfficeScene()
+            scene.controller = self
             view.presentScene(scene)
             self.scene = scene
         }

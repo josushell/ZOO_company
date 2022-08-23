@@ -10,6 +10,7 @@ import SpriteKit
 
 // MARK: 시작 scene
 class StartScene: SKScene {
+    var controller: UIViewController?
     let textureAtlas = SKTextureAtlas(named: "start")
     let startBtn = SKSpriteNode()
     var alert: UIAlertController!
@@ -90,8 +91,7 @@ class StartScene: SKScene {
         back_bgm.run(SKAction.stop())
         
         self.run(button_bgm, completion: {
-            self.view?.window?.rootViewController?.dissmissAndPresent(Ch1Part1ViewController(), animated: true, completion: nil)
-            //self.view?.presentScene(HomeScene(size: self.size), transition: .fade(withDuration: 2))
+            self.controller?.dissmissAndPresent(Ch1Part1ViewController(), animated: false, completion: nil)
         })
     }
     

@@ -78,11 +78,9 @@ class Ch1Part1ViewController: BaseViewController {
         else {
             layout.backView.isUserInteractionEnabled = false
             //MARK: - fade in fade out
-            //let vc = GameViewController()
-            //self.presentFull(vc, animated: false, completion: nil)
-            
+
             (sound as! HomeSound).setVolumeFadeOut((sound as! HomeSound).home_bgm, completion: {
-                self.presentFull(Ch1Part2ViewController(), animated: false, completion: nil)
+                self.dissmissAndPresent(Ch1Part2ViewController(), animated: false, completion: nil)
             })
         }
     }

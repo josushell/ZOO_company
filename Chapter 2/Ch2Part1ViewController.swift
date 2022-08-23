@@ -121,7 +121,7 @@ class Ch2Part1ViewController: BaseViewController {
             
             //MARK: - fade in fade out
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                self.presentFull(Ch2Part2ViewController(), animated: false, completion: nil)
+                self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
             }
         }
     }

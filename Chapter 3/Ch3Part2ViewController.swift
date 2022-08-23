@@ -69,7 +69,7 @@ class Ch3Part2ViewController: BaseViewController {
         // 선택지 후
         else {
             // ch4
-            self.presentFull(Ch4Part1ViewController(), animated: false, completion: nil)
+            self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
         }
     }
 }

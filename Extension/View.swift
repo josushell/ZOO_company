@@ -85,8 +85,13 @@ extension UIViewController {
         
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
           let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController?.presentFull(viewControllerToPresent, animated: animated, completion: completion)
+            viewControllerToPresent.modalPresentationStyle = .fullScreen
+            appDelegate.window?.rootViewController?.present(viewControllerToPresent, animated: animated, completion: completion)
         })
+//        self.dismiss(animated: animated, completion: {
+//            self.modalPresentationStyle = .fullScreen
+//            self.present(viewControllerToPresent, animated: animated, completion: completion)
+//        })
     }
 }
 

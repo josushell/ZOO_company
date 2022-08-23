@@ -26,3 +26,4 @@ class layout_home: layout_base {
         minimi_player.image = UIImage(named: "minimi_player_sleep")
     }
 }
+
