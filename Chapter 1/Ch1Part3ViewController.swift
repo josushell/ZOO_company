@@ -20,13 +20,13 @@ class Ch1Part3ViewController: BaseViewController {
         (layout as! layout_subway).initView(self.view)
         
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            // 실패
-            if (appdel.subwayFail) {
-                self.subwayIdx = 1
-            }
             // 성공
-            else {
+            if (appdel.subwaySuccess) {
                 self.subwayIdx = 0
+            }
+            // 실패
+            else {
+                self.subwayIdx = 1
             }
         }
         

@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var name: String = "anonymous"
     var count: Int = 0
-    var subwayFail: Bool = false
+    var subwaySuccess: Bool = true
     
     // 선택지가 몇개 선택되었는지
     var resultData: [Int] = [0, 0, 0]

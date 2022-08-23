@@ -29,7 +29,7 @@ class StartViewController: UIViewController {
             self.scene = scene
         }
         else {
-            print("failed")
+            
         }
     }
     

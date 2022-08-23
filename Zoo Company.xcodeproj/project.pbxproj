@@ -53,6 +53,7 @@
 		86A318FF28ADF953002D5C25 /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A318FE28ADF953002D5C25 /* DataClass.swift */; };
 		86A3190128AE01A0002D5C25 /* Ch4OfficeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A3190028AE01A0002D5C25 /* Ch4OfficeLayout.swift */; };
 		86A3190328AE1186002D5C25 /* Ch4Part2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A3190228AE1186002D5C25 /* Ch4Part2ViewController.swift */; };
+		86A4248628B46B5A0078E6FE /* SubwayHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4248528B46B5A0078E6FE /* SubwayHUD.swift */; };
 		86A7ADA028ACC90C006668AA /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7AD9F28ACC90C006668AA /* Apple.swift */; };
 		86AA6FF728B35DAA0099BDB3 /* Ch1Part3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AA6FF628B35DAA0099BDB3 /* Ch1Part3ViewController.swift */; };
 		86CE910E28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */; };
@@ -112,6 +113,7 @@
 		86A318FE28ADF953002D5C25 /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
 		86A3190028AE01A0002D5C25 /* Ch4OfficeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4OfficeLayout.swift; sourceTree = "<group>"; };
 		86A3190228AE1186002D5C25 /* Ch4Part2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4Part2ViewController.swift; sourceTree = "<group>"; };
+		86A4248528B46B5A0078E6FE /* SubwayHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayHUD.swift; sourceTree = "<group>"; };
 		86A7AD9F28ACC90C006668AA /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 		86AA6FF628B35DAA0099BDB3 /* Ch1Part3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1Part3ViewController.swift; sourceTree = "<group>"; };
 		86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ElevatorViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				8693E11028799C3000D7D306 /* SubwayScene.swift */,
+				86A4248528B46B5A0078E6FE /* SubwayHUD.swift */,
 				861D1A0328328BA700D6E6B1 /* GameViewController.swift */,
 			);
 			path = " Subway Game";
@@ -465,6 +468,7 @@
 				86A318E428ADB86B002D5C25 /* Ch3Part1ViewController.swift in Sources */,
 				8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */,
 				861D19FC28328BA700D6E6B1 /* AppDelegate.swift in Sources */,
+				86A4248628B46B5A0078E6FE /* SubwayHUD.swift in Sources */,
 				86A318F828ADDE38002D5C25 /* Ch1SubwayLayout.swift in Sources */,
 				86A318F628ADDDAE002D5C25 /* Ch1HomeLayout.swift in Sources */,
 				86A318EE28ADDAB8002D5C25 /* Ch1Data.swift in Sources */,
@@ -621,7 +625,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -652,7 +656,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

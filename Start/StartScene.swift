@@ -103,7 +103,7 @@ class StartScene: SKScene {
             
             // 화면 전환
             if nodeTouched.name == "StartBtn" {
-                self.view?.window?.rootViewController?.present(self.alert, animated: true, completion: nil)
+                self.controller?.present(self.alert, animated: false, completion: nil)
             }
         }
     }

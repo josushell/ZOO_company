@@ -15,6 +15,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var controller: UIViewController?
     
     let vs = viewSize()
+    let lifeHUD = HUD()
     
     var gameNode: SKNode!
     var backgroundNode_back: SKNode!
@@ -55,6 +56,8 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     
     var damaged: Bool = false
     var damageAnimation: SKAction!
+    
+    let appdel = UIApplication.shared.delegate as? AppDelegate
     
     override func didMove(to view: SKView) {
         self.backgroundColor = .white
@@ -135,7 +138,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     
     func setObstacle() {
         let obstacles = ["two_1", "two_2", "two_3", "two_4", "three_1", "three_2", "three_3"]
-        let Scale = 0.85
+        let Scale = 0.4
         
         let obstacleTexture = SKTexture(imageNamed: obstacles.randomElement()!)
         obstacleTexture.filteringMode = .nearest
@@ -184,12 +187,10 @@ extension SubwayScene {
         guard let _ = gameNode else {
             return
         }
-        
         if(gameNode.speed > 0){
-            
             if(currentTime - timeSinceLastSpawn > spawnRate){
                 timeSinceLastSpawn = currentTime
-                spawnRate = Double.random(in: 1.5 ..< 4.5)
+                spawnRate = Double.random(in: 1.5 ..< 3.5)
                 setObstacle()
             }
         }
@@ -197,7 +198,6 @@ extension SubwayScene {
     func didBegin(_ contact: SKPhysicsContact) {
         if(hitObstacle(contact)){
             setDamage()
-            setHealthStatus()
         }
     }
     
@@ -234,32 +234,19 @@ extension SubwayScene {
     }
     
     func setDamage() {
-        if self.damaged { return }
+        guard !self.damaged else {
+            return
+        }
         self.damaged = true
         
         self.lifeCount -= 1
+        lifeHUD.setHealthDisplay(newHealth: lifeCount)
         if self.lifeCount == 0 {
-            gameFail()
+            gameEND(isGameSuccess: false)
         }
         else {
             playerSprite.run(self.damageAnimation)
         }
-    }
-    func setHealthStatus() {
-        // Create a fade SKAction to fade out any lost hearts:
-        let fadeAction = SKAction.fadeAlpha(to: 0.2,
-                                            duration: 0.3)
-        // Loop through each heart and update its status:
-        //        for index in 0 ..< lifeCount {
-        //            if index < newHealth {
-        //                // This heart should be full red:
-        //                heartNodes[index].alpha = 1
-        //            }
-        //            else {
-        //                // This heart should be faded:
-        //                heartNodes[index].run(fadeAction)
-        //            }
-        //        }
     }
     
     func hitObstacle(_ contact: SKPhysicsContact) -> Bool {
@@ -267,23 +254,10 @@ extension SubwayScene {
         contact.bodyB.categoryBitMask & obstacleCategory == obstacleCategory
     }
     
-    func gameFail() {
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.subwayFail = true
-        }
-        gameOver()
-    }
-    
-    func gameSucess() {
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.subwayFail = false
-        }
-        gameOver()
-    }
-    
-    func gameOver() {
+    func gameEND(isGameSuccess: Bool) {
         gameNode.speed = 0.0
-        
+        appdel?.subwaySuccess = isGameSuccess
+
         playerSprite.removeAllActions()
         self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
     }
@@ -343,6 +317,9 @@ extension SubwayScene {
     }
     
     func countdown(count: Int) {
+        lifeHUD.createHudNodes(screenSize: CGSize(width: vs.width, height: vs.height))
+        self.addChild(lifeHUD)
+        
         preview_back = SKSpriteNode(imageNamed: "subway_game")
         preview_back.anchorPoint = CGPoint.zero
         preview_back.position = CGPoint.zero
@@ -363,5 +340,11 @@ extension SubwayScene {
         let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.run(countdownAction)])
         
         run(SKAction.sequence([SKAction.repeat(counterDecrement, count: count + 1), SKAction.run(endCountdown)]))
+        
+        // 30 secs
+        let successTime = SKAction.sequence([SKAction.wait(forDuration: 1.0)])
+        run(SKAction.sequence([SKAction.repeat(successTime, count: 60), SKAction.run {
+            self.gameEND(isGameSuccess: true)
+        }]))
     }
 }
