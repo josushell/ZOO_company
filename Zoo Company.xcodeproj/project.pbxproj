@@ -54,6 +54,7 @@
 		86A3190128AE01A0002D5C25 /* Ch4OfficeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A3190028AE01A0002D5C25 /* Ch4OfficeLayout.swift */; };
 		86A3190328AE1186002D5C25 /* Ch4Part2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A3190228AE1186002D5C25 /* Ch4Part2ViewController.swift */; };
 		86A4248628B46B5A0078E6FE /* SubwayHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4248528B46B5A0078E6FE /* SubwayHUD.swift */; };
+		86A4248A28B48CF60078E6FE /* SubwayDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4248928B48CF60078E6FE /* SubwayDescription.swift */; };
 		86A7ADA028ACC90C006668AA /* Apple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A7AD9F28ACC90C006668AA /* Apple.swift */; };
 		86AA6FF728B35DAA0099BDB3 /* Ch1Part3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AA6FF628B35DAA0099BDB3 /* Ch1Part3ViewController.swift */; };
 		86CE910E28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */; };
@@ -114,6 +115,7 @@
 		86A3190028AE01A0002D5C25 /* Ch4OfficeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4OfficeLayout.swift; sourceTree = "<group>"; };
 		86A3190228AE1186002D5C25 /* Ch4Part2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4Part2ViewController.swift; sourceTree = "<group>"; };
 		86A4248528B46B5A0078E6FE /* SubwayHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayHUD.swift; sourceTree = "<group>"; };
+		86A4248928B48CF60078E6FE /* SubwayDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayDescription.swift; sourceTree = "<group>"; };
 		86A7AD9F28ACC90C006668AA /* Apple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apple.swift; sourceTree = "<group>"; };
 		86AA6FF628B35DAA0099BDB3 /* Ch1Part3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1Part3ViewController.swift; sourceTree = "<group>"; };
 		86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ElevatorViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			children = (
 				8693E11028799C3000D7D306 /* SubwayScene.swift */,
 				86A4248528B46B5A0078E6FE /* SubwayHUD.swift */,
+				86A4248928B48CF60078E6FE /* SubwayDescription.swift */,
 				861D1A0328328BA700D6E6B1 /* GameViewController.swift */,
 			);
 			path = " Subway Game";
@@ -459,6 +462,7 @@
 				8647B1A228AA2642005F54BC /* BaseLayout.swift in Sources */,
 				8693E0D7286434D900D7D306 /* UsernameScene.swift in Sources */,
 				866A9CFB2835EE2500F49593 /* player.swift in Sources */,
+				86A4248A28B48CF60078E6FE /* SubwayDescription.swift in Sources */,
 				86A318FB28ADF281002D5C25 /* Ch4Part1ViewController.swift in Sources */,
 				86A318F428ADDD7D002D5C25 /* HomeScene.swift in Sources */,
 				8647B19B28A9137D005F54BC /* Ch1Part1ViewController.swift in Sources */,

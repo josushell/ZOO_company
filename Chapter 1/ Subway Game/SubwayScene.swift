@@ -14,8 +14,9 @@ import UIKit
 class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var controller: UIViewController?
     
+    let gameDescription = SubwayDescription()
     let vs = viewSize()
-    let lifeHUD = HUD()
+    let lifeHUD = SubwayHUD()
     
     var gameNode: SKNode!
     var backgroundNode_back: SKNode!
@@ -60,11 +61,12 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let appdel = UIApplication.shared.delegate as? AppDelegate
     
     override func didMove(to view: SKView) {
-        self.backgroundColor = .white
+        self.backgroundColor = .black
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -9.8)
         
-        self.isUserInteractionEnabled = false
+        gameDescription.initViews(view)
+        gameDescription.btn_start.addTarget(self, action: #selector(setGameSettings(_:)), for: .touchUpInside)
         countdown(count: countDown)
     }
     
@@ -317,6 +319,8 @@ extension SubwayScene {
     }
     
     func countdown(count: Int) {
+        self.isUserInteractionEnabled = false
+        
         lifeHUD.createHudNodes(screenSize: CGSize(width: vs.width, height: vs.height))
         self.addChild(lifeHUD)
         
@@ -336,15 +340,20 @@ extension SubwayScene {
         countDownNode.size = texture.size()
         countDownNode.position = CGPoint(x: vs.width / 2, y: vs.height / 2)
         self.addChild(countDownNode)
+    }
+    
+    @objc func setGameSettings(_ sender: UIButton) {
+        gameDescription.layout_main.removeFromSuperview()
         
         let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0), SKAction.run(countdownAction)])
         
-        run(SKAction.sequence([SKAction.repeat(counterDecrement, count: count + 1), SKAction.run(endCountdown)]))
+        run(SKAction.sequence([SKAction.repeat(counterDecrement, count: countDown + 1), SKAction.run(endCountdown)]))
         
-        // 30 secs
+        // 60 secs
         let successTime = SKAction.sequence([SKAction.wait(forDuration: 1.0)])
         run(SKAction.sequence([SKAction.repeat(successTime, count: 60), SKAction.run {
             self.gameEND(isGameSuccess: true)
         }]))
     }
+    
 }

@@ -9,14 +9,14 @@ import Foundation
 import SpriteKit
 
 // MARK: - 남은 생명 표시
-class HUD: SKNode {
+class SubwayHUD: SKNode {
     var heartNodes: [SKSpriteNode] = []
     
     func createHudNodes(screenSize: CGSize) {
         let texture = SKTexture(imageNamed: "life")
         for index in 0 ..< 3 {
             let newHeartNode = SKSpriteNode(texture: texture)
-            newHeartNode.size = CGSize(width: 30, height: 30)
+            newHeartNode.size = CGSize(width: 35 ,height: 38)
 
             let xPos = 0 + CGFloat(index * 45) + 33
             let yPos = screenSize.height + 10
