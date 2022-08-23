@@ -15,7 +15,6 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var controller: UIViewController?
     
     let gameDescription = SubwayDescription()
-    let vs = viewSize()
     let lifeHUD = SubwayHUD()
     
     var gameNode: SKNode!
@@ -71,7 +70,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setBackground(_ fileName: String, _ speed: CGFloat, _ parentNode: SKNode) {
-        let screenWidth = vs.width
+        let screenWidth = self.frame.width
         
         let groundTexture = SKTexture(imageNamed: fileName)
         groundTexture.filteringMode = .nearest
@@ -82,7 +81,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         let groundLoop = SKAction.sequence([moveGroundLeft, resetGround])
         
         
-        let numberOfGroundNodes = 1 + Int(ceil(screenWidth / groundTexture.size().width))
+        let numberOfGroundNodes = 1 + Int(ceil((screenWidth) / groundTexture.size().width))
         
         for i in 0 ..< numberOfGroundNodes {
             let node = SKSpriteNode(texture: groundTexture)
@@ -94,7 +93,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setPlayer() {
-        let screenWidth = vs.width
+        let screenWidth = self.frame.width
         let playerScale = 1.0 as CGFloat
         var runArray: [SKTexture] = []
         
@@ -161,7 +160,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func animateObstacle(sprite: SKSpriteNode, texture: SKTexture) {
-        let screenWidth = vs.width
+        let screenWidth = self.frame.width
         let distanceOffscreen = 0 as CGFloat
         let distanceToMove = screenWidth + distanceOffscreen + texture.size().width
         
@@ -275,8 +274,8 @@ extension SubwayScene {
         countDownNode.texture = texture
         countDownNode.size = texture.size()
         if (countDown == 0) {
-            countDownNode.position.x = vs.width / 2 - (texture.size().width / 2) + 30
-            countDownNode.position.y = vs.height / 2
+            countDownNode.position.x = self.frame.width / 2 - (texture.size().width / 2)
+            countDownNode.position.y = self.frame.height / 2
         }
     }
     
@@ -321,7 +320,7 @@ extension SubwayScene {
     func countdown(count: Int) {
         self.isUserInteractionEnabled = false
         
-        lifeHUD.createHudNodes(screenSize: CGSize(width: vs.width, height: vs.height))
+        lifeHUD.createHudNodes(screenSize: CGSize(width: self.frame.width, height: self.frame.height))
         self.addChild(lifeHUD)
         
         preview_back = SKSpriteNode(imageNamed: "subway_game")
@@ -331,14 +330,14 @@ extension SubwayScene {
         
         preview_player = SKSpriteNode(imageNamed: "run1")
         preview_player.anchorPoint = CGPoint.zero
-        preview_player.position = CGPoint(x: vs.width * 0.2, y: playerYposition)
+        preview_player.position = CGPoint(x: self.frame.width * 0.2, y: playerYposition)
         self.addChild(preview_player)
         
         let texture = SKTexture(imageNamed: "count_3")
         countDownNode = SKSpriteNode(texture: texture)
         countDownNode.anchorPoint = CGPoint.zero
         countDownNode.size = texture.size()
-        countDownNode.position = CGPoint(x: vs.width / 2, y: vs.height / 2)
+        countDownNode.position = CGPoint(x: self.frame.width / 2 - texture.size().width / 2, y: self.frame.height / 2 - texture.size().height / 2)
         self.addChild(countDownNode)
     }
     

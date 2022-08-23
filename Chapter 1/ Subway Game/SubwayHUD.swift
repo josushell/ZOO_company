@@ -16,10 +16,10 @@ class SubwayHUD: SKNode {
         let texture = SKTexture(imageNamed: "life")
         for index in 0 ..< 3 {
             let newHeartNode = SKSpriteNode(texture: texture)
-            newHeartNode.size = CGSize(width: 35 ,height: 38)
+            newHeartNode.size = CGSize(width: 48 ,height: 46)
 
-            let xPos = 0 + CGFloat(index * 45) + 33
-            let yPos = screenSize.height + 10
+            let xPos = 10 + CGFloat(index * 55) + 33
+            let yPos = screenSize.height - 45
             newHeartNode.position = CGPoint(x: xPos, y: yPos)
             newHeartNode.zPosition = 999
 

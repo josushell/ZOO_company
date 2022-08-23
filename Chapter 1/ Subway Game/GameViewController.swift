@@ -17,10 +17,14 @@ class GameViewController: UIViewController {
         self.view = SKView()
         self.view.bounds = UIScreen.main.bounds
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupScene()
     }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        setupScene()
+//    }
     func setupScene() {
         if let view = self.view as! SKView?, scene == nil {
             let scene = SubwayScene(size: view.bounds.size)
@@ -29,7 +33,7 @@ class GameViewController: UIViewController {
             self.scene = scene
         }
         else {
-            print("failed")
+            print("subway game setupscene failed")
         }
     }
 

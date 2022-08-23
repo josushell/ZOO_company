@@ -73,15 +73,16 @@ extension UIViewController {
     
     func presentFull(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
         let transition = CATransition().fadeTransition()
-        self.view.window!.layer.add(transition, forKey: kCATransition)
+        transition.duration = 2
+        self.view.window?.layer.add(transition, forKey: kCATransition)
         
         viewControllerToPresent.modalPresentationStyle = .fullScreen
-        present(viewControllerToPresent, animated: animated, completion: completion)
+        self.present(viewControllerToPresent, animated: animated, completion: completion)
     }
     
     func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
         let transition = CATransition().fadeTransition()
-        self.view.window!.layer.add(transition, forKey: kCATransition)
+        self.view.window?.layer.add(transition, forKey: kCATransition)
         
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
           let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -150,9 +151,9 @@ extension UILabel {
 
 // MARK: - UIButton
 extension UIButton {
-    func setChoiceButton(tagValue: Int) {
+    func setChoiceButton(tagValue: Int, ImgName: String = "choicebox_normal") {
         self.tag = tagValue
-        self.setImage(UIImage(named: "choicebox_normal"), for: .normal)
+        self.setImage(UIImage(named: ImgName), for: .normal)
         self.setImage(UIImage(named: "choicebox_touched"), for: .highlighted)
         self.adjustsImageWhenHighlighted = false
         
