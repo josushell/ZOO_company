@@ -31,22 +31,23 @@ class layout_Office_ch2_part1: layout_base {
         
         minimi_lion.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(26)
-            make.leading.equalTo(backgroundImg.snp.leading).offset(240)
+            make.right.equalTo(minimi_player.snp.left).offset(-50)
         }
         minimi_lion.image = UIImage(named: "minimi_lion_front")
         minimi_lion.isHidden = true
         
         minimi_mouse.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(26)
-            make.leading.equalTo(backgroundImg.snp.leading).offset(240)
+            make.right.equalTo(minimi_player.snp.left).offset(-53)
         }
         minimi_mouse.image = UIImage(named: "minimi_mouse_front")
         minimi_mouse.isHidden = true
         
         minimi_response.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(68)
-            make.leading.equalTo(backgroundImg.snp.leading).offset(440)
+            make.left.equalTo(minimi_player.snp.right).offset(40)
         }
+        minimi_response.layer.zPosition = Zposition.minimi.rawValue
         minimi_response.isHidden = true
     }
 }

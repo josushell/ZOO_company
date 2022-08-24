@@ -23,6 +23,7 @@ class layout_home: layout_base {
             make.top.equalTo(backgroundImg.snp.top).offset(71)
             make.trailing.equalTo(backgroundImg.snp.trailing).offset(-176)
         }
+        minimi_player.layer.zPosition = Zposition.minimi.rawValue
         minimi_player.image = UIImage(named: "minimi_player_sleep")
     }
 }

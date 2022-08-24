@@ -23,22 +23,28 @@ class layout_Office_ch4: layout_base {
         //minimi 설정
         view.addSubviews(minimi_player, minimi_char1, minimi_char2)
         minimi_player.snp.makeConstraints() { make in
-            make.center.equalTo(backgroundImg.snp.center)
+            make.centerX.equalTo(backgroundImg.snp.centerX)
+            make.centerY.equalTo(backgroundImg.snp.centerY).offset(10)
         }
         minimi_player.image = UIImage(named: "minimi_player_suit")
+        minimi_player.layer.zPosition = Zposition.minimi.rawValue
         
         minimi_char1.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(68)
-            make.leading.equalTo(backgroundImg.snp.leading).offset(440)
+            //make.leading.equalTo(backgroundImg.snp.leading).offset(440)
+            make.left.equalTo(minimi_player.snp.right).offset(35)
         }
         minimi_char1.image = UIImage(named: "minimi_lion_front")
         minimi_char1.isHidden = true
+        minimi_char1.layer.zPosition = Zposition.minimi.rawValue
         
         minimi_char2.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(26)
-            make.leading.equalTo(backgroundImg.snp.leading).offset(240)
+            //make.leading.equalTo(backgroundImg.snp.leading).offset(240)
+            make.right.equalTo(minimi_player.snp.left).offset(-53)
         }
         minimi_char2.image = UIImage(named: "minimi_mouse_front")
         minimi_char2.isHidden = true
+        minimi_char2.layer.zPosition = Zposition.minimi.rawValue
     }
 }

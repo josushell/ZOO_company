@@ -265,7 +265,6 @@ extension SubwayScene {
         playerSprite.removeAllActions()
         let resultText = (isGameSuccess == true ? "YOU WIN!" : "YOU LOSE!")
         gameResult.openResult(resultTxt: resultText)
-        //self.controller?.presentFull(Ch1Part3ViewController(), animated: false, completion: nil, transition: false)
     }
     
     @objc func moveOnNextChapter(_ sender: UIButton) {

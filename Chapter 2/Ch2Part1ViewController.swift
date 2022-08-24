@@ -28,12 +28,11 @@ class Ch2Part1ViewController: BaseViewController {
         // 3초 뒤 실행
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear ,animations: {
-                (self.layout as! layout_Office_ch2_part1).minimi_player.transform = CGAffineTransform(translationX: 0, y: 66)
+                (self.layout as! layout_Office_ch2_part1).minimi_player.transform = CGAffineTransform(translationX: 0, y: 70)
             }, completion: { finished in
                 self.registerGesture()
             })
         }
-
     }
     
     @objc override func onBtnClicked(_ sender: UIButton) {

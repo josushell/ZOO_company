@@ -23,9 +23,11 @@ class layout_Office_ch3: layout_base {
         minimi_lion.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(26)
             make.leading.equalTo(backgroundImg.snp.leading).offset(245)
+            //make.right.equalTo()
         }
         minimi_lion.image = UIImage(named: "minimi_lion_front")
         minimi_lion.isHidden = true
+        minimi_lion.layer.zPosition = Zposition.minimi.rawValue
     }
 
 }

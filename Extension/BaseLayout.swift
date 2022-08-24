@@ -64,7 +64,7 @@ class layout_base {
         }
         textbox.image = UIImage(named: "textback")
         textbox.isHidden = true
-        textbox.layer.zPosition = 998
+        textbox.layer.zPosition = Zposition.nametagNtextbox.rawValue
         
         textbox.addSubviews(text, img_nametag)
         text.snp.makeConstraints() { make in
@@ -83,7 +83,7 @@ class layout_base {
         }
         img_nametag.image = UIImage(named: "nametag")
         img_nametag.isHidden = true
-        img_nametag.layer.zPosition = 998
+        img_nametag.layer.zPosition = Zposition.nametagNtextbox.rawValue
         
         img_nametag.addSubview(text_nametag)
         text_nametag.snp.makeConstraints() { make in
@@ -98,12 +98,14 @@ class layout_base {
             make.left.equalToSuperview().offset(111)
         }
         profile_player.image = UIImage(named: profileImg)
+        profile_player.layer.zPosition = Zposition.profile.rawValue
         profile_player.isHidden = true
         
         profile_char.snp.makeConstraints() { make in
             make.bottom.equalTo(self.textbox.snp.top)
             make.right.equalToSuperview().offset(-111)
         }
+        profile_char.layer.zPosition = Zposition.profile.rawValue
         profile_char.isHidden = true
         
         // 선택지
@@ -128,6 +130,7 @@ class layout_base {
             make.edges.equalToSuperview()
         }
         choiceView.image = UIImage(named: "choiceframe")
+        layout_choice.layer.zPosition = Zposition.choice.rawValue
         
         label_choicetitle.snp.makeConstraints() { make in
             make.top.equalToSuperview().offset(36)

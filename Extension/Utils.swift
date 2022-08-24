@@ -44,3 +44,12 @@ extension CATransition {
         return transition
     }
 }
+
+
+// MARK: - z position enum class
+enum Zposition: CGFloat {
+    case choice = 999
+    case nametagNtextbox = 998
+    case profile = 900
+    case minimi = 899
+}
