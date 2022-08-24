@@ -39,8 +39,4 @@ class BaseViewController: UIViewController {
     @objc func backTouched(_ sender: UITapGestureRecognizer) {
         
     }
-//    
-//    override var shouldAutorotate: Bool {
-//        return true
-//    }
 }

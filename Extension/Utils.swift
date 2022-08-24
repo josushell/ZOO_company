@@ -45,7 +45,6 @@ extension CATransition {
     }
 }
 
-
 // MARK: - z position enum class
 enum Zposition: CGFloat {
     case choice = 999

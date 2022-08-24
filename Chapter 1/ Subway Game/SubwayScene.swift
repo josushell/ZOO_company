@@ -10,7 +10,6 @@ import GameplayKit
 import SpriteKit
 import UIKit
 
-
 class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var controller: UIViewController?
     
