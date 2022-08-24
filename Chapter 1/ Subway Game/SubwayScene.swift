@@ -15,6 +15,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var controller: UIViewController?
     
     let gameDescription = SubwayDescription()
+    let gameResult = SubwayGameResult()
     let lifeHUD = SubwayHUD()
     
     var gameNode: SKNode!
@@ -66,6 +67,9 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         
         gameDescription.initViews(view)
         gameDescription.btn_start.addTarget(self, action: #selector(setGameSettings(_:)), for: .touchUpInside)
+        gameResult.initViews(view)
+        gameResult.btn_start.addTarget(self, action: #selector(moveOnNextChapter(_:)), for: .touchUpInside)
+        
         countdown(count: countDown)
     }
     
@@ -138,8 +142,8 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setObstacle() {
-        let obstacles = ["two_1", "two_2", "two_3", "two_4", "three_1", "three_2", "three_3"]
-        let Scale = 0.4
+        let obstacles = ["two_1", "two_2", "two_3", "two_4", "two_5", "two_6", "two_7", "three_1", "three_2", "three_3", "three_4", "three_5", "three_6"]
+        let Scale = 0.7
         
         let obstacleTexture = SKTexture(imageNamed: obstacles.randomElement()!)
         obstacleTexture.filteringMode = .nearest
@@ -204,7 +208,6 @@ extension SubwayScene {
     
     func setDamageAnimation() {
         let damageStart = SKAction.run {
-            
             self.physicsBody?.categoryBitMask = self.playerNoDamageCategory
         }
         
@@ -260,6 +263,12 @@ extension SubwayScene {
         appdel?.subwaySuccess = isGameSuccess
 
         playerSprite.removeAllActions()
+        let resultText = (isGameSuccess == true ? "YOU WIN!" : "YOU LOSE!")
+        gameResult.openResult(resultTxt: resultText)
+        //self.controller?.presentFull(Ch1Part3ViewController(), animated: false, completion: nil, transition: false)
+    }
+    
+    @objc func moveOnNextChapter(_ sender: UIButton) {
         self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
     }
 }

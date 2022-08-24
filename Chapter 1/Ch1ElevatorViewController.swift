@@ -28,10 +28,7 @@ class Ch1ElevatorViewController: UIViewController {
                 .width + self.layout.label.frame.width + 100) * -1, y: 0)
         }, completion: { _ in
             self.sound.setVolumeFadeOut(self.sound.elevator_bgm) {
-                //self.dissmissAndPresent(Ch2Part1ViewController(), animated: false, completion: nil)
-                let vc = Ch2Part1ViewController()
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: false, completion: nil)
+                self.presentFull(Ch2Part1ViewController(), animated: false, completion: nil, transition: false)
             }
         })
     }

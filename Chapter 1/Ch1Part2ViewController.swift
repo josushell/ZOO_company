@@ -42,7 +42,7 @@ class Ch1Part2ViewController: BaseViewController {
         
         // subway game 시작
         else {
-            self.presentFull(GameViewController(), animated: false, completion: nil)
+            self.presentFull(GameViewController(), animated: false, completion: nil, duration: 2)
         }
     }
     

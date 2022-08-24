@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class layout_elevator {
-    let vs = viewSize()
+    let vs = ViewSize()
     let backView = UIView()
     let backgroundImg = UIImageView()
     let label = UILabel()

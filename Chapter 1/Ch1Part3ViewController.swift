@@ -31,6 +31,12 @@ class Ch1Part3ViewController: BaseViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.layout.textbox.isHidden = false
+            self.layout.profile_player.isHidden = false
+            self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.subwayIdx][self.layout.talkIndex[0]])
+            self.layout.text.setText(self.layout.response.player_response[self.subwayIdx][self.layout.talkIndex[0]])
+            self.layout.talkIndex[0] += 1
+            
             self.registerGesture()
         })
     }
@@ -42,8 +48,6 @@ class Ch1Part3ViewController: BaseViewController {
     
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {
         layout.backView.isUserInteractionEnabled = false
-        layout.textbox.isHidden = false
-        layout.profile_player.isHidden = false
         
         if (self.layout.talkIndex[0] < layout.response.player_response[self.subwayIdx].count) {
             self.layout.profile_player.image = UIImage(named: layout.response.player_image[self.subwayIdx][self.layout.talkIndex[0]])
@@ -52,13 +56,8 @@ class Ch1Part3ViewController: BaseViewController {
             layout.backView.isUserInteractionEnabled = true
         }
         
-        // subway game 시작
         else {
-            //self.dissmissAndPresent(Ch1ElevatorViewController(), animated: false, completion: nil)
-            
-            let vc = Ch1ElevatorViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: false, completion: nil)
+            self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil, transition: false)
         }
     }
 
