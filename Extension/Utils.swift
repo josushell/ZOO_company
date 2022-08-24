@@ -35,9 +35,9 @@ enum Choice: String {
 
 // MARK: - view controller fade effect
 extension CATransition {
-    func fadeTransition() -> CATransition {
+    func fadeTransition(duration: CGFloat = 1.5) -> CATransition {
         let transition = CATransition()
-        transition.duration = 1.5
+        transition.duration = duration
         transition.type = CATransitionType.fade
         transition.subtype = CATransitionSubtype.fromRight
 

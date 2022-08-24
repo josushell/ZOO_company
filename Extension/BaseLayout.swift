@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 
 class layout_base {
-    let vs = viewSize()
+    let vs = ViewSize()
     
     let backView = UIView()
     let backgroundImg = UIImageView()

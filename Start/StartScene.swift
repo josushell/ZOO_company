@@ -14,6 +14,7 @@ class StartScene: SKScene {
     let textureAtlas = SKTextureAtlas(named: "start")
     let startBtn = SKSpriteNode()
     var alert: UIAlertController!
+    let framesize = FrameSize()
     
     let back_bgm = SKAudioNode(fileNamed: "start_music")
     let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
@@ -22,14 +23,17 @@ class StartScene: SKScene {
     override func didMove(to view: SKView) {
         // MARK: set user name input
         setUserNameInput()
-        
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    
         self.backgroundColor = UIColor(red: 255, green: 255, blue: 255)
         
         let backFrame: [SKTexture] = [textureAtlas.textureNamed("1"), textureAtlas.textureNamed("2"),
                                      textureAtlas.textureNamed("3"), textureAtlas.textureNamed("4")]
         let backAction = SKAction.animate(with: backFrame, timePerFrame: 0.5)
         let backgroundImg = SKSpriteNode(imageNamed: "1")
+        backgroundImg.size = CGSize(width: framesize.width , height: framesize.height)
+        backgroundImg.anchorPoint = CGPoint.zero
+        backgroundImg.position = CGPoint.zero
+        print("\(backgroundImg.size.width), \(backgroundImg.size.height)")
         
         var mainAnim = SKAction()
         mainAnim = SKAction.repeatForever(backAction)
@@ -44,7 +48,8 @@ class StartScene: SKScene {
         // MARK: Start button settings
         startBtn.texture = textureAtlas.textureNamed("startbtn")
         startBtn.size = CGSize(width: 200, height: 100)
-        startBtn.position = CGPoint(x: 0.5, y: -140)
+        startBtn.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        startBtn.position = CGPoint(x: framesize.width / 2, y: 50)
         startBtn.name = "StartBtn"
         
         let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0)])
@@ -88,10 +93,13 @@ class StartScene: SKScene {
             appdel.name = self.alert.textFields?[0].text ?? "anonymous"
         }
         
-        back_bgm.run(SKAction.stop())
-        
-        self.run(button_bgm, completion: {
-            self.controller?.dissmissAndPresent(Ch1Part1ViewController(), animated: false, completion: nil)
+        back_bgm.run(SKAction.changeVolume(to: 0, duration: 1))
+        self.run(SKAction.wait(forDuration: 1), completion: {
+            self.run(self.button_bgm, completion: {
+                self.run(SKAction.wait(forDuration: 1), completion: {
+                    self.controller?.dissmissAndPresent(Ch1Part1ViewController(), animated: false, completion: nil)
+                })
+            })
         })
     }
     

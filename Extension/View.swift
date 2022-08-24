@@ -11,7 +11,7 @@ import AVKit
 
 
 // MARK: - View Size
-class viewSize {
+class ViewSize {
     var width: CGFloat {
         if (UIInterfaceOrientation.landscapeLeft.isLandscape) {
             if (UIScreen.main.bounds.width < UIScreen.main.bounds.height) {
@@ -27,6 +27,22 @@ class viewSize {
             }
         }
         return UIScreen.main.bounds.height - (46 * 2)
+    }
+}
+
+// MARK: - Frame Size
+class FrameSize {
+    var width: CGFloat {
+        if (UIInterfaceOrientation.landscapeLeft.isLandscape) {
+            return UIScreen.main.bounds.width
+        }
+        return UIScreen.main.bounds.height
+    }
+    var height: CGFloat {
+        if (UIInterfaceOrientation.landscapeLeft.isLandscape) {
+            return UIScreen.main.bounds.height
+        }
+        return UIScreen.main.bounds.width
     }
 }
 
@@ -71,17 +87,18 @@ extension UIViewController {
         viewController.removeFromParent()
     }
     
-    func presentFull(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        let transition = CATransition().fadeTransition()
-        transition.duration = 2
-        self.view.window?.layer.add(transition, forKey: kCATransition)
+    func presentFull(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, transition: Bool = true, duration: CGFloat = 2) {
+        if (transition) {
+            let transition = CATransition().fadeTransition(duration: duration)
+            self.view.window?.layer.add(transition, forKey: kCATransition)
+        }
         
         viewControllerToPresent.modalPresentationStyle = .fullScreen
         self.present(viewControllerToPresent, animated: animated, completion: completion)
     }
     
-    func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, transition: Bool = true) {
-        let transition = CATransition().fadeTransition()
+    func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, duration: CGFloat = 1.5) {
+        let transition = CATransition().fadeTransition(duration: duration)
         self.view.window?.layer.add(transition, forKey: kCATransition)
         
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {

@@ -11,7 +11,7 @@ import SpriteKit
 
 // MARK: home scene
 class HomeScene: SKScene {
-    let vs = viewSize()
+    let vs = ViewSize()
     
     let chartexture = SKTextureAtlas(named: "Minimi")
     let backtexture = SKTextureAtlas(named: "Back")
@@ -168,7 +168,6 @@ class HomeScene: SKScene {
         else {
             if (flag == true) {
                 self.view?.presentScene(SubwayScene(size: self.size), transition: .fade(withDuration: 2))
-                //self.inputViewController?.present(<#T##UIViewController#>, animated: true)
             }
             
             else {
