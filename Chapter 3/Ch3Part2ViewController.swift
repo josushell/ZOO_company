@@ -49,7 +49,7 @@ class Ch3Part2ViewController: BaseViewController {
                 // 자판기 이미지
                 if (self.layout.talkIndex[0] == 3) {
                     self.layout.profile_char.isHidden = false
-                    self.layout.profile_char.image = UIImage(named: "suit_normal")
+                    self.layout.profile_char.image = UIImage(named: "vending")
                 }
                 
                 self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
