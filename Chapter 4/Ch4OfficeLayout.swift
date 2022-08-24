@@ -48,3 +48,4 @@ class layout_Office_ch4: layout_base {
         minimi_char2.layer.zPosition = Zposition.minimi.rawValue
     }
 }
+

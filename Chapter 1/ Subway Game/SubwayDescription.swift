@@ -31,10 +31,10 @@ class SubwayDescription {
         layout_description.image = UIImage(named: "subway_description")
         
         btn_start.snp.makeConstraints() { make in
-            make.width.equalTo(123)
-            make.height.equalTo(39)
+            make.width.equalTo(145.08)
+            make.height.equalTo(46)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-24)
+            make.bottom.equalToSuperview().offset(-20)
         }
         btn_start.setChoiceButton(tagValue: 0, ImgName: "choicebox_normal_mini")
         btn_start.layer.zPosition = 999
@@ -45,7 +45,7 @@ class SubwayDescription {
         }
         label_start.text = "GAME START"
         label_start.textColor = UIColor.black
-        label_start.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        label_start.font = UIFont(name: "NeoDunggeunmo-Regular", size: 20)
         label_start.sizeToFit()
     }
 }

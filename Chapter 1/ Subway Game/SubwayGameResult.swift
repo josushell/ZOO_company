@@ -19,8 +19,8 @@ class SubwayGameResult {
     func initViews(_ view: UIView) {
         view.addSubviews(layout_main)
         layout_main.snp.makeConstraints() { make in
-            make.width.equalTo(445)
-            make.height.equalTo(203)
+            make.width.equalTo(359)
+            make.height.equalTo(175)
             make.center.equalToSuperview()
         }
         layout_main.isHidden = true
@@ -33,20 +33,20 @@ class SubwayGameResult {
         
         layout_result.addSubview(label_result)
         label_result.snp.makeConstraints() { make in
-            make.top.equalToSuperview().offset(55)
+            make.top.equalToSuperview().offset(53)
             make.centerX.equalToSuperview()
         }
         label_result.text = "temp"
         label_result.textColor = UIColor.black
-        label_result.font = UIFont(name: "NeoDunggeunmo-Regular", size: 64)
+        label_result.font = UIFont(name: "NeoDunggeunmo-Regular", size: 35)
         label_result.sizeToFit()
         label_result.layer.zPosition = 999
         
         btn_start.snp.makeConstraints() { make in
-            make.width.equalTo(123)
-            make.height.equalTo(39)
+            make.width.equalTo(145.08)
+            make.height.equalTo(46)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-24)
+            make.bottom.equalToSuperview().offset(-20)
         }
         btn_start.setChoiceButton(tagValue: 0, ImgName: "choicebox_normal_mini")
         btn_start.layer.zPosition = 999
@@ -57,7 +57,7 @@ class SubwayGameResult {
         }
         label_start.text = "NEXT"
         label_start.textColor = UIColor.black
-        label_start.font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        label_start.font = UIFont(name: "NeoDunggeunmo-Regular", size: 20)
         label_start.sizeToFit()
     }
     

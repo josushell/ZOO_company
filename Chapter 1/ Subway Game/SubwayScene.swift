@@ -28,8 +28,6 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var obstacleNode: SKNode!
     
     var countDownNode: SKSpriteNode!
-    var preview_back: SKSpriteNode!
-    var preview_player: SKSpriteNode!
     
     let backgroundBackSpeed: CGFloat = 100
     let backgroundFrontSpeed: CGFloat = 200
@@ -91,6 +89,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
             let node = SKSpriteNode(texture: groundTexture)
             node.anchorPoint = CGPoint(x: 0.0, y: 0.0)
             node.position = CGPoint(x: CGFloat(i) * groundTexture.size().width, y: 0.5)
+            node.size.height = self.frame.height
             parentNode.addChild(node)
             node.run(SKAction.repeatForever(groundLoop))
         }
@@ -289,9 +288,8 @@ extension SubwayScene {
     
     private func endCountdown() {
         countDownNode.removeFromParent()
-        preview_player.removeFromParent()
-        preview_back.removeFromParent()
-        startGame()
+        self.isUserInteractionEnabled = true
+        gameNode.speed = 1
     }
     
     private func startGame()
@@ -322,7 +320,6 @@ extension SubwayScene {
         gameNode.addChild(obstacleNode)
         
         self.addChild(gameNode)
-        self.isUserInteractionEnabled = true
     }
     
     func countdown(count: Int) {
@@ -331,21 +328,16 @@ extension SubwayScene {
         lifeHUD.createHudNodes(screenSize: CGSize(width: self.frame.width, height: self.frame.height))
         self.addChild(lifeHUD)
         
-        preview_back = SKSpriteNode(imageNamed: "subway_game")
-        preview_back.anchorPoint = CGPoint.zero
-        preview_back.position = CGPoint.zero
-        self.addChild(preview_back)
-        
-        preview_player = SKSpriteNode(imageNamed: "run1")
-        preview_player.anchorPoint = CGPoint.zero
-        preview_player.position = CGPoint(x: self.frame.width * 0.2, y: playerYposition)
-        self.addChild(preview_player)
+        startGame()
+        gameNode.speed = 0
         
         let texture = SKTexture(imageNamed: "count_3")
         countDownNode = SKSpriteNode(texture: texture)
         countDownNode.anchorPoint = CGPoint.zero
         countDownNode.size = texture.size()
         countDownNode.position = CGPoint(x: self.frame.width / 2 - texture.size().width / 2, y: self.frame.height / 2 - texture.size().height / 2)
+        countDownNode.zPosition = 999
+        
         self.addChild(countDownNode)
     }
     
