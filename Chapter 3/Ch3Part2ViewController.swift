@@ -88,14 +88,14 @@ class Ch3Part2ViewController: BaseViewController {
     
     func minimiPlayerAnimation_IN(_ completion: @escaping (() -> Void)) {
         (self.layout as! layout_Office_ch3).minimi_palyer.isHidden = false
-        UIView.animate(withDuration: 1.5, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 1.7, delay: 0, options: .curveLinear, animations: {
             (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -186, y: 0)
         }, completion: { _ in
-            UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
-                (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -186, y: 120)
+            UIView.animate(withDuration: 1.2, delay: 0, options: .curveLinear, animations: {
+                (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -186, y: 100)
             }, completion: { _ in
-                UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
-                    (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -230, y: 120)
+                UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+                    (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -270, y: 100)
                 }, completion: { _ in
                     completion()
                 })

@@ -23,6 +23,13 @@ class Ch4Part1ViewController: BaseViewController {
         (layout as! layout_Office_ch4).initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.layout.img_nametag.isHidden = true
+            self.layout.profile_player.isHidden = false
+            self.layout.textbox.isHidden = false
+            self.layout.profile_player.image = UIImage(named: self.layout.profileOrder.player[self.layout.talkIndex[0]])
+            self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
+            
+            self.layout.talkIndex[0] += 1
             self.registerGesture()
         })
     }
@@ -68,7 +75,7 @@ class Ch4Part1ViewController: BaseViewController {
             }
             
             // 주인공
-            else if (self.layout.talkIndex[0] < 2) {
+            else if (self.layout.talkIndex[0] < 3) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.isHidden = false
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
@@ -90,7 +97,7 @@ class Ch4Part1ViewController: BaseViewController {
         else if (selected[0] == true  && selected_count == 0) {
             
             // 주인공
-            if (self.layout.talkIndex[0] < 4) {
+            if (self.layout.talkIndex[0] < 5) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 

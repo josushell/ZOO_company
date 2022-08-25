@@ -54,15 +54,13 @@ class Response_Ch3_part1: Response {
     override init() {
         super.init()
         
-        player_response = [["부장님 제가 해내 보이겠습니다!!! 저만 믿고 맡겨주십시오!!", "난 그냥 조용히 하던 거나 해야겠다...", "지금 다들 바쁘신데 차라리 부장님께서 직접 하시는건 어떨까요?^^"],
-                           
-                           ["괜히 회사가 이 방식을 고수해온 게 아닐거야\n바꾼다고 꼭 더 나아지리란 보장도 없고 그냥 이대로 가자", "언제까지고 이렇게 비효율적으로 일할 수는 없어!\n당장 힘들더라도 새롭게 가보자! 도전!", "역시 이런 건 잘 모르겠어... 일단 땃쥐 님한테 물어보자"]]
-
+        player_response = [["부장님 제가 해내 보이겠습니다!!! 저만 믿고 맡겨주십시오!!", "난 그냥 조용히 하던 거나 해야겠다...", "지금 다들 바쁘신데 차라리 부장님께서 직접 하시는건 어떨까요?^^"], ["괜히 회사가 이 방식을 고수해온 게 아닐거야\n바꾼다고 꼭 더 나아지리란 보장도 없고 그냥 이대로 가자", "언제까지고 이렇게 비효율적으로 일할 수는 없어!\n당장 힘들더라도 새롭게 가보자! 도전!", "역시 이런 건 잘 모르겠어... 일단 땃쥐 님한테 물어보자"]]
+        
         lion_response = ["오 그러면 \(name)씨만 믿겠네! 신입의 자세가 아주 훌륭해!", "하여튼 요즘 애들은 열정이 없어! 쯧쯧, \(name)씨 이런 건 신입인 자네가 좀 해!", "자네 지금 제정신인가? 안되겠다! 이 건은 군말 말고 \(name)씨가 해와!"]
         
         char_image = [["lion_laugh", "lion_fire", "lion_fire"]]
         player_image = [["suit_fire", "suit_awkward", "suit_lauNawk"],
-                            ["suit_tired", "suit_fire", "suit_stare"]]
+                        ["suit_tired", "suit_fire", "suit_stare"]]
     }
 }
 
@@ -92,7 +90,7 @@ class ChoiceData_Ch3_part2: ChoiceData {
         super.init()
         
         title = ["Q. 탕비실 자판기에 있는 음료들 중 무엇을 마실까?"]
-        choice1 = ["에너지 드링크 <RED 99>"]
+        choice1 = ["에너지 드링크"]
         choice2 = ["초코 우유"]
         choice3 = ["보리차"]
     }

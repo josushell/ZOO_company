@@ -49,6 +49,7 @@ extension CATransition {
 enum Zposition: CGFloat {
     case choice = 999
     case nametagNtextbox = 998
+    case blackView = 901
     case profile = 900
     case minimi = 899
 }

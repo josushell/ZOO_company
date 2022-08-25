@@ -124,6 +124,7 @@ class layout_base {
         layout_blackView.backgroundColor = .black
         layout_blackView.alpha = 0.5
         layout_blackView.isHidden = true
+        layout_blackView.layer.zPosition = Zposition.blackView.rawValue
 
         layout_choice.addSubviews(choiceView, label_choicetitle, btn_choice1, btn_choice2, btn_choice3)
         choiceView.snp.makeConstraints() { make in

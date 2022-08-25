@@ -18,7 +18,7 @@ class TalkData_Ch4_part1: TalkData {
     override init() {
         super.init()
         
-        player = ["(아니 이분은 초엘리트 구구대 수석 졸업 박사 출신 박쥐 이사님이잖아?!)", "헉 안녕하십니까!", "와! 감사합니다!", "내가 박쥐 이사님과 업무를 주고 받았다니...!\n좋아 완벽히 해내겠어!!", "넵! 지금 바로 보내드릴게요!", "아니 잠깐만 아까 졸면서 모르고 백 스페이스를 계속 눌러버렸잖아?!", "파일이 다 사라져버렸어! 어떻게 하지?"]
+        player = ["벌써 퇴근시간이 지났네... 다들 집에 안가시나?", "(아니 이분은 초엘리트 구구대 수석 졸업 박사 출신 박쥐 이사님이잖아?!)", "헉 안녕하십니까!", "와! 감사합니다!", "내가 박쥐 이사님과 업무를 주고 받았다니...!\n좋아 완벽히 해내겠어!", "넵! 지금 바로 보내드릴게요!", "아니 잠깐만 아까 졸면서 모르고 백 스페이스를 계속 눌러버렸잖아?!", "파일이 다 사라져버렸어! 어떻게 하지?"]
         bat = ["이번에 새로 오셨다는 \(name)씨?"]
         mouse = ["\(name)씨! 프로젝트 발표 준비 다 끝냈다면서요?", "수고하셨어요! 저한테도 메일로 발표 자료 보내주세요"]
     }
@@ -33,7 +33,7 @@ class ImgOrderData_Ch4_part1: ImgOrderData {
         super.init()
         
         mouse = ["mouse_normal", "mouse_normal"]
-        player = ["suit_surprise", "suit_surprise", "suit_laugh", "suit_fire", "suit_laugh", "suit_surprise", "suit_sad"]
+        player = ["suit_normal", "suit_surprise", "suit_surprise", "suit_laugh", "suit_fire", "suit_laugh", "suit_surprise", "suit_sad"]
         bat = ["monkey_normal"]
     }
 }
@@ -47,7 +47,7 @@ class ChoiceData_Ch4_part1: ChoiceData {
         title = ["Q. 이때 박쥐 상사에게 듣고 싶은 말은?", "Q. 실수를 했을 때 어떻게 할까?"]
         choice1 = ["성과에 대한 칭찬", "최대한 기억나는 부분만이라도 복구한다"]
         choice2 = ["노력에 대한 칭찬", "솔직하게 실수를 말하고 다시 처음부터 만든다"]
-        choice3 = ["현실적인 피드백과 조언", "당장 보내야 하니 대충 다시 해서 제출한다"]
+        choice3 = ["현실적인 피드백과 조언", "당장 보내야 하니 일단 대충 다시 해서 제출한다"]
     }
 }
 
@@ -61,7 +61,7 @@ class Response_Ch4_part1: Response {
         
         player_response = [["후... 일단 기억을 더듬어서 최대한 복구해보자!", "땃쥐님 정말 죄송하지만 착오가 생겨서... 다시 해야될 것 같습니다ㅠㅠ", "이걸 또 처음부터 하라고? 말도 안돼\n그냥 썼던 부분을 요약해서 보내드리자"]]
         
-        bat_response = [["\(name)씨 벌써 다 끝내셨어요? 결과물 보니 첫날인데도 잘하신 것 같네요", "\(name)씨 첫날부터 야근이라니.. 정말 열심히 하시네요\n열정이 느껴져서 좋네요", "이 부분은 자료 줄테니까 다른 방식으로 해서 올리는게 좋을 것 같아요"]]
+        bat_response = [["\(name)씨 벌써 다 끝내셨어요? 결과물 보니 첫날인데도 잘하신 것 같네요", "\(name)씨 첫날부터 야근이라니 정말 열심히 하시네요\n열정이 느껴져서 좋네요", "이 부분은 자료 줄테니까 다른 방식으로 해서 올리는게 좋을 것 같아요"]]
         
         char_image = [["lion_laugh", "lion_laugh", "lion_laugh"]]
         player_image = [["suit_normal", "suit_awkward", "suit_tired"]]
