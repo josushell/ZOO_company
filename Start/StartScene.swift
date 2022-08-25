@@ -33,7 +33,6 @@ class StartScene: SKScene {
         backgroundImg.size = CGSize(width: framesize.width , height: framesize.height)
         backgroundImg.anchorPoint = CGPoint.zero
         backgroundImg.position = CGPoint.zero
-        print("\(backgroundImg.size.width), \(backgroundImg.size.height)")
         
         var mainAnim = SKAction()
         mainAnim = SKAction.repeatForever(backAction)
@@ -49,7 +48,7 @@ class StartScene: SKScene {
         startBtn.texture = textureAtlas.textureNamed("startbtn")
         startBtn.size = CGSize(width: 200, height: 100)
         startBtn.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        startBtn.position = CGPoint(x: framesize.width / 2, y: 50)
+        startBtn.position = CGPoint(x: framesize.width / 2, y: 100)
         startBtn.name = "StartBtn"
         
         let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0)])
