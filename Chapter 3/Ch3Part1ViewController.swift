@@ -23,7 +23,7 @@ class Ch3Part1ViewController: BaseViewController {
         layout.talks = TalkData_Ch3_part1()
         layout.response = Response_Ch3_part1()
         
-        (layout as! layout_Office_ch3).initView(self.view)
+        (layout as! layout_Office_ch3).initView(self.view, backImg: "office_no_lion")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.registerGesture()
@@ -159,8 +159,8 @@ class Ch3Part1ViewController: BaseViewController {
         self.layout.backView.isUserInteractionEnabled = false
         self.layout.hideBeforeAnim()
         
-        UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
-            (self.layout as! layout_Office_ch3).minimi_lion.transform = CGAffineTransform(translationX: 0, y: 130)
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
+            (self.layout as! layout_Office_ch3).minimi_lion.transform = CGAffineTransform(translationX: 0, y: 50)
         }, completion: { _ in
             self.layout.backView.isUserInteractionEnabled = true
             self.minimi_lion = true

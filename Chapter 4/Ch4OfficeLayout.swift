@@ -15,8 +15,8 @@ class layout_Office_ch4: layout_base {
     var minimi_char1 = UIImageView()    // 박쥐, 비둘기
     var minimi_char2 = UIImageView()    // 땃쥐
     
-    func initView(_ view: UIView) {
-        super.initView(view, backImg: "office_on_1", profileImg: "suit_normal")
+    func initView(_ view: UIView, backImg: String = "office_on_1") {
+        super.initView(view, backImg: backImg, profileImg: "suit_normal")
         
         talkIndex = [0, 0, 0]
         
