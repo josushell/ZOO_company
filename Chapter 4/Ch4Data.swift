@@ -34,7 +34,7 @@ class ImgOrderData_Ch4_part1: ImgOrderData {
         
         mouse = ["mouse_normal", "mouse_normal"]
         player = ["suit_surprise", "suit_surprise", "suit_laugh", "suit_fire", "suit_laugh", "suit_surprise", "suit_sad"]
-        bat = ["lion_normal"]
+        bat = ["monkey_normal"]
     }
 }
 

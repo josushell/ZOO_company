@@ -12,6 +12,7 @@ import UIKit
 // MARK: - 사무실 layout ch3 part1
 class layout_Office_ch3: layout_base {
     var minimi_lion = UIImageView()
+    var minimi_palyer = UIImageView()
     
     func initView(_ view: UIView) {
         super.initView(view, backImg: "office_on_1", profileImg: "suit_normal")
@@ -19,7 +20,7 @@ class layout_Office_ch3: layout_base {
         // [주인공, 사자]
         talkIndex = [0, 0]
         
-        view.addSubviews(minimi_lion)
+        view.addSubviews(minimi_lion, minimi_palyer)
         minimi_lion.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(26)
             make.leading.equalTo(backgroundImg.snp.leading).offset(245)
@@ -28,6 +29,14 @@ class layout_Office_ch3: layout_base {
         minimi_lion.image = UIImage(named: "minimi_lion_front")
         minimi_lion.isHidden = true
         minimi_lion.layer.zPosition = Zposition.minimi.rawValue
+        
+        minimi_palyer.snp.makeConstraints() { make in
+            make.top.equalTo(backgroundImg.snp.top).offset(26)
+            make.right.equalTo(backgroundImg.snp.right).offset(-16)
+        }
+        minimi_palyer.image = UIImage(named: "minimi_player_suit")
+        minimi_palyer.isHidden = true
+        minimi_palyer.layer.zPosition = Zposition.minimi.rawValue
     }
 
 }

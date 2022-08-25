@@ -48,14 +48,13 @@ class Ch3Part2ViewController: BaseViewController {
                 (self.layout as! layout_Office_ch3).profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 // 자판기 이미지
                 if (self.layout.talkIndex[0] == 3) {
-                    self.layout.profile_char.isHidden = false
-                    self.layout.profile_char.image = UIImage(named: "vending")
+                    fadeIntoLounge()
                 }
-                
-                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
-                self.layout.talkIndex[0] += 1
-                
-                layout.backView.isUserInteractionEnabled = true
+                else {
+                    self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
+                    self.layout.talkIndex[0] += 1
+                    self.layout.backView.isUserInteractionEnabled = true
+                }
             }
             
             // 선택지 등장
@@ -71,5 +70,38 @@ class Ch3Part2ViewController: BaseViewController {
             // ch4
             self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
         }
+    }
+    
+    func fadeIntoLounge() {
+        self.layout.hideBeforeAnim()
+        UIView.transition(with: self.layout.backgroundImg, duration: 2, options: .transitionCrossDissolve, animations: {
+            self.layout.backgroundImg.image = UIImage(named: "lounge")
+        }, completion: { _ in
+            self.minimiPlayerAnimation_IN() {                    self.layout.revealAfterAnim()
+                self.layout.profile_char.image = UIImage(named: "vending")
+                self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
+                self.layout.talkIndex[0] += 1
+                self.layout.backView.isUserInteractionEnabled = true
+            }
+        })
+    }
+    
+    func minimiPlayerAnimation_IN(_ completion: @escaping (() -> Void)) {
+        (self.layout as! layout_Office_ch3).minimi_palyer.isHidden = false
+        UIView.animate(withDuration: 1.5, delay: 0, options: .curveLinear, animations: {
+            (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -186, y: 0)
+        }, completion: { _ in
+            UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
+                (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -186, y: 120)
+            }, completion: { _ in
+                UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
+                    (self.layout as! layout_Office_ch3).minimi_palyer.transform = CGAffineTransform(translationX: -230, y: 120)
+                }, completion: { _ in
+                    completion()
+                })
+            })
+            
+        })
+        
     }
 }

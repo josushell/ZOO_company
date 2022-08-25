@@ -24,7 +24,7 @@ class layout_Office_ch4: layout_base {
         view.addSubviews(minimi_player, minimi_char1, minimi_char2)
         minimi_player.snp.makeConstraints() { make in
             make.centerX.equalTo(backgroundImg.snp.centerX)
-            make.centerY.equalTo(backgroundImg.snp.centerY).offset(10)
+            make.centerY.equalTo(backgroundImg.snp.centerY).offset(20)
         }
         minimi_player.image = UIImage(named: "minimi_player_suit")
         minimi_player.layer.zPosition = Zposition.minimi.rawValue
