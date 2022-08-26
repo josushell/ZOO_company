@@ -94,11 +94,20 @@ class Ch4Part2ViewController: BaseViewController {
         UIView.animate(withDuration: 1.2, delay: 0, options: .curveLinear, animations: {
             (self.layout as! layout_Office_ch4).minimi_char1.transform = CGAffineTransform(translationX: 0, y: 70)
         }, completion: { _ in
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .autoreverse, animations: {
-                (self.layout as! layout_Office_ch4).minimi_player.transform = CGAffineTransform(translationX: 0, y: -15)
-            }, completion: { _ in
-                (self.layout as! layout_Office_ch4).minimi_player.transform = .identity
+            self.playerMinimiAnimation_JUMP() {
                 self.layout.backView.isUserInteractionEnabled = true
+            }
+        })
+    }
+    
+    func playerMinimiAnimation_JUMP(_ completion: @escaping (() -> Void)) {
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear, animations: {
+            (self.layout as! layout_Office_ch4).minimi_player.transform = CGAffineTransform(translationX: 0, y: -20)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+                (self.layout as! layout_Office_ch4).minimi_player.transform = CGAffineTransform(translationX: 0, y: 0)
+            }, completion: { _ in
+                completion()
             })
         })
     }

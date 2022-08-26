@@ -55,6 +55,7 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var damaged: Bool = false
     var damageAnimation: SKAction!
     
+    var gameEnded: Bool = false
     let appdel = UIApplication.shared.delegate as? AppDelegate
     
     override func didMove(to view: SKView) {
@@ -257,12 +258,15 @@ extension SubwayScene {
     }
     
     func gameEND(isGameSuccess: Bool) {
-        gameNode.speed = 0.0
-        appdel?.subwaySuccess = isGameSuccess
+        if (!gameEnded) {
+            gameEnded = true
+            gameNode.speed = 0.0
+            appdel?.subwaySuccess = isGameSuccess
 
-        playerSprite.removeAllActions()
-        let resultText = (isGameSuccess == true ? "YOU WIN!" : "YOU LOSE!")
-        gameResult.openResult(resultTxt: resultText)
+            playerSprite.removeAllActions()
+            let resultText = (isGameSuccess == true ? "YOU WIN!" : "YOU LOSE!")
+            gameResult.openResult(resultTxt: resultText)
+        }
     }
     
     @objc func moveOnNextChapter(_ sender: UIButton) {

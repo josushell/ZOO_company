@@ -86,10 +86,14 @@ class Ch1Part1ViewController: BaseViewController {
     }
     
     func minimiPlayerAnimation_JUMP() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .autoreverse, animations: {
-            (self.layout as! layout_home).minimi_player.transform = CGAffineTransform(translationX: 0, y: 4)
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+            (self.layout as! layout_home).minimi_player.transform = CGAffineTransform(translationX: 0, y: 50)
         }, completion: { _ in
-            (self.layout as! layout_home).minimi_player.transform = CGAffineTransform(translationX: 0, y: 80)
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+                (self.layout as! layout_home).minimi_player.transform = CGAffineTransform(translationX: 0, y: 80)
+            }, completion: { _ in
+                
+            })
         })
     }
     

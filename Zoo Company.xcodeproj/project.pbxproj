@@ -52,6 +52,7 @@
 		86CE910E28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */; };
 		86CE911028AF547F00F58BAA /* Ch1ElevatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */; };
 		86F65B2C283F3CE200DCBAA8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* Utils.swift */; };
+		E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */; };
 		F9B55AF9C2DF3E9184DF009E /* Pods_Zoo_Company.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66654D1C2F29E900C8F835AD /* Pods_Zoo_Company.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ElevatorLayout.swift; sourceTree = "<group>"; };
 		86F65B2B283F3CE200DCBAA8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.release.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.release.xcconfig"; sourceTree = "<group>"; };
+		E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Part1ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +148,7 @@
 				8693E1192879A1C700D7D306 /* Chapter 2 */,
 				86A7AD9E28ACC5DF006668AA /* Chapter 3 */,
 				86A318F928ADF26A002D5C25 /* Chapter 4 */,
-				86F65AF6283D00F900DCBAA8 /* Chapter 5 */,
+				E8539A1B28B8506E0071BCD8 /* Chapter 5 */,
 				8693E11428799D2200D7D306 /* Extension */,
 				861D19FA28328BA700D6E6B1 /* Common */,
 				86A318F228ADDD61002D5C25 /* Legacy */,
@@ -281,9 +283,10 @@
 			path = " Subway Game";
 			sourceTree = "<group>";
 		};
-		86F65AF6283D00F900DCBAA8 /* Chapter 5 */ = {
+		E8539A1B28B8506E0071BCD8 /* Chapter 5 */ = {
 			isa = PBXGroup;
 			children = (
+				E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */,
 			);
 			path = "Chapter 5";
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				861D1A0428328BA700D6E6B1 /* GameViewController.swift in Sources */,
 				8647B1AF28B0C798005F54BC /* Sound.swift in Sources */,
 				86996E1B28B5AC0C0021C383 /* SubwayGameResult.swift in Sources */,
+				E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */,
 				86A318E828ADD693002D5C25 /* Ch3OfficeLayout.swift in Sources */,
 				86A318EC28ADDA17002D5C25 /* Ch2Data.swift in Sources */,
 				8647B1B328B0CFDE005F54BC /* BaseViewController.swift in Sources */,

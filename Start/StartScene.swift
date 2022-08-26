@@ -46,7 +46,7 @@ class StartScene: SKScene {
         
         // MARK: Start button settings
         startBtn.texture = textureAtlas.textureNamed("startbtn")
-        startBtn.size = CGSize(width: 200, height: 100)
+        startBtn.size = backgroundImg.size
         startBtn.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         startBtn.position = CGPoint(x: framesize.width / 2, y: 100)
         startBtn.name = "StartBtn"

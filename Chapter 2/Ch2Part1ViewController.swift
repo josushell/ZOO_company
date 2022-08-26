@@ -13,6 +13,7 @@ class Ch2Part1ViewController: BaseViewController {
     var selected: Bool = false
     var minimi_lion: Bool = false
     var minimi_mouse: Bool = false
+    var minimi_response: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +49,6 @@ class Ch2Part1ViewController: BaseViewController {
         UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear  ,animations: {
             (self.layout as! layout_Office_ch2_part1).minimi_response.transform = CGAffineTransform(translationX: 0, y: 70)
         }, completion: { _ in
-            self.layout.revealAfterAnim()
-            self.layout.text_nametag.text = (self.layout.response as! Response_Ch2_part1).label_nametag[self.select_index]
-            self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part1).char_image[self.select_index])
-            self.layout.text.setText((self.layout.response as! Response_Ch2_part1).char_response[self.select_index])
             self.layout.backView.isUserInteractionEnabled = true
         })
         
@@ -113,14 +110,23 @@ class Ch2Part1ViewController: BaseViewController {
         
         // 선택지 후
         else {
-            self.layout.img_nametag.isHidden = true
-            self.layout.profile_player.image = UIImage(named: (layout.response as! Response_Ch2_part1).player_image[0][self.select_index])
-            
-            self.layout.text.setText((layout.response as! Response_Ch2_part1).player_response[0][self.select_index])
-            
-            //MARK: - fade in fade out
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
+            if (!minimi_response) {
+                self.layout.revealAfterAnim()
+                self.layout.text_nametag.text = (self.layout.response as! Response_Ch2_part1).label_nametag[self.select_index]
+                self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part1).char_image[self.select_index])
+                self.layout.text.setText((self.layout.response as! Response_Ch2_part1).char_response[self.select_index])
+                minimi_response = true
+                layout.backView.isUserInteractionEnabled = true
+            }
+            else {
+                self.layout.img_nametag.isHidden = true
+                self.layout.profile_player.image = UIImage(named: (layout.response as! Response_Ch2_part1).player_image[0][self.select_index])
+                
+                self.layout.text.setText((layout.response as! Response_Ch2_part1).player_response[0][self.select_index])
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
+                }
             }
         }
     }
@@ -143,11 +149,11 @@ class Ch2Part1ViewController: BaseViewController {
         (self.layout as! layout_Office_ch2_part1).minimi_mouse.isHidden = false
         (self.layout as! layout_Office_ch2_part1).hideBeforeAnim()
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear  ,animations: {
-            (self.layout as! layout_Office_ch2_part1).minimi_mouse.transform = CGAffineTransform(translationX: 0, y: 60)
+            (self.layout as! layout_Office_ch2_part1).minimi_mouse.transform = CGAffineTransform(translationX: 0, y: 75)
         }, completion: { _ in
             (self.layout as! layout_Office_ch2_part1).minimi_mouse.image = UIImage(named: "minimi_mouse_left")
             UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
-                (self.layout as! layout_Office_ch2_part1).minimi_mouse.transform = CGAffineTransform(translationX: 55, y: 60)
+                (self.layout as! layout_Office_ch2_part1).minimi_mouse.transform = CGAffineTransform(translationX: 45, y: 75)
             }, completion: { _ in
                 (self.layout as! layout_Office_ch2_part1).minimi_mouse.image = UIImage(named: "minimi_mouse_front")
                 self.minimi_mouse = true

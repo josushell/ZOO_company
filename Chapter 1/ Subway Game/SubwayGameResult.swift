@@ -61,6 +61,7 @@ class SubwayGameResult {
         label_start.sizeToFit()
     }
     
+    // TODO: - animation
     func openResult(resultTxt: String) {
         label_result.text = resultTxt
         layout_main.isHidden = false
