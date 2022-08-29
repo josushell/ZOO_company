@@ -179,12 +179,22 @@ extension UIButton {
     }
     
     @objc func onHighlight(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }, completion: { _ in
+            
+        })
         if let label = sender.subviews.last as? UILabel {
             label.textColor = .white
         }
     }
     
     @objc func onCancel(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear, animations: {
+            sender.transform = .identity
+        }, completion: { _ in
+            
+        })
         if let label = sender.subviews.last as? UILabel {
             label.textColor = .black
         }
