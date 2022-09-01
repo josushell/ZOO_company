@@ -29,7 +29,7 @@ class ImgOrderData_Ch3_part1: ImgOrderData {
     override init() {
         super.init()
         
-        player = ["suit_normal", "suit_stare", "suit_sad", "suit_normal", "suit_normal", "suit_normal"]
+        player = ["suit_normal", "suit_stare", "suit_sad", "computer_tired", "computer_normal", "computer_normal"]
         lion = ["lion_normal", "lion_normal", "lion_laugh", "lion_normal"]
     }
 }
@@ -60,7 +60,7 @@ class Response_Ch3_part1: Response {
         
         char_image = [["lion_laugh", "lion_fire", "lion_fire"]]
         player_image = [["suit_fire", "suit_awkward", "suit_lauNawk"],
-                        ["suit_tired", "suit_fire", "suit_stare"]]
+                        ["computer_tired", "computer_normal", "computer_normal"]]
     }
 }
 

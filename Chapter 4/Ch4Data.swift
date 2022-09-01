@@ -32,9 +32,9 @@ class ImgOrderData_Ch4_part1: ImgOrderData {
     override init() {
         super.init()
         
-        mouse = ["mouse_normal", "mouse_normal"]
+        mouse = ["mouse_normal", "mouse_laugh"]
         player = ["suit_normal", "suit_surprise", "suit_surprise", "suit_laugh", "suit_fire", "suit_laugh", "suit_surprise", "suit_sad"]
-        bat = ["monkey_normal"]
+        bat = ["bat_normal"]
     }
 }
 
@@ -63,7 +63,7 @@ class Response_Ch4_part1: Response {
         
         bat_response = [["\(name)씨 벌써 다 끝내셨어요? 결과물 보니 첫날인데도 잘하신 것 같네요", "\(name)씨 첫날부터 야근이라니 정말 열심히 하시네요\n열정이 느껴져서 좋네요", "이 부분은 자료 줄테니까 다른 방식으로 해서 올리는게 좋을 것 같아요"]]
         
-        char_image = [["lion_laugh", "lion_laugh", "lion_laugh"]]
+        char_image = [["bat_laugh", "bat_laugh", "bat_normal"]]
         player_image = [["suit_normal", "suit_awkward", "suit_tired"]]
     }
 }
@@ -91,7 +91,7 @@ class ImgOrderData_Ch4_part2: ImgOrderData {
         super.init()
         
         player = ["suit_tired", "suit_awkward", "suit_surprise", "suit_normal"]
-        pigeon = ["lion_normal", "lion_normal", "lion_normal"]
+        pigeon = ["pigeon_normal", "pigeon_normal", "pigeon_normal"]
     }
 }
 

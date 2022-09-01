@@ -15,7 +15,7 @@ class layout_Office_ch4: layout_base {
     var minimi_char1 = UIImageView()    // 박쥐, 비둘기
     var minimi_char2 = UIImageView()    // 땃쥐
     
-    func initView(_ view: UIView, backImg: String = "office_on_1") {
+    func initView(_ view: UIView, backImg: String = "office_night") {
         super.initView(view, backImg: backImg, profileImg: "suit_normal")
         
         talkIndex = [0, 0, 0]
@@ -31,16 +31,14 @@ class layout_Office_ch4: layout_base {
         
         minimi_char1.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(68)
-            //make.leading.equalTo(backgroundImg.snp.leading).offset(440)
             make.left.equalTo(minimi_player.snp.right).offset(35)
         }
-        minimi_char1.image = UIImage(named: "minimi_lion_front")
+        minimi_char1.image = UIImage(named: "minimi_bat")
         minimi_char1.isHidden = true
         minimi_char1.layer.zPosition = Zposition.minimi.rawValue
         
         minimi_char2.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(26)
-            //make.leading.equalTo(backgroundImg.snp.leading).offset(240)
             make.right.equalTo(minimi_player.snp.left).offset(-53)
         }
         minimi_char2.image = UIImage(named: "minimi_mouse_front")

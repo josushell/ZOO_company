@@ -10,6 +10,7 @@ import UIKit
 class Ch4Part1ViewController: BaseViewController {
     var selected: [Bool] = [false, false]
     var selected_count = 0
+    var minimi: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +65,19 @@ class Ch4Part1ViewController: BaseViewController {
         if (!selected[0] && selected_count == 0) {
             // 박쥐
             if (self.layout.talkIndex[1] < 1) {
-                batMinimiAnimation_IN(callback: {
+                if (!minimi) {
+                    batMinimiAnimation_IN(callback: {
+                        self.minimi = true
+                    })
+                }
+                else {
                     self.layout.revealAfterAnim()
                     self.layout.setNametag(nametagHidden: false, "박쥐 이사")
                     self.layout.profile_char.image = UIImage(named: (self.layout.profileOrder as! ImgOrderData_Ch4_part1).bat[self.layout.talkIndex[1]])
                     self.layout.text.setText((self.layout.talks as! TalkData_Ch4_part1).bat[self.layout.talkIndex[1]])
-                    
+                    self.layout.backView.isUserInteractionEnabled = true
                     self.layout.talkIndex[1] += 1
-                })
+                }
             }
             
             // 주인공
@@ -101,7 +107,7 @@ class Ch4Part1ViewController: BaseViewController {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 
-                if (self.layout.talkIndex[0] == 3) {
+                if (self.layout.talkIndex[0] == 4) {
                     self.layout.profile_char.isHidden = true
                 }
                 
