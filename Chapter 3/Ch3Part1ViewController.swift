@@ -8,7 +8,6 @@
 import UIKit
 
 class Ch3Part1ViewController: BaseViewController {
-
     var selected: [Bool] = [false, false]
     var selected_count = 0
     var minimi_lion: Bool = false

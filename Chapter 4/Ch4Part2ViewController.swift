@@ -80,7 +80,8 @@ class Ch4Part2ViewController: BaseViewController {
         
         // 선택지 후
         else {
-            // fade in / fade out
+            //MARK: - ch4 part1 fade in fade out
+            self.dissmissAndPresent(Ch5Part1ViewController(), animated: false, completion: nil)
         }
 
     }
