@@ -29,7 +29,7 @@ class ImgOrderData_Ch5_part1: ImgOrderData {
     override init() {
         super.init()
         
-        player = ["computer_normal", "computer_surprise", "computer_surprise", "suit_surprise", "suit_fire", "suit_sad", "suit_sad", "suit_normal", "suit_fire"]
+        player = ["computer_normal", "computer_surprise", "computer_surprise", "suit_surprise", "suit_fire", "suit_sad", "suit_sad", "suit_laugh", "suit_fire"]
         penguin = ["penguin_normal"]
     }
 }
@@ -84,7 +84,7 @@ class ImgOrderData_Ch5_part2: ImgOrderData {
         super.init()
         
         penguin = ["penguin_normal", "penguin_normal"]
-        player = ["suit_tired", "suit_awkward", "suit_surprise", "suit_normal", "suit_awkward", "suit_awkward", "suit_normal", "suit_laugh", "suit_surprise", "suit_stare"]
+        player = ["suit_laugh", "suit_normal", "suit_normal", "suit_awkward", "suit_awkward", "suit_laugh", "suit_normal", "suit_surprise", "suit_stare"]
         pigeon = ["pigeon_normal", "pigeon_normal"]
     }
 }
@@ -106,17 +106,20 @@ class Response_Ch5_part2: Response {
     var pigeon: [String] = []
     var alpaca: [String] = []
     var alpaca_image: [String] = []
-    var char_image: [[String]] = [[]]
+    var pigeon_image: [String] = []
+    var char_image: [String] = []
     
     override init() {
         super.init()
         
-        player_response = [["제 아이디어입니다... 혹시 무슨 문제라도...?", "알파카 대리님의 아이디어입니다... 혹시 무슨 문제라도...?", "저희 부서가 회의를 통해 생각해낸 아이디어입니다...\n혹시 무슨 문제라도...?", "감사합니다!\n(휴.. 혼나는 줄 알았네)", "이럴줄 알았으면 솔직하게 내가 했다고 말할걸 그랬네...", "감사합니다!\n(휴.. 혼나는 줄 알았네)"], ["그래 역시 이런 건 순서대로 해야 제일 공정하지!", "가장 먼저 손을 드신 뱁새 과장님 질문부터 받도록 하겠습니다!", "다른 분들의 질문은 너무 무서워...\n일단 제일 대답하기 쉬운 원숭이 사원의 질문부터 받아야겠다", "저기 계신 원숭이 사원님 질문부터 받도록 하겠습니다!", "역시 이럴 때는 가장 높은 분의 질문부터 먼저 받아야 해!", "비둘기 사장님의 질문부터 받도록 하겠습니다!"]]
+        player_response = [["제 아이디어입니다... 혹시 무슨 문제라도...?", "알파카 대리님의 아이디어입니다... 혹시 무슨 문제라도...?", "저희 부서가 회의를 통해 생각해낸 아이디어입니다...\n혹시 무슨 문제라도...?", "감사합니다!\n(휴.. 혼나는 줄 알았네)", "이럴줄 알았으면 솔직하게 내가 했다고 말할걸 그랬네...", "감사합니다!\n(휴.. 혼나는 줄 알았네)"], ["그래 역시 이런 건 순서대로 해야 제일 공정하지!", "다른 분들의 질문은 너무 무서워...\n일단 제일 대답하기 쉬운 원숭이 사원의 질문부터 받아야겠다", "역시 이럴 때는 가장 높은 분의 질문부터 먼저 받아야 해!", "가장 먼저 손을 드신 뱁새 과장님 질문부터 받도록 하겠습니다!", "저기 계신 원숭이 사원님 질문부터 받도록 하겠습니다!", "비둘기 사장님의 질문부터 받도록 하겠습니다!"]]
         pigeon = ["당연히 문제있지!\n너무 현실감 없게 잘한 거 아닌가?? 우리 회사에 이런 인재가 있었다니!!", "역시 우리 알파카 대리가 일처리 잘하는 건 내가 잘 알지!\n정말 잘했네!", "역시 이 부서가 일처리 잘하는 건 내가 잘 알지!\n정말 잘했네!"]
         alpaca = ["감사합니다 사장님!"]
         
         alpaca_image = ["alpaca_normal"]
-        char_image = [["pigeon_normal", "pigeon_normal", "pigeon_normal"]]
-        player_image = [["suit_awkward", "suit_awkward", "suit_awkward", "suit_lauNawk", "suit_lauNawk", "suit_lauNawk"], ["suit_normal", "suit_laugh"]]
+        pigeon_image = ["pigeon_normal", "pigeon_normal", "pigeon_normal"]
+        char_image = ["bird_normal", "monkey_normal", "pigeon_normal"]
+        player_image = [["suit_awkward", "suit_awkward", "suit_awkward", "suit_lauNawk", "suit_lauNawk", "suit_lauNawk"],
+                        ["suit_normal", "suit_normal", "suit_normal", "suit_laugh", "suit_laugh", "suit_laugh"]]
     }
 }

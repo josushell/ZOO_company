@@ -49,6 +49,10 @@ class Ch5Part1ViewController: BaseViewController {
                 
                 self.layout.talkIndex[0] += 1
                 layout.backView.isUserInteractionEnabled = true
+                
+                if (self.layout.talkIndex[0] == 2) {
+                    // ToDo: 메일 아이콘 등장
+                }
             }
             else {
                 self.view.bringSubviewToFront(layout.layout_choice)
@@ -82,7 +86,7 @@ class Ch5Part1ViewController: BaseViewController {
                 }
                 else {
                     //MARK: - ch5 part2 fade in fade out
-                    //self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
+                    self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
                 }
             }
         }
