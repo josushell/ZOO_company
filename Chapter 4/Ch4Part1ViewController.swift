@@ -183,16 +183,18 @@ class Ch4Part1ViewController: BaseViewController {
         self.layout.backView.isUserInteractionEnabled = false
         (self.layout as! layout_Office_ch4).minimi_char2.isHidden = false
         self.layout.hideBeforeAnim()
-        UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
-            (self.layout as! layout_Office_ch4).minimi_char2.transform = CGAffineTransform(translationX: 0, y: 60)
+        
+        UIView.animate(withDuration: 1.8, delay: 0, options: .curveLinear, animations: {
+            (self.layout as! layout_Office_ch4).minimi_char2.transform = CGAffineTransform(translationX: 0, y: 120)
         }, completion: { _ in
             (self.layout as! layout_Office_ch4).minimi_char2.image = UIImage(named: "minimi_mouse_left")
-            UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear, animations: {
-                (self.layout as! layout_Office_ch4).minimi_char2.transform = CGAffineTransform(translationX: 55, y: 60)
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+                (self.layout as! layout_Office_ch4).minimi_char2.transform = CGAffineTransform(translationX: 20, y: 120)
             }, completion: { _ in
-                (self.layout as! layout_Office_ch4).minimi_char2.image = UIImage(named: "minimi_mouse_front")
+                
                 self.layout.backView.isUserInteractionEnabled = true
             })
         })
+
     }
 }

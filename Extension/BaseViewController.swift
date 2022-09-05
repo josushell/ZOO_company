@@ -27,6 +27,7 @@ class BaseViewController: UIViewController {
     @objc func onBtnClicked(_ sender: UIButton) {
         sound.playSelectSound()
         
+        sender.transform = .identity
         if let label = sender.subviews.last as? UILabel {
             label.textColor = .black
         }

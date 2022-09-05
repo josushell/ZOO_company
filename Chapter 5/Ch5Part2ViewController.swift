@@ -175,8 +175,5 @@ class Ch5Part2ViewController: BaseViewController {
             //MARK: - fade in fade out
             //self.dissmissAndPresent(Ending(), animated: false, completion: nil)
         }
-        
-        
     }
-
 }
