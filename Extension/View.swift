@@ -121,10 +121,10 @@ extension UILabel {
     }
     
     // 대화창 text
-    func setTextAttribute(_ str: String = "temp", _ fontSize: CGFloat = 15.0, _ space: CGFloat = 8) {
+    func setTextAttribute(_ str: String = "temp", _ fontSize: CGFloat = 15.0, _ space: CGFloat = 8, _ color: UIColor = .white) {
         self.text = str
         self.numberOfLines = 0
-        self.textColor = UIColor.white
+        self.textColor = color
         self.font = UIFont(name: "NeoDunggeunmo-Regular", size: fontSize)
         self.sizeToFit()
         self.layer.zPosition = 999
@@ -168,10 +168,10 @@ extension UILabel {
 
 // MARK: - UIButton
 extension UIButton {
-    func setChoiceButton(tagValue: Int, ImgName: String = "choicebox_normal") {
+    func setChoiceButton(tagValue: Int, ImgNameNormal: String = "choicebox_normal", ImgNameTouched: String = "choicebox_touched") {
         self.tag = tagValue
-        self.setImage(UIImage(named: ImgName), for: .normal)
-        self.setImage(UIImage(named: "choicebox_touched"), for: .highlighted)
+        self.setImage(UIImage(named: ImgNameNormal), for: .normal)
+        self.setImage(UIImage(named: ImgNameTouched), for: .highlighted)
         self.adjustsImageWhenHighlighted = false
         
         self.addTarget(self, action: #selector(onHighlight), for: .touchDown)
@@ -191,4 +191,9 @@ extension UIButton {
             label.textColor = .black
         }
     }
+}
+
+// MARK: - UITextField
+extension UITextField {
+    
 }

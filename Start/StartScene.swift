@@ -13,8 +13,9 @@ class StartScene: SKScene {
     var controller: UIViewController?
     let textureAtlas = SKTextureAtlas(named: "start")
     let startBtn = SKSpriteNode()
-    var alert: UIAlertController!
     let framesize = FrameSize()
+    
+    let layout_userNameInput = StartUserNameLayout()
     
     let back_bgm = SKAudioNode(fileNamed: "start_music")
     let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
@@ -22,7 +23,8 @@ class StartScene: SKScene {
     // MARK: - entry point
     override func didMove(to view: SKView) {
         // MARK: set user name input
-        setUserNameInput()
+        layout_userNameInput.initView(view)
+        layout_userNameInput.btn_start.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
     
         self.backgroundColor = UIColor(red: 255, green: 255, blue: 255)
         
@@ -33,6 +35,7 @@ class StartScene: SKScene {
         backgroundImg.size = CGSize(width: framesize.width , height: framesize.height)
         backgroundImg.anchorPoint = CGPoint.zero
         backgroundImg.position = CGPoint.zero
+        backgroundImg.zPosition = Zposition.blackView.rawValue
         
         var mainAnim = SKAction()
         mainAnim = SKAction.repeatForever(backAction)
@@ -49,6 +52,7 @@ class StartScene: SKScene {
         startBtn.size = backgroundImg.size
         startBtn.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         startBtn.position = CGPoint(x: framesize.width / 2, y: 100)
+        startBtn.zPosition = Zposition.choice.rawValue
         startBtn.name = "StartBtn"
         
         let counterDecrement = SKAction.sequence([SKAction.wait(forDuration: 1.0)])
@@ -58,38 +62,40 @@ class StartScene: SKScene {
     func registerButton() {
         self.addChild(startBtn)
     }
-    
-    func setUserNameInput() {
-        // MARK: text field 설정
-        self.alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        
-        let titlefont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 18.0)!]
-        let msgfont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 14.0)!]
-
-        let titleStr = NSMutableAttributedString(string: "당신의 이름은 무엇인가요?", attributes: titlefont)
-        let msgStr = NSMutableAttributedString(string: "(2~8자 까지 가능합니다)", attributes: msgfont)
-        
-        self.alert.setValue(titleStr, forKey: "attributedTitle")
-        self.alert.setValue(msgStr, forKey: "attributedMessage")
-        
-        let action = UIAlertAction(title: "START", style: .default, handler: btnHandler)
-        action.setValue(UIColor.black, forKey: "titleTextColor")
-        
-        self.alert.addAction(action)
-        self.alert.addTextField(configurationHandler: {(myTextField) in
-            // textfield custom
-            myTextField.font = UIFont(name: "NeoDunggeunmo-Regular", size: 18)
-            myTextField.placeholder = "닉네임을 설정해주세요"
-            myTextField.addConstraint(myTextField.heightAnchor.constraint(equalToConstant: 20))
-        })
-        self.alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .lightGray
-    }
+//
+//    func setUserNameInput() {
+//        // MARK: text field 설정
+//        self.alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+//
+//        let titlefont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 18.0)!]
+//        let msgfont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 14.0)!]
+//
+//        let titleStr = NSMutableAttributedString(string: "당신의 이름은 무엇인가요?", attributes: titlefont)
+//        let msgStr = NSMutableAttributedString(string: "(2~8자 까지 가능합니다)", attributes: msgfont)
+//
+//        self.alert.setValue(titleStr, forKey: "attributedTitle")
+//        self.alert.setValue(msgStr, forKey: "attributedMessage")
+//
+//        let action = UIAlertAction(title: "START", style: .default, handler: btnHandler)
+//        action.setValue(UIColor.black, forKey: "titleTextColor")
+//
+//        self.alert.addAction(action)
+//        self.alert.addTextField(configurationHandler: {(myTextField) in
+//            // textfield custom
+//            myTextField.font = UIFont(name: "NeoDunggeunmo-Regular", size: 18)
+//            myTextField.placeholder = "닉네임을 설정해주세요"
+//            myTextField.addConstraint(myTextField.heightAnchor.constraint(equalToConstant: 20))
+//        })
+//        self.alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .lightGray
+//    }
     
     // MARK: - button completion handler
-    func btnHandler(alert: UIAlertAction)
+    @objc func startGame(_ sender: UIButton)
     {
+        self.layout_userNameInput.layout_total.removeFromSuperview()
+        
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.name = self.alert.textFields?[0].text ?? "anonymous"
+            appdel.name = self.layout_userNameInput.tf_name.text ?? "anonymous"
         }
         
         back_bgm.run(SKAction.changeVolume(to: 0, duration: 1))
@@ -110,7 +116,9 @@ class StartScene: SKScene {
             
             // 화면 전환
             if nodeTouched.name == "StartBtn" {
-                self.controller?.present(self.alert, animated: false, completion: nil)
+                print("yes")
+                self.layout_userNameInput.layout_total.isHidden = false
+                self.startBtn.isHidden = true
             }
         }
     }
