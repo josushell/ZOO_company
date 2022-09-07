@@ -65,8 +65,7 @@ class StartUserNameLayout {
             make.height.equalTo(36)
             make.centerX.equalToSuperview()
         }
-        tf_name.backgroundColor = .white
-        tf_name.placeholder = "닉네임을 설정해주세요"
+        tf_name.setUserNameInput()
         
         btn_start.snp.makeConstraints() { make in
             make.width.equalTo(145)

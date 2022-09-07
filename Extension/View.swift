@@ -195,5 +195,29 @@ extension UIButton {
 
 // MARK: - UITextField
 extension UITextField {
+    func setUserNameInput(_ text: String = "닉네임을 설정해주세요") {
+        self.backgroundColor = .white
+        self.layer.cornerRadius = 8
+        self.setLeftPaddingPoints(10)
+        let range = (text as NSString).range(of: text)
+        let font = UIFont(name: "NeoDunggeunmo-Regular", size: 15)
+        let placeHolder = NSMutableAttributedString(string: text)
+        
+        placeHolder.addAttribute(.font, value: font!, range: range)
+        placeHolder.addAttribute(.foregroundColor, value: UIColor.gray, range: range)
     
+        self.attributedPlaceholder = placeHolder
+    }
+    
+    func setLeftPaddingPoints(_ amount: CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
 }

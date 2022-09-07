@@ -48,7 +48,7 @@ class SubwayGameResult {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-20)
         }
-        btn_start.setChoiceButton(tagValue: 0, ImgName: "choicebox_normal_mini")
+        btn_start.setChoiceButton(tagValue: 0, ImgNameNormal: "choicebox_normal_mini", ImgNameTouched: "choicebox_touched_minimi")
         btn_start.layer.zPosition = 999
         
         btn_start.addSubview(label_start)
