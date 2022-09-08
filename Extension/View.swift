@@ -206,7 +206,10 @@ extension UITextField {
         placeHolder.addAttribute(.font, value: font!, range: range)
         placeHolder.addAttribute(.foregroundColor, value: UIColor.gray, range: range)
     
+        self.font = font
         self.attributedPlaceholder = placeHolder
+        self.clearButtonMode = .whileEditing
+        self.returnKeyType = .done
     }
     
     func setLeftPaddingPoints(_ amount: CGFloat){

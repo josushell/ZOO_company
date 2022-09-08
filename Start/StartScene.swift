@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import UIKit
 
 // MARK: 시작 scene
 class StartScene: SKScene {
@@ -14,22 +15,23 @@ class StartScene: SKScene {
     let textureAtlas = SKTextureAtlas(named: "start")
     let startBtn = SKSpriteNode()
     let framesize = FrameSize()
-    
+
     let layout_userNameInput = StartUserNameLayout()
-    
+
     let back_bgm = SKAudioNode(fileNamed: "start_music")
     let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
-    
+
     // MARK: - entry point
     override func didMove(to view: SKView) {
         // MARK: set user name input
         layout_userNameInput.initView(view)
         layout_userNameInput.btn_start.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
+        layout_userNameInput.tf_name.delegate = self
+        textfieldkeyboardsetup()
     
         self.backgroundColor = UIColor(red: 255, green: 255, blue: 255)
         
-        let backFrame: [SKTexture] = [textureAtlas.textureNamed("1"), textureAtlas.textureNamed("2"),
-                                     textureAtlas.textureNamed("3"), textureAtlas.textureNamed("4")]
+        let backFrame: [SKTexture] = [textureAtlas.textureNamed("1"), textureAtlas.textureNamed("2"), textureAtlas.textureNamed("3"), textureAtlas.textureNamed("4")]
         let backAction = SKAction.animate(with: backFrame, timePerFrame: 0.5)
         let backgroundImg = SKSpriteNode(imageNamed: "1")
         backgroundImg.size = CGSize(width: framesize.width , height: framesize.height)
@@ -62,32 +64,6 @@ class StartScene: SKScene {
     func registerButton() {
         self.addChild(startBtn)
     }
-//
-//    func setUserNameInput() {
-//        // MARK: text field 설정
-//        self.alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-//
-//        let titlefont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 18.0)!]
-//        let msgfont = [NSAttributedString.Key.font: UIFont(name: "NeoDunggeunmo-Regular", size: 14.0)!]
-//
-//        let titleStr = NSMutableAttributedString(string: "당신의 이름은 무엇인가요?", attributes: titlefont)
-//        let msgStr = NSMutableAttributedString(string: "(2~8자 까지 가능합니다)", attributes: msgfont)
-//
-//        self.alert.setValue(titleStr, forKey: "attributedTitle")
-//        self.alert.setValue(msgStr, forKey: "attributedMessage")
-//
-//        let action = UIAlertAction(title: "START", style: .default, handler: btnHandler)
-//        action.setValue(UIColor.black, forKey: "titleTextColor")
-//
-//        self.alert.addAction(action)
-//        self.alert.addTextField(configurationHandler: {(myTextField) in
-//            // textfield custom
-//            myTextField.font = UIFont(name: "NeoDunggeunmo-Regular", size: 18)
-//            myTextField.placeholder = "닉네임을 설정해주세요"
-//            myTextField.addConstraint(myTextField.heightAnchor.constraint(equalToConstant: 20))
-//        })
-//        self.alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = .lightGray
-//    }
     
     // MARK: - button completion handler
     @objc func startGame(_ sender: UIButton)
@@ -122,4 +98,40 @@ class StartScene: SKScene {
             }
         }
     }
+}
+
+// MARK: - UITextfield delegate에 따른 layout 수정
+extension StartScene: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.layout_userNameInput.tf_name.resignFirstResponder()
+        return true
+    }
+    
+    // 키보드 설정
+    func textfieldkeyboardsetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: NSNotification) {
+        var keyboardHeight: CGFloat = 0.0
+        
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            keyboardHeight = keyboardFrame.cgRectValue.height
+        }
+        self.layout_userNameInput.layout_main.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        self.layout_userNameInput.layout_main.snp.remakeConstraints() { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(2)
+            make.bottom.equalToSuperview().offset(-keyboardHeight + 7)
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender: NSNotification) {
+        self.layout_userNameInput.layout_main.transform = .identity
+        self.layout_userNameInput.layout_main.snp.remakeConstraints() { make in
+            make.center.equalToSuperview()
+        }
+    }
+
 }

@@ -147,6 +147,11 @@ class Ch5Part2ViewController: BaseViewController {
                 
                 if (self.layout.talkIndex[1] == 6) {
                     // ToDo: 손 드는 화면 애니메이션 (시간 두고)
+                    UIView.transition(with: self.layout.backgroundImg, duration: 3, options: .curveLinear, animations: {
+                        // 손 드는 애니메이션 배경
+                    }, completion: { _ in
+                        // 완료 completion
+                    })
                 }
                 
                 self.layout.talkIndex[1] += 1

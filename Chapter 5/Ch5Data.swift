@@ -85,7 +85,7 @@ class ImgOrderData_Ch5_part2: ImgOrderData {
         
         penguin = ["penguin_normal", "penguin_normal"]
         player = ["suit_laugh", "suit_normal", "suit_normal", "suit_awkward", "suit_awkward", "suit_laugh", "suit_normal", "suit_surprise", "suit_stare"]
-        pigeon = ["pigeon_normal", "pigeon_normal"]
+        pigeon = ["pigeon_fire", "pigeon_fire"]
     }
 }
 
