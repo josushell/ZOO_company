@@ -13,6 +13,7 @@ class Ch5Part2ViewController: BaseViewController {
     var selected_count = 0
     var response_pigeon: Bool = false
     var response_alpaca: Bool = false
+    let ImgArray = [UIImage(named: "presentation_hands1")!, UIImage(named: "presentation_hands2")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,9 @@ class Ch5Part2ViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.registerGesture()
         })
+        
+        layout.backgroundImg.animationImages = ImgArray
+        layout.backgroundImg.animationDuration = 0.6
     }
     
     @objc override func onBtnClicked(_ sender: UIButton) {
@@ -67,9 +71,19 @@ class Ch5Part2ViewController: BaseViewController {
                 
                 if (self.layout.talkIndex[1] == 1) {
                     // ToDo: 발표하는 이미지로 변경 (시간 두고 변경)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        UIView.transition(with: self.layout.backgroundImg, duration: 2, options: .transitionCrossDissolve, animations: {
+                            self.layout.backgroundImg.image = UIImage(named: "presentation_off")
+                        }, completion: { _ in
+                            self.layout.talkIndex[1] += 1
+                            self.layout.backView.isUserInteractionEnabled = true
+                        })
+                    })
                 }
-                self.layout.talkIndex[1] += 1
-                layout.backView.isUserInteractionEnabled = true
+                else {
+                    self.layout.talkIndex[1] += 1
+                    layout.backView.isUserInteractionEnabled = true
+                }
             }
             
             // 비둘기
@@ -142,16 +156,17 @@ class Ch5Part2ViewController: BaseViewController {
         else if (!selected[1] && selected_count == 1) {
             // 주인공
             if (self.layout.talkIndex[1] < layout.talks.player.count) {
+                if (self.layout.talkIndex[1] == 6) {
+                    self.layout.backgroundImg.image = UIImage(named: "presentation_endon")
+                }
+                else {
+                    self.layout.backgroundImg.image = UIImage(named: "presentation_endoff")
+                }
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[1]])
                 self.layout.text.setText(layout.talks.player[self.layout.talkIndex[1]])
                 
                 if (self.layout.talkIndex[1] == 6) {
-                    // ToDo: 손 드는 화면 애니메이션 (시간 두고)
-                    UIView.transition(with: self.layout.backgroundImg, duration: 3, options: .curveLinear, animations: {
-                        // 손 드는 애니메이션 배경
-                    }, completion: { _ in
-                        // 완료 completion
-                    })
+                    self.layout.backgroundImg.startAnimating()
                 }
                 
                 self.layout.talkIndex[1] += 1
@@ -172,6 +187,8 @@ class Ch5Part2ViewController: BaseViewController {
         
         // 2번 선택지 이후
         else {
+            self.layout.backgroundImg.stopAnimating()
+            self.layout.backgroundImg.image = UIImage(named: "presentation_endon")
             self.layout.profile_char.isHidden = false
             self.layout.profile_char.image = UIImage(named: (layout.response as! Response_Ch5_part2).char_image[self.select_index])
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index + 3])

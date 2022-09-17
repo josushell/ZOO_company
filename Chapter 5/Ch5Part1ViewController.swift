@@ -7,8 +7,10 @@
 
 import UIKit
 
+// MARK: - Ch5Part1ViewController
 class Ch5Part1ViewController: BaseViewController {
     var selected: Bool = false
+    let mailImgArray = [UIImage(named: "mail")!, UIImage(named: "mailpoint")!]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +23,20 @@ class Ch5Part1ViewController: BaseViewController {
         layout.response = Response_Ch5_part1()
         (layout as! layout_Mail_ch5).initView(self.view)
         
+        (layout as! layout_Mail_ch5).mailIconGesture = UITapGestureRecognizer(target: self, action: #selector(mailIconTouched))
+        (layout as! layout_Mail_ch5).mailIcon.addGestureRecognizer((layout as! layout_Mail_ch5).mailIconGesture!)
+        
+        (layout as! layout_Mail_ch5).mailScreenGesture = UITapGestureRecognizer(target: self, action: #selector(mailScreenTouched))
+        (layout as! layout_Mail_ch5).mailScreen.layout_main.addGestureRecognizer((layout as! layout_Mail_ch5).mailScreenGesture!)
+
+        (self.layout as! layout_Mail_ch5).mailIcon.animationImages = mailImgArray
+        (self.layout as! layout_Mail_ch5).mailIcon.animationDuration = 0.7
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.registerGesture()
         })
     }
+    
     @objc override func onBtnClicked(_ sender: UIButton) {
         super.onBtnClicked(sender)
         
@@ -47,11 +59,20 @@ class Ch5Part1ViewController: BaseViewController {
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
                 
-                self.layout.talkIndex[0] += 1
-                layout.backView.isUserInteractionEnabled = true
+                if (self.layout.talkIndex[0] == 1) {
+                    (self.layout as! layout_Mail_ch5).showMailAnimation({
+                        self.layout.talkIndex[0] += 1
+                        self.layout.backView.isUserInteractionEnabled = true
+                    })
+                }
                 
-                if (self.layout.talkIndex[0] == 2) {
-                    // ToDo: 메일 아이콘 등장
+                else if (self.layout.talkIndex[0] == 2) {
+                    (layout as! layout_Mail_ch5).mailIcon.isUserInteractionEnabled = true
+                    (self.layout as! layout_Mail_ch5).mailIcon.startAnimating()
+                }
+                else {
+                    self.layout.talkIndex[0] += 1
+                    layout.backView.isUserInteractionEnabled = true
                 }
             }
             else {
@@ -91,4 +112,34 @@ class Ch5Part1ViewController: BaseViewController {
             }
         }
     }
+}
+
+// MARK: - Mail Event
+extension Ch5Part1ViewController {
+    // Mail Icon Touch Gesture Method
+    @objc func mailIconTouched(_ sender: UITapGestureRecognizer) {
+        (layout as! layout_Mail_ch5).mailIcon.stopAnimating()
+        layout.hideBeforeAnim()
+        layout.layout_blackView.isHidden = false
+        (layout as! layout_Mail_ch5).mailIcon.removeFromSuperview()
+        (layout as! layout_Mail_ch5).mailScreen.layout_main.isHidden = false
+    }
+    
+    // Mail Screen Touch Gesture Method
+    @objc func mailScreenTouched(_ sender: UITapGestureRecognizer) {
+        self.layout.layout_blackView.isHidden = true
+        (layout as! layout_Mail_ch5).mailScreen.layout_main.removeFromSuperview()
+        
+        self.layout.talkIndex[0] += 1
+        
+        self.layout.profile_player.isHidden = false
+        layout.textbox.isHidden = false
+        self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
+        self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
+        
+        self.layout.talkIndex[0] += 1
+        self.layout.backView.isUserInteractionEnabled = true
+        
+    }
+    
 }
