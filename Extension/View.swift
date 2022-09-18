@@ -207,6 +207,7 @@ extension UITextField {
         placeHolder.addAttribute(.foregroundColor, value: UIColor.gray, range: range)
     
         self.font = font
+        self.textColor = .black
         self.attributedPlaceholder = placeHolder
         self.clearButtonMode = .whileEditing
         self.returnKeyType = .done
