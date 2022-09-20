@@ -111,11 +111,10 @@ class Ch3Part1ViewController: BaseViewController {
             // 주인공
             else {
                 lionMinimiAnimation_OUT()
-                
                 self.layout.profile_char.isHidden = true
                 self.layout.img_nametag.isHidden = true
-                self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0] - 1])
-                self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0] - 1])
+                self.layout.profile_player.image = UIImage(named: (layout.profileOrder as! ImgOrderData_Ch3_part1).player_taskResponse[select_index])
+                self.layout.text.setText((layout.talks as! TalkData_Ch3_part1).player_taskResponse[select_index])
                 
                 selected_count += 1
                 layout.backView.isUserInteractionEnabled = true

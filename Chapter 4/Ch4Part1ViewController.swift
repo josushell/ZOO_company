@@ -24,13 +24,13 @@ class Ch4Part1ViewController: BaseViewController {
         (layout as! layout_Office_ch4).initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.layout.img_nametag.isHidden = true
-            self.layout.profile_player.isHidden = false
-            self.layout.textbox.isHidden = false
-            self.layout.profile_player.image = UIImage(named: self.layout.profileOrder.player[self.layout.talkIndex[0]])
-            self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
-            
-            self.layout.talkIndex[0] += 1
+//            self.layout.img_nametag.isHidden = true
+//            self.layout.profile_player.isHidden = false
+//            self.layout.textbox.isHidden = false
+//            self.layout.profile_player.image = UIImage(named: self.layout.profileOrder.player[self.layout.talkIndex[0]])
+//            self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
+//
+//            self.layout.talkIndex[0] += 1
             self.registerGesture()
         })
     }
@@ -63,8 +63,22 @@ class Ch4Part1ViewController: BaseViewController {
         
         // 1번 선택지 이전
         if (!selected[0] && selected_count == 0) {
+            // 주인공
+            if (self.layout.talkIndex[0] < 2) {
+                if (self.layout.talkIndex[0] == 1) {
+                    self.layout.profile_player.isHidden = false
+                    self.layout.profile_player.image = UIImage(named: self.layout.profileOrder.player[self.layout.talkIndex[0]])
+                }
+                self.layout.img_nametag.isHidden = true
+                self.layout.textbox.isHidden = false
+                self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
+                
+                self.layout.talkIndex[0] += 1
+                self.layout.backView.isUserInteractionEnabled = true
+            }
+            
             // 박쥐
-            if (self.layout.talkIndex[1] < 1) {
+            else if (self.layout.talkIndex[1] < 1) {
                 if (!minimi) {
                     batMinimiAnimation_IN(callback: {
                         self.minimi = true
@@ -81,7 +95,7 @@ class Ch4Part1ViewController: BaseViewController {
             }
             
             // 주인공
-            else if (self.layout.talkIndex[0] < 3) {
+            else if (self.layout.talkIndex[0] < 4) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.isHidden = false
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
@@ -103,11 +117,11 @@ class Ch4Part1ViewController: BaseViewController {
         else if (selected[0] == true  && selected_count == 0) {
             
             // 주인공
-            if (self.layout.talkIndex[0] < 5) {
+            if (self.layout.talkIndex[0] < 6) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 
-                if (self.layout.talkIndex[0] == 4) {
+                if (self.layout.talkIndex[0] == 5) {
                     self.layout.profile_char.isHidden = true
                 }
                 

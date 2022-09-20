@@ -13,24 +13,28 @@ import UIKit
 // MARK: - dialog 데이터
 class TalkData_Ch3_part1: TalkData {
     var lion: [String] = []
+    var player_taskResponse: [String] = []
     
     override init() {
         super.init()
         
-        player = ["거의 다 해가는데? 생각보다 할만한걸?!", "난 지금 맡은 업무가 거의 다 끝나가는데... 어떻게 할까?", "추가 업무라니\n진짜 망했다...", "타닥..타닥...", "흠... 지금 이 업무 방식은 너무 비효율적인데...", "그렇다고 바꾸자니 이 방식이 더 익숙하긴 해... 어떻게 할까?"]
+        player = ["거의 다 해가는데? 생각보다 할만한걸?!", "난 지금 맡은 업무가 거의 다 끝나가는데... 어떻게 할까?", "", "타닥..타닥...", "흠... 지금 이 업무 방식은 너무 비효율적인데...", "그렇다고 바꾸자니 이 방식이 더 익숙하긴 해... 어떻게 할까?"]
         lion = ["자자 여기 집중! 전달 사항이 있네.", "이번에 우리 팀으로 추가 업무가 배정 됐어.", "다들 지금 업무도 이미 벅찬 걸 알지만 누군가는 맡아서 해줬으면 하는데 말이야.", "여력이 되는 사람 없나?"]
+        player_taskResponse = ["좋았어! 나의 능력을 보여주자!", "추가 업무라니. 진짜 망했다...", "추가 업무라니. 진짜 망했다..."]
     }
 }
 
 // MARK: - profile 순서
 class ImgOrderData_Ch3_part1: ImgOrderData {
     var lion: [String] = []
+    var player_taskResponse: [String] = []
     
     override init() {
         super.init()
         
-        player = ["suit_normal", "suit_stare", "suit_sad", "computer_tired", "computer_normal", "computer_normal"]
+        player = ["suit_normal", "suit_stare", "", "computer_tired", "computer_normal", "computer_normal"]
         lion = ["lion_normal", "lion_normal", "lion_laugh", "lion_normal"]
+        player_taskResponse = ["suit_fire", "suit_sad", "suit_sad"]
     }
 }
 
@@ -71,7 +75,7 @@ class TalkData_Ch3_part2: TalkData {
     override init() {
         super.init()
         
-        player = ["하암~~ 피곤하다~~ 벌써 오후 3시네", "뭐라도 좀 마시고 해야지!", "탕비실에 가볼까?", "흠.. 종류가 많네. 무엇을 마셔볼까?"]
+        player = ["하암~~ 피곤하다~~ 벌써 오후 3시네.", "뭐라도 좀 마시고 해야지!", "탕비실에 가볼까?", "흠.. 종류가 많네. 무엇을 마셔볼까?"]
     }
 }
 

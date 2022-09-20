@@ -18,7 +18,7 @@ class TalkData_Ch4_part1: TalkData {
     override init() {
         super.init()
         
-        player = ["벌써 퇴근시간이 지났네... 다들 집에 안가시나?", "(아니 이분은 초엘리트 구구대 수석 졸업 박사 출신 박쥐 이사님이잖아?!)", "헉 안녕하십니까!", "와! 감사합니다!", "내가 박쥐 이사님과 업무를 주고 받았다니...!\n좋아 완벽히 해내겠어!", "네 지금 바로 보내드릴게요!", "앗 아까 졸면서 모르고 백 스페이스를 계속 눌러버렸잖아?!", "파일이 다 사라져버렸어! 어떡하지?"]
+        player = ["정신없이 근무를 하던 중...", "벌써 퇴근시간이 지났네. 다들 집에 안가시나?", "아니 이분은 초엘리트 구구대 수석 졸업 박사 출신 박쥐 이사님이잖아?!", "헉 안녕하십니까!", "와! 감사합니다!", "내가 박쥐 이사님과 업무를 주고 받았다니...! 좋아 완벽히 해내겠어!", "네 지금 바로 보내드릴게요!", "앗 아까 졸면서 모르고 백 스페이스를 계속 눌러버렸잖아?!", "파일이 다 사라져버렸어! 어떡하지?"]
         bat = ["이번에 새로 오셨다는 \(name)씨?"]
         mouse = ["\(name)씨! 프로젝트 발표 준비 다 끝냈다면서요?", "수고하셨어요! 저한테도 메일로 발표 자료 보내주세요."]
     }
@@ -33,7 +33,7 @@ class ImgOrderData_Ch4_part1: ImgOrderData {
         super.init()
         
         mouse = ["mouse_normal", "mouse_laugh"]
-        player = ["suit_normal", "suit_surprise", "suit_surprise", "suit_laugh", "suit_fire", "suit_laugh", "suit_surprise", "suit_sad"]
+        player = ["", "suit_normal", "suit_surprise", "suit_surprise", "suit_laugh", "suit_fire", "suit_laugh", "suit_surprise", "suit_sad"]
         bat = ["bat_normal"]
     }
 }
@@ -79,7 +79,7 @@ class TalkData_Ch4_part2: TalkData {
         super.init()
 
         player = ["휴... 간신히 다 했다.", "잠시만, 벌써 새벽 1시? 집에는 언제 가지..", "으악!! 깜짝이야!!! 누구세요?!", "엇 비둘기 사장님?"]
-        pigeon = ["\(name)씨 늦은 시간까지 고생이 많네요.", "오늘까지 발표 준비 마무리해서 다행이에요.", "내일 발표 행운을 기대할게요."]
+        pigeon = ["\(name)씨 늦은 시간까지 고생이 많네요.", "오늘까지 발표 준비 마무리해서 다행이에요.", "내일 발표 기대할게요."]
     }
 }
 
