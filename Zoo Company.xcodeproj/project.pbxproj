@@ -58,6 +58,9 @@
 		86CE911028AF547F00F58BAA /* Ch1ElevatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */; };
 		86F65B2C283F3CE200DCBAA8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* Utils.swift */; };
 		E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */; };
+		E8A2BBFE28DAD65400B54ADB /* EndingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2BBFD28DAD65400B54ADB /* EndingViewController.swift */; };
+		E8A2BC0028DAD66000B54ADB /* EndingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2BBFF28DAD66000B54ADB /* EndingData.swift */; };
+		E8A2BC0228DAD66B00B54ADB /* EndingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A2BC0128DAD66B00B54ADB /* EndingLayout.swift */; };
 		F9B55AF9C2DF3E9184DF009E /* Pods_Zoo_Company.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66654D1C2F29E900C8F835AD /* Pods_Zoo_Company.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +121,9 @@
 		86F65B2B283F3CE200DCBAA8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.release.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.release.xcconfig"; sourceTree = "<group>"; };
 		E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Part1ViewController.swift; sourceTree = "<group>"; };
+		E8A2BBFD28DAD65400B54ADB /* EndingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingViewController.swift; sourceTree = "<group>"; };
+		E8A2BBFF28DAD66000B54ADB /* EndingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingData.swift; sourceTree = "<group>"; };
+		E8A2BC0128DAD66B00B54ADB /* EndingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 				86A7AD9E28ACC5DF006668AA /* Chapter 3 */,
 				86A318F928ADF26A002D5C25 /* Chapter 4 */,
 				E8539A1B28B8506E0071BCD8 /* Chapter 5 */,
+				E8A2BBFC28DAD61E00B54ADB /* Ending */,
 				8693E11428799D2200D7D306 /* Extension */,
 				861D19FA28328BA700D6E6B1 /* Common */,
 				86A318F228ADDD61002D5C25 /* Legacy */,
@@ -306,6 +313,16 @@
 			path = "Chapter 5";
 			sourceTree = "<group>";
 		};
+		E8A2BBFC28DAD61E00B54ADB /* Ending */ = {
+			isa = PBXGroup;
+			children = (
+				E8A2BBFD28DAD65400B54ADB /* EndingViewController.swift */,
+				E8A2BC0128DAD66B00B54ADB /* EndingLayout.swift */,
+				E8A2BBFF28DAD66000B54ADB /* EndingData.swift */,
+			);
+			path = Ending;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -431,6 +448,7 @@
 			files = (
 				86A318E628ADCDFD002D5C25 /* Ch3Part2ViewController.swift in Sources */,
 				86A318FD28ADF2E2002D5C25 /* Ch4Data.swift in Sources */,
+				E8A2BC0028DAD66000B54ADB /* EndingData.swift in Sources */,
 				86173E87284780070097B421 /* StartScene.swift in Sources */,
 				86CE911028AF547F00F58BAA /* Ch1ElevatorLayout.swift in Sources */,
 				86AA6FF728B35DAA0099BDB3 /* Ch1Part3ViewController.swift in Sources */,
@@ -456,6 +474,7 @@
 				86A318F028ADDC0F002D5C25 /* Ch2OfficeLayout.swift in Sources */,
 				8647B1A228AA2642005F54BC /* BaseLayout.swift in Sources */,
 				86A4248A28B48CF60078E6FE /* SubwayDescription.swift in Sources */,
+				E8A2BBFE28DAD65400B54ADB /* EndingViewController.swift in Sources */,
 				86A318FB28ADF281002D5C25 /* Ch4Part1ViewController.swift in Sources */,
 				8647B19B28A9137D005F54BC /* Ch1Part1ViewController.swift in Sources */,
 				8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */,
@@ -465,6 +484,7 @@
 				8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */,
 				861D19FC28328BA700D6E6B1 /* AppDelegate.swift in Sources */,
 				86A4248628B46B5A0078E6FE /* SubwayHUD.swift in Sources */,
+				E8A2BC0228DAD66B00B54ADB /* EndingLayout.swift in Sources */,
 				86A318F828ADDE38002D5C25 /* Ch1SubwayLayout.swift in Sources */,
 				86A318F628ADDDAE002D5C25 /* Ch1HomeLayout.swift in Sources */,
 				86A318EE28ADDAB8002D5C25 /* Ch1Data.swift in Sources */,
