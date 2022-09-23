@@ -10,13 +10,6 @@ import UIKit
 
 // MARK: - dialog 데이터
 class TalkData: Name {
-//    var name: String {
-//        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-//            return appdel.name
-//        }
-//        return "anonymous"
-//    }
-
     var player: [String] = []
 }
 
@@ -36,13 +29,6 @@ class ChoiceData {
 
 // MARK: - 선택지 반응
 class Response: Name {
-//    var name: String {
-//        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-//            return appdel.name
-//        }
-//        return "anonymous"
-//    }
-    
     var player_response: [[String]] = [[]]
     var player_image: [[String]] = [[]]
 }

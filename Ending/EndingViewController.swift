@@ -11,6 +11,7 @@ import UIKit
 // MARK: - Ending View Controller
 class EndingViewController: BaseViewController {
     var backImgArray = ["ending1", "ending2", "ending3-1", "ending4-1", "ending5"]
+    var identity: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,9 @@ class EndingViewController: BaseViewController {
         layout.talks = TalkData_Ending()
         layout.choices = ChoiceData_Ending()
         (layout as! layout_ending).initView(self.view)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+            self.firstBackImgAnimation()
             self.layout.textbox.isHidden = false
             self.showEndingText {
                 self.registerGesture()
@@ -31,13 +33,53 @@ class EndingViewController: BaseViewController {
     
     override func backTouched(_ sender: UITapGestureRecognizer) {
         self.layout.backView.isUserInteractionEnabled = false
-        
-        if (layout.talkIndex[0] < 5) {
-            showEndingBackgroundImg()
-            showEndingText {
-                self.layout.backView.isUserInteractionEnabled = true
+        if (!identity) {
+            self.layout.backgroundImg.transform = .identity
+            self.layout.backgroundImg.snp.remakeConstraints() { make in
+                make.edges.equalToSuperview()
             }
         }
+        
+        if (layout.talkIndex[0] < 5) {
+            layout.backgroundImg.image = UIImage(named: self.backImgArray[layout.talkIndex[0]])
+            
+            if (backImgArray[layout.talkIndex[0]].contains("-")) {
+                var Imgstr = backImgArray[layout.talkIndex[0]]
+                Imgstr.removeLast()
+                Imgstr += "2"
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+
+                    UIView.transition(with: self.layout.backgroundImg, duration: 1, options: .transitionCrossDissolve, animations: {
+                        self.layout.backgroundImg.image = UIImage(named: Imgstr)
+                    }, completion: { _ in
+                        self.layout.backView.isUserInteractionEnabled = true
+                    })
+                })
+            }
+            
+            if (layout.talkIndex[0] < layout.talks.player.count) {
+                showEndingText {
+                    self.layout.backView.isUserInteractionEnabled = true
+                }
+            }
+            else {
+                self.layout.textbox.isHidden = true
+            }
+        }
+    }
+    
+    // MARK: - 첫번째 배경 이미지 이동 애니메이션
+    func firstBackImgAnimation() {
+        let diff = (UIImage(named: "ending1")?.size.width)! - FrameSize().width
+        
+        self.layout.backView.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 5, delay: 0, options: .curveEaseInOut, animations: {
+            self.layout.backgroundImg.transform = CGAffineTransform(translationX: -diff, y: 0)
+        }, completion: { _ in
+            self.layout.backView.isUserInteractionEnabled = true
+        })
+                       
     }
     
     // MARK: - show ending dialog text
@@ -47,20 +89,23 @@ class EndingViewController: BaseViewController {
         completion()
     }
     
-    // MARK: - show ending background image with animation
-    func showEndingBackgroundImg () {
-        layout.backgroundImg.image = UIImage(named: self.backImgArray[layout.talkIndex[0]])
-        
-        if (backImgArray[layout.talkIndex[0]].contains("-")) {
-            var Imgstr = backImgArray[layout.talkIndex[0]]
-            Imgstr.removeLast()
-            Imgstr += "2"
-            
-            UIView.transition(with: self.layout.backgroundImg, duration: 1, options: .transitionCrossDissolve, animations: {
-                self.layout.backgroundImg.image = UIImage(named: "Imgstr")
-            }, completion: { _ in
-                self.layout.backView.isUserInteractionEnabled = true
-            })
-        }
-    }
+//    // MARK: - show ending background image with animation
+//    func showEndingBackgroundImg () {
+//        layout.backgroundImg.image = UIImage(named: self.backImgArray[layout.talkIndex[0]])
+//
+//        if (backImgArray[layout.talkIndex[0]].contains("-")) {
+//            var Imgstr = backImgArray[layout.talkIndex[0]]
+//            Imgstr.removeLast()
+//            Imgstr += "2"
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+//                self.layout.backView.isUserInteractionEnabled = false
+//                UIView.transition(with: self.layout.backgroundImg, duration: 1, options: .transitionCrossDissolve, animations: {
+//                    self.layout.backgroundImg.image = UIImage(named: Imgstr)
+//                }, completion: { _ in
+//                    self.layout.backView.isUserInteractionEnabled = true
+//                })
+//            })
+//        }
+//    }
 }
