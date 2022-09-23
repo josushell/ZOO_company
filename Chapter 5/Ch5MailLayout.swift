@@ -35,7 +35,7 @@ class layout_Mail_ch5: layout_base {
         mailScreen.initViews(view)
     }
 
-    // Mail Show animation Method
+    // Mail Show animation method
     func showMailAnimation(_ completion: @escaping (() -> Void)) {
         mailIcon.isHidden = false
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {

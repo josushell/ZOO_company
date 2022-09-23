@@ -194,8 +194,10 @@ class Ch5Part2ViewController: BaseViewController {
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index + 3])
             self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index + 3])
             
-            //MARK: - fade in fade out
-            //self.dissmissAndPresent(Ending(), animated: false, completion: nil)
+            //MARK: - fade in fade out: 2 sec
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.dissmissAndPresent(EndingViewController(), animated: false, completion: nil)
+            })
         }
     }
 }
