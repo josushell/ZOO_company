@@ -24,7 +24,11 @@ class EndingViewController: BaseViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             self.firstBackImgAnimation()
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.layout.textbox.isHidden = false
+            
             self.showEndingText {
                 self.registerGesture()
             }
@@ -74,7 +78,7 @@ class EndingViewController: BaseViewController {
         let diff = (UIImage(named: "ending1")?.size.width)! - FrameSize().width
         
         self.layout.backView.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 5, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 3, delay: 0, options: .curveEaseOut, animations: {
             self.layout.backgroundImg.transform = CGAffineTransform(translationX: -diff, y: 0)
         }, completion: { _ in
             self.layout.backView.isUserInteractionEnabled = true
