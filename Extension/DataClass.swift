@@ -42,3 +42,10 @@ class Name {
         return "anonymous"
     }
 }
+
+// MARK: - 유저 능력치 결과 클래스
+enum GameStats: Int {
+    case Mental = 0
+    case Relationship = 1
+    
+}

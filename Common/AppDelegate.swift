@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var count: Int = 0
     var subwaySuccess: Bool = true
     
-    // 선택지가 몇개 선택되었는지
-    var resultData: [Int] = [0, 0, 0]
+    // game 결과 stat
+    var GameStat: [Int] = [0, 0, 0, 0, 0]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
