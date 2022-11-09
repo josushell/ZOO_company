@@ -59,9 +59,7 @@ class Ch5Part1ViewController: BaseViewController {
             selectedStats = GameStats.Diligent.rawValue
         }
         
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.GameStat[selectedStats] += 1
-        }
+        updateStat()
     }
     
     override func backTouched(_ sender: UITapGestureRecognizer) {

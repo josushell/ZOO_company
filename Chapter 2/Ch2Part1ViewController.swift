@@ -62,10 +62,7 @@ class Ch2Part1ViewController: BaseViewController {
         else {
             selectedStats = GameStats.Diligent.rawValue
         }
-        
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.GameStat[selectedStats] += 1
-        }
+        updateStat()
 
     }
     

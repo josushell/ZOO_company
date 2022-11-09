@@ -71,9 +71,7 @@ class Ch5Part2ViewController: BaseViewController {
             
         }
         
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.GameStat[selectedStats] += 1
-        }
+        updateStat()
     }
     
     override func backTouched(_ sender: UITapGestureRecognizer) {

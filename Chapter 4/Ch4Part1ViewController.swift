@@ -74,10 +74,7 @@ class Ch4Part1ViewController: BaseViewController {
                 selectedStats = GameStats.Efficiency.rawValue
             }
         }
-        
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.GameStat[selectedStats] += 1
-        }
+        updateStat()
         
         selected[selected_count] = true
         layout.backView.isUserInteractionEnabled = true

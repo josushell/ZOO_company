@@ -46,11 +46,7 @@ class Ch3Part2ViewController: BaseViewController {
         else {
             selectedStats = GameStats.Mental.rawValue
         }
-        
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.GameStat[selectedStats] += 1
-        }
-        
+        updateStat()
     }
     
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {

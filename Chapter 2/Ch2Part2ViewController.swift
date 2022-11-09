@@ -84,12 +84,10 @@ class Ch2Part2ViewController: BaseViewController {
                 selectedStats = GameStats.Mental.rawValue
             }
         }
+        updateStat()
+        
         selected[selected_count] = true
         layout.backView.isUserInteractionEnabled = true
-        
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.GameStat[selectedStats] += 1
-        }
     }
     
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {

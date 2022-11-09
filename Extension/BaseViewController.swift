@@ -41,10 +41,10 @@ class BaseViewController: UIViewController {
     @objc func backTouched(_ sender: UITapGestureRecognizer) {
 
     }
-
+    
     func updateStat() {
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            appdel.GameStat[0] += 1
+            appdel.GameStat[self.selectedStats] += 1
         }
     }
 }
