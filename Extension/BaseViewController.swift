@@ -12,6 +12,7 @@ import UIKit
 class BaseViewController: UIViewController {
     var layout = layout_base()
     var select_index: Int = 0
+    var selectedStats: Int = 0
     var tapGesture: UITapGestureRecognizer?
     var sound = Sound()
 

@@ -44,6 +44,17 @@ class Ch4Part1ViewController: BaseViewController {
             self.layout.img_nametag.isHidden = false
             self.layout.profile_char.image = UIImage(named: (layout.response as! Response_Ch4_part1).char_image[0][self.select_index])
             self.layout.text.setText((layout.response as! Response_Ch4_part1).bat_response[0][self.select_index])
+            
+            // 엔딩 스탯 추가
+            if (select_index == 0) {
+                selectedStats = GameStats.Passion.rawValue
+            }
+            else if (select_index == 1) {
+                selectedStats = GameStats.Relationship.rawValue
+            }
+            else {
+                selectedStats = GameStats.Efficiency.rawValue
+            }
         }
         
         // 2번 질문
@@ -51,6 +62,21 @@ class Ch4Part1ViewController: BaseViewController {
             self.layout.img_nametag.isHidden = true
             self.layout.profile_player.image = UIImage(named: layout.response.player_image[0][self.select_index])
             self.layout.text.setText(layout.response.player_response[0][self.select_index])
+            
+            // 엔딩 스탯 추가
+            if (select_index == 0) {
+                selectedStats = GameStats.Passion.rawValue
+            }
+            else if (select_index == 1) {
+                selectedStats = GameStats.Diligent.rawValue
+            }
+            else {
+                selectedStats = GameStats.Efficiency.rawValue
+            }
+        }
+        
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.GameStat[selectedStats] += 1
         }
         
         selected[selected_count] = true

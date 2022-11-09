@@ -52,6 +52,21 @@ class Ch2Part1ViewController: BaseViewController {
             self.layout.backView.isUserInteractionEnabled = true
         })
         
+        // 엔딩 스탯 추가
+        if (select_index == 0) {
+            selectedStats = GameStats.Mental.rawValue
+        }
+        else if (select_index == 1) {
+            selectedStats = GameStats.Relationship.rawValue
+        }
+        else {
+            selectedStats = GameStats.Diligent.rawValue
+        }
+        
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.GameStat[selectedStats] += 1
+        }
+
     }
     
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {

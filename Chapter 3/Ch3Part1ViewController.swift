@@ -40,6 +40,35 @@ class Ch3Part1ViewController: BaseViewController {
 
         selected[selected_count] = true
         layout.backView.isUserInteractionEnabled = true
+        
+        if (selected_count == 0) {
+            // 엔딩 스탯 추가
+            if (select_index == 0) {
+                selectedStats = GameStats.Passion.rawValue
+            }
+            else if (select_index == 1) {
+                selectedStats = GameStats.Efficiency.rawValue
+            }
+            else {
+                selectedStats = GameStats.Mental.rawValue
+            }
+        }
+        else {
+            // 엔딩 스탯 추가
+            if (select_index == 0) {
+                selectedStats = GameStats.Mental.rawValue
+            }
+            else if (select_index == 1) {
+                selectedStats = GameStats.Passion.rawValue
+            }
+            else {
+                selectedStats = GameStats.Diligent.rawValue
+            }
+        }
+        
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.GameStat[selectedStats] += 1
+        }
     }
     
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {

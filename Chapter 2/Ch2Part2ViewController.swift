@@ -42,6 +42,17 @@ class Ch2Part2ViewController: BaseViewController {
         if (selected_count == 0) {
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
             self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
+            
+            // 엔딩 스탯 추가
+            if (select_index == 0) {
+                selectedStats = GameStats.Diligent.rawValue
+            }
+            else if (select_index == 1) {
+                selectedStats = GameStats.Mental.rawValue
+            }
+            else {
+                selectedStats = GameStats.Efficiency.rawValue
+            }
         }
         
         // 2번
@@ -60,9 +71,25 @@ class Ch2Part2ViewController: BaseViewController {
             }
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
             self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
+            
+            
+            // 엔딩 스탯 추가
+            if (select_index == 0) {
+                selectedStats = GameStats.Relationship.rawValue
+            }
+            else if (select_index == 1) {
+                selectedStats = GameStats.Efficiency.rawValue
+            }
+            else {
+                selectedStats = GameStats.Mental.rawValue
+            }
         }
         selected[selected_count] = true
         layout.backView.isUserInteractionEnabled = true
+        
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.GameStat[selectedStats] += 1
+        }
     }
     
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {

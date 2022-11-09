@@ -45,6 +45,21 @@ class Ch1Part1ViewController: BaseViewController {
         self.layout.profile_player.image = UIImage(named: layout.response.player_image[0][self.select_index])
         self.layout.text.setText(layout.response.player_response[0][self.select_index])
         layout.backView.isUserInteractionEnabled = true
+        
+        // 엔딩 스탯 추가
+        if (select_index == 0) {
+            selectedStats = GameStats.Passion.rawValue
+        }
+        else if (select_index == 1) {
+            selectedStats = GameStats.Mental.rawValue
+        }
+        else {
+            selectedStats = GameStats.Diligent.rawValue
+        }
+        
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            appdel.GameStat[selectedStats] += 1
+        }
     }
     
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {
