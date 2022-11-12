@@ -18,6 +18,8 @@
 		861F8CC928C1AAA000477665 /* Ch5Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F8CC828C1AAA000477665 /* Ch5Data.swift */; };
 		861F8CCB28C1E1A800477665 /* Ch5MailLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F8CCA28C1E1A800477665 /* Ch5MailLayout.swift */; };
 		861F8CCD28C70E5A00477665 /* StartUserNameLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F8CCC28C70E5A00477665 /* StartUserNameLayout.swift */; };
+		86261A0D291F564A00A375F2 /* MLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86261A0C291F564A00A375F2 /* MLResult.swift */; };
+		86261A11291F612200A375F2 /* ResultDeptClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 86261A10291F612200A375F2 /* ResultDeptClassification.mlmodel */; };
 		8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */; };
 		8647B199289FAB77005F54BC /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B198289FAB77005F54BC /* StartViewController.swift */; };
 		8647B19B28A9137D005F54BC /* Ch1Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B19A28A9137D005F54BC /* Ch1Part1ViewController.swift */; };
@@ -81,6 +83,8 @@
 		861F8CC828C1AAA000477665 /* Ch5Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Data.swift; sourceTree = "<group>"; };
 		861F8CCA28C1E1A800477665 /* Ch5MailLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5MailLayout.swift; sourceTree = "<group>"; };
 		861F8CCC28C70E5A00477665 /* StartUserNameLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUserNameLayout.swift; sourceTree = "<group>"; };
+		86261A0C291F564A00A375F2 /* MLResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLResult.swift; sourceTree = "<group>"; };
+		86261A10291F612200A375F2 /* ResultDeptClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ResultDeptClassification.mlmodel; sourceTree = "<group>"; };
 		8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2Part1ViewController.swift; sourceTree = "<group>"; };
 		8647B198289FAB77005F54BC /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		8647B19A28A9137D005F54BC /* Ch1Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1Part1ViewController.swift; sourceTree = "<group>"; };
@@ -321,8 +325,10 @@
 		E87F9253291B71C600424757 /* References */ = {
 			isa = PBXGroup;
 			children = (
+				86261A10291F612200A375F2 /* ResultDeptClassification.mlmodel */,
 				E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */,
 				E87F9256291B738400424757 /* ReferenceLayout.swift */,
+				86261A0C291F564A00A375F2 /* MLResult.swift */,
 			);
 			path = References;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				861D1A0428328BA700D6E6B1 /* GameViewController.swift in Sources */,
 				8647B1AF28B0C798005F54BC /* Sound.swift in Sources */,
 				86996E1B28B5AC0C0021C383 /* SubwayGameResult.swift in Sources */,
+				86261A0D291F564A00A375F2 /* MLResult.swift in Sources */,
 				E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */,
 				86A318E828ADD693002D5C25 /* Ch3OfficeLayout.swift in Sources */,
 				86A318EC28ADDA17002D5C25 /* Ch2Data.swift in Sources */,
@@ -478,6 +485,7 @@
 				861F8CC728C1AA8900477665 /* Ch5PresentationLayout.swift in Sources */,
 				8647B1A028A9345A005F54BC /* Ch2Part2ViewController.swift in Sources */,
 				861F8CCD28C70E5A00477665 /* StartUserNameLayout.swift in Sources */,
+				86261A11291F612200A375F2 /* ResultDeptClassification.mlmodel in Sources */,
 				8647B19E28A922AB005F54BC /* Ch1Part2ViewController.swift in Sources */,
 				8647B199289FAB77005F54BC /* StartViewController.swift in Sources */,
 				8693E11F288D216C00D7D306 /* View.swift in Sources */,
