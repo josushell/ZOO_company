@@ -73,7 +73,7 @@ class layout_reference {
             make.height.equalTo(260)
             make.width.equalTo(245)
         }
-        layout_profile.image = UIImage(named: "team_design")
+        layout_profile.image = UIImage(named: "team_hr")
         setBlueShadow(layout_profile)
 
         layout_name.snp.makeConstraints() { make in
@@ -209,6 +209,7 @@ class layout_reference {
             make.bottom.equalToSuperview()
             make.left.equalToSuperview().offset(vs.width)
         }
+        btn_next.layer.zPosition = 999
         btn_next.image = UIImage(named: "referenceBtn")
         
         layout_bottom.snp.makeConstraints() { make in

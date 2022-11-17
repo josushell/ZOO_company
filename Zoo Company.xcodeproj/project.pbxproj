@@ -59,6 +59,8 @@
 		86CE910E28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910D28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift */; };
 		86CE911028AF547F00F58BAA /* Ch1ElevatorLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */; };
 		86F65B2C283F3CE200DCBAA8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* Utils.swift */; };
+		E80BCCC629261DED0043DA10 /* IDCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC529261DED0043DA10 /* IDCardLayout.swift */; };
+		E80BCCC829261DF70043DA10 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC729261DF70043DA10 /* IDCardViewController.swift */; };
 		E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */; };
 		E87F9255291B71EA00424757 /* ReferenceViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */; };
 		E87F9257291B738400424757 /* ReferenceLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9256291B738400424757 /* ReferenceLayout.swift */; };
@@ -126,6 +128,8 @@
 		86CE910F28AF547F00F58BAA /* Ch1ElevatorLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1ElevatorLayout.swift; sourceTree = "<group>"; };
 		86F65B2B283F3CE200DCBAA8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.release.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.release.xcconfig"; sourceTree = "<group>"; };
+		E80BCCC529261DED0043DA10 /* IDCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardLayout.swift; sourceTree = "<group>"; };
+		E80BCCC729261DF70043DA10 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
 		E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Part1ViewController.swift; sourceTree = "<group>"; };
 		E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceViewControllerViewController.swift; sourceTree = "<group>"; };
 		E87F9256291B738400424757 /* ReferenceLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceLayout.swift; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 		E80BCCC429261DA40043DA10 /* IDCard */ = {
 			isa = PBXGroup;
 			children = (
+				E80BCCC529261DED0043DA10 /* IDCardLayout.swift */,
+				E80BCCC729261DF70043DA10 /* IDCardViewController.swift */,
 			);
 			path = IDCard;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 			files = (
 				86A318E628ADCDFD002D5C25 /* Ch3Part2ViewController.swift in Sources */,
 				86A318FD28ADF2E2002D5C25 /* Ch4Data.swift in Sources */,
+				E80BCCC629261DED0043DA10 /* IDCardLayout.swift in Sources */,
 				E8A2BC0028DAD66000B54ADB /* EndingData.swift in Sources */,
 				86173E87284780070097B421 /* StartScene.swift in Sources */,
 				86CE911028AF547F00F58BAA /* Ch1ElevatorLayout.swift in Sources */,
@@ -512,6 +519,7 @@
 				86CE910E28AF4A9A00F58BAA /* Ch1ElevatorViewController.swift in Sources */,
 				86A3190128AE01A0002D5C25 /* Ch4OfficeLayout.swift in Sources */,
 				86A318E428ADB86B002D5C25 /* Ch3Part1ViewController.swift in Sources */,
+				E80BCCC829261DF70043DA10 /* IDCardViewController.swift in Sources */,
 				8693E11128799C4300D7D306 /* SubwayScene.swift in Sources */,
 				861D19FC28328BA700D6E6B1 /* AppDelegate.swift in Sources */,
 				86A4248628B46B5A0078E6FE /* SubwayHUD.swift in Sources */,
