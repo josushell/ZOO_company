@@ -13,7 +13,7 @@ class layout_reference {
     let layout_scroll = UIScrollView()
     let layout_main = UIView()
 
-    let layout_background = UIImageView()
+    let layout_bottom = UIView()
     let layout_profile = UIImageView()
     let layout_name = UIView()
 
@@ -35,9 +35,13 @@ class layout_reference {
     let layout_doodleBad = UIImageView()
     let layout_doodleGood = UIImageView()
     
+    let btn_next = UIImageView()
+    
     let vs = ViewSize()
 
     func initViews(_ view: UIView) {
+        view.backgroundColor = .referenceBlue
+        
         // auto layout 적용
         layout_scroll.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(layout_scroll)
@@ -56,17 +60,12 @@ class layout_reference {
             make.height.equalTo(780)
             //make.width.equalTo(845)
         }
-        layout_main.tintColor = UIColor(red: 196, green: 234, blue: 239)
-        
-        layout_main.addSubview(layout_background)
-        layout_background.snp.makeConstraints() { make in
-            make.edges.equalToSuperview()
-        }
-        //layout_background.image = UIImage(named: "referenceBack")
+        layout_main.backgroundColor = .referenceBlue
 
-        layout_background.addSubviews(layout_profile, layout_bargraph, layout_radergraph, layout_explain, layout_goodDept, layout_badDept, layout_goodname, layout_badname, layout_name)
-        layout_background.addSubviews(layout_maskingRader, layout_maskingBar, layout_maskingExplain, layout_maskingGood, layout_maskingBad)
-        layout_background.addSubviews(layout_doodleBad, layout_doodleGood)
+        layout_main.addSubviews(layout_profile, layout_bargraph, layout_radergraph, layout_explain, layout_goodDept, layout_badDept, layout_goodname, layout_badname, layout_name)
+        layout_main.addSubviews(layout_maskingRader, layout_maskingBar, layout_maskingExplain, layout_maskingGood, layout_maskingBad)
+        layout_main.addSubviews(layout_doodleBad, layout_doodleGood)
+        layout_main.addSubviews(btn_next, layout_bottom)
 
         layout_profile.snp.makeConstraints() { make in
             make.top.equalToSuperview().offset(33)
@@ -136,19 +135,19 @@ class layout_reference {
         layout_explain.backgroundColor = .white
         setBlueShadow(layout_explain)
 
-        layout_maskingBad.snp.makeConstraints() { make in
+        layout_maskingGood.snp.makeConstraints() { make in
             make.top.equalTo(layout_explain.snp.bottom).offset(65)
             make.leading.equalToSuperview().offset(139)
             make.width.equalTo(111)
             make.height.equalTo(22)
         }
-        layout_maskingBad.image = UIImage(named: "maskingBad")
+        layout_maskingGood.image = UIImage(named: "maskingGood")
 
         layout_badDept.snp.makeConstraints() { make in
-            make.top.equalTo(layout_maskingBad.snp.bottom)
-            make.leading.equalTo(layout_maskingBad.snp.leading)
+            make.top.equalTo(layout_goodDept.snp.top)
             make.width.equalTo(217)
             make.height.equalTo(230)
+            make.leading.equalTo(layout_goodDept.snp.trailing).offset(135)
         }
         layout_badDept.backgroundColor = .white
         setBlueShadow(layout_badDept)
@@ -163,21 +162,21 @@ class layout_reference {
         setBlueShadow(layout_badname)
 
         layout_goodDept.snp.makeConstraints() { make in
-            make.top.equalTo(layout_badDept.snp.top)
+            make.top.equalTo(layout_maskingGood.snp.bottom)
+            make.leading.equalTo(layout_maskingGood.snp.leading)
             make.width.equalTo(217)
             make.height.equalTo(230)
-            make.leading.equalTo(layout_badDept.snp.trailing).offset(135)
         }
         layout_goodDept.backgroundColor = .white
         setBlueShadow(layout_goodDept)
 
-        layout_maskingGood.snp.makeConstraints() { make in
-            make.bottom.equalTo(layout_goodDept.snp.top)
-            make.leading.equalTo(layout_goodDept.snp.leading)
+        layout_maskingBad.snp.makeConstraints() { make in
+            make.bottom.equalTo(layout_badDept.snp.top)
+            make.leading.equalTo(layout_badDept.snp.leading)
             make.width.equalTo(111)
             make.height.equalTo(22)
         }
-        layout_maskingGood.image = UIImage(named: "maskingGood")
+        layout_maskingBad.image = UIImage(named: "maskingBad")
 
         layout_goodname.snp.makeConstraints() { make in
             make.top.equalTo(layout_badname.snp.top)
@@ -203,6 +202,22 @@ class layout_reference {
             make.height.equalTo(370)
         }
         layout_doodleBad.image = UIImage(named: "badDoodle")
+        
+        btn_next.snp.makeConstraints() { make in
+            make.width.equalTo(83)
+            make.height.equalTo(70)
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(vs.width)
+        }
+        btn_next.image = UIImage(named: "referenceBtn")
+        
+        layout_bottom.snp.makeConstraints() { make in
+            make.width.equalTo(vs.width + 18)
+            make.height.equalTo(100)
+            make.leading.equalToSuperview()
+            make.bottom.equalToSuperview().offset(100)
+        }
+        layout_bottom.backgroundColor = .referenceBlueBold
     }
     
     // shadow UI 구현

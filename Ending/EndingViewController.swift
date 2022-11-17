@@ -57,7 +57,7 @@ class EndingViewController: BaseViewController {
                     UIView.transition(with: self.layout.backgroundImg, duration: 1, options: .transitionCrossDissolve, animations: {
                         self.layout.backgroundImg.image = UIImage(named: Imgstr)
                     }, completion: { _ in
-                        self.layout.backView.isUserInteractionEnabled = true
+                        //self.layout.backView.isUserInteractionEnabled = true
                     })
                 })
             }
@@ -69,6 +69,12 @@ class EndingViewController: BaseViewController {
             }
             else {
                 self.layout.textbox.isHidden = true
+                //MARK: - fade in fade out: 2 sec
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                    let reference = ReferenceViewController()
+                    reference.modalTransitionStyle = .partialCurl
+                    self.dissmissAndPresent(reference, animated: true, completion: nil, transition: false)
+                })
             }
         }
     }
@@ -88,8 +94,8 @@ class EndingViewController: BaseViewController {
     
     // MARK: - show ending dialog text
     func showEndingText(_ completion: @escaping (() -> Void)) {
-        layout.text.setText(layout.talks.player[layout.talkIndex[0]])
-        layout.talkIndex[0] += 1
+        self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
+        self.layout.talkIndex[0] += 1
         completion()
     }
     

@@ -97,9 +97,11 @@ extension UIViewController {
         self.present(viewControllerToPresent, animated: animated, completion: completion)
     }
     
-    func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, duration: CGFloat = 1.5) {
-        let transition = CATransition().fadeTransition(duration: duration)
-        self.view.window?.layer.add(transition, forKey: kCATransition)
+    func dissmissAndPresent(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?, transition: Bool = true, duration: CGFloat = 1.5) {
+        if (transition) {
+            let transition = CATransition().fadeTransition(duration: duration)
+            self.view.window?.layer.add(transition, forKey: kCATransition)
+        }
         
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {
           let appDelegate = UIApplication.shared.delegate as! AppDelegate

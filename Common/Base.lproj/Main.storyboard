@@ -11,7 +11,7 @@
         <!--Reference View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="apple" id="BV1-FR-VrT" customClass="ReferenceViewController" customModule="Zoo_Company" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="apple" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BV1-FR-VrT" customClass="ReferenceViewController" customModule="Zoo_Company" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
