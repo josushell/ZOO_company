@@ -25,6 +25,8 @@ class layout_IDCard {
     
     let label_share = UILabel()
     let label_home = UILabel()
+    
+    let label_txt = UILabel()
 
     func initViews(_ view: UIView) {
         view.addSubviews(layout_main)
@@ -36,7 +38,6 @@ class layout_IDCard {
         layout_main.image = UIImage(named: "IDCardBack")
         
         layout_main.addSubviews(layout_card, btn_back, btn_home, btn_share)
-        
         btn_home.snp.makeConstraints() { make in
             make.width.equalTo(120)
             make.height.equalTo(40)
@@ -62,7 +63,7 @@ class layout_IDCard {
         }
         layout_card.image = UIImage(named: "IDCard")
         
-        layout_card.addSubviews(layout_profile, layout_glitter)
+        layout_card.addSubviews(layout_profile, layout_glitter, label_txt)
         layout_profile.snp.makeConstraints() { make in
             make.width.equalTo(138)
             make.height.equalTo(188)
@@ -89,7 +90,6 @@ class layout_IDCard {
         label_share.snp.makeConstraints() { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
-            
         }
         label_share.setTextAttribute("#공유하기", 13, 1, .black)
         
@@ -99,5 +99,12 @@ class layout_IDCard {
             make.leading.equalToSuperview().offset(20)
         }
         label_home.setTextAttribute("#홈으로", 13, 1, .black)
+        
+        label_txt.snp.makeConstraints() { make in
+            make.top.equalToSuperview().offset(82)
+            make.left.equalToSuperview().offset(228)
+            make.height.equalTo(152)
+        }
+        label_txt.setTextAttribute("test", 23, 10, .black)
     }
 }

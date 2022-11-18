@@ -10,6 +10,7 @@ import UIKit
 //MARK: - 사원증 view controller
 class IDCardViewController: UIViewController {
     let layout = layout_IDCard()
+    var departmentData: DepartmentData?
     var shareTap: UITapGestureRecognizer?
     var homeTap: UITapGestureRecognizer?
     
@@ -29,6 +30,8 @@ class IDCardViewController: UIViewController {
         
         layout.btn_share.addGestureRecognizer(shareTap!)
         layout.btn_home.addGestureRecognizer(homeTap!)
+        
+        layout.label_txt.setTextAttribute("이름: \(( departmentData?.animalType.userName)!)\n부서: \(( departmentData?.animalType.myDept.dept)!)\n종족: \(( departmentData?.animalType.myDept.name)!)\n발급일자: \(( departmentData?.startDate)!)", 23, 12, .black)
     }
     
     @objc func presentReference(_ btn: UIButton) {

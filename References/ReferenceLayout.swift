@@ -35,6 +35,13 @@ class layout_reference {
     let layout_doodleGood = UIImageView()
     
     let btn_next = UIImageView()
+    let layout_stamp = UIImageView()
+    
+    let label_dept = UILabel()
+    let label_explain = UILabel()
+    let label_goodDept = UILabel()
+    let label_badDept = UILabel()
+    let label_lion = UILabel()
     
     let vs = ViewSize()
     let fs = FrameSize()
@@ -66,7 +73,7 @@ class layout_reference {
         layout_main.addSubviews(layout_profile, layout_bargraph, layout_radergraph, layout_explain, layout_goodDept, layout_badDept, layout_goodname, layout_badname, layout_name)
         layout_main.addSubviews(layout_maskingRader, layout_maskingBar, layout_maskingExplain, layout_maskingGood, layout_maskingBad)
         layout_main.addSubviews(layout_doodleBad, layout_doodleGood)
-        layout_scroll.addSubview(btn_next)
+        layout_scroll.addSubviews(btn_next, layout_stamp)
         
         layout_profile.snp.makeConstraints() { make in
             make.top.equalToSuperview().offset(33)
@@ -84,6 +91,14 @@ class layout_reference {
         }
         layout_name.backgroundColor = .white
         setBlueShadow(layout_name)
+        
+        layout_name.addSubview(label_dept)
+        label_dept.snp.makeConstraints() { make in
+            make.center.equalToSuperview()
+            make.width.lessThanOrEqualTo(240)
+        }
+        label_dept.setTextAttribute("", 24, 8, .black)
+        label_dept.lineBreakMode = .byTruncatingTail
         
         layout_maskingRader.snp.makeConstraints() { make in
             make.top.equalTo(layout_profile.snp.top)
@@ -136,6 +151,14 @@ class layout_reference {
         layout_explain.backgroundColor = .white
         setBlueShadow(layout_explain)
         
+        layout_explain.addSubview(label_explain)
+        label_explain.snp.makeConstraints() { make in
+            make.top.equalToSuperview().offset(12)
+            make.left.equalToSuperview().offset(12)
+            make.right.equalToSuperview().offset(-12)
+        }
+        label_explain.setTextAttribute("", 15, 8, .black)
+        
         layout_maskingGood.snp.makeConstraints() { make in
             make.top.equalTo(layout_explain.snp.bottom).offset(65)
             make.leading.equalToSuperview().offset(139)
@@ -161,6 +184,12 @@ class layout_reference {
         }
         layout_badname.backgroundColor = .white
         setBlueShadow(layout_badname)
+        
+        layout_badname.addSubview(label_badDept)
+        label_badDept.snp.makeConstraints() { make in
+            make.center.equalToSuperview()
+        }
+        label_badDept.setTextAttribute("", 24, 8, .black)
         
         layout_goodDept.snp.makeConstraints() { make in
             make.top.equalTo(layout_maskingGood.snp.bottom)
@@ -188,6 +217,12 @@ class layout_reference {
         layout_goodname.backgroundColor = .white
         setBlueShadow(layout_goodname)
         
+        layout_goodname.addSubview(label_goodDept)
+        label_goodDept.snp.makeConstraints() { make in
+            make.center.equalToSuperview()
+        }
+        label_goodDept.setTextAttribute("", 24, 8, .black)
+        
         layout_doodleGood.snp.makeConstraints() { make in
             make.centerX.equalTo(layout_goodDept)
             make.centerY.equalTo(layout_goodDept).offset(23)
@@ -212,6 +247,23 @@ class layout_reference {
         }
         btn_next.layer.zPosition = layout_main.layer.zPosition + 1
         btn_next.image = UIImage(named: "referenceBtn")
+        
+        layout_stamp.snp.makeConstraints() { make in
+            make.width.equalTo(80)
+            make.height.equalTo(80)
+            make.centerX.equalTo(layout_explain.snp.right)
+            make.centerY.equalTo(layout_explain.snp.bottom)
+        }
+        layout_stamp.image = UIImage(named: "guguStamp")
+        layout_stamp.layer.zPosition = 1
+        
+        layout_explain.addSubview(label_lion)
+        label_lion.snp.makeConstraints() { make in
+            make.left.equalToSuperview().offset(346)
+            make.top.equalToSuperview().offset(110)
+        }
+        label_lion.setTextAttribute("추천인: 사자 부장 (인)", 10, 8, .black)
+        label_lion.layer.zPosition = 1
     }
     
     // shadow UI 구현

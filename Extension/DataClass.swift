@@ -54,41 +54,41 @@ enum GameStats: Int {
 
 // MARK: - 부서 분류 결과 클래스
 class Department {
-    func getDeptStr( _ param: Int) -> String {
+    func getAnimalType( _ param: Int) -> AnimalType {
         switch param {
         case 1:
-            return "인사팀"
+            return EagleType()
         case 2:
-            return "디자인팀"
+            return KoalaType()
         case 3:
-            return "개발팀"
+            return TurtleType()
         case 4:
-            return "영업팀"
+            return RedPandaType()
         case 5:
-            return "회계팀"
+            return HedgehogType()
         case 6:
-            return "마케팅팀"
+            return GazelleType()
         default:
-            return "인사팀"
+            return EagleType()
         }
     }
     
-    func getAnimalType(_ param: Int) -> String {
+    func getAnimal(_ param: Int) -> Animal {
         switch param {
         case 1:
-            return "독수리"
+            return Eagle()
         case 2:
-            return "코알라"
+            return Koala()
         case 3:
-            return "거북이"
+            return Turtle()
         case 4:
-            return "래서판다"
+            return RedPanda()
         case 5:
-            return "고슴도치"
+            return Hedgehog()
         case 6:
-            return "가젤"
+            return Gazelle()
         default:
-            return "독수리"
+            return Eagle()
         }
     }
 }
