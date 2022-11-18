@@ -16,16 +16,16 @@ class ReferenceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         layout.initViews(self.view)
         layout.btn_next.isUserInteractionEnabled = true
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentIDCard))
         layout.btn_next.addGestureRecognizer(tapGesture!)
-        
+
         resultDataBinding()
     }
-    
+
     @objc func presentIDCard(_ gesture: UITapGestureRecognizer) {
         let IDCard = IDCardViewController()
         IDCard.departmentData = self.dataAnimal
@@ -39,6 +39,7 @@ class ReferenceViewController: UIViewController {
     
     func resultDataBinding() {
         dataAnimal = DepartmentData()
+        
         layout.layout_profile.image = dataAnimal?.animalType.myDept.profileImg
         layout.label_explain.setTextAttribute(dataAnimal?.animalType.explain ?? "", 13, 8, .black)
         layout.label_dept.text = (dataAnimal?.animalType.myDept.dept)! + " " +  (dataAnimal?.animalType.userName)!

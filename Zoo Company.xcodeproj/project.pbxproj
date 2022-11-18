@@ -63,6 +63,7 @@
 		86F65B2C283F3CE200DCBAA8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F65B2B283F3CE200DCBAA8 /* Utils.swift */; };
 		E80BCCC629261DED0043DA10 /* IDCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC529261DED0043DA10 /* IDCardLayout.swift */; };
 		E80BCCC829261DF70043DA10 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC729261DF70043DA10 /* IDCardViewController.swift */; };
+		E80BCCCA2927C5F90043DA10 /* ResultDeptClassification 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */; };
 		E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */; };
 		E87F9255291B71EA00424757 /* ReferenceViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */; };
 		E87F9257291B738400424757 /* ReferenceLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9256291B738400424757 /* ReferenceLayout.swift */; };
@@ -134,6 +135,7 @@
 		E529240FBD7CD18931D2A09C /* Pods-Zoo Company.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zoo Company.release.xcconfig"; path = "Target Support Files/Pods-Zoo Company/Pods-Zoo Company.release.xcconfig"; sourceTree = "<group>"; };
 		E80BCCC529261DED0043DA10 /* IDCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardLayout.swift; sourceTree = "<group>"; };
 		E80BCCC729261DF70043DA10 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
+		E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ResultDeptClassification 2.mlmodel"; sourceTree = "<group>"; };
 		E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Part1ViewController.swift; sourceTree = "<group>"; };
 		E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceViewControllerViewController.swift; sourceTree = "<group>"; };
 		E87F9256291B738400424757 /* ReferenceLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceLayout.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 		E87F9253291B71C600424757 /* References */ = {
 			isa = PBXGroup;
 			children = (
+				E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */,
 				86261A10291F612200A375F2 /* ResultDeptClassification.mlmodel */,
 				E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */,
 				E87F9256291B738400424757 /* ReferenceLayout.swift */,
@@ -506,6 +509,7 @@
 				8647B1B328B0CFDE005F54BC /* BaseViewController.swift in Sources */,
 				861F8CC728C1AA8900477665 /* Ch5PresentationLayout.swift in Sources */,
 				86261A1529272E2800A375F2 /* DepartmentData.swift in Sources */,
+				E80BCCCA2927C5F90043DA10 /* ResultDeptClassification 2.mlmodel in Sources */,
 				8647B1A028A9345A005F54BC /* Ch2Part2ViewController.swift in Sources */,
 				861F8CCD28C70E5A00477665 /* StartUserNameLayout.swift in Sources */,
 				86261A11291F612200A375F2 /* ResultDeptClassification.mlmodel in Sources */,

@@ -27,11 +27,12 @@ class IDCardViewController: UIViewController {
         
         shareTap = UITapGestureRecognizer(target: self, action: #selector(shareTapGesture))
         homeTap = UITapGestureRecognizer(target: self, action: #selector(homeTapGesture))
-        
+
         layout.btn_share.addGestureRecognizer(shareTap!)
         layout.btn_home.addGestureRecognizer(homeTap!)
         
-        layout.label_txt.setTextAttribute("이름: \(( departmentData?.animalType.userName)!)\n부서: \(( departmentData?.animalType.myDept.dept)!)\n종족: \(( departmentData?.animalType.myDept.name)!)\n발급일자: \(( departmentData?.startDate)!)", 23, 12, .black)
+        layout.label_txt.setTextAttribute("이름: \(( departmentData?.animalType.userName)!)\n부서: \(( departmentData?.animalType.myDept.dept)!)\n종족: \(( departmentData?.animalType.myDept.name)!)\n발급일자: \(( departmentData?.startDate)!)", 20, 15, .black)
+        layout.layout_profile.image = departmentData?.animalType.myDept.profileImg
     }
     
     @objc func presentReference(_ btn: UIButton) {
@@ -40,7 +41,6 @@ class IDCardViewController: UIViewController {
     
     @objc func shareTapGesture(_ home: UITapGestureRecognizer) {
         print("share")
-        
     }
     
     @objc func homeTapGesture(_ home: UITapGestureRecognizer) {

@@ -43,6 +43,9 @@ class layout_reference {
     let label_badDept = UILabel()
     let label_lion = UILabel()
     
+    let label_postitGood = UILabel()
+    let label_postitBad = UILabel()
+    
     let vs = ViewSize()
     let fs = FrameSize()
 
@@ -166,6 +169,11 @@ class layout_reference {
             make.height.equalTo(22)
         }
         layout_maskingGood.image = UIImage(named: "maskingGood")
+        layout_maskingGood.addSubview(label_postitGood)
+        label_postitGood.snp.makeConstraints() { make in
+            make.center.equalToSuperview()
+        }
+        label_postitGood.setTextAttribute("잘 맞는 부서", 15)
         
         layout_badDept.snp.makeConstraints() { make in
             make.top.equalTo(layout_goodDept.snp.top)
@@ -207,6 +215,11 @@ class layout_reference {
             make.height.equalTo(22)
         }
         layout_maskingBad.image = UIImage(named: "maskingBad")
+        layout_maskingBad.addSubview(label_postitBad)
+        label_postitBad.snp.makeConstraints() { make in
+            make.center.equalToSuperview()
+        }
+        label_postitBad.setTextAttribute("안 맞는 부서", 15)
         
         layout_goodname.snp.makeConstraints() { make in
             make.top.equalTo(layout_badname.snp.top)

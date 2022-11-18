@@ -16,6 +16,7 @@ class layout_IDCard {
     let layout_main = UIImageView()
     let layout_card = UIImageView()
 
+    let layout_profileView = UIView()
     let layout_profile = UIImageView()
     let layout_glitter = UIImageView()
 
@@ -63,14 +64,22 @@ class layout_IDCard {
         }
         layout_card.image = UIImage(named: "IDCard")
         
-        layout_card.addSubviews(layout_profile, layout_glitter, label_txt)
-        layout_profile.snp.makeConstraints() { make in
+        layout_card.addSubviews(layout_profileView, layout_glitter, label_txt)
+        layout_profileView.snp.makeConstraints() { make in
             make.width.equalTo(138)
             make.height.equalTo(188)
             make.left.equalToSuperview().offset(50)
             make.top.equalToSuperview().offset(63)
         }
-        layout_profile.image = UIImage(named: "cutted_hr")
+        layout_profileView.backgroundColor = .white
+        
+        layout_profileView.addSubview(layout_profile)
+        layout_profile.snp.makeConstraints() { make in
+            make.width.equalTo(138)
+            make.height.equalTo(146)
+            make.center.equalToSuperview()
+        }
+        layout_profile.image = UIImage(named: "")
         
         layout_glitter.snp.makeConstraints() { make in
             make.width.equalTo(162)
@@ -105,6 +114,6 @@ class layout_IDCard {
             make.left.equalToSuperview().offset(228)
             make.height.equalTo(152)
         }
-        label_txt.setTextAttribute("test", 23, 10, .black)
+        label_txt.setTextAttribute("test", 20, 10, .black)
     }
 }
