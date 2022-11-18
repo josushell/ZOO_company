@@ -109,6 +109,15 @@ extension UIViewController {
             appDelegate.window?.rootViewController?.present(viewControllerToPresent, animated: animated, completion: completion)
         })
     }
+    
+    func presentPartialCurl(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+          let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            viewControllerToPresent.modalTransitionStyle = .partialCurl
+            viewControllerToPresent.modalPresentationStyle = .fullScreen
+            appDelegate.window?.rootViewController?.present(viewControllerToPresent, animated: animated, completion: completion)
+        })
+    }
 }
 
 // MARK: - UILabel extension

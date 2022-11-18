@@ -73,7 +73,8 @@ class EndingViewController: BaseViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
                     let reference = ReferenceViewController()
                     reference.modalTransitionStyle = .partialCurl
-                    self.dissmissAndPresent(reference, animated: true, completion: nil, transition: false)
+                    reference.modalPresentationStyle = .fullScreen
+                    self.present(reference, animated: false, completion: nil)
                 })
             }
         }

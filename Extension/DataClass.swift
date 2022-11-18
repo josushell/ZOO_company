@@ -51,3 +51,44 @@ enum GameStats: Int {
     case Efficiency = 3     // 효율성
     case Passion = 4        // 열정
 }
+
+// MARK: - 부서 분류 결과 클래스
+class Department {
+    func getDeptStr( _ param: Int) -> String {
+        switch param {
+        case 1:
+            return "인사팀"
+        case 2:
+            return "디자인팀"
+        case 3:
+            return "개발팀"
+        case 4:
+            return "영업팀"
+        case 5:
+            return "회계팀"
+        case 6:
+            return "마케팅팀"
+        default:
+            return "인사팀"
+        }
+    }
+    
+    func getAnimalType(_ param: Int) -> String {
+        switch param {
+        case 1:
+            return "독수리"
+        case 2:
+            return "코알라"
+        case 3:
+            return "거북이"
+        case 4:
+            return "래서판다"
+        case 5:
+            return "고슴도치"
+        case 6:
+            return "가젤"
+        default:
+            return "독수리"
+        }
+    }
+}

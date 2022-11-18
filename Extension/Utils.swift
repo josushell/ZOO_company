@@ -25,8 +25,9 @@ extension UIColor{
                   blue: AHex & 0xFF, a: (AHex >> 24) & 0xFF)
     }
     
-    static let referenceBlue = UIColor(red: 196, green: 234, blue: 239)
+    static let referenceBlue = UIColor(red: 233, green: 244, blue: 246)
     static let referenceBlueBold = UIColor(red: 148, green: 196, blue: 203)
+    static let referenceBlueShadow = UIColor(red: 196, green: 234, blue: 239)
 }
 
 // MARK: - 선택된 버튼 번호 enum
