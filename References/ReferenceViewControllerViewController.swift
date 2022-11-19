@@ -49,5 +49,7 @@ class ReferenceViewController: UIViewController {
         
         layout.label_badDept.text = dataAnimal?.animalType.badDept.dept
         layout.layout_badDept.image = dataAnimal?.animalType.badDept.profileImg
+        
+        layout.barGraph.setBarAttribute(data: dataAnimal!.gameStat)
     }
 }

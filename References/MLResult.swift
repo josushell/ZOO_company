@@ -32,7 +32,6 @@ class MLResult {
         guard let predict = try? model?.prediction(M: result[GameStats.Mental.rawValue], r: result[GameStats.Relationship.rawValue], d: result[GameStats.Diligent.rawValue], e: result[GameStats.Efficiency.rawValue], p: result[GameStats.Passion.rawValue]) else {
             return -1 // error
         }
-        print("value: \(predict.dept)")
         return Int(predict.dept)
     }
 }

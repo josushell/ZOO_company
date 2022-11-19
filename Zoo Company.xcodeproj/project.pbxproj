@@ -64,6 +64,7 @@
 		E80BCCC629261DED0043DA10 /* IDCardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC529261DED0043DA10 /* IDCardLayout.swift */; };
 		E80BCCC829261DF70043DA10 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC729261DF70043DA10 /* IDCardViewController.swift */; };
 		E80BCCCA2927C5F90043DA10 /* ResultDeptClassification 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */; };
+		E80BCCCE2928AFB60043DA10 /* BarChartLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCCD2928AFB60043DA10 /* BarChartLayout.swift */; };
 		E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */; };
 		E87F9255291B71EA00424757 /* ReferenceViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */; };
 		E87F9257291B738400424757 /* ReferenceLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9256291B738400424757 /* ReferenceLayout.swift */; };
@@ -136,6 +137,7 @@
 		E80BCCC529261DED0043DA10 /* IDCardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardLayout.swift; sourceTree = "<group>"; };
 		E80BCCC729261DF70043DA10 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
 		E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ResultDeptClassification 2.mlmodel"; sourceTree = "<group>"; };
+		E80BCCCD2928AFB60043DA10 /* BarChartLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartLayout.swift; sourceTree = "<group>"; };
 		E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Part1ViewController.swift; sourceTree = "<group>"; };
 		E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceViewControllerViewController.swift; sourceTree = "<group>"; };
 		E87F9256291B738400424757 /* ReferenceLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceLayout.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				86261A0C291F564A00A375F2 /* MLResult.swift */,
 				86261A1429272E2800A375F2 /* DepartmentData.swift */,
 				86261A16292737A800A375F2 /* AnimalData.swift */,
+				E80BCCCD2928AFB60043DA10 /* BarChartLayout.swift */,
 			);
 			path = References;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				E80BCCCA2927C5F90043DA10 /* ResultDeptClassification 2.mlmodel in Sources */,
 				8647B1A028A9345A005F54BC /* Ch2Part2ViewController.swift in Sources */,
 				861F8CCD28C70E5A00477665 /* StartUserNameLayout.swift in Sources */,
+				E80BCCCE2928AFB60043DA10 /* BarChartLayout.swift in Sources */,
 				86261A11291F612200A375F2 /* ResultDeptClassification.mlmodel in Sources */,
 				8647B19E28A922AB005F54BC /* Ch1Part2ViewController.swift in Sources */,
 				8647B199289FAB77005F54BC /* StartViewController.swift in Sources */,

@@ -45,9 +45,9 @@ class Name {
 
 // MARK: - 유저 능력치 결과 클래스
 enum GameStats: Int {
-    case Mental = 0         // 멘탈
+    case Mental = 0         // 멘탈/정신력
     case Relationship = 1   // 인간관계
-    case Diligent = 2       // 성실성
+    case Diligent = 2       // 성실성/도전의식
     case Efficiency = 3     // 효율성
     case Passion = 4        // 열정
 }

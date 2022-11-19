@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import SnapKit
+import Charts
 
 // MARK: - Reference layout:
 class layout_reference {
@@ -17,6 +19,8 @@ class layout_reference {
     let layout_name = UIView()
 
     let layout_bargraph = UIView()
+    let barGraph = layout_BarChartLayout()
+    
     let layout_radergraph = UIView()
     let layout_explain = UIView()
 
@@ -136,6 +140,7 @@ class layout_reference {
         }
         layout_bargraph.backgroundColor = .white
         setBlueShadow(layout_bargraph)
+        barGraph.initViews(layout_bargraph)
         
         layout_maskingExplain.snp.makeConstraints() { make in
             make.top.equalTo(layout_radergraph.snp.bottom).offset(7)
