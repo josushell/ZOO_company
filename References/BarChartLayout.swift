@@ -16,11 +16,12 @@ class layout_BarChartLayout {
     let layout_bar = HorizontalBarChartView()
     var chartEntry: [BarChartDataEntry] = []
     let label_left = UILabel()
+    let label_right = UILabel()
     
     func initViews(_ view: UIView) {
-        view.addSubviews(label_left, layout_bar)
+        view.addSubviews(label_left, layout_bar, label_right)
         layout_bar.snp.makeConstraints() { make in
-            make.width.equalTo(160)
+            make.width.equalTo(180)
             make.height.equalTo(150)
             make.centerY.equalToSuperview()
             make.leading.equalTo(label_left.snp.trailing).offset(5)
@@ -28,19 +29,32 @@ class layout_BarChartLayout {
         setBarAttribute()
         
         label_left.snp.makeConstraints() { make in
-            make.centerY.equalToSuperview()
+            make.top.equalTo(layout_bar.snp.top)
+            make.bottom.equalTo(layout_bar.snp.bottom)
             make.width.equalTo(50)
             make.leading.equalToSuperview().offset(10)
         }
         let str = "정신력\n인간관계\n도전의식\n효율성\n열정"
-        label_left.setTextAttribute(str, 12, 10, .black)
+        label_left.setTextAttribute(str, 12, 12, .black)
         label_left.textAlignment = .right
+        
+        label_right.snp.makeConstraints() { make in
+            make.top.equalTo(layout_bar.snp.top)
+            make.bottom.equalTo(layout_bar.snp.bottom)
+            make.width.equalTo(20)
+            make.leading.equalTo(label_left.snp.trailing).offset(168)
+        }
+        label_right.setTextAttribute("", 12, 12, .black)
+        label_right.textAlignment = .left
     }
     
-    func setBarAttribute(data: [Double] = [4, 1, 2, 3, 4]) {
+    func setBarAttribute(data: [Int] = [4, 1, 2, 3, 4]) {
+        let percents = "\(data[0])%\n\(data[1])%\n\(data[2])%\n\(data[3])%\n\(data[4])%"
+        self.label_right.setTextAttribute(percents, 13, 14, .black)
+        
         // chart data array 에 데이터 추가
         for i in 0..<data.count {
-               let value = BarChartDataEntry(x: Double(i), y: data[i])
+            let value = BarChartDataEntry(x: Double(data.count - i), y: Double(data[i]))
                chartEntry.append(value)
         }
        
@@ -55,18 +69,22 @@ class layout_BarChartLayout {
        
         layout_bar.leftAxis.enabled = false
         layout_bar.rightAxis.enabled = false
+        layout_bar.leftAxis.axisMinimum = 0
+        layout_bar.legend.enabled = false
 
+        layout_bar.xAxis.drawLabelsEnabled = false
         layout_bar.xAxis.drawGridLinesEnabled = false
         layout_bar.xAxis.drawAxisLineEnabled = false
         layout_bar.drawBarShadowEnabled = true
+
        
-       let chartset = BarChartDataSet(entries: chartEntry, label: nil)
-       chartset.colors = [.referenceBlueBold]
-       chartset.highlightEnabled = false
+        let chartset = BarChartDataSet(entries: chartEntry, label: nil)
+        chartset.colors = [.referenceBlueBold]
+        chartset.highlightEnabled = false
         chartset.drawValuesEnabled = false
         chartset.barShadowColor = .referenceBlue
-              
-       let data = BarChartData(dataSet: chartset)
+    
+        let data = BarChartData(dataSet: chartset)
         layout_bar.data = data
     }
 }

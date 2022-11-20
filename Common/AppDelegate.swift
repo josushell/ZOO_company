@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var subwaySuccess: Bool = true
     
     // game 결과 stat
-    var GameStat: [Double] = [0, 0.0, 0, 8.0, 0]
+    var GameStat: [Double] = [1, 8, 1, 1, 2]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

@@ -65,6 +65,7 @@
 		E80BCCC829261DF70043DA10 /* IDCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC729261DF70043DA10 /* IDCardViewController.swift */; };
 		E80BCCCA2927C5F90043DA10 /* ResultDeptClassification 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */; };
 		E80BCCCE2928AFB60043DA10 /* BarChartLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCCD2928AFB60043DA10 /* BarChartLayout.swift */; };
+		E80BCCD0292A6F040043DA10 /* RadarChartLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80BCCCF292A6F040043DA10 /* RadarChartLayout.swift */; };
 		E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */; };
 		E87F9255291B71EA00424757 /* ReferenceViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */; };
 		E87F9257291B738400424757 /* ReferenceLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9256291B738400424757 /* ReferenceLayout.swift */; };
@@ -138,6 +139,7 @@
 		E80BCCC729261DF70043DA10 /* IDCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDCardViewController.swift; sourceTree = "<group>"; };
 		E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "ResultDeptClassification 2.mlmodel"; sourceTree = "<group>"; };
 		E80BCCCD2928AFB60043DA10 /* BarChartLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartLayout.swift; sourceTree = "<group>"; };
+		E80BCCCF292A6F040043DA10 /* RadarChartLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarChartLayout.swift; sourceTree = "<group>"; };
 		E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Part1ViewController.swift; sourceTree = "<group>"; };
 		E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceViewControllerViewController.swift; sourceTree = "<group>"; };
 		E87F9256291B738400424757 /* ReferenceLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceLayout.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				86261A1429272E2800A375F2 /* DepartmentData.swift */,
 				86261A16292737A800A375F2 /* AnimalData.swift */,
 				E80BCCCD2928AFB60043DA10 /* BarChartLayout.swift */,
+				E80BCCCF292A6F040043DA10 /* RadarChartLayout.swift */,
 			);
 			path = References;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				86A4248628B46B5A0078E6FE /* SubwayHUD.swift in Sources */,
 				E8A2BC0228DAD66B00B54ADB /* EndingLayout.swift in Sources */,
 				86A318F828ADDE38002D5C25 /* Ch1SubwayLayout.swift in Sources */,
+				E80BCCD0292A6F040043DA10 /* RadarChartLayout.swift in Sources */,
 				86A318F628ADDDAE002D5C25 /* Ch1HomeLayout.swift in Sources */,
 				86A318EE28ADDAB8002D5C25 /* Ch1Data.swift in Sources */,
 				86A3190328AE1186002D5C25 /* Ch4Part2ViewController.swift in Sources */,

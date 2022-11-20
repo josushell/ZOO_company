@@ -13,15 +13,11 @@ import UIKit
 class DepartmentData {
     var animalType: AnimalType
     var startDate: String
-    var gameStat: [Double] = []
+    var gameStat: [Int] = []
     var mlClassificationResult: MLResult
     var prediction: Int
     
     init() {
-        if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            self.gameStat =  appdel.GameStat
-        }
-        
         self.mlClassificationResult = MLResult()
         self.prediction = self.mlClassificationResult.predictDept()
         
@@ -30,5 +26,14 @@ class DepartmentData {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self.startDate = dateFormatter.string(from: Date())
+        
+        var newStat: [Double] = []
+        if let appdel = UIApplication.shared.delegate as? AppDelegate {
+            newStat =  appdel.GameStat
+        }
+        for stat in newStat {
+            let value = Int((stat / 13) * 100)
+            self.gameStat.append(value)
+        }
     }
 }

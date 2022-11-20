@@ -193,7 +193,6 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         
         let borderWidth = dataSet.barBorderWidth
         let borderColor = dataSet.barBorderColor
-        let borderRound = 20.0
         let drawBorder = borderWidth > 0.0
         
         context.saveGState()
@@ -233,9 +232,8 @@ open class HorizontalBarChartRenderer: BarChartRenderer
                 
                 context.setFillColor(dataSet.barShadowColor.cgColor)
                 //context.fill(_barShadowRectBuffer)
-                
-                let bezierPath = UIBezierPath(roundedRect: _barShadowRectBuffer, cornerRadius: borderRound)
-                context.addPath(bezierPath.cgPath)
+                let paths = UIBezierPath(roundedRect: _barShadowRectBuffer, cornerRadius: 20)
+                context.addPath(paths.cgPath)
 
                 context.drawPath(using: .fill)
             }
@@ -275,9 +273,8 @@ open class HorizontalBarChartRenderer: BarChartRenderer
             }
 
             //context.fill(barRect)
-            let bezierPath = UIBezierPath(roundedRect: barRect, cornerRadius: borderRound)
-            context.addPath(bezierPath.cgPath)
-
+            let pathfd = UIBezierPath(roundedRect: barRect, cornerRadius: 20)
+            context.addPath(pathfd.cgPath)
             context.drawPath(using: .fill)
 
             if drawBorder
@@ -640,3 +637,4 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         high.setDraw(x: barRect.midY, y: barRect.origin.x + barRect.size.width)
     }
 }
+
