@@ -51,5 +51,6 @@ class ReferenceViewController: UIViewController {
         layout.layout_badDept.image = dataAnimal?.animalType.badDept.profileImg
         
         layout.barGraph.setBarAttribute(data: dataAnimal!.gameStat)
+        layout.radarGraph.setRadarAttribute(data: dataAnimal!.gameStat)
     }
 }

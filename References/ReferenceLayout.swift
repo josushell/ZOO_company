@@ -22,6 +22,8 @@ class layout_reference {
     let barGraph = layout_BarChartLayout()
     
     let layout_radergraph = UIView()
+    let radarGraph = layout_RadarChartLayout()
+    
     let layout_explain = UIView()
 
     let layout_goodDept = UIImageView()
@@ -65,14 +67,15 @@ class layout_reference {
         layout_scroll.frameLayoutGuide.snp.makeConstraints() { make in
             make.edges.equalToSuperview()
         }
+        layout_scroll.showsHorizontalScrollIndicator = true
         layout_scroll.isDirectionalLockEnabled = true
-        layout_scroll.alwaysBounceVertical = true
+        //layout_scroll.alwaysBounceVertical = true
         
         layout_scroll.addSubview(layout_main)
         layout_main.snp.makeConstraints() { make in
             make.top.leading.trailing.bottom.equalTo(layout_scroll.contentLayoutGuide)
             make.height.equalTo(780)
-            //make.width.equalTo(845)
+            make.width.equalTo(845)
         }
         layout_main.layer.zPosition = layout_scroll.layer.zPosition + 1
         layout_main.backgroundColor = .referenceBlue
@@ -123,6 +126,7 @@ class layout_reference {
         }
         layout_radergraph.backgroundColor = .white
         setBlueShadow(layout_radergraph)
+        radarGraph.initViews(layout_radergraph)
         
         layout_maskingBar.snp.makeConstraints() { make in
             make.top.equalTo(layout_profile.snp.top)

@@ -28,6 +28,8 @@ extension UIColor{
     static let referenceBlue = UIColor(red: 233, green: 244, blue: 246)
     static let referenceBlueBold = UIColor(red: 148, green: 196, blue: 203)
     static let referenceBlueShadow = UIColor(red: 196, green: 234, blue: 239)
+    static let radarBlue = UIColor(red: 123, green: 163, blue: 181)
+    static let radarBlueBold = UIColor(red: 84, green: 113, blue: 130)
 }
 
 // MARK: - 선택된 버튼 번호 enum
