@@ -27,7 +27,7 @@ class IDCardViewController: UIViewController {
         
         shareTap = UITapGestureRecognizer(target: self, action: #selector(shareTapGesture))
         homeTap = UITapGestureRecognizer(target: self, action: #selector(homeTapGesture))
-
+        
         layout.btn_share.addGestureRecognizer(shareTap!)
         layout.btn_home.addGestureRecognizer(homeTap!)
         
@@ -41,10 +41,43 @@ class IDCardViewController: UIViewController {
     
     @objc func shareTapGesture(_ home: UITapGestureRecognizer) {
         print("share")
+        if let storyShareURL = URL(string: "instagram-stories://share") {
+            if UIApplication.shared.canOpenURL(storyShareURL) {
+                let renderer = UIGraphicsImageRenderer(size: layout.layout_card.bounds.size)
+                
+                let renderImage = renderer.image { _ in
+                    layout.layout_card.drawHierarchy(in: layout.layout_card.bounds, afterScreenUpdates: true)
+                }
+                guard let imageData = renderImage.pngData() else {return}
+                
+                let pasteboardItems : [String:Any] = [
+                    "com.instagram.sharedSticker.stickerImage": imageData,
+                    "com.instagram.sharedSticker.backgroundTopColor" : "#000046",
+                    "com.instagram.sharedSticker.backgroundBottomColor" : "#1CB5E0",
+                    
+                ]
+                let pasteboardOptions = [
+                    UIPasteboard.OptionsKey.expirationDate : Date().addingTimeInterval(300)
+                ]
+                
+                UIPasteboard.general.setItems([pasteboardItems], options: pasteboardOptions)
+                
+                
+                UIApplication.shared.open(storyShareURL, options: [:], completionHandler: nil)
+            }
+            else
+            {
+                let alert = UIAlertController(title: "공유가 어려워요", message: "인스타그램이 없어요!", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     @objc func homeTapGesture(_ home: UITapGestureRecognizer) {
         print("home")
+        self.presentFull(StartViewController(), animated: false, completion: nil)
     }
 
 }

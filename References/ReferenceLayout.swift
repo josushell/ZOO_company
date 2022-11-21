@@ -265,7 +265,7 @@ class layout_reference {
             make.width.equalTo(83)
             make.height.equalTo(70)
             make.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(vs.width)
+            make.right.equalToSuperview()
         }
         btn_next.layer.zPosition = layout_main.layer.zPosition + 1
         btn_next.image = UIImage(named: "referenceBtn")

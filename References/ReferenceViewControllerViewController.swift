@@ -29,8 +29,8 @@ class ReferenceViewController: UIViewController {
     @objc func presentIDCard(_ gesture: UITapGestureRecognizer) {
         let IDCard = IDCardViewController()
         IDCard.departmentData = self.dataAnimal
-        //IDCard.modalTransitionStyle = .partialCurl
-        IDCard.modalTransitionStyle = .flipHorizontal
+        IDCard.modalTransitionStyle = .partialCurl
+        //IDCard.modalTransitionStyle = .flipHorizontal
         IDCard.modalPresentationStyle = .fullScreen
         self.present(IDCard, animated: true, completion: nil)
         
