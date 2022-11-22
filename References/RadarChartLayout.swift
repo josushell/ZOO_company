@@ -62,15 +62,15 @@ class layout_RadarChartLayout {
             make.leading.equalToSuperview().offset(146)
         }
         label5.setTextAttribute("인간관계", 11, 8, .black)
-        
         // 레이더 차트
         radar.webLineWidth = 1
         radar.innerWebLineWidth = 2
         radar.webColor = .clear
         radar.innerWebColor = .referenceBlueBold
         radar.legend.enabled = false
+        radar.rotationEnabled = false
         
-        radar.animate(xAxisDuration: 0, yAxisDuration: 1.5, easingOption: .easeOutCirc)
+        radar.animate(xAxisDuration: 0, yAxisDuration: 5, easingOption: .easeOutCirc)
 
         let xAxis = radar.xAxis
         xAxis.enabled = false
