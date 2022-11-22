@@ -72,7 +72,7 @@ class StartScene: SKScene {
         
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
             appdel.name = self.layout_userNameInput.tf_name.text ?? "anonymous"
-            appdel.GameStat.removeAll()
+            appdel.GameStat = [0, 0, 0, 0, 0]
         }
         
         back_bgm.run(SKAction.changeVolume(to: 0, duration: 1))

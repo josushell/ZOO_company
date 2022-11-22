@@ -74,7 +74,7 @@ class EndingViewController: BaseViewController {
                     let reference = ReferenceViewController()
                     reference.modalTransitionStyle = .partialCurl
                     reference.modalPresentationStyle = .fullScreen
-                    self.present(reference, animated: false, completion: nil)
+                    self.present(reference, animated: true, completion: nil)
                 })
             }
         }
