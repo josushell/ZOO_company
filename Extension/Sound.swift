@@ -22,8 +22,8 @@ class Sound {
     }
     
     func setVolumeFadeOut(_ sender: AVAudioPlayer?, completion: (() -> Void)?) {
-        sender?.setVolume(0, fadeDuration: 1)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+        sender?.setVolume(0, fadeDuration: 0.7)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: {
             sender?.stop()
             completion?()
         })
@@ -64,5 +64,171 @@ class ElevatorSound: Sound {
     func playElevatorMusic() {
         elevator_bgm?.play()
         button_bgm?.play(atTime: (button_bgm?.deviceCurrentTime ?? 0) + 2)
+    }
+}
+
+class Ch1_part2: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch1_part2", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch1_part3: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch1_part3", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch2_part1: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch2_part1", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch2_part2: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch2_part2", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch3_part1: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch3_part1", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch3_part2: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch3_part2", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch4_part1: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch4_part1", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+
+class Ch4_part2: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch4_part2", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch5_part1: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch5_part1", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ch5_part2: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ch5_part2", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
+    }
+}
+
+class Ending: Sound {
+    var bgm: AVAudioPlayer?
+    
+    override init() {
+        super.init()
+        
+        bgm = try! AVAudioPlayer(contentsOf: Bundle.main.url(forResource: "ending", withExtension: "mp3")!)
+        bgm?.volume = 0.7
+        bgm?.prepareToPlay()
+    }
+    func playHomeMusic() {
+        bgm?.play()
     }
 }

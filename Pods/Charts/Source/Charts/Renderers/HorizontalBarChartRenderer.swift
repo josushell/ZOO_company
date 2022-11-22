@@ -232,13 +232,13 @@ open class HorizontalBarChartRenderer: BarChartRenderer
                 
                 context.setFillColor(dataSet.barShadowColor.cgColor)
                 //context.fill(_barShadowRectBuffer)
-                let paths = UIBezierPath(roundedRect: _barShadowRectBuffer, cornerRadius: 20)
+                let paths = UIBezierPath(roundedRect: _barShadowRectBuffer, cornerRadius: 5)
                 context.addPath(paths.cgPath)
 
                 context.drawPath(using: .fill)
             }
         }
-        
+
         let buffer = _buffers[index]
         
         let isSingleColor = dataSet.colors.count == 1
@@ -273,7 +273,8 @@ open class HorizontalBarChartRenderer: BarChartRenderer
             }
 
             //context.fill(barRect)
-            let pathfd = UIBezierPath(roundedRect: barRect, cornerRadius: 20)
+            let pathfd = UIBezierPath(roundedRect: barRect, cornerRadius: 5)
+            //let pathfd = UIBezierPath(roundedRect: barRect, byRoundingCorners: .allCorners, cornerRadii: barRect.size)
             context.addPath(pathfd.cgPath)
             context.drawPath(using: .fill)
 

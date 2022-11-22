@@ -18,6 +18,9 @@ class Ch5Part2ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sound = Ch5_part2()
+        (sound as! Ch5_part2).playHomeMusic()
+        
         layout = layout_Presentation_ch5()
         
         layout.talks = TalkData_Ch5_part2()
@@ -224,8 +227,11 @@ class Ch5Part2ViewController: BaseViewController {
             self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index + 3])
             
             //MARK: - fade in fade out: 2 sec
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                self.dissmissAndPresent(EndingViewController(), animated: false, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                (self.sound as! Ch5_part2).setVolumeFadeOut((self.sound as! Ch5_part2).bgm, completion: {
+                    self.dissmissAndPresent(EndingViewController(), animated: false, completion: nil)
+                })
             })
         }
     }

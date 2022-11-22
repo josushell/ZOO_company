@@ -15,6 +15,9 @@ class Ch5Part1ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sound = Ch5_part1()
+        (sound as! Ch5_part1).playHomeMusic()
+        
         layout = layout_Mail_ch5()
         
         layout.talks = TalkData_Ch5_part1()
@@ -120,7 +123,10 @@ class Ch5Part1ViewController: BaseViewController {
                 }
                 else {
                     //MARK: - ch5 part2 fade in fade out
-                    self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
+                    sound.setVolumeFadeOut((sound as! Ch5_part1).bgm, completion: {
+                        self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
+                    })
+                    //self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
                 }
             }
         }

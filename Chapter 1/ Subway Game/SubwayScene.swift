@@ -58,6 +58,10 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     var gameEnded: Bool = false
     let appdel = UIApplication.shared.delegate as? AppDelegate
     
+    let back_bgm = SKAudioNode(fileNamed: "subway_game")
+    let gameover_bgm = SKAction.playSoundFileNamed("game_over", waitForCompletion: false)
+    let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
+    
     override func didMove(to view: SKView) {
         self.backgroundColor = .black
         self.physicsWorld.contactDelegate = self
@@ -69,6 +73,10 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         gameResult.btn_start.addTarget(self, action: #selector(moveOnNextChapter(_:)), for: .touchUpInside)
         
         countdown(count: countDown)
+        
+        // MARK: background music
+        self.addChild(back_bgm)
+        back_bgm.run(SKAction.play())
     }
     
     func setBackground(_ fileName: String, _ speed: CGFloat, _ parentNode: SKNode) {
@@ -263,6 +271,10 @@ extension SubwayScene {
             gameNode.speed = 0.0
             appdel?.subwaySuccess = isGameSuccess
 
+            back_bgm.run(SKAction.changeVolume(to: 0, duration: 0.3))
+            self.run(self.gameover_bgm, completion: {
+            })
+            
             playerSprite.removeAllActions()
             let resultText = (isGameSuccess == true ? "YOU WIN!" : "YOU LOSE!")
             gameResult.openResult(resultTxt: resultText)
@@ -270,22 +282,30 @@ extension SubwayScene {
     }
     
     @objc func moveOnNextChapter(_ sender: UIButton) {
-        self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
+        self.run(self.button_bgm, completion: {
+            self.run(SKAction.wait(forDuration: 1), completion: {
+                self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
+            })
+        })
+    
+        //self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
     }
 }
 
 // MARK: - Extension: count down
 extension SubwayScene {
     private func countdownAction() {
-        countDown -= 1
-        
-        let texture = SKTexture(imageNamed: "count_\(countDown)")
-        texture.filteringMode = .nearest
-        countDownNode.texture = texture
-        countDownNode.size = texture.size()
-        if (countDown == 0) {
-            countDownNode.position.x = self.frame.width / 2 - (texture.size().width / 2)
-            countDownNode.position.y = self.frame.height / 2 - (texture.size().height / 2)
+        if (countDown > 0) {
+            countDown -= 1
+            
+            let texture = SKTexture(imageNamed: "count_\(countDown)")
+            texture.filteringMode = .nearest
+            countDownNode.texture = texture
+            countDownNode.size = texture.size()
+            if (countDown == 0) {
+                countDownNode.position.x = self.frame.width / 2 - (texture.size().width / 2)
+                countDownNode.position.y = self.frame.height / 2 - (texture.size().height / 2)
+            }
         }
     }
     

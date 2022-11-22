@@ -15,6 +15,9 @@ class Ch4Part1ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sound = Ch4_part1()
+        (sound as! Ch4_part1).playHomeMusic()
+        
         layout = layout_Office_ch4()
         
         layout.talks = TalkData_Ch4_part1()
@@ -199,7 +202,10 @@ class Ch4Part1ViewController: BaseViewController {
         // 2번 선택지 이후
         else {
             //MARK: - fade in fade out
-            self.dissmissAndPresent(Ch4Part2ViewController(), animated: false, completion: nil)
+            sound.setVolumeFadeOut((sound as! Ch4_part1).bgm, completion: {
+                self.dissmissAndPresent(Ch4Part2ViewController(), animated: false, completion: nil)
+            })
+            //self.dissmissAndPresent(Ch4Part2ViewController(), animated: false, completion: nil)
         }
         
     }

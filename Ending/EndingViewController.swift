@@ -16,6 +16,9 @@ class EndingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sound = Ending()
+        (sound as! Ending).playHomeMusic()
+        
         layout = layout_ending()
         
         layout.talks = TalkData_Ending()
@@ -71,10 +74,13 @@ class EndingViewController: BaseViewController {
                 self.layout.textbox.isHidden = true
                 //MARK: - fade in fade out: 2 sec
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                    let reference = ReferenceViewController()
-                    reference.modalTransitionStyle = .partialCurl
-                    reference.modalPresentationStyle = .fullScreen
-                    self.present(reference, animated: true, completion: nil)
+                    self.sound.setVolumeFadeOut((self.sound as! Ending).bgm, completion: {
+                        let reference = ReferenceViewController()
+                        reference.modalTransitionStyle = .partialCurl
+                        reference.modalPresentationStyle = .fullScreen
+                        self.present(reference, animated: true, completion: nil)
+                    })
+
                 })
             }
         }

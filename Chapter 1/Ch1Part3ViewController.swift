@@ -13,6 +13,9 @@ class Ch1Part3ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sound = Ch1_part3()
+        (sound as! Ch1_part3).playHomeMusic()
+        
         layout = layout_subway()
         
         layout.response = Response_Ch1_part3()
@@ -57,7 +60,10 @@ class Ch1Part3ViewController: BaseViewController {
         }
         
         else {
-            self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil, transition: false)
+            (sound as! Ch1_part3).setVolumeFadeOut((sound as! Ch1_part3).bgm, completion: {
+                self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil, transition: false)
+            })
+            //self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil, transition: false)
         }
     }
 

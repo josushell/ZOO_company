@@ -7,15 +7,15 @@
 
 import UIKit
 
-class Ch1ElevatorViewController: UIViewController {
-    let layout = layout_elevator()
-    let sound = ElevatorSound()
+class Ch1ElevatorViewController: BaseViewController {
+    let elevator_layout = layout_elevator()
+    let elevator_sound = ElevatorSound()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sound.playElevatorMusic()
+        elevator_sound.playElevatorMusic()
         
-        layout.initView(self.view)
+        elevator_layout.initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             self.textAnimation()
@@ -24,10 +24,10 @@ class Ch1ElevatorViewController: UIViewController {
     
     func textAnimation() {
         UIView.animate(withDuration: 6, delay: 0, options: .curveLinear, animations: {
-            self.layout.label.transform = CGAffineTransform(translationX: (self.layout.vs
-                .width + self.layout.label.frame.width + 100) * -1, y: 0)
+            self.elevator_layout.label.transform = CGAffineTransform(translationX: (self.elevator_layout.vs
+                .width + self.elevator_layout.label.frame.width + 100) * -1, y: 0)
         }, completion: { _ in
-            self.sound.setVolumeFadeOut(self.sound.elevator_bgm) {
+            self.elevator_sound.setVolumeFadeOut(self.elevator_sound.elevator_bgm) {
                 self.presentFull(Ch2Part1ViewController(), animated: false, completion: nil, transition: false)
             }
         })

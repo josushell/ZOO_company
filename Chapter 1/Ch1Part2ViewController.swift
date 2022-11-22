@@ -11,6 +11,9 @@ class Ch1Part2ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sound = Ch1_part2()
+        (sound as! Ch1_part2).playHomeMusic()
+        
         layout = layout_subway()
         
         layout.talks = TalkData_Ch1_part2()
@@ -42,7 +45,10 @@ class Ch1Part2ViewController: BaseViewController {
         
         // subway game 시작
         else {
-            self.presentFull(GameViewController(), animated: false, completion: nil, duration: 2)
+            (sound as! Ch1_part2).setVolumeFadeOut((sound as! Ch1_part2).bgm, completion: {
+                self.presentFull(GameViewController(), animated: false, completion: nil, duration: 2)
+            })
+            //self.presentFull(GameViewController(), animated: false, completion: nil, duration: 2)
         }
     }
     

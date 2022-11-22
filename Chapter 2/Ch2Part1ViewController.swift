@@ -18,6 +18,9 @@ class Ch2Part1ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        sound = Ch2_part1()
+        (sound as! Ch2_part1).playHomeMusic()
+        
         layout = layout_Office_ch2_part1()
         
         layout.talks = TalkData_Ch2_part1()
@@ -137,7 +140,11 @@ class Ch2Part1ViewController: BaseViewController {
                 self.layout.text.setText((layout.response as! Response_Ch2_part1).player_response[0][self.select_index])
                 
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
+                    self.sound.setVolumeFadeOut((self.sound as! Ch2_part1).bgm, completion: {
+                        self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
+                    })
+
+                   // self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
                 }
             }
         }

@@ -12,6 +12,10 @@ class Ch3Part2ViewController: BaseViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sound = Ch3_part2()
+        (sound as! Ch3_part2).playHomeMusic()
+        
         layout = layout_Office_ch3()
         
         layout.talks = TalkData_Ch3_part2()
@@ -80,7 +84,10 @@ class Ch3Part2ViewController: BaseViewController {
         // 선택지 후
         else {
             // ch4
-            self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
+            sound.setVolumeFadeOut((sound as! Ch3_part2).bgm, completion: {
+                self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
+            })
+            //self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
         }
     }
     
