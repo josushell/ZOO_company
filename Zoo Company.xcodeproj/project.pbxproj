@@ -79,6 +79,10 @@
 		E80BCCEA292D39C10043DA10 /* subway_game.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E80BCCE9292D39C10043DA10 /* subway_game.mp3 */; };
 		E80BCCEC292D39F80043DA10 /* ending.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E80BCCEB292D39F80043DA10 /* ending.mp3 */; };
 		E80BCCEE292D3DF70043DA10 /* game_over.wav in Resources */ = {isa = PBXBuildFile; fileRef = E80BCCED292D3DF70043DA10 /* game_over.wav */; };
+		E80BCCF0292E08980043DA10 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E80BCCEF292E08980043DA10 /* jump.mp3 */; };
+		E80BCCF2292E096B0043DA10 /* 321start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E80BCCF1292E096B0043DA10 /* 321start.mp3 */; };
+		E80BCCF4292E0A040043DA10 /* you_lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E80BCCF3292E0A040043DA10 /* you_lose.mp3 */; };
+		E80BCCF6292E0A530043DA10 /* loss_heart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E80BCCF5292E0A530043DA10 /* loss_heart.mp3 */; };
 		E8539A1A28B8505F0071BCD8 /* Ch5Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */; };
 		E87F9255291B71EA00424757 /* ReferenceViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */; };
 		E87F9257291B738400424757 /* ReferenceLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87F9256291B738400424757 /* ReferenceLayout.swift */; };
@@ -166,6 +170,10 @@
 		E80BCCE9292D39C10043DA10 /* subway_game.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = subway_game.mp3; sourceTree = "<group>"; };
 		E80BCCEB292D39F80043DA10 /* ending.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ending.mp3; sourceTree = "<group>"; };
 		E80BCCED292D3DF70043DA10 /* game_over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game_over.wav; sourceTree = "<group>"; };
+		E80BCCEF292E08980043DA10 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
+		E80BCCF1292E096B0043DA10 /* 321start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 321start.mp3; sourceTree = "<group>"; };
+		E80BCCF3292E0A040043DA10 /* you_lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = you_lose.mp3; sourceTree = "<group>"; };
+		E80BCCF5292E0A530043DA10 /* loss_heart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loss_heart.mp3; sourceTree = "<group>"; };
 		E8539A1928B8505F0071BCD8 /* Ch5Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5Part1ViewController.swift; sourceTree = "<group>"; };
 		E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceViewControllerViewController.swift; sourceTree = "<group>"; };
 		E87F9256291B738400424757 /* ReferenceLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceLayout.swift; sourceTree = "<group>"; };
@@ -261,6 +269,10 @@
 			isa = PBXGroup;
 			children = (
 				E80BCCD7292D31F90043DA10 /* ch3_part2.mp3 */,
+				E80BCCEF292E08980043DA10 /* jump.mp3 */,
+				E80BCCF5292E0A530043DA10 /* loss_heart.mp3 */,
+				E80BCCF3292E0A040043DA10 /* you_lose.mp3 */,
+				E80BCCF1292E096B0043DA10 /* 321start.mp3 */,
 				E80BCCD8292D31F90043DA10 /* ch3_part1.mp3 */,
 				E80BCCE7292D394C0043DA10 /* ch1_part3.mp3 */,
 				E80BCCE0292D344A0043DA10 /* ch5_part1.mp3 */,
@@ -472,11 +484,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8647B1A828AFDB05005F54BC /* launch.png in Resources */,
+				E80BCCF4292E0A040043DA10 /* you_lose.mp3 in Resources */,
 				861D1A0728328BA700D6E6B1 /* Main.storyboard in Resources */,
+				E80BCCF2292E096B0043DA10 /* 321start.mp3 in Resources */,
 				8647B1BA28B10CF2005F54BC /* elevator_sound.mp3 in Resources */,
 				8647B1AD28B0BFF6005F54BC /* button_clicked.wav in Resources */,
 				E80BCCDD292D33180043DA10 /* ch4_part1.mp3 in Resources */,
 				8647B1B128B0CA03005F54BC /* button_highlight.wav in Resources */,
+				E80BCCF6292E0A530043DA10 /* loss_heart.mp3 in Resources */,
+				E80BCCF0292E08980043DA10 /* jump.mp3 in Resources */,
 				E80BCCEA292D39C10043DA10 /* subway_game.mp3 in Resources */,
 				E80BCCE8292D394C0043DA10 /* ch1_part3.mp3 in Resources */,
 				E80BCCE1292D344A0043DA10 /* ch5_part2.mp3 in Resources */,

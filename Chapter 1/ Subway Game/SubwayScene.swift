@@ -59,8 +59,12 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let appdel = UIApplication.shared.delegate as? AppDelegate
     
     let back_bgm = SKAudioNode(fileNamed: "subway_game")
-    let gameover_bgm = SKAction.playSoundFileNamed("game_over", waitForCompletion: false)
+    let gameover_win_bgm = SKAction.playSoundFileNamed("game_over", waitForCompletion: false)
+    let gameover_lose_bgm = SKAction.playSoundFileNamed("you_lose", waitForCompletion: false)
     let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
+    let jump_bgm = SKAction.playSoundFileNamed("jump", waitForCompletion: false)
+    let countstart_bgm = SKAction.playSoundFileNamed("321start", waitForCompletion: false)
+    let damage_bgm = SKAction.playSoundFileNamed("loss_heart", waitForCompletion: false)
     
     override func didMove(to view: SKView) {
         self.backgroundColor = .black
@@ -191,6 +195,7 @@ extension SubwayScene {
             if playerSprite.position.y <= playerYposition && gameNode.speed > 0 {
                 playerSprite.physicsBody?.applyImpulse(CGVector(dx: 0, dy: playerJumpForce))
                 // run(jumpSound)
+                self.run(self.jump_bgm, completion: {})
             }
         }
     }
@@ -245,6 +250,8 @@ extension SubwayScene {
     }
     
     func setDamage() {
+        self.run(self.damage_bgm, completion: {})
+        
         guard !self.damaged else {
             return
         }
@@ -272,20 +279,24 @@ extension SubwayScene {
             appdel?.subwaySuccess = isGameSuccess
 
             back_bgm.run(SKAction.changeVolume(to: 0, duration: 0.3))
-            self.run(self.gameover_bgm, completion: {
-            })
+            if (isGameSuccess) {
+                self.run(self.gameover_win_bgm, completion: {
+                })
+            }
+            else {
+                self.run(self.gameover_lose_bgm, completion: {
+                })
+            }
             
             playerSprite.removeAllActions()
             let resultText = (isGameSuccess == true ? "YOU WIN!" : "YOU LOSE!")
             gameResult.openResult(resultTxt: resultText)
         }
     }
-    
+    // MARK: - edit here
     @objc func moveOnNextChapter(_ sender: UIButton) {
-        self.run(self.button_bgm, completion: {
-            self.run(SKAction.wait(forDuration: 1), completion: {
-                self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
-            })
+        self.run(SKAction.wait(forDuration: 1), completion: {
+            self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
         })
     
         //self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
@@ -376,5 +387,6 @@ extension SubwayScene {
         run(SKAction.sequence([SKAction.repeat(successTime, count: 60), SKAction.run {
             self.gameEND(isGameSuccess: true)
         }]))
+        self.run(self.countstart_bgm, completion: {})
     }
 }

@@ -73,14 +73,11 @@ class EndingViewController: BaseViewController {
             else {
                 self.layout.textbox.isHidden = true
                 //MARK: - fade in fade out: 2 sec
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
-                    self.sound.setVolumeFadeOut((self.sound as! Ending).bgm, completion: {
-                        let reference = ReferenceViewController()
-                        reference.modalTransitionStyle = .partialCurl
-                        reference.modalPresentationStyle = .fullScreen
-                        self.present(reference, animated: true, completion: nil)
-                    })
-
+                (sound as! Ending).setVolumeFadeOut((sound as! Ending).bgm, completion: {
+                    let reference = ReferenceViewController()
+                    reference.modalTransitionStyle = .partialCurl
+                    reference.modalPresentationStyle = .fullScreen
+                    self.present(reference, animated: true, completion: nil)
                 })
             }
         }

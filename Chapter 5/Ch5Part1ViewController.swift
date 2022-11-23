@@ -123,7 +123,7 @@ class Ch5Part1ViewController: BaseViewController {
                 }
                 else {
                     //MARK: - ch5 part2 fade in fade out
-                    sound.setVolumeFadeOut((sound as! Ch5_part1).bgm, completion: {
+                    (sound as! Ch5_part1).setVolumeFadeOut((sound as! Ch5_part1).bgm, completion: {
                         self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
                     })
                     //self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)

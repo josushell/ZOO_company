@@ -228,10 +228,8 @@ class Ch5Part2ViewController: BaseViewController {
             
             //MARK: - fade in fade out: 2 sec
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                (self.sound as! Ch5_part2).setVolumeFadeOut((self.sound as! Ch5_part2).bgm, completion: {
-                    self.dissmissAndPresent(EndingViewController(), animated: false, completion: nil)
-                })
+            (self.sound as! Ch5_part2).setVolumeFadeOut((self.sound as! Ch5_part2).bgm, completion: {
+                self.dissmissAndPresent(EndingViewController(), animated: false, completion: nil)
             })
         }
     }

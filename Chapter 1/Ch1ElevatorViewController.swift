@@ -13,8 +13,8 @@ class Ch1ElevatorViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        elevator_sound.playElevatorMusic()
         
+        elevator_sound.playElevatorMusic()
         elevator_layout.initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
@@ -28,7 +28,7 @@ class Ch1ElevatorViewController: BaseViewController {
                 .width + self.elevator_layout.label.frame.width + 100) * -1, y: 0)
         }, completion: { _ in
             self.elevator_sound.setVolumeFadeOut(self.elevator_sound.elevator_bgm) {
-                self.presentFull(Ch2Part1ViewController(), animated: false, completion: nil, transition: false)
+                self.presentFull(Ch2Part1ViewController(), animated: false, completion: nil, transition: true)
             }
         })
     }

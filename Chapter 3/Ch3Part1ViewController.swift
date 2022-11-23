@@ -176,7 +176,7 @@ class Ch3Part1ViewController: BaseViewController {
         // 2번 선택지 이후
         else {
             //MARK: - fade in fade out
-            sound.setVolumeFadeOut((sound as! Ch3_part1).bgm, completion: {
+            (sound as! Ch3_part1).setVolumeFadeOut((sound as! Ch3_part1).bgm, completion: {
                 self.dissmissAndPresent(Ch3Part2ViewController(), animated: false, completion: nil)
             })
             //self.dissmissAndPresent(Ch3Part2ViewController(), animated: false, completion: nil)

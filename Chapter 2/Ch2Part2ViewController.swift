@@ -28,6 +28,10 @@ class Ch2Part2ViewController: BaseViewController {
         
         layout.backgroundImg.animationImages = imgArray
         layout.backgroundImg.animationDuration = 0.3
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         self.layout.backgroundImg.startAnimating()
         // 0.5초 뒤 실행
@@ -193,7 +197,7 @@ class Ch2Part2ViewController: BaseViewController {
         else {
             self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).final[self.select_index])
             
-            sound.setVolumeFadeOut((sound as! Ch2_part2).bgm, completion: {
+            (sound as! Ch2_part2).setVolumeFadeOut((sound as! Ch2_part2).bgm, completion: {
                 self.dissmissAndPresent(Ch3Part1ViewController(), animated: false, completion: nil)
             })
             
