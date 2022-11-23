@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-// MARK: - CH5 part1
-
-// MARK: - dialog 데이터
 class TalkData_Ch5_part1: TalkData {
     var penguin: [String] = []
    
@@ -22,7 +19,6 @@ class TalkData_Ch5_part1: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch5_part1: ImgOrderData {
     var penguin: [String] = []
     
@@ -33,8 +29,6 @@ class ImgOrderData_Ch5_part1: ImgOrderData {
         penguin = ["penguin_normal"]
     }
 }
-
-// MARK: - 선택지 데이터
 
 class ChoiceData_Ch5_part1: ChoiceData {
     override init() {
@@ -47,7 +41,6 @@ class ChoiceData_Ch5_part1: ChoiceData {
     }
 }
 
-// MARK: - 선택지 반응
 class Response_Ch5_part1: Response {
     override init() {
         super.init()
@@ -57,10 +50,6 @@ class Response_Ch5_part1: Response {
     }
 }
 
-
-// MARK: - CH5 part2
-
-// MARK: - dialog 데이터
 class TalkData_Ch5_part2: TalkData {
     var pigeon: [String] = []
     var penguin: [String] = []
@@ -75,7 +64,6 @@ class TalkData_Ch5_part2: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch5_part2: ImgOrderData {
     var pigeon: [String] = []
     var penguin: [String] = []
@@ -89,7 +77,6 @@ class ImgOrderData_Ch5_part2: ImgOrderData {
     }
 }
 
-// MARK: - 선택지 데이터
 class ChoiceData_Ch5_part2: ChoiceData {
     override init() {
         super.init()
@@ -101,7 +88,6 @@ class ChoiceData_Ch5_part2: ChoiceData {
     }
 }
 
-// MARK: - 선택지 반응
 class Response_Ch5_part2: Response {
     var pigeon: [String] = []
     var alpaca: [String] = []

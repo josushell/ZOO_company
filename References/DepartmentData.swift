@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-// MARK: - 결과 부서 데이터 클래스
-// 유저 이름, 부서 이름, 능력치(백분율), 입사일(플레이 시간), 게임 분류 결과
 class DepartmentData {
     var animalType: AnimalType
     var startDate: String

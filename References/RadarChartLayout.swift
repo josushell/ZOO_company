@@ -10,14 +10,11 @@ import UIKit
 import SnapKit
 import Charts
 
-
-// MARK: - 레이더 그래프 layout
 class layout_RadarChartLayout {
     private let labels = ["정신력", "인간관계", "도전의식", "효율성", "열정"]
     var radar = RadarChartView()
     var radarEntry: [RadarChartDataEntry] = []
     
-    // 반시계
     let label1 = UILabel()
     let label2 = UILabel()
     let label3 = UILabel()
@@ -62,7 +59,7 @@ class layout_RadarChartLayout {
             make.leading.equalToSuperview().offset(146)
         }
         label5.setTextAttribute("인간관계", 11, 8, .black)
-        // 레이더 차트
+
         radar.webLineWidth = 1
         radar.innerWebLineWidth = 2
         radar.webColor = .clear
@@ -85,7 +82,6 @@ class layout_RadarChartLayout {
     }
     
     func setRadarAttribute(data: [Int] = [30, 20, 20, 15, 15]) {
-        // chart data array 에 데이터 추가
         for i in 0..<data.count {
             let value = RadarChartDataEntry(value: Double(data[i]))
             radarEntry.append(value)

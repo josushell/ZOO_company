@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-// MARK: - dialog 데이터
 class TalkData_Ch2_part1: TalkData {
     var lion: [String] = []
     var mouse: [String] = []
@@ -34,7 +33,6 @@ class TalkData_Ch2_part1: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch2_part1: ImgOrderData {
     var lion: [String] = []
     var mouse: [String] = []
@@ -48,7 +46,7 @@ class ImgOrderData_Ch2_part1: ImgOrderData {
     }
 }
 
-// MARK: - 선택지 데이터
+
 class ChoiceData_Ch2_part1: ChoiceData {
     override init() {
         super.init()
@@ -61,7 +59,6 @@ class ChoiceData_Ch2_part1: ChoiceData {
     }
 }
 
-// MARK: - 선택지 반응
 class Response_Ch2_part1: Response {
     var char_response: [String] = []
     var label_nametag: [String] = []
@@ -81,7 +78,6 @@ class Response_Ch2_part1: Response {
     }
 }
 
-// MARK: - dialog 데이터
 class TalkData_Ch2_part2: TalkData {
     var lion: [String] = []
     var alpaca: [String] = []
@@ -100,7 +96,6 @@ class TalkData_Ch2_part2: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch2_part2: ImgOrderData {
     var lion: [String] = []
     var alpaca: [String] = []
@@ -117,7 +112,6 @@ class ImgOrderData_Ch2_part2: ImgOrderData {
     }
 }
 
-// MARK: - 선택지 데이터
 class ChoiceData_Ch2_part2 : ChoiceData {
     override init() {
         super.init()
@@ -129,7 +123,6 @@ class ChoiceData_Ch2_part2 : ChoiceData {
     }
 }
 
-// MARK: - 선택지 반응
 class Response_Ch2_part2: Response {
     var alpaca_response: [[String]] = [[]]
     var char_image: [[String]] = [[]]

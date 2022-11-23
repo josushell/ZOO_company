@@ -9,8 +9,6 @@ import UIKit
 import SnapKit
 import AVKit
 
-
-// MARK: - View Size
 class ViewSize {
     var width: CGFloat {
         if (UIInterfaceOrientation.landscapeLeft.isLandscape) {
@@ -30,7 +28,6 @@ class ViewSize {
     }
 }
 
-// MARK: - Frame Size
 class FrameSize {
     var width: CGFloat {
         if (UIInterfaceOrientation.landscapeLeft.isLandscape) {
@@ -46,14 +43,12 @@ class FrameSize {
     }
 }
 
-// MARK: - UIView extension
 extension UIView {
     func addSubviews(_ views: UIView...) {
         views.forEach { addSubview($0) }
     }
 }
 
-// MARK: - UIViewController extension
 extension UIViewController {
     func has(_ viewController: UIViewController) -> Bool {
         return children.contains(viewController)
@@ -120,9 +115,7 @@ extension UIViewController {
     }
 }
 
-// MARK: - UILabel extension
 extension UILabel {
-    // typo animation
     func setText(_ strs: String) {
         self.text = ""
         for str in strs {
@@ -131,7 +124,6 @@ extension UILabel {
         }
     }
     
-    // 대화창 text
     func setTextAttribute(_ str: String = "temp", _ fontSize: CGFloat = 15.0, _ space: CGFloat = 8, _ color: UIColor = .white) {
         self.text = str
         self.numberOfLines = 0
@@ -143,7 +135,6 @@ extension UILabel {
         setLineSpaceAttrText(value: space)
     }
     
-    // name tag text
     func setNameTagText(_ fontSize: CGFloat = 11.0) {
         self.text = "temp"
         self.textColor = UIColor.white
@@ -153,7 +144,6 @@ extension UILabel {
         self.layer.zPosition = 999
     }
     
-    // 선택지 text
     func setChoiceText(_ str: String, _ fontSize: CGFloat = 12.0, _ space: CGFloat = 4, isTitle: Bool = false) {
         self.text = str
         self.textColor = UIColor.black
@@ -166,7 +156,6 @@ extension UILabel {
         self.textAlignment = .center
     }
     
-    // line spacing attribute 추가
     private func setLineSpaceAttrText(value: CGFloat) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = value
@@ -177,7 +166,6 @@ extension UILabel {
     }
 }
 
-// MARK: - UIButton
 extension UIButton {
     func setChoiceButton(tagValue: Int, ImgNameNormal: String = "choicebox_normal", ImgNameTouched: String = "choicebox_touched") {
         self.tag = tagValue
@@ -204,7 +192,6 @@ extension UIButton {
     }
 }
 
-// MARK: - UITextField
 extension UITextField {
     func setUserNameInput(_ text: String = "닉네임을 설정해주세요") {
         self.backgroundColor = .white

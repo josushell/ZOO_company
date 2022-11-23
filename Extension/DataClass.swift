@@ -8,17 +8,14 @@
 import Foundation
 import UIKit
 
-// MARK: - dialog 데이터
 class TalkData: Name {
     var player: [String] = []
 }
 
-// MARK: - profile 순서
 class ImgOrderData {
     var player: [String] = []
 }
 
-// MARK: - 선택지 데이터
 class ChoiceData {
     var title: [String] = []
     var choice1: [String] = []
@@ -27,13 +24,11 @@ class ChoiceData {
     
 }
 
-// MARK: - 선택지 반응
 class Response: Name {
     var player_response: [[String]] = [[]]
     var player_image: [[String]] = [[]]
 }
 
-// MARK: - 유저 이름 클래스
 class Name {
     var name: String {
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
@@ -43,16 +38,14 @@ class Name {
     }
 }
 
-// MARK: - 유저 능력치 결과 클래스
 enum GameStats: Int {
-    case Mental = 0         // 멘탈/정신력
-    case Relationship = 1   // 인간관계
-    case Diligent = 2       // 성실성/도전의식
-    case Efficiency = 3     // 효율성
-    case Passion = 4        // 열정
+    case Mental = 0
+    case Relationship = 1
+    case Diligent = 2
+    case Efficiency = 3
+    case Passion = 4
 }
 
-// MARK: - 부서 분류 결과 클래스
 class Department {
     func getAnimalType( _ param: Int) -> AnimalType {
         switch param {

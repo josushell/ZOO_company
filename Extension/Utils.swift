@@ -8,14 +8,12 @@
 import Foundation
 import UIKit
 
-// MARK: - UIColor Hex Color 변환 코드 추가
 extension UIColor{
     convenience init(red: Int, green: Int, blue:Int, a:Int = 0xFF){
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0,
                   blue: CGFloat(blue) / 255.0, alpha: CGFloat(a) / 255.0)
     }
     
-    // MARK: hexa code
     convenience init(Hex: Int){
         self.init(red: (Hex >> 16) & 0xFF, green: (Hex >> 8) & 0xFF,
                   blue: Hex & 0xFF)
@@ -32,14 +30,12 @@ extension UIColor{
     static let radarBlueBold = UIColor(red: 84, green: 113, blue: 130)
 }
 
-// MARK: - 선택된 버튼 번호 enum
 enum Choice: String {
     case btn1 = "0"
     case btn2 = "1"
     case btn3 = "2"
 }
 
-// MARK: - view controller fade effect
 extension CATransition {
     func fadeTransition(duration: CGFloat = 1.5) -> CATransition {
         let transition = CATransition()
@@ -51,7 +47,6 @@ extension CATransition {
     }
 }
 
-// MARK: - z position enum class
 enum Zposition: CGFloat {
     case choice = 999
     case nametagNtextbox = 998

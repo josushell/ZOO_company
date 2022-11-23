@@ -34,7 +34,6 @@ class Ch2Part2ViewController: BaseViewController {
         super.viewDidAppear(animated)
         
         self.layout.backgroundImg.startAnimating()
-        // 0.5초 뒤 실행
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.registerGesture()
         }
@@ -45,12 +44,10 @@ class Ch2Part2ViewController: BaseViewController {
         
         layout.backView.isUserInteractionEnabled = false
         
-        // 1번
         if (selected_count == 0) {
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
             self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
-            
-            // 엔딩 스탯 추가
+  
             if (select_index == 0) {
                 selectedStats = GameStats.Diligent.rawValue
             }
@@ -61,8 +58,7 @@ class Ch2Part2ViewController: BaseViewController {
                 selectedStats = GameStats.Efficiency.rawValue
             }
         }
-        
-        // 2번
+    
         else {
             if (select_index == 0) {
                 self.layout.profile_char.image = UIImage(named: (self.layout.response as! Response_Ch2_part2).char_image[self.selected_count][self.select_index])
@@ -78,9 +74,7 @@ class Ch2Part2ViewController: BaseViewController {
             }
             self.layout.profile_player.image = UIImage(named: self.layout.response.player_image[self.selected_count][self.select_index])
             self.layout.text.setText(self.layout.response.player_response[self.selected_count][self.select_index])
-            
-            
-            // 엔딩 스탯 추가
+
             if (select_index == 0) {
                 selectedStats = GameStats.Relationship.rawValue
             }
@@ -101,11 +95,10 @@ class Ch2Part2ViewController: BaseViewController {
         layout.textbox.isHidden = false
         layout.backView.isUserInteractionEnabled = false
         
-        // 1번
         if (!selected[0] && selected_count == 0) {
             self.layout.backgroundImg.stopAnimating()
             self.layout.backgroundImg.image = UIImage(named: "office_alpaca_fire")
-            // 알파카
+
             if (self.layout.talkIndex[0] < (layout.talks as! TalkData_Ch2_part2).alpaca.count) {
                 self.layout.profile_char.isHidden = false
                 self.layout.img_nametag.isHidden = false
@@ -114,7 +107,7 @@ class Ch2Part2ViewController: BaseViewController {
                 self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).alpaca[self.layout.talkIndex[0]])
                 self.layout.talkIndex[0] += 1
             }
-            // 주인공
+
             else if (self.layout.talkIndex[1] < 2) {
                 self.layout.profile_player.isHidden = false
                 self.layout.img_nametag.isHidden = true
@@ -131,7 +124,6 @@ class Ch2Part2ViewController: BaseViewController {
             layout.backView.isUserInteractionEnabled = true
         }
         
-        // 1번 선택지 이후
         else if (selected[0] == true  && selected_count == 0) {
             self.layout.img_nametag.isHidden = false
             self.layout.text_nametag.text = "알파카 대리"
@@ -143,16 +135,15 @@ class Ch2Part2ViewController: BaseViewController {
             layout.backView.isUserInteractionEnabled = true
         }
         
-        // 2번
         else if (!selected[1] && selected_count == 1) {
-            // 주인공
+
             if (self.layout.talkIndex[1] < 3) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[1]])
                 self.layout.text.setText(layout.talks.player[self.layout.talkIndex[1]])
                 self.layout.talkIndex[1] += 1
             }
-            // 사자 부장
+
             else if (self.layout.talkIndex[2] < 1) {
                 self.layout.img_nametag.isHidden = false
                 
@@ -162,7 +153,6 @@ class Ch2Part2ViewController: BaseViewController {
                 self.layout.talkIndex[2] += 1
             }
             
-            // 주인공
             else if (self.layout.talkIndex[1] < layout.talks.player.count) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[1]])
@@ -170,7 +160,6 @@ class Ch2Part2ViewController: BaseViewController {
                 self.layout.talkIndex[1] += 1
             }
             
-            // 신원불명
             else if (self.layout.talkIndex[3] < (layout.talks as! TalkData_Ch2_part2).anonymous.count) {
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "???"
@@ -192,18 +181,13 @@ class Ch2Part2ViewController: BaseViewController {
             }
             layout.backView.isUserInteractionEnabled = true
         }
-        
-        // 2번 선택지 이후
+
         else {
             self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).final[self.select_index])
             
             (sound as! Ch2_part2).setVolumeFadeOut((sound as! Ch2_part2).bgm, completion: {
                 self.presentFull(Ch3Part1ViewController(), animated: false, completion: nil)
             })
-            
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-//                self.dissmissAndPresent(Ch3Part1ViewController(), animated: false, completion: nil)
-//            })
         }
     }
 

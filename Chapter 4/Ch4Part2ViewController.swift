@@ -43,7 +43,6 @@ class Ch4Part2ViewController: BaseViewController {
         selected = true
         layout.backView.isUserInteractionEnabled = true
         
-        // 엔딩 스탯 추가
         if (select_index == 0) {
             selectedStats = GameStats.Passion.rawValue
         }
@@ -59,8 +58,7 @@ class Ch4Part2ViewController: BaseViewController {
     @objc override func backTouched(_ sender: UITapGestureRecognizer) {
         layout.backView.isUserInteractionEnabled = false
         layout.textbox.isHidden = false
-        
-        // 선택지 전
+
         if (!selected) {
             if (self.layout.talkIndex[0] < layout.talks.player.count) {
                 if (self.layout.talkIndex[0] == 2 && !minimi) {
@@ -92,19 +90,15 @@ class Ch4Part2ViewController: BaseViewController {
                 layout.layout_blackView.isHidden = false
             }
         }
-        
-        // 선택지 후
+
         else {
-            //MARK: - ch4 part1 fade in fade out
             (sound as! Ch4_part2).setVolumeFadeOut((sound as! Ch4_part2).bgm, completion: {
                 self.presentFull(Ch5Part1ViewController(), animated: false, completion: nil)
             })
-            //self.dissmissAndPresent(Ch5Part1ViewController(), animated: false, completion: nil)
         }
 
     }
     
-    // 비둘기 미니미 애니메이션
     func pigeonMinimiAnimation_IN() {
         self.layout.hideBeforeAnim()
         self.layout.backView.isUserInteractionEnabled = false

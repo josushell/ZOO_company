@@ -9,18 +9,15 @@ import Foundation
 import UIKit
 
 class layout_Office_ch4: layout_base {
-    // [주인공, 박쥐, 땃쥐]
-    // [주인공, 비둘기]
     var minimi_player = UIImageView()
-    var minimi_char1 = UIImageView()    // 박쥐, 비둘기
-    var minimi_char2 = UIImageView()    // 땃쥐
+    var minimi_char1 = UIImageView()
+    var minimi_char2 = UIImageView()
     
     func initView(_ view: UIView, backImg: String = "office_night") {
         super.initView(view, backImg: backImg, profileImg: "suit_normal")
         
         talkIndex = [0, 0, 0]
-        
-        //minimi 설정
+     
         view.addSubviews(minimi_player, minimi_char1, minimi_char2)
         minimi_player.snp.makeConstraints() { make in
             make.centerX.equalTo(backgroundImg.snp.centerX)

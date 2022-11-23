@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 import Charts
 
-
-// MARK: - 바 그래프 layout
 class layout_BarChartLayout {
     let layout_bar = HorizontalBarChartView()
     var chartEntry: [BarChartDataEntry] = []
@@ -39,7 +37,6 @@ class layout_BarChartLayout {
     }
     
     func setBarAttribute(data: [Int] = [4, 1, 2, 3, 4]) {
-        // chart data array 에 데이터 추가
         for i in 0..<data.count {
             let value = BarChartDataEntry(x: Double(data.count - i), y: Double(data[i]))
                chartEntry.append(value)
@@ -48,10 +45,8 @@ class layout_BarChartLayout {
         layout_bar.noDataText = "데이터가 없습니다."
         layout_bar.noDataFont = .systemFont(ofSize: 20)
         layout_bar.noDataTextColor = .lightGray
-       // 줌 안되게
         layout_bar.doubleTapToZoomEnabled = false
        
-       // 애니메이션
         layout_bar.animate(xAxisDuration: 0, yAxisDuration: 5, easingOptionX: .linear, easingOptionY: .easeOutCirc)
        
         layout_bar.leftAxis.enabled = false

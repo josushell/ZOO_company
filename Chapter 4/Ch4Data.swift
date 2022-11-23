@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-// MARK: - CH4 part1
-
-// MARK: - dialog 데이터
 class TalkData_Ch4_part1: TalkData {
     var bat: [String] = []
     var mouse: [String] = []
@@ -24,7 +21,6 @@ class TalkData_Ch4_part1: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch4_part1: ImgOrderData {
     var bat: [String] = []
     var mouse: [String] = []
@@ -38,8 +34,6 @@ class ImgOrderData_Ch4_part1: ImgOrderData {
     }
 }
 
-// MARK: - 선택지 데이터
-
 class ChoiceData_Ch4_part1: ChoiceData {
     override init() {
         super.init()
@@ -51,7 +45,6 @@ class ChoiceData_Ch4_part1: ChoiceData {
     }
 }
 
-// MARK: - 선택지 반응
 class Response_Ch4_part1: Response {
     var bat_response: [[String]] = [[]]
     var char_image: [[String]] = [[]]
@@ -68,10 +61,6 @@ class Response_Ch4_part1: Response {
     }
 }
 
-
-// MARK: - CH4 part2
-
-// MARK: - dialog 데이터
 class TalkData_Ch4_part2: TalkData {
     var pigeon: [String] = []
     
@@ -83,7 +72,6 @@ class TalkData_Ch4_part2: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch4_part2: ImgOrderData {
     var pigeon: [String] = []
     
@@ -95,7 +83,6 @@ class ImgOrderData_Ch4_part2: ImgOrderData {
     }
 }
 
-// MARK: - 선택지 데이터
 class ChoiceData_Ch4_part2: ChoiceData {
     override init() {
         super.init()
@@ -107,7 +94,6 @@ class ChoiceData_Ch4_part2: ChoiceData {
     }
 }
 
-// MARK: - 선택지 반응
 class Response_Ch4_part2: Response {
     override init() {
         super.init()

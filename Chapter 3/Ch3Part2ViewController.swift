@@ -39,8 +39,7 @@ class Ch3Part2ViewController: BaseViewController {
         self.layout.text.setText(layout.response.player_response[0][self.select_index])
         
         layout.backView.isUserInteractionEnabled = true
-        
-        // 엔딩 스탯 추가
+
         if (select_index == 0) {
             selectedStats = GameStats.Passion.rawValue
         }
@@ -58,11 +57,9 @@ class Ch3Part2ViewController: BaseViewController {
         layout.textbox.isHidden = false
         layout.profile_player.isHidden = false
         
-        // 선택지 전
         if (!selected){
             if (self.layout.talkIndex[0] < layout.talks.player.count) {
                 (self.layout as! layout_Office_ch3).profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
-                // 자판기 이미지
                 if (self.layout.talkIndex[0] == 3) {
                     fadeIntoLounge()
                 }
@@ -73,7 +70,6 @@ class Ch3Part2ViewController: BaseViewController {
                 }
             }
             
-            // 선택지 등장
             else {
                 self.view.bringSubviewToFront(layout.layout_choice)
                 layout.layout_blackView.isHidden = false
@@ -81,13 +77,10 @@ class Ch3Part2ViewController: BaseViewController {
             }
         }
         
-        // 선택지 후
         else {
-            // ch4
             sound.setVolumeFadeOut((sound as! Ch3_part2).bgm, completion: {
                 self.presentFull(Ch4Part1ViewController(), animated: false, completion: nil)
             })
-            //self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
         }
     }
     

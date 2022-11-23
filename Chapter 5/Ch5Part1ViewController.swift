@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - Ch5Part1ViewController
 class Ch5Part1ViewController: BaseViewController {
     var selected: Bool = false
     let mailImgArray = [UIImage(named: "mail")!, UIImage(named: "mailpoint")!]
@@ -50,8 +49,7 @@ class Ch5Part1ViewController: BaseViewController {
         
         selected = true
         layout.backView.isUserInteractionEnabled = true
-        
-        // 엔딩 스탯 추가
+    
         if (select_index == 0) {
             selectedStats = GameStats.Efficiency.rawValue
         }
@@ -122,20 +120,16 @@ class Ch5Part1ViewController: BaseViewController {
                     layout.backView.isUserInteractionEnabled = true
                 }
                 else {
-                    //MARK: - ch5 part2 fade in fade out
                     (sound as! Ch5_part1).setVolumeFadeOut((sound as! Ch5_part1).bgm, completion: {
                         self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
                     })
-                    //self.dissmissAndPresent(Ch5Part2ViewController(), animated: false, completion: nil)
                 }
             }
         }
     }
 }
 
-// MARK: - Mail Event
 extension Ch5Part1ViewController {
-    // Mail Icon Touch Gesture Method
     @objc func mailIconTouched(_ sender: UITapGestureRecognizer) {
         (layout as! layout_Mail_ch5).mailIcon.stopAnimating()
         layout.hideBeforeAnim()
@@ -143,8 +137,7 @@ extension Ch5Part1ViewController {
         (layout as! layout_Mail_ch5).mailIcon.removeFromSuperview()
         (layout as! layout_Mail_ch5).mailScreen.layout_main.isHidden = false
     }
-    
-    // Mail Screen Touch Gesture Method
+
     @objc func mailScreenTouched(_ sender: UITapGestureRecognizer) {
         self.layout.layout_blackView.isHidden = true
         (layout as! layout_Mail_ch5).mailScreen.layout_main.removeFromSuperview()
@@ -158,7 +151,5 @@ extension Ch5Part1ViewController {
         
         self.layout.talkIndex[0] += 1
         self.layout.backView.isUserInteractionEnabled = true
-        
     }
-    
 }

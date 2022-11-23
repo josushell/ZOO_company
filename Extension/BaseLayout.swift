@@ -55,7 +55,6 @@ class layout_base {
         backgroundImg.frame.size = CGSize(width: vs.width, height: vs.height)
         backgroundImg.image = UIImage(named: backImg)
         
-        // text box
         view.addSubview(textbox)
         textbox.snp.makeConstraints() { make in
             make.bottom.centerX.equalTo(backgroundImg)
@@ -91,7 +90,6 @@ class layout_base {
         }
         text_nametag.setNameTagText()
         
-        // profile 설정
         view.addSubviews(profile_player, profile_char)
         profile_player.snp.makeConstraints() { make in
             make.bottom.equalTo(self.textbox.snp.top)
@@ -108,7 +106,6 @@ class layout_base {
         profile_char.layer.zPosition = Zposition.profile.rawValue
         profile_char.isHidden = true
         
-        // 선택지
         view.addSubviews(layout_choice, layout_blackView)
         layout_choice.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top)
@@ -185,7 +182,6 @@ class layout_base {
     }
 }
 
-// MARK: - Extension: functions
 extension layout_base {
     func hideBeforeAnim() {
         self.textbox.isHidden = true

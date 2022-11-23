@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 import Foundation
 
-//MARK: - 사원증 view controller
 class IDCardViewController: UIViewController {
     let layout = layout_IDCard()
     var departmentData: DepartmentData?

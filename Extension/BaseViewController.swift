@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-// 기반 뷰 컨트롤러
 class BaseViewController: UIViewController {
     var layout = layout_base()
     var select_index: Int = 0

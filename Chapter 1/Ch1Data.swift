@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - dialog 데이터
 class TalkData_Ch1_part1: TalkData {
     override init() {
         super.init()
@@ -16,7 +15,6 @@ class TalkData_Ch1_part1: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch1_part1: ImgOrderData{
     override init() {
         super.init()
@@ -25,7 +23,6 @@ class ImgOrderData_Ch1_part1: ImgOrderData{
     }
 }
 
-// MARK: - 선택지 데이터
 class ChoiceData_Ch1_part1: ChoiceData {
     override init() {
         super.init()
@@ -37,7 +34,6 @@ class ChoiceData_Ch1_part1: ChoiceData {
     }
 }
 
-// MARK: - 선택지 반응
 class Response_Ch1_part1: Response {
     override init() {
         super.init()
@@ -47,8 +43,6 @@ class Response_Ch1_part1: Response {
     }
 }
 
-
-// MARK: - dialog 데이터
 class TalkData_Ch1_part2: TalkData {
     override init() {
         super.init()
@@ -57,7 +51,6 @@ class TalkData_Ch1_part2: TalkData {
     }
 }
 
-// MARK: - profile 순서
 class ImgOrderData_Ch1_part2: ImgOrderData {
     override init() {
         super.init()
@@ -66,7 +59,6 @@ class ImgOrderData_Ch1_part2: ImgOrderData {
     }
 }
 
-// MARK: - temp 선택지 데이터
 class ChoiceData_Ch1_empty: ChoiceData {
     override init() {
         super.init()

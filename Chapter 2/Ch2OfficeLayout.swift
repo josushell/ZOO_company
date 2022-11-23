@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 
-// MARK: - 사무실 layout 1
 class layout_Office_ch2_part1: layout_base {
     let minimi_player = UIImageView()
     let minimi_lion = UIImageView()
@@ -21,7 +20,6 @@ class layout_Office_ch2_part1: layout_base {
         
         talkIndex = [0, 0, 0]
         
-        //minimi 설정
         view.addSubviews(minimi_player, minimi_lion, minimi_mouse, minimi_response)
         minimi_player.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(81)
@@ -52,13 +50,9 @@ class layout_Office_ch2_part1: layout_base {
     }
 }
 
-
-// MARK: - 사무실 layout 2
 class layout_Office_ch2_part2: layout_base {
     func initView(_ view: UIView) {
         super.initView(view, backImg: "office_on_1", profileImg: "suit_normal")
-        
-        // [알파카, 주인공, 사자, 신원불명]
         talkIndex = [0, 0, 0, 0]
     }
     

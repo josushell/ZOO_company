@@ -9,7 +9,6 @@ import Foundation
 import SpriteKit
 import UIKit
 
-// MARK: 시작 scene
 class StartScene: SKScene {
     var controller: UIViewController?
     let textureAtlas = SKTextureAtlas(named: "start")
@@ -21,9 +20,7 @@ class StartScene: SKScene {
     let back_bgm = SKAudioNode(fileNamed: "start_music")
     let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
 
-    // MARK: - entry point
     override func didMove(to view: SKView) {
-        // MARK: set user name input
         layout_userNameInput.initView(view)
         layout_userNameInput.btn_start.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
         layout_userNameInput.tf_name.delegate = self
@@ -45,11 +42,9 @@ class StartScene: SKScene {
         backgroundImg.run(mainAnim)
         self.addChild(backgroundImg)
         
-        // MARK: background music
         self.addChild(back_bgm)
         back_bgm.run(SKAction.play())
         
-        // MARK: Start button settings
         startBtn.texture = textureAtlas.textureNamed("startbtn")
         startBtn.size = backgroundImg.size
         startBtn.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -65,7 +60,6 @@ class StartScene: SKScene {
         self.addChild(startBtn)
     }
     
-    // MARK: - button completion handler
     @objc func startGame(_ sender: UIButton)
     {
         self.layout_userNameInput.layout_total.removeFromSuperview()
@@ -85,13 +79,11 @@ class StartScene: SKScene {
         })
     }
     
-    // MARK: - start button touch event delegate
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
             let nodeTouched = atPoint(location)
             
-            // 화면 전환
             if nodeTouched.name == "StartBtn" {
                 self.layout_userNameInput.layout_total.isHidden = false
                 self.startBtn.isHidden = true
@@ -100,14 +92,12 @@ class StartScene: SKScene {
     }
 }
 
-// MARK: - UITextfield delegate에 따른 layout 수정
 extension StartScene: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.layout_userNameInput.tf_name.resignFirstResponder()
         return true
     }
     
-    // 키보드 설정
     func textfieldkeyboardsetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)

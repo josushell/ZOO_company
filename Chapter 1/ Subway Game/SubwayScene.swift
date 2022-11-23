@@ -33,7 +33,6 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let groundHeight: CGFloat = 44
     var playerYposition: CGFloat = 44
     
-    // collision mask
     let groundCategory = 1 << 0 as UInt32
     let playerCategory = 1 << 1 as UInt32
     let obstacleCategory = 1 << 2 as UInt32
@@ -61,7 +60,6 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     let back_bgm = SKAudioNode(fileNamed: "subway_game")
     let gameover_win_bgm = SKAction.playSoundFileNamed("game_over", waitForCompletion: false)
     let gameover_lose_bgm = SKAction.playSoundFileNamed("you_lose", waitForCompletion: false)
-    let button_bgm = SKAction.playSoundFileNamed("button_clicked", waitForCompletion: false)
     let jump_bgm = SKAction.playSoundFileNamed("jump", waitForCompletion: false)
     let countstart_bgm = SKAction.playSoundFileNamed("321start", waitForCompletion: false)
     let damage_bgm = SKAction.playSoundFileNamed("loss_heart", waitForCompletion: false)
@@ -78,7 +76,6 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
         
         countdown(count: countDown)
         
-        // MARK: background music
         self.addChild(back_bgm)
         back_bgm.run(SKAction.play())
     }
@@ -188,13 +185,11 @@ class SubwayScene: SKScene, SKPhysicsContactDelegate {
     }
 }
 
-// MARK: - event handling
 extension SubwayScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for _ in touches {
             if playerSprite.position.y <= playerYposition && gameNode.speed > 0 {
                 playerSprite.physicsBody?.applyImpulse(CGVector(dx: 0, dy: playerJumpForce))
-                // run(jumpSound)
                 self.run(self.jump_bgm, completion: {})
             }
         }
@@ -292,17 +287,13 @@ extension SubwayScene {
             gameResult.openResult(resultTxt: resultText)
         }
     }
-    // MARK: - edit here
     @objc func moveOnNextChapter(_ sender: UIButton) {
         self.run(SKAction.wait(forDuration: 1), completion: {
             self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
         })
-    
-        //self.controller?.dissmissAndPresent(Ch1Part3ViewController(), animated: false, completion: nil)
     }
 }
 
-// MARK: - Extension: count down
 extension SubwayScene {
     private func countdownAction() {
         if (countDown > 0) {
@@ -381,7 +372,6 @@ extension SubwayScene {
         
         run(SKAction.sequence([SKAction.repeat(counterDecrement, count: countDown + 1), SKAction.run(endCountdown)]))
         
-        // 60 secs
         let successTime = SKAction.sequence([SKAction.wait(forDuration: 1.0)])
         run(SKAction.sequence([SKAction.repeat(successTime, count: 60), SKAction.run {
             self.gameEND(isGameSuccess: true)

@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-// MARK: - 동물 캐릭터 클래스: 부서, 종족, 프로필 이미지
 class Animal {
     var dept: String = ""
     var name: String = ""
@@ -75,7 +74,6 @@ class Hedgehog: Animal {
     }
 }
 
-// MARK: - 추천서 페이지에 필요한 데이터 클래스
 class AnimalType {
     var userName: String = Name().name
     var myDept: Animal = Animal()

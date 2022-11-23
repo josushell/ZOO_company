@@ -43,12 +43,10 @@ class Ch1Part2ViewController: BaseViewController {
             layout.backView.isUserInteractionEnabled = true
         }
         
-        // subway game 시작
         else {
             (sound as! Ch1_part2).setVolumeFadeOut((sound as! Ch1_part2).bgm, completion: {
                 self.presentFull(GameViewController(), animated: false, completion: nil, duration: 2)
             })
-            //self.presentFull(GameViewController(), animated: false, completion: nil, duration: 2)
         }
     }
     

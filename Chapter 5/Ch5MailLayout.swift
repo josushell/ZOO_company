@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 
-// MARK: -  Mail layout
 class layout_Mail_ch5: layout_base {
     let mailIcon = UIImageView()
     var mailIconGesture: UITapGestureRecognizer?
@@ -19,7 +18,7 @@ class layout_Mail_ch5: layout_base {
     
     func initView(_ view: UIView) {
         super.initView(view, backImg: "office_on_1", profileImg: "suit_normal")
-        talkIndex = [0, 0]   // [주인공, 펭귄(땃쥐)]
+        talkIndex = [0, 0]
         
         view.addSubviews(mailIcon, mailScreen.layout_main)
         mailIcon.isUserInteractionEnabled = false
@@ -35,7 +34,6 @@ class layout_Mail_ch5: layout_base {
         mailScreen.initViews(view)
     }
 
-    // Mail Show animation method
     func showMailAnimation(_ completion: @escaping (() -> Void)) {
         mailIcon.isHidden = false
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: {
@@ -46,7 +44,6 @@ class layout_Mail_ch5: layout_base {
     }
 }
 
-// MARK: -  Mail Screen
 class MailScreen {
     let layout_main = UIView()
     
@@ -54,12 +51,12 @@ class MailScreen {
     let layout_line = UIImageView()
     let img_mailprofile = UIImageView()
     
-    let label_sender = UILabel()    // [땃쥐 사원]
-    let label_title = UILabel()     // [공지] 잠시 후 오전 10시 30분 부터 금년도 하반기...\n받는 사람: \(name)
-    let label_date = UILabel()      // 2022년 09월 15일
+    let label_sender = UILabel()
+    let label_title = UILabel()
+    let label_date = UILabel()
     
-    let label_headline = UILabel() // [공지]
-    let label_contents = UILabel()  // n잠시 후 오전 10시 30분 부터 금년도 하반기 신 사업 프로젝트 초안 발표회가 있겠습니다.\n모두 3층 대회의실로 모여주시기 바랍니다.
+    let label_headline = UILabel()
+    let label_contents = UILabel()
     
     let txt_sender = "[땃쥐 사원]"
     let txt_title = "[공지] 잠시 후 오전 10시 30분 부터 금년도 하반기...\n받는 사람: "
@@ -135,6 +132,5 @@ class MailScreen {
             make.right.equalToSuperview().offset(-24)
         }
         label_contents.setTextAttribute(txt_contents, 13, 8, .black)
-        
     }
 }

@@ -23,11 +23,9 @@ class Ch1Part3ViewController: BaseViewController {
         (layout as! layout_subway).initView(self.view)
         
         if let appdel = UIApplication.shared.delegate as? AppDelegate {
-            // 성공
             if (appdel.subwaySuccess) {
                 self.subwayIdx = 0
             }
-            // 실패
             else {
                 self.subwayIdx = 1
             }
@@ -63,7 +61,6 @@ class Ch1Part3ViewController: BaseViewController {
             (sound as! Ch1_part3).setVolumeFadeOut((sound as! Ch1_part3).bgm, completion: {
                 self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil, transition: false)
             })
-            //self.presentFull(Ch1ElevatorViewController(), animated: false, completion: nil, transition: false)
         }
     }
 

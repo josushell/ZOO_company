@@ -25,8 +25,7 @@ class Ch1Part1ViewController: BaseViewController {
         layout.choices = ChoiceData_Ch1_part1()
         layout.response = Response_Ch1_part1()
         (layout as! layout_home).initView(self.view)
-        
-        // 3초 뒤 실행
+
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             UIView.animate(withDuration: 2.0, delay: 0, options: .curveLinear ,animations: {
                 (self.layout as! layout_home).minimi_player.transform = CGAffineTransform(translationX: 0, y: 80)
@@ -46,7 +45,6 @@ class Ch1Part1ViewController: BaseViewController {
         self.layout.text.setText(layout.response.player_response[0][self.select_index])
         layout.backView.isUserInteractionEnabled = true
         
-        // 엔딩 스탯 추가
         if (select_index == 0) {
             selectedStats = GameStats.Passion.rawValue
         }
@@ -64,7 +62,6 @@ class Ch1Part1ViewController: BaseViewController {
         layout.profile_player.isHidden = false
         layout.backView.isUserInteractionEnabled = false
         
-        // 선택지 전
         if (!selected){
             if (layout.layout_choice.isHidden == true) {
                 if (self.layout.talkIndex[0] < layout.talks.player.count) {
@@ -76,7 +73,6 @@ class Ch1Part1ViewController: BaseViewController {
                     self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
                     self.layout.talkIndex[0] += 1
                 }
-                // 선택지 등장
                 else {
                     self.view.bringSubviewToFront(layout.layout_choice)
                     layout.layout_blackView.isHidden = false
@@ -86,14 +82,10 @@ class Ch1Part1ViewController: BaseViewController {
             layout.backView.isUserInteractionEnabled = true
         }
         
-        // 선택지 후
         else {
             layout.backView.isUserInteractionEnabled = false
-            //MARK: - fade in fade out
-
             (sound as! HomeSound).setVolumeFadeOut((sound as! HomeSound).home_bgm, completion: {
                 self.presentFull(Ch1Part2ViewController(), animated: false, completion: nil)
-                
             })
         }
     }

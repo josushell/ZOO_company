@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-// MARK: - Ending
-
-// MARK: - dialog 데이터
 class TalkData_Ending: TalkData {
     override init() {
         super.init()
@@ -19,7 +16,6 @@ class TalkData_Ending: TalkData {
     }
 }
 
-// MARK: - 선택지 데이터: temp
 class ChoiceData_Ending: ChoiceData {
     override init() {
         super.init()

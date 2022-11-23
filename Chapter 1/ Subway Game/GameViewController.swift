@@ -30,12 +30,10 @@ class GameViewController: UIViewController {
             self.scene = scene
         }
         else {
-            print("subway game setupscene failed")
         }
     }
 
     deinit{
-        print("GameViewController deinit")
     }
 
 }

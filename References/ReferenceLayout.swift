@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import Charts
 
-// MARK: - Reference layout:
 class layout_reference {
     let layout_scroll = UIScrollView()
     let layout_main = UIView()
@@ -58,7 +57,6 @@ class layout_reference {
     func initViews(_ view: UIView) {
         view.backgroundColor = .referenceBlue
         
-        // auto layout 적용
         layout_scroll.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(layout_scroll)
         layout_scroll.snp.makeConstraints() { make in
@@ -69,7 +67,6 @@ class layout_reference {
         }
         layout_scroll.showsHorizontalScrollIndicator = true
         layout_scroll.isDirectionalLockEnabled = true
-        //layout_scroll.alwaysBounceVertical = true
         
         layout_scroll.addSubview(layout_main)
         layout_main.snp.makeConstraints() { make in
@@ -288,7 +285,6 @@ class layout_reference {
         label_lion.layer.zPosition = 1
     }
     
-    // shadow UI 구현
     func setBlueShadow(_ view: UIView) {
         let shadow_right = UIView()
         let shadow_down = UIView()

@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 
-// MARK: - home layout
 class layout_home: layout_base {
     let minimi_player = UIImageView()
     
@@ -17,7 +16,6 @@ class layout_home: layout_base {
         super.initView(view, backImg: "home", profileImg: "sleep_normal")
         
         talkIndex = [0, 0, 0]
-        // profile 설정
         view.addSubviews(minimi_player)
         minimi_player.snp.makeConstraints() { make in
             make.top.equalTo(backgroundImg.snp.top).offset(71)

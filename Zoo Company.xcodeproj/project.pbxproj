@@ -19,7 +19,6 @@
 		861F8CCB28C1E1A800477665 /* Ch5MailLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F8CCA28C1E1A800477665 /* Ch5MailLayout.swift */; };
 		861F8CCD28C70E5A00477665 /* StartUserNameLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F8CCC28C70E5A00477665 /* StartUserNameLayout.swift */; };
 		86261A0D291F564A00A375F2 /* MLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86261A0C291F564A00A375F2 /* MLResult.swift */; };
-		86261A11291F612200A375F2 /* ResultDeptClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 86261A10291F612200A375F2 /* ResultDeptClassification.mlmodel */; };
 		86261A1529272E2800A375F2 /* DepartmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86261A1429272E2800A375F2 /* DepartmentData.swift */; };
 		86261A17292737A800A375F2 /* AnimalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86261A16292737A800A375F2 /* AnimalData.swift */; };
 		8647B197289FA2EC005F54BC /* Ch2Part1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */; };
@@ -108,7 +107,6 @@
 		861F8CCA28C1E1A800477665 /* Ch5MailLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5MailLayout.swift; sourceTree = "<group>"; };
 		861F8CCC28C70E5A00477665 /* StartUserNameLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUserNameLayout.swift; sourceTree = "<group>"; };
 		86261A0C291F564A00A375F2 /* MLResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLResult.swift; sourceTree = "<group>"; };
-		86261A10291F612200A375F2 /* ResultDeptClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ResultDeptClassification.mlmodel; sourceTree = "<group>"; };
 		86261A1429272E2800A375F2 /* DepartmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentData.swift; sourceTree = "<group>"; };
 		86261A16292737A800A375F2 /* AnimalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalData.swift; sourceTree = "<group>"; };
 		8647B196289FA2EC005F54BC /* Ch2Part1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2Part1ViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 				E80BCCC429261DA40043DA10 /* IDCard */,
 				8693E11428799D2200D7D306 /* Extension */,
 				861D19FA28328BA700D6E6B1 /* Common */,
-				86A318F228ADDD61002D5C25 /* Legacy */,
 				8647B1A928B0B67E005F54BC /* Music */,
 				861D19F928328BA700D6E6B1 /* Products */,
 				61C06F780A52C720C9CBF7B9 /* Pods */,
@@ -335,13 +332,6 @@
 			path = "Chapter 2";
 			sourceTree = "<group>";
 		};
-		86A318F228ADDD61002D5C25 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Legacy;
-			sourceTree = "<group>";
-		};
 		86A318F928ADF26A002D5C25 /* Chapter 4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,7 +391,6 @@
 			isa = PBXGroup;
 			children = (
 				E80BCCC92927C5F90043DA10 /* ResultDeptClassification 2.mlmodel */,
-				86261A10291F612200A375F2 /* ResultDeptClassification.mlmodel */,
 				E87F9254291B71EA00424757 /* ReferenceViewControllerViewController.swift */,
 				E87F9256291B738400424757 /* ReferenceLayout.swift */,
 				86261A0C291F564A00A375F2 /* MLResult.swift */,
@@ -587,7 +576,6 @@
 				8647B1A028A9345A005F54BC /* Ch2Part2ViewController.swift in Sources */,
 				861F8CCD28C70E5A00477665 /* StartUserNameLayout.swift in Sources */,
 				E80BCCCE2928AFB60043DA10 /* BarChartLayout.swift in Sources */,
-				86261A11291F612200A375F2 /* ResultDeptClassification.mlmodel in Sources */,
 				8647B19E28A922AB005F54BC /* Ch1Part2ViewController.swift in Sources */,
 				8647B199289FAB77005F54BC /* StartViewController.swift in Sources */,
 				8693E11F288D216C00D7D306 /* View.swift in Sources */,

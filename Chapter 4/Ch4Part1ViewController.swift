@@ -27,13 +27,6 @@ class Ch4Part1ViewController: BaseViewController {
         (layout as! layout_Office_ch4).initView(self.view)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-//            self.layout.img_nametag.isHidden = true
-//            self.layout.profile_player.isHidden = false
-//            self.layout.textbox.isHidden = false
-//            self.layout.profile_player.image = UIImage(named: self.layout.profileOrder.player[self.layout.talkIndex[0]])
-//            self.layout.text.setText(self.layout.talks.player[self.layout.talkIndex[0]])
-//
-//            self.layout.talkIndex[0] += 1
             self.registerGesture()
         })
     }
@@ -41,14 +34,12 @@ class Ch4Part1ViewController: BaseViewController {
         super.onBtnClicked(sender)
         
         layout.backView.isUserInteractionEnabled = false
-        // 1번 질문
         if (selected_count == 0) {
             self.layout.profile_player.image = UIImage(named: "suit_normal")
             self.layout.img_nametag.isHidden = false
             self.layout.profile_char.image = UIImage(named: (layout.response as! Response_Ch4_part1).char_image[0][self.select_index])
             self.layout.text.setText((layout.response as! Response_Ch4_part1).bat_response[0][self.select_index])
             
-            // 엔딩 스탯 추가
             if (select_index == 0) {
                 selectedStats = GameStats.Passion.rawValue
             }
@@ -60,13 +51,11 @@ class Ch4Part1ViewController: BaseViewController {
             }
         }
         
-        // 2번 질문
         else {
             self.layout.img_nametag.isHidden = true
             self.layout.profile_player.image = UIImage(named: layout.response.player_image[0][self.select_index])
             self.layout.text.setText(layout.response.player_response[0][self.select_index])
             
-            // 엔딩 스탯 추가
             if (select_index == 0) {
                 selectedStats = GameStats.Passion.rawValue
             }
@@ -87,9 +76,7 @@ class Ch4Part1ViewController: BaseViewController {
         layout.textbox.isHidden = false
         layout.backView.isUserInteractionEnabled = false
         
-        // 1번 선택지 이전
         if (!selected[0] && selected_count == 0) {
-            // 주인공
             if (self.layout.talkIndex[0] < 2) {
                 if (self.layout.talkIndex[0] == 1) {
                     self.layout.profile_player.isHidden = false
@@ -102,8 +89,7 @@ class Ch4Part1ViewController: BaseViewController {
                 self.layout.talkIndex[0] += 1
                 self.layout.backView.isUserInteractionEnabled = true
             }
-            
-            // 박쥐
+
             else if (self.layout.talkIndex[1] < 1) {
                 if (!minimi) {
                     batMinimiAnimation_IN(callback: {
@@ -120,7 +106,6 @@ class Ch4Part1ViewController: BaseViewController {
                 }
             }
             
-            // 주인공
             else if (self.layout.talkIndex[0] < 4) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.isHidden = false
@@ -131,7 +116,6 @@ class Ch4Part1ViewController: BaseViewController {
                 layout.backView.isUserInteractionEnabled = true
             }
 
-            // 선택지
             else {
                 self.view.bringSubviewToFront(layout.layout_choice)
                 layout.layout_choice.isHidden = false
@@ -139,10 +123,7 @@ class Ch4Part1ViewController: BaseViewController {
             }
         }
         
-        // 1번 선택지 이후
         else if (selected[0] == true  && selected_count == 0) {
-            
-            // 주인공
             if (self.layout.talkIndex[0] < 6) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
@@ -158,15 +139,12 @@ class Ch4Part1ViewController: BaseViewController {
             }
 
             else {
-                // 미니미 애니메이션
                 mouseMinimiAnimation_IN()
                 selected_count += 1
             }
         }
-        
-        // 2번 선택지 이전
+
         else if (!selected[1] && selected_count == 1) {
-            // 땃쥐
             if (self.layout.talkIndex[2] < (layout.talks as! TalkData_Ch4_part1).mouse.count) {
                 self.layout.revealAfterAnim()
                 self.layout.profile_player.image = UIImage(named: "suit_normal")
@@ -177,7 +155,7 @@ class Ch4Part1ViewController: BaseViewController {
                 self.layout.talkIndex[2] += 1
                 layout.backView.isUserInteractionEnabled = true
             }
-            // 주인공
+
             else if (self.layout.talkIndex[0] < layout.talks.player.count) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
@@ -186,7 +164,7 @@ class Ch4Part1ViewController: BaseViewController {
                 self.layout.talkIndex[0] += 1
                 layout.backView.isUserInteractionEnabled = true
             }
-            // 선택지
+
             else {
                 self.layout.label_choicetitle.text = layout.choices.title[selected_count]
                 self.layout.label_btn1.text = layout.choices.choice1[selected_count]
@@ -199,13 +177,10 @@ class Ch4Part1ViewController: BaseViewController {
             }
         }
         
-        // 2번 선택지 이후
         else {
-            //MARK: - fade in fade out
             sound.setVolumeFadeOut((sound as! Ch4_part1).bgm, completion: {
-                self.dissmissAndPresent(Ch4Part2ViewController(), animated: false, completion: nil)
+                self.presentFull(Ch4Part2ViewController(), animated: false, completion: nil)
             })
-            //self.dissmissAndPresent(Ch4Part2ViewController(), animated: false, completion: nil)
         }
         
     }

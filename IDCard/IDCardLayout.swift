@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 
-// 사원증 layout
 class layout_IDCard {
     let fs = FrameSize()
 
@@ -62,7 +61,6 @@ class layout_IDCard {
         layout_card.snp.makeConstraints() { make in
             make.width.equalTo(510)
             make.height.equalTo(327)
-            //make.center.equalToSuperview()
             make.bottom.equalTo(layout_main.snp.top)
             make.centerX.equalToSuperview()
         }

@@ -9,7 +9,6 @@ import Foundation
 import SnapKit
 import UIKit
 
-// MARK: - subway layout
 class layout_subway: layout_base {
     func initView(_ view: UIView) {
         super.initView(view, backImg: "subway", profileImg: "suit_normal")

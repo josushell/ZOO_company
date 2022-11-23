@@ -26,7 +26,6 @@ class Sound {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             sender?.stop()
-            // MARK: - 일단 해봐
             completion?()
         })
     }

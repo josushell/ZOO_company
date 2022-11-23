@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-// MARK: - Ending layout: dialog + backgroundImg
 class layout_ending: layout_base {
     let frameSize = FrameSize()
     let viewSize = ViewSize()
     
     func initView(_ view: UIView) {
         super.initView(view, backImg: "ending1", profileImg: "suit_normal")
-        talkIndex = [0]   // [narration]
+        talkIndex = [0]
         
         backgroundImg.snp.remakeConstraints() { make in
             make.left.equalToSuperview()

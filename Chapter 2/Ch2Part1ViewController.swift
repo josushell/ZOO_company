@@ -29,7 +29,6 @@ class Ch2Part1ViewController: BaseViewController {
         layout.response = Response_Ch2_part1()
         (layout as! layout_Office_ch2_part1).initView(self.view)
         
-        // 3초 뒤 실행
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear ,animations: {
                 (self.layout as! layout_Office_ch2_part1).minimi_player.transform = CGAffineTransform(translationX: 0, y: 70)
@@ -55,7 +54,6 @@ class Ch2Part1ViewController: BaseViewController {
             self.layout.backView.isUserInteractionEnabled = true
         })
         
-        // 엔딩 스탯 추가
         if (select_index == 0) {
             selectedStats = GameStats.Mental.rawValue
         }
@@ -74,7 +72,6 @@ class Ch2Part1ViewController: BaseViewController {
         layout.profile_player.isHidden = false
         layout.backView.isUserInteractionEnabled = false
         
-        // 선택지 전
         if (!selected){
             if (layout.layout_choice.isHidden == true) {
                 if (self.layout.talkIndex[0] < layout.talks.player.count) {
@@ -123,7 +120,6 @@ class Ch2Part1ViewController: BaseViewController {
             }
         }
         
-        // 선택지 후
         else {
             if (!minimi_response) {
                 self.layout.revealAfterAnim()
@@ -142,8 +138,6 @@ class Ch2Part1ViewController: BaseViewController {
                 (self.sound as! Ch2_part1).setVolumeFadeOut((self.sound as! Ch2_part1).bgm, completion: {
                     self.presentFull(Ch2Part2ViewController(), animated: false, completion: nil)
                 })
-
-                   // self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
             }
         }
     }

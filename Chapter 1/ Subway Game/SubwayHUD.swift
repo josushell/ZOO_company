@@ -8,7 +8,6 @@
 import Foundation
 import SpriteKit
 
-// MARK: - 남은 생명 표시
 class SubwayHUD: SKNode {
     var heartNodes: [SKSpriteNode] = []
     

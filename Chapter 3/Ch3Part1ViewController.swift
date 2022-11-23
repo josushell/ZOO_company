@@ -45,7 +45,6 @@ class Ch3Part1ViewController: BaseViewController {
         layout.backView.isUserInteractionEnabled = true
         
         if (selected_count == 0) {
-            // 엔딩 스탯 추가
             if (select_index == 0) {
                 selectedStats = GameStats.Passion.rawValue
             }
@@ -57,7 +56,6 @@ class Ch3Part1ViewController: BaseViewController {
             }
         }
         else {
-            // 엔딩 스탯 추가
             if (select_index == 0) {
                 selectedStats = GameStats.Mental.rawValue
             }
@@ -75,9 +73,8 @@ class Ch3Part1ViewController: BaseViewController {
         layout.textbox.isHidden = false
         layout.backView.isUserInteractionEnabled = false
         
-        // 1번 선택지 이전
         if (!selected[0] && selected_count == 0) {
-            // 주인공
+      
             if (self.layout.talkIndex[0] < 1) {
                 self.layout.profile_player.isHidden = false
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
@@ -87,7 +84,6 @@ class Ch3Part1ViewController: BaseViewController {
                 layout.backView.isUserInteractionEnabled = true
             }
             
-            // 사자
             else if (self.layout.talkIndex[1] < (layout.talks as! TalkData_Ch3_part1).lion.count) {
                 
                 if (!minimi_lion) {
@@ -105,8 +101,7 @@ class Ch3Part1ViewController: BaseViewController {
                     layout.backView.isUserInteractionEnabled = true
                 }
             }
-            
-            // 주인공
+ 
             else if (self.layout.talkIndex[0] < 2) {
                 self.layout.img_nametag.isHidden = true
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
@@ -116,7 +111,6 @@ class Ch3Part1ViewController: BaseViewController {
                 layout.backView.isUserInteractionEnabled = true
             }
             
-            // 선택지
             else {
                 self.view.bringSubviewToFront(layout.layout_choice)
                 layout.layout_choice.isHidden = false
@@ -124,9 +118,7 @@ class Ch3Part1ViewController: BaseViewController {
             }
         }
         
-        // 1번 선택지 이후
         else if (selected[0] == true  && selected_count == 0) {
-            // 사자
             if (self.layout.talkIndex[0] < 3) {
                 self.layout.img_nametag.isHidden = false
                 self.layout.text_nametag.text = "사자 부장"
@@ -137,7 +129,6 @@ class Ch3Part1ViewController: BaseViewController {
                 layout.backView.isUserInteractionEnabled = true
             }
             
-            // 주인공
             else {
                 lionMinimiAnimation_OUT()
                 self.layout.profile_char.isHidden = true
@@ -150,9 +141,8 @@ class Ch3Part1ViewController: BaseViewController {
             }
         }
         
-        // 2번 선택지 이전
         else if (!selected[1] && selected_count == 1) {
-            // 주인공
+
             if (self.layout.talkIndex[0] < layout.talks.player.count) {
                 self.layout.profile_player.image = UIImage(named: layout.profileOrder.player[self.layout.talkIndex[0]])
                 self.layout.text.setText(layout.talks.player[self.layout.talkIndex[0]])
@@ -160,7 +150,7 @@ class Ch3Part1ViewController: BaseViewController {
                 self.layout.talkIndex[0] += 1
                 layout.backView.isUserInteractionEnabled = true
             }
-            // 선택지
+
             else {
                 self.layout.label_choicetitle.text = layout.choices.title[selected_count]
                 self.layout.label_btn1.text = layout.choices.choice1[selected_count]
@@ -173,17 +163,13 @@ class Ch3Part1ViewController: BaseViewController {
             }
         }
         
-        // 2번 선택지 이후
         else {
-            //MARK: - fade in fade out
             (sound as! Ch3_part1).setVolumeFadeOut((sound as! Ch3_part1).bgm, completion: {
-                self.dissmissAndPresent(Ch3Part2ViewController(), animated: false, completion: nil)
+                self.presentFull(Ch3Part2ViewController(), animated: false, completion: nil)
             })
-            //self.dissmissAndPresent(Ch3Part2ViewController(), animated: false, completion: nil)
         }
     }
     
-    // 사자 minimi in
     func lionMinimiAnimation_IN() {
         (self.layout as! layout_Office_ch3).minimi_lion.isHidden = false
         self.layout.backView.isUserInteractionEnabled = false
@@ -197,7 +183,6 @@ class Ch3Part1ViewController: BaseViewController {
         })
     }
     
-    // 사자 minimi out
     func lionMinimiAnimation_OUT() {
         UIView.animate(withDuration: 1.3, delay: 0, options: .curveLinear, animations: {
             (self.layout as! layout_Office_ch3).minimi_lion.transform = CGAffineTransform(translationX: 0, y: -20)
