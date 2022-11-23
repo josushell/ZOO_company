@@ -92,7 +92,8 @@ class Ch1Part1ViewController: BaseViewController {
             //MARK: - fade in fade out
 
             (sound as! HomeSound).setVolumeFadeOut((sound as! HomeSound).home_bgm, completion: {
-                self.dissmissAndPresent(Ch1Part2ViewController(), animated: false, completion: nil)
+                self.presentFull(Ch1Part2ViewController(), animated: false, completion: nil)
+                
             })
         }
     }

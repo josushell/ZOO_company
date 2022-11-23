@@ -24,7 +24,7 @@ class Sound {
     func setVolumeFadeOut(_ sender: AVAudioPlayer?, completion: (() -> Void)?) {
         sender?.setVolume(0, fadeDuration: 0.5)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
             sender?.stop()
             // MARK: - 일단 해봐
             completion?()

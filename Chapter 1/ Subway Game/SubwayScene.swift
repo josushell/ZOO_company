@@ -250,13 +250,12 @@ extension SubwayScene {
     }
     
     func setDamage() {
-        self.run(self.damage_bgm, completion: {})
-        
         guard !self.damaged else {
             return
         }
         self.damaged = true
         
+        self.run(self.damage_bgm, completion: {})
         self.lifeCount -= 1
         lifeHUD.setHealthDisplay(newHealth: lifeCount)
         if self.lifeCount == 0 {

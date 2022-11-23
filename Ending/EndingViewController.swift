@@ -75,7 +75,7 @@ class EndingViewController: BaseViewController {
                 //MARK: - fade in fade out: 2 sec
                 (sound as! Ending).setVolumeFadeOut((sound as! Ending).bgm, completion: {
                     let reference = ReferenceViewController()
-                    reference.modalTransitionStyle = .partialCurl
+                    reference.modalTransitionStyle = .coverVertical
                     reference.modalPresentationStyle = .fullScreen
                     self.present(reference, animated: true, completion: nil)
                 })

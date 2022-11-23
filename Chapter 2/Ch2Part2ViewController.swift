@@ -198,7 +198,7 @@ class Ch2Part2ViewController: BaseViewController {
             self.layout.text.setText((layout.talks as! TalkData_Ch2_part2).final[self.select_index])
             
             (sound as! Ch2_part2).setVolumeFadeOut((sound as! Ch2_part2).bgm, completion: {
-                self.dissmissAndPresent(Ch3Part1ViewController(), animated: false, completion: nil)
+                self.presentFull(Ch3Part1ViewController(), animated: false, completion: nil)
             })
             
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {

@@ -85,7 +85,7 @@ class Ch3Part2ViewController: BaseViewController {
         else {
             // ch4
             sound.setVolumeFadeOut((sound as! Ch3_part2).bgm, completion: {
-                self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
+                self.presentFull(Ch4Part1ViewController(), animated: false, completion: nil)
             })
             //self.dissmissAndPresent(Ch4Part1ViewController(), animated: false, completion: nil)
         }

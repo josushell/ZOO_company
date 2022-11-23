@@ -40,7 +40,6 @@ class IDCardViewController: UIViewController {
     }
     
     @objc func shareTapGesture(_ home: UITapGestureRecognizer) {
-        print("share")
         if let storyShareURL = URL(string: "instagram-stories://share") {
             if UIApplication.shared.canOpenURL(storyShareURL) {
                 let renderer = UIGraphicsImageRenderer(size: layout.layout_card.bounds.size)
@@ -76,8 +75,7 @@ class IDCardViewController: UIViewController {
     }
     
     @objc func homeTapGesture(_ home: UITapGestureRecognizer) {
-        print("home")
-        self.presentFull(StartViewController(), animated: false, completion: nil)
+        self.dissmissAndPresent(StartViewController(), animated: false, completion: nil)
     }
 
 }

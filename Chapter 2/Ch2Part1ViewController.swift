@@ -30,7 +30,7 @@ class Ch2Part1ViewController: BaseViewController {
         (layout as! layout_Office_ch2_part1).initView(self.view)
         
         // 3초 뒤 실행
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             UIView.animate(withDuration: 0.8, delay: 0, options: .curveLinear ,animations: {
                 (self.layout as! layout_Office_ch2_part1).minimi_player.transform = CGAffineTransform(translationX: 0, y: 70)
             }, completion: { finished in
@@ -140,7 +140,7 @@ class Ch2Part1ViewController: BaseViewController {
                 self.layout.text.setText((layout.response as! Response_Ch2_part1).player_response[0][self.select_index])
                 
                 (self.sound as! Ch2_part1).setVolumeFadeOut((self.sound as! Ch2_part1).bgm, completion: {
-                    self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
+                    self.presentFull(Ch2Part2ViewController(), animated: false, completion: nil)
                 })
 
                    // self.dissmissAndPresent(Ch2Part2ViewController(), animated: false, completion: nil)
