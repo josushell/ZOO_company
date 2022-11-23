@@ -37,7 +37,6 @@ class StartViewController: UIViewController {
     }
     
     deinit{
-        print("StartViewController deinit")
     }
 
 }

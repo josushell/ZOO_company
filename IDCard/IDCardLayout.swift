@@ -28,6 +28,8 @@ class layout_IDCard {
     let label_home = UILabel()
     
     let label_txt = UILabel()
+    
+    let layout_lionhand = UIImageView()
 
     func initViews(_ view: UIView) {
         view.addSubviews(layout_main)
@@ -38,7 +40,7 @@ class layout_IDCard {
         }
         layout_main.image = UIImage(named: "IDCardBack")
         
-        layout_main.addSubviews(layout_card, btn_back, btn_home, btn_share)
+        layout_main.addSubviews(layout_card, btn_back, btn_home, btn_share, layout_lionhand)
         btn_home.snp.makeConstraints() { make in
             make.width.equalTo(120)
             make.height.equalTo(40)
@@ -60,7 +62,9 @@ class layout_IDCard {
         layout_card.snp.makeConstraints() { make in
             make.width.equalTo(510)
             make.height.equalTo(327)
-            make.center.equalToSuperview()
+            //make.center.equalToSuperview()
+            make.bottom.equalTo(layout_main.snp.top)
+            make.centerX.equalToSuperview()
         }
         layout_card.image = UIImage(named: "IDCard")
         
@@ -115,5 +119,13 @@ class layout_IDCard {
             make.height.equalTo(152)
         }
         label_txt.setTextAttribute("test", 20, 10, .black)
+        
+        layout_lionhand.snp.makeConstraints() { make in
+            make.width.equalTo(253)
+            make.height.equalTo(272)
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(layout_main.snp.top)
+        }
+        layout_lionhand.image = UIImage(named: "lionHand")
     }
 }

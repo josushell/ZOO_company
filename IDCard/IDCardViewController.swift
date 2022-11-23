@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Foundation
 
 //MARK: - 사원증 view controller
 class IDCardViewController: UIViewController {
@@ -33,6 +35,23 @@ class IDCardViewController: UIViewController {
         
         layout.label_txt.setTextAttribute("이름: \(( departmentData?.animalType.userName)!)\n부서: \(( departmentData?.animalType.myDept.dept)!)\n종족: \(( departmentData?.animalType.myDept.name)!)\n발급일자: \(( departmentData?.startDate)!)", 20, 15, .black)
         layout.layout_profile.image = departmentData?.animalType.myDept.profileImg
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
+            self.lionHandAnimation()
+        }
+    }
+    
+    func lionHandAnimation() {
+        UIView.animate(withDuration: 1, delay: 0, options: .preferredFramesPerSecond60, animations: {
+            self.layout.layout_card.transform = CGAffineTransform(translationX: 0, y: (self.layout.fs.height / 2) + (327 / 2))
+            self.layout.layout_lionhand.transform = CGAffineTransform(translationX: 0, y: (self.layout.fs.height / 2))
+        }, completion: { _ in
+            UIView.animate(withDuration: 1, delay: 0.5, animations: {
+                self.layout.layout_lionhand.transform = CGAffineTransform(translationX: 0, y: -500)
+            }, completion: { _ in
+                self.layout.layout_lionhand.removeFromSuperview()
+            })
+        })
     }
     
     @objc func presentReference(_ btn: UIButton) {
