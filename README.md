@@ -72,7 +72,7 @@ Only For iOS in AppStore
 			<br />
         </td>
          <td align="center" width="200px">
-            <img height="150px" width="150px" src="https://user-images.githubusercontent.com/63590121/204016050-217ad9dd-6a7a-4e78-b901-ce3ff64b0a81.jpg"/>
+            <img height="150px" width="150px" src="https://user-images.githubusercontent.com/63590121/204080578-22dffd04-288c-4315-94c6-f5e7c425f46f.jpeg"/>
             <br />
             <a href="https://www.instagram.com/sssun_60_/">선유경</a>
 			<br />
