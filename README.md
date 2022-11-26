@@ -78,9 +78,9 @@ Only For iOS in AppStore
 			<br />
         </td>
                 <td align="center" width="200px">
-            <img height="150px" width="150px" src="https://user-images.githubusercontent.com/63590121/204016780-679572e0-2664-40bd-9501-c16d72bed45c.jpg"/>
+            <img height="150px" width="150px" src="https://user-images.githubusercontent.com/63590121/204071787-c5982431-72f8-483e-9402-4820f56b0e1a.jpeg"/>
             <br />
-            <a href="https://www.instagram.com/uuillage_/">남유정</a>
+            <a href="https://www.instagram.com/pm_n0on_/">남유정</a>
 			<br />
         </td>
                 <td align="center" width="200px">
